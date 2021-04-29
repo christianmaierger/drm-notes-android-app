@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.drmapp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_add_Entry"
+        android:name="com.example.drmapp.ui.addEntry.AddEntryFragment"
+        android:label="@string/menu_add_Entry"
+        tools:layout="@layout/fragment_addentry" />
+
+    <fragment
+        android:id="@+id/nav_view_Last"
+        android:name="com.example.drmapp.ui.slideshow.ViewLastFragment"
+        android:label="@string/menu_view_Last"
+        tools:layout="@layout/fragment_viewlast" />
+</navigation>
