@@ -19,7 +19,13 @@
 
     <fragment
         android:id="@+id/nav_view_Last"
-        android:name="com.example.drmapp.ui.slideshow.ViewLastFragment"
+        android:name="com.example.drmapp.ui.viewLast.ViewLastFragment"
         android:label="@string/menu_view_Last"
         tools:layout="@layout/fragment_viewlast" />
+
+    <fragment  android:id="@+id/manageNotifications"
+        android:name="com.example.drmapp.ui.manageNotifications.ManageNotificationsFragment"
+        android:label="@string/menu_view_Last"
+        tools:layout="@layout/fragment_manage_notifications" />
+
 </navigation>

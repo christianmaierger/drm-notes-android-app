@@ -12,9 +12,14 @@
         android:id="@+id/nav_add_Entry"
         android:icon="@android:drawable/ic_input_add"
         android:title="@string/menu_add_Entry" />
-    <item
-        android:id="@+id/nav_view_Last"
-        android:icon="@android:drawable/ic_menu_add"
-        android:title="@string/menu_view_Last" />
+        <item
+            android:id="@+id/nav_view_Last"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="@string/menu_view_Last" />
+        <item
+            android:id="@+id/manageNotifications"
+            android:icon="@android:drawable/ic_lock_idle_alarm"
+            android:title="@string/menu_manage_notifications" />
+
     </group>
 </menu>

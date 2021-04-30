@@ -1,16 +1,16 @@
-package com.example.drmapp.ui.addEntry;
+package com.example.drmapp.ui.viewLast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class AddEntryViewModel extends ViewModel {
+public class ViewLastViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public AddEntryViewModel() {
+    public ViewLastViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is addEntry fragment");
+        mText.setValue("This is viewlast fragment");
     }
 
     public LiveData<String> getText() {

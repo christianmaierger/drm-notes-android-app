@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.slideshow;
+package com.example.drmapp.ui.manageNotifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,18 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.drmapp.R;
 
-public class ViewLastFragment extends Fragment {
 
-    private ViewLastViewModel viewLastViewModel;
+public class ManageNotificationsFragment extends Fragment {
+
+    private ManageNotificationsViewModel mViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        viewLastViewModel =
-                new ViewModelProvider(this).get(ViewLastViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_viewlast, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        viewLastViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        mViewModel =
+                new ViewModelProvider(this).get(ManageNotificationsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_manage_notifications, container, false);
+        final TextView textView = root.findViewById(R.id.manageNotifications);
+        mViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
@@ -32,4 +33,5 @@ public class ViewLastFragment extends Fragment {
         });
         return root;
     }
+
 }
