@@ -46,7 +46,6 @@ public class ManageNotificationsFragment extends Fragment  {
                 b.setVisibility(View.VISIBLE);
             }
         });
-        // problem is, I can not set the Timepicker GONE here,(must be en enum), because root is not jet given back so that getView() works
 
 
         return root;
