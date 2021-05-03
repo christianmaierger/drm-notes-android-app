@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +32,14 @@ public class ManageNotificationsFragment extends Fragment {
                 textView.setText(s);
             }
         });
+      // problem is, I can not set the Timepicker GONE here,(must be en enum), because root is not jet given back so that getView() works
+        //TODO find way to do that, perhaps theres is something like onload
         return root;
     }
+
+  public void showTimePicker(View view) {
+      TimePicker b = getView().findViewById(R.id.simpleTimePicker);
+      b.setVisibility(View.VISIBLE);
+  }
 
 }

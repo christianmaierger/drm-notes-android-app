@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
+    android:label="@string/menu_home"
     app:startDestination="@+id/nav_home">
 
     <fragment
@@ -23,9 +24,9 @@
         android:label="@string/menu_view_Last"
         tools:layout="@layout/fragment_viewlast" />
 
-    <fragment  android:id="@+id/manageNotifications"
+    <fragment
+        android:id="@+id/manageNotifications"
         android:name="com.example.drmapp.ui.manageNotifications.ManageNotificationsFragment"
-        android:label="@string/menu_view_Last"
         tools:layout="@layout/fragment_manage_notifications" />
 
 </navigation>
