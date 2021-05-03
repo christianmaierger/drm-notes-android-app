@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -14,9 +15,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.drmapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
-public class ManageNotificationsFragment extends Fragment {
+public class ManageNotificationsFragment extends Fragment  {
 
     private ManageNotificationsViewModel mViewModel;
 
@@ -32,14 +34,32 @@ public class ManageNotificationsFragment extends Fragment {
                 textView.setText(s);
             }
         });
-      // problem is, I can not set the Timepicker GONE here,(must be en enum), because root is not jet given back so that getView() works
-        //TODO find way to do that, perhaps theres is something like onload
+
+        FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                // do something
+               TimePicker b = getView().findViewById(R.id.simpleTimePicker);
+                b.setVisibility(View.VISIBLE);
+            }
+        });
+        // problem is, I can not set the Timepicker GONE here,(must be en enum), because root is not jet given back so that getView() works
+
+
         return root;
     }
 
   public void showTimePicker(View view) {
       TimePicker b = getView().findViewById(R.id.simpleTimePicker);
-      b.setVisibility(View.VISIBLE);
+     // b.setVisibility(View.VISIBLE);
+
+
   }
+
+
+
 
 }

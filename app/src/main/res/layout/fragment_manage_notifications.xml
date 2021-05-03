@@ -25,14 +25,13 @@
         app:layout_constraintVertical_bias="0.039" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/addTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="24dp"
         android:clickable="true"
-        android:onClick="showTimePicker"
         android:src="@android:drawable/ic_input_add"
         app:backgroundTint="@color/purple_500"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +47,7 @@
         android:timePickerMode="spinner"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton"
+        app:layout_constraintTop_toBottomOf="@+id/addTimePicker"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
