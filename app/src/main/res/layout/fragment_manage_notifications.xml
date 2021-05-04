@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     tools:context=".ui.manageNotifications.ManageNotificationsFragment">
 
     <TextView
@@ -37,17 +37,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
 
-    <TimePicker
-        android:id="@+id/simpleTimePicker"
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/timePickerGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
-        android:layout_marginTop="36dp"
-        android:timePickerMode="spinner"
+        android:layout_marginTop="16dp"
         android:visibility="invisible"
+        app:constraint_referenced_ids="simpleTimePicker,button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
+
+    <TimePicker
+        android:id="@+id/simpleTimePicker"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="32dp"
+        android:headerBackground="@color/purple_500"
+        android:timePickerMode="clock"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addTimePicker"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/simpleTimePicker"
+        app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker" />
+
+    <TextView
+        android:id="@+id/textForAddTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="40dp"
+        android:numbersSelectorColor="#88000000"
+        android:text="@string/addTimeButtonText"
+        app:layout_constraintStart_toEndOf="@+id/addTimePicker"
+        app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

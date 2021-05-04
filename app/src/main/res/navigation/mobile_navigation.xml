@@ -27,6 +27,7 @@
     <fragment
         android:id="@+id/manageNotifications"
         android:name="com.example.drmapp.ui.manageNotifications.ManageNotificationsFragment"
+        android:label="@string/menu_manage_notifications"
         tools:layout="@layout/fragment_manage_notifications" />
 
 </navigation>

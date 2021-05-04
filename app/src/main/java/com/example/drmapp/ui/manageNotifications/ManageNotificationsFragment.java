@@ -10,6 +10,7 @@ import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -41,9 +42,10 @@ public class ManageNotificationsFragment extends Fragment  {
             @Override
             public void onClick(View v)
             {
-                // do something
-               TimePicker b = getView().findViewById(R.id.simpleTimePicker);
-                b.setVisibility(View.VISIBLE);
+
+                Group timePickerGroup = getView().findViewById(R.id.timePickerGroup);
+              // TimePicker b = getView().findViewById(R.id.simpleTimePicker);
+                timePickerGroup.setVisibility(View.VISIBLE);
             }
         });
 
