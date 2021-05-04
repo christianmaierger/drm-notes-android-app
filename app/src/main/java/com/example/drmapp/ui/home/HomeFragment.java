@@ -50,7 +50,6 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.replace(R.id.nav_host_fragment , fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-              //  getActivity().setContentView(R.layout.fragment_addentry);
 
 
             }
