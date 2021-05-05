@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,36 +10,29 @@
         android:id="@+id/text_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_below="@+id/toAddEntry"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toViewLast"
-        app:layout_constraintVertical_bias="0.119" />
+        android:gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/toViewLast"
+        android:layout_width="106dp"
+        android:layout_height="69dp"
+        android:layout_below="@+id/toAddEntry"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="View Last" />
 
     <Button
         android:id="@+id/toAddEntry"
         android:layout_width="106dp"
         android:layout_height="69dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginLeft="152dp"
-        android:layout_marginTop="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
         android:text="Add Entry"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/toViewLast"
-        android:layout_width="106dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginLeft="152dp"
-        android:layout_marginTop="56dp"
-        android:text="View Last"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toAddEntry" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/toViewLast" />
+</RelativeLayout>
