@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,13 +10,103 @@
         android:id="@+id/addentry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="356dp"
+        android:gravity="center_horizontal" />
+
+
+    <Button
+        android:id="@+id/timedate_button_morning"
+        android:layout_width="130sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="230dp"
+        android:gravity="center_horizontal"
+        android:text="Morning" />
+
+    <Button
+        android:id="@+id/timedate_button_latemorning"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="230dp"
+        android:layout_toEndOf="@+id/timedate_button_morning"
+        android:layout_toRightOf="@+id/timedate_button_morning"
+        android:gravity="center_horizontal"
+        android:text="Late Morning" />
+
+    <Button
+        android:id="@+id/timedate_button_noon"
+        android:layout_width="130sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timedate_button_morning"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Noon" />
+
+    <Button
+        android:id="@+id/timedate_button_afternoon"
+        android:layout_width="130sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timedate_button_morning"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/timedate_button_noon"
+        android:layout_toRightOf="@+id/timedate_button_noon"
+        android:gravity="center_horizontal"
+        android:text="Afternoon" />
+
+    <Button
+        android:id="@+id/timedate_button_evening"
+        android:layout_width="130sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timedate_button_noon"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Evening" />
+
+    <Button
+        android:id="@+id/timedate_button_night"
+        android:layout_width="130sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timedate_button_afternoon"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/timedate_button_evening"
+        android:layout_toRightOf="@+id/timedate_button_evening"
+        android:gravity="center_horizontal"
+        android:text="Night" />
+
+    <TextView
+        android:id="@+id/timedatetext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="130dp"
+        android:gravity="center_horizontal"
+        android:text="At what time did you perform the activity?"
+        android:textSize="20sp" />
+</RelativeLayout>
