@@ -13,33 +13,33 @@
         android:layout_marginTop="144dp"
         android:layout_marginBottom="29dp"
         android:gravity="center"
-        android:text="How are you feeling?"
+        android:text="With whom have you been togehter?"
         android:textAllCaps="true"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnHappy"
+        app:layout_constraintBottom_toTopOf="@+id/btnFriends"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnAngry"
+        android:id="@+id/btnColleagues"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_alignBottom="@id/btnHappy"
+        android:layout_alignBottom="@id/btnFriends"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
         android:layout_marginTop="34dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="Angry"
+        android:text="Colleagues"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnBored"
-        app:layout_constraintEnd_toStartOf="@+id/btnHappy"
+        app:layout_constraintBottom_toTopOf="@+id/btnStrangers"
+        app:layout_constraintEnd_toStartOf="@+id/btnFriends"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
 
     <Button
-        android:id="@+id/btnHappy"
+        android:id="@+id/btnFriends"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="19dp"
@@ -48,73 +48,45 @@
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
         android:gravity="center"
-        android:text="Happy"
+        android:text="Friends"
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnAngry"
+        app:layout_constraintStart_toEndOf="@+id/btnColleagues"
         app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
 
     <Button
-        android:id="@+id/btnContent"
+        android:id="@+id/btnPeopleOther"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="19dp"
         android:layout_marginLeft="19dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:text="Content"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnFeelingOther"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnEnvious" />
-
-    <Button
-        android:id="@+id/btnSad"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
         android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Sad"
-        android:textAllCaps="true"
-        app:layout_constraintEnd_toStartOf="@+id/btnFeelingOther"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEnvious" />
-
-    <Button
-        android:id="@+id/btnFeelingOther"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
         android:gravity="center"
         android:text="Other"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnSad"
+        android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSad" />
+        app:layout_constraintStart_toEndOf="@+id/btnNeighbours"
+        app:layout_constraintTop_toBottomOf="@+id/btnFamily" />
 
     <Button
-        android:id="@+id/btnBored"
+        android:id="@+id/btnStrangers"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="Bored"
+        android:text="Strangers"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnEnvious"
-        app:layout_constraintEnd_toStartOf="@+id/btnAnnoyed"
+        app:layout_constraintBottom_toTopOf="@+id/btnNeighbours"
+        app:layout_constraintEnd_toStartOf="@+id/btnFamily"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnAnnoyed"
+        android:id="@+id/btnFamily"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="19dp"
@@ -123,22 +95,22 @@
         android:layout_marginRight="76dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="Annoyed"
-        app:layout_constraintBottom_toTopOf="@+id/btnContent"
+        android:text="Family"
+        app:layout_constraintBottom_toTopOf="@+id/btnPeopleOther"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnBored" />
+        app:layout_constraintStart_toEndOf="@+id/btnStrangers" />
 
     <Button
-        android:id="@+id/btnEnvious"
+        android:id="@+id/btnNeighbours"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
         android:gravity="center"
-        android:text="Envious"
+        android:text="Neighbours"
         android:textAllCaps="true"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnContent"
-        app:layout_constraintEnd_toStartOf="@+id/btnContent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnPeopleOther"
+        app:layout_constraintEnd_toStartOf="@+id/btnPeopleOther"
         app:layout_constraintStart_toStartOf="parent" />
 
 
