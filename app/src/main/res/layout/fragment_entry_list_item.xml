@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:id="@+id/parent"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="5dp"
+
+
+    >
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="Date"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/ContentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="dd/mm/yyyy"
+            android:layout_toRightOf="@id/txtDate"/>
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="Time"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/ContentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="hh : mm "
+            android:layout_toRightOf="@id/txtTime"/>
+
+        <TextView
+            android:id="@+id/txtActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="Activity"
+            android:layout_below="@id/txtDate"
+            android:textStyle="bold"
+
+            />
+
+
+        <TextView
+            android:id="@+id/txtFeeling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="Feeling"
+            android:layout_below="@id/txtActivity"
+            android:textStyle="bold"/>
+
+
+
+        <TextView
+            android:id="@+id/txtMood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="Mood"
+            android:layout_below="@id/txtFeeling"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/txtThoughts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="Thoughts"
+            android:layout_below="@id/txtMood"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/txtComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="Commments"
+            android:layout_below="@id/txtThoughts"
+            android:textStyle="bold"/>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="visible"
+            android:layout_below="@id/txtDate"/>
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="visible"
+            android:layout_below="@id/txtActivity"/>
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="visible"
+            android:layout_below="@id/txtFeeling"/>
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="visible"
+            android:layout_below="@id/txtMood"/>
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="visible"
+            android:layout_below="@id/txtThoughts"/>
+
+
+
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>
