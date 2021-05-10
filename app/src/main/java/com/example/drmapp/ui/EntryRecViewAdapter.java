@@ -52,10 +52,22 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         //Verbindet die Elemente aus dem Layout mit den Elementen aus der Entry Klasse!
-        holder.txtContent.setText(entries.get(position).getDate());
+
+       // holder.ContentDate.setText(entries.get(position).getDate());
+       // holder.ContentTime.setText(entries.get(position).getDate());
+         // TODO: ContentActivity, ContentFeeling, ContentMood, ContentThoughts, ContentComment
+        // muessen aber erst noch in framgent_entry_list_item angelegt werden
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /**
+                 * Ein holder ist das Element, das dann in der Uebersichts Liste angezeigt wird und in
+                 * dem Datum, Aktivitaet, Gefuehl, Gedanken usw. stehen.
+                 *
+                 * Parent ist das gesamte View Element, in dem "nested" mehrere TextViews stehen.
+                 * Den OnClick Listener wuerde ich gern auf parent setzen, damit sich der Eintrag oeffnet wenn man
+                 * auf das View Element drueckt.
+                 * * */
                // TODO: Navigation zur Ansicht eines einzelnen Elementes
 
             }
@@ -84,15 +96,20 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         Hier einfuegen: Alle Views, die in einem Item der Liste enthalten sein sollen
         Erst deklarieren! */
 
-        private TextView txtContent;
+        //TODO: Die restlichen Views aus "fragemnt_entry_list_item.xml" einfuegen
+
+
+       // private TextView ContentDate;
+       // private TextView ContentTime;
         private RelativeLayout parent;
 
-        //TODO: Die Views aus "fragemnt_entry_list_item.xml" einfuegen
 
         public ViewHolder(View view) {
             super(view);
             // Dann hier unten ueber find View finden!
-           // txtContent = itemView.findViewById(R.id.txtContent);
+
+           // ContentDate = itemView.findViewById(R.id.ContentDate);
+           // ContentTime = itemView.findViewById(R.id.ContentTime);
             parent = itemView.findViewById(R.id.parent);
 
 
