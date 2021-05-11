@@ -45,7 +45,7 @@
         android:layout_marginLeft="76dp"
         android:layout_marginTop="16dp"
         android:visibility="invisible"
-        app:constraint_referenced_ids="simpleTimePicker,button"
+        app:constraint_referenced_ids="simpleTimePicker,getTimeButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="invisible" />
@@ -65,7 +65,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/getTimeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="44dp"
