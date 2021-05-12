@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.activitiespremade;
+package com.example.drmapp.ui.activitiesPremade;
 
 import androidx.lifecycle.ViewModel;
 
