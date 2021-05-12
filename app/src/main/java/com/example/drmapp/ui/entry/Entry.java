@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.dummy;
+package com.example.drmapp.ui.entry;
 
 
 /**
@@ -6,11 +6,6 @@ package com.example.drmapp.ui.dummy;
  * Eine Instanz der Klasse stellt dabei einen Eintrag dar.
  * Datentypen sollten noch ueberdacht und ggf. verbessert werden.
  * */
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 public class Entry {

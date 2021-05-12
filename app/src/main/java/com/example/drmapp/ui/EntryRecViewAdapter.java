@@ -6,10 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.drmapp.R;
-import com.example.drmapp.ui.dummy.Entry;
+import com.example.drmapp.ui.entry.Entry;
 
 import java.util.ArrayList;
 

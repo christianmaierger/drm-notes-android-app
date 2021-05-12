@@ -290,7 +290,7 @@
                     />
 
         <androidx.constraintlayout.widget.Barrier
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:id="@+id/Barrier1"
             android:layout_height="wrap_content"
             app:barrierDirection="top"
@@ -312,20 +312,36 @@
 
         <TextView
             android:id="@+id/ContentActivity"
-            android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/Barrier1" />
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="15dp"
+            android:text="Lorem ipsum dolor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtActivity"
+            app:layout_constraintTop_toBottomOf="@id/Barrier1"
+           />
 
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/Barrier3"
             android:visibility="visible"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:layout_constraintLeft_toRightOf="@id/contentDate"/>
+
+
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/Barrier2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            app:layout_constraintTop_toBottomOf="@id/ContentActivity"
+            android:visibility="visible"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

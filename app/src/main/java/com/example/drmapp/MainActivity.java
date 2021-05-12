@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.Menu;
 
 import com.example.drmapp.ui.EntryRecViewAdapter;
-import com.example.drmapp.ui.dummy.Entry;
+import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
