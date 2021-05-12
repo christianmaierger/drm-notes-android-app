@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ManageNotificationsViewModel extends ViewModel {
 
-
+    private boolean addTimeButtonpressed;
     private List<MutableLiveData<String>> timeList;
     private MutableLiveData<String> timeText;
     private MutableLiveData<String> buttonText;
@@ -20,6 +20,14 @@ public class ManageNotificationsViewModel extends ViewModel {
         timeText = new MutableLiveData<>();
         buttonText = new MutableLiveData<>();
         time = new MutableLiveData<>();
+    }
+
+    public boolean isAddTimeButtonpressed() {
+        return addTimeButtonpressed;
+    }
+
+    public List<MutableLiveData<String>> getTimeList() {
+        return timeList;
     }
 
     public MutableLiveData<Time> getTime() {
@@ -34,4 +42,7 @@ public class ManageNotificationsViewModel extends ViewModel {
         return buttonText;
     }
 
+    public void setAddTimeButtonpressed(boolean addTimeButtonpressed) {
+        this.addTimeButtonpressed = addTimeButtonpressed;
+    }
 }

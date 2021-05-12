@@ -22,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class ManageNotificationsFragment extends Fragment  {
-    boolean addTimeButtonpressed = false;
+
 
     private ManageNotificationsViewModel mViewModel;
 
@@ -32,6 +32,10 @@ public class ManageNotificationsFragment extends Fragment  {
         View root = inflater.inflate(R.layout.fragment_manage_notifications, container, false);
         final TextView textView = root.findViewById(R.id.textForAddTimeButton);
         final TextView timeTextView1 = root.findViewById(R.id.time1);
+
+        //set flag to change functionality of button, its "logo" and description, initially false, as button is not pressed and timepicker is hidden
+        mViewModel.setAddTimeButtonpressed(false);
+
         // Change listener, immer wenn sich buttonText im Model ändert, wird er auch hier geändert durch "Controler", schönes MVC Pattern
         mViewModel.getButtonText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -39,6 +43,8 @@ public class ManageNotificationsFragment extends Fragment  {
                 textView.setText(s);
             }
         });
+
+        // this binding  crashes the app, also in line 58 a manuel setting of the text for this text view did the same
         mViewModel.getTimeText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -63,7 +69,7 @@ public class ManageNotificationsFragment extends Fragment  {
                    //TextView addButtonText = getView().findViewById(R.id.textForAddTimeButton);
 
                    // dont know if this is best way to handle different funcs with one listener/handler
-                   if(addTimeButtonpressed==false) {
+                   if(mViewModel.isAddTimeButtonpressed()==false) {
 
                    timePickerGroup.setVisibility(View.VISIBLE);
                        //time picker in 24 h modus setzen, geht wohl nicht in xml
@@ -79,11 +85,11 @@ public class ManageNotificationsFragment extends Fragment  {
 
                        mViewModel.getButtonText().setValue("Click to cancle Time Picking");
 
-                     //set flag to change functionality
-                     addTimeButtonpressed= true;
+                     //set flag to change functionality of button, its "logo" and description
+                       mViewModel.setAddTimeButtonpressed(true);
 
 
-                   } else if(addTimeButtonpressed==true) {
+                   } else if(mViewModel.isAddTimeButtonpressed()==true) {
                        timePickerGroup.setVisibility(View.GONE);
                        // also change layout of Text and Button, so user understand he can cancle timepicking
                        // get the drawable we want to insert, in this case a X for cancle
@@ -92,12 +98,15 @@ public class ManageNotificationsFragment extends Fragment  {
                        button.setImageDrawable(drawable);
                        // todo no hardcoding
                        mViewModel.getButtonText().setValue("Press To Add Notification Time");
-                       addTimeButtonpressed= false;
+                       //set flag to change functionality of button, its "logo" and description
+                       mViewModel.setAddTimeButtonpressed(false);
 
                    }
                }
            });
 
+
+           // here listener is set to Submit button below time picker and gets the selected time to store it in ViewModel
         Button btnGet = (Button) root.findViewById(R.id.getTimeButton);
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +114,7 @@ public class ManageNotificationsFragment extends Fragment  {
                 int hour;
                 int minute;
                 TimePicker picker = getView().findViewById(R.id.simpleTimePicker);
+                // above API 23 the methods to get the time have changed, both ways are implemented here
                 if (Build.VERSION.SDK_INT >= 23 ){
                     hour = picker.getHour();
                     minute = picker.getMinute();

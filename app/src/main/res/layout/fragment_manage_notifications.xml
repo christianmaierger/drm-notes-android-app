@@ -10,6 +10,21 @@
     tools:visibility="visible">
 
     <TextView
+        android:id="@+id/time1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="160dp"
+        android:text="TextVier"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@id/manageNotifications"
+        app:layout_constraintStart_toStartOf="@id/manageNotifications"
+        app:layout_constraintTop_toBottomOf="@+id/manageNotifications"
+        tools:text="TextVier"
+        tools:visibility="visible" />
+
+    <TextView
         android:id="@+id/manageNotifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,20 +101,5 @@
         android:text="@string/addTimeButtonText"
         app:layout_constraintStart_toEndOf="@+id/addTimePicker"
         app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
-
-    <TextView
-        android:id="@+id/time1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="160dp"
-        android:text="TextVier"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@id/manageNotifications"
-        app:layout_constraintStart_toStartOf="@id/manageNotifications"
-        app:layout_constraintTop_toBottomOf="@+id/manageNotifications"
-        tools:text="TextVier"
-        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
