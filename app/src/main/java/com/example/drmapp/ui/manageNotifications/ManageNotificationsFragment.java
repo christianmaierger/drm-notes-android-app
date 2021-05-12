@@ -1,5 +1,8 @@
 package com.example.drmapp.ui.manageNotifications;
 
+import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,10 +16,13 @@ import android.widget.TimePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.Group;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -45,13 +51,13 @@ public class ManageNotificationsFragment extends Fragment  {
         });
 
         // this binding  crashes the app, also in line 58 a manuel setting of the text for this text view did the same
-        mViewModel.getTimeText().observe(getViewLifecycleOwner(), new Observer<String>() {
+       /* mViewModel.getTimeText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 timeTextView1.setText(s);
             }
         });
-
+*/
 
         FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
 
@@ -123,14 +129,43 @@ public class ManageNotificationsFragment extends Fragment  {
                     hour = picker.getCurrentHour();
                     minute = picker.getCurrentMinute();
                 }
-
-
                 mViewModel.getTimeText().setValue("Selected Date: "+ hour +":"+ minute);
+                buildNotification();
             }
         });
 
         return root;
     }
+
+
+    public void buildNotification () {
+
+        // Create an explicit intent for an Activity in your app
+        // try with hardcoded link to MainActivity
+        Intent intent = new Intent(this.getActivity(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this.getActivity(), 0, intent, 0);
+
+        //for test channel id is just 1
+    NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getContext(), "1")
+            .setSmallIcon(R.drawable.ic_input_add)
+            .setContentTitle("Test")
+            .setContentText("Test Content")
+            // this is used for Android 7.1 and lower as there is no channel with own prio
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+             // Set the intent that will fire when the user taps the notification
+            .setContentIntent(pendingIntent)
+            // when flag is set notification is automatically removed after tap
+            .setAutoCancel(true);
+
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this.getActivity());
+
+// notificationId is a unique int for each notification that you must define
+        //first param notification id for test just 1, needs to be saved to delete notification later on
+        notificationManager.notify(1, builder.build());
+}
+
 
 
 
