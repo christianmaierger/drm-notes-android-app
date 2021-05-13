@@ -1,4 +1,6 @@
 package com.example.drmapp.ui.success;
 
-public class SuccessViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class SuccessViewModel extends ViewModel {
 }

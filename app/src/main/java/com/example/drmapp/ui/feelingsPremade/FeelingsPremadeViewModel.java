@@ -1,4 +1,6 @@
 package com.example.drmapp.ui.feelingsPremade;
 
-public class FeelingsPremadeViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class FeelingsPremadeViewModel extends ViewModel {
 }

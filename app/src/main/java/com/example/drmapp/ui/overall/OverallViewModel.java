@@ -1,4 +1,6 @@
 package com.example.drmapp.ui.overall;
 
-public class OverallViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class OverallViewModel extends ViewModel {
 }

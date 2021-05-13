@@ -1,4 +1,7 @@
 package com.example.drmapp.ui.personPremade;
 
-public class PersonPremadeViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class PersonPremadeViewModel extends ViewModel {
+
 }

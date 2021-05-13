@@ -1,4 +1,6 @@
 package com.example.drmapp.ui.thoughts;
 
-public class ThoughtsViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class ThoughtsViewModel extends ViewModel {
 }

@@ -25,7 +25,9 @@
         android:layout_below="@+id/toAddEntry"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="View Last" />
+        android:text="View Last"
+        style="@style/buttonStyle"
+        android:background="@drawable/button"/>
 
     <Button
         android:id="@+id/toAddEntry"
@@ -34,5 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
         android:text="Add Entry"
-        app:layout_constraintTop_toBottomOf="@+id/toViewLast" />
+        app:layout_constraintTop_toBottomOf="@+id/toViewLast"
+        style="@style/buttonStyle"
+        android:background="@drawable/button"/>
 </RelativeLayout>

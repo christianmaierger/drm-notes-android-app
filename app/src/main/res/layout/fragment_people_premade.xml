@@ -36,7 +36,9 @@
         app:layout_constraintBottom_toTopOf="@+id/btnStrangers"
         app:layout_constraintEnd_toStartOf="@+id/btnFriends"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
+        app:layout_constraintTop_toBottomOf="@+id/textFeeling"
+        style="@style/buttonStyle"
+        android:background="@drawable/button"/>
 
     <Button
         android:id="@+id/btnFriends"
@@ -53,7 +55,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/btnColleagues"
-        app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
+        app:layout_constraintTop_toBottomOf="@+id/textFeeling"
+        style="@style/buttonStyle"
+        android:background="@drawable/button"/>
 
     <Button
         android:id="@+id/btnPeopleOther"
@@ -69,7 +73,9 @@
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnNeighbours"
-        app:layout_constraintTop_toBottomOf="@+id/btnFamily" />
+        app:layout_constraintTop_toBottomOf="@+id/btnFamily"
+        style="@style/buttonStyle"
+        android:background="@drawable/button"/>
 
     <Button
         android:id="@+id/btnStrangers"
@@ -83,7 +89,9 @@
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/btnNeighbours"
         app:layout_constraintEnd_toStartOf="@+id/btnFamily"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/buttonStyle"
+        android:background="@drawable/button"/>
 
     <Button
         android:id="@+id/btnFamily"
@@ -98,7 +106,9 @@
         android:text="Family"
         app:layout_constraintBottom_toTopOf="@+id/btnPeopleOther"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnStrangers" />
+        app:layout_constraintStart_toEndOf="@+id/btnStrangers"
+        style="@style/buttonStyle"
+        android:background="@drawable/button"/>
 
     <Button
         android:id="@+id/btnNeighbours"
@@ -111,7 +121,9 @@
         android:textAllCaps="true"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnPeopleOther"
         app:layout_constraintEnd_toStartOf="@+id/btnPeopleOther"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/buttonStyle"
+        android:background="@drawable/button"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

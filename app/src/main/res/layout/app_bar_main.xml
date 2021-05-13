@@ -28,8 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/purple_500"
-        app:srcCompat="@android:drawable/ic_media_play" />
+        app:backgroundTint="@color/navButton"
+        app:srcCompat="@android:drawable/ic_media_play"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/toStart"
@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/purple_500"
-        app:srcCompat="@android:drawable/ic_media_rew" />
+        app:backgroundTint="@color/navButton"
+        app:srcCompat="@android:drawable/ic_media_previous"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/back"
@@ -47,7 +47,7 @@
         android:layout_gravity="bottom|center_horizontal|center_vertical"
         android:layout_margin="@dimen/fab_margin"
         android:translationX="-200px"
-        app:backgroundTint="@color/purple_500"
+        app:backgroundTint="@color/navButton"
         app:srcCompat="@android:drawable/ic_media_previous" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,4 +1,7 @@
 package com.example.drmapp.ui.personManual;
 
-public class PersonManualViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class PersonManualViewModel extends ViewModel {
+
 }

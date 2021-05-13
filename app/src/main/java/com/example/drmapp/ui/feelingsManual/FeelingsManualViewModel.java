@@ -1,4 +1,6 @@
 package com.example.drmapp.ui.feelingsManual;
 
-public class FeelingsManualViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class FeelingsManualViewModel extends ViewModel {
 }

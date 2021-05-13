@@ -1,4 +1,6 @@
 package com.example.drmapp.ui.activitiesManual;
 
-public class ActivitiesManualViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class ActivitiesManualViewModel  extends ViewModel {
 }
