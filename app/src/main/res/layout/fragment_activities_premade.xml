@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activitiespremade.ActivitiesPremade">
+
+
+    <Button
+        android:id="@+id/activity_button_cooking"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="230dp"
+        android:gravity="center_horizontal"
+        android:text="Cooking" />
+
+    <Button
+        android:id="@+id/activity_button_eatingdrinking"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="230dp"
+        android:layout_toEndOf="@+id/activity_button_cooking"
+        android:layout_toRightOf="@+id/activity_button_cooking"
+        android:gravity="center_horizontal"
+        android:text="Eating/Drinking" />
+
+    <Button
+        android:id="@+id/activity_button_workingstudying"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_button_cooking"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Working/Studying" />
+
+    <Button
+        android:id="@+id/activity_button_carework"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_button_eatingdrinking"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/activity_button_workingstudying"
+        android:layout_toRightOf="@+id/activity_button_workingstudying"
+        android:gravity="center_horizontal"
+        android:text="Care Work" />
+
+    <Button
+        android:id="@+id/activity_button_chores"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_button_workingstudying"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Chores" />
+
+    <Button
+        android:id="@+id/activity_button_hobby"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_button_carework"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/activity_button_chores"
+        android:layout_toRightOf="@+id/activity_button_chores"
+        android:gravity="center_horizontal"
+        android:text="Hobby" />
+
+    <Button
+        android:id="@+id/activity_button_leisuretime"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_button_chores"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Leisure Time" />
+
+    <Button
+        android:id="@+id/activity_button_other"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_button_hobby"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/activity_button_leisuretime"
+        android:layout_toRightOf="@+id/activity_button_leisuretime"
+        android:gravity="center_horizontal"
+        android:text="Other" />
+
+    <TextView
+        android:id="@+id/activitypremadetext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="130dp"
+        android:gravity="center_horizontal"
+        android:text="What were you doing?"
+        android:textSize="20dp" />
+
+</RelativeLayout>
