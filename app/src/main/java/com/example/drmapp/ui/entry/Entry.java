@@ -1,6 +1,8 @@
 package com.example.drmapp.ui.entry;
 
 
+import java.util.ArrayList;
+
 /**
  * Die Klasse Entry soll die Werte speichern, die der User beim Ausfuellen des Fragebogens eingibt.
  * Eine Instanz der Klasse stellt dabei einen Eintrag dar.
@@ -83,6 +85,25 @@ public class Entry {
     public void setComments(String comments) {
         this.comments = comments;
     }
+
+
+
+    // method just to create some test data
+    public static ArrayList<Entry> createEntryList() {
+        ArrayList<Entry> entries = new ArrayList<Entry>();
+
+        entries.add(new Entry("05/05/21", "12:00", "Eating/Drinking", "Happy", ":)", "Food is yummy", "no comment"));
+        entries.add(new Entry("05/05/21", "13:00", "Working", "Happy", ":)", "Make much money", "no comment"));
+        entries.add(new Entry("05/05/21", "15:00", "Eating/Drinking", "Happy", ":)", "Love coffee", "no comment"));
+
+        //adapter.setEntries(entries);
+
+        return entries;
+    }
+
+
+
+
 
 
     @Override

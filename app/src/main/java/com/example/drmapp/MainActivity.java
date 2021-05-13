@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.drmapp.ui.EntryFragment;
 import com.example.drmapp.ui.EntryRecViewAdapter;
 import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -36,27 +38,30 @@ public class MainActivity extends AppCompatActivity {
 
 
         /**
-         * Die ArryListe entries soll alle Eintraege speichern.
+         * entries soll alle Eintraege speichern. (Eventuell sollten wir hier ueberlegen, ob etwas wie eine Hashtabelle etc. sinnvoll waere)
          * Ein Entry beinhaltet die Werte fuer alle Antworten, die der Nutzer beim Ausfuellen eines Fragebogens eingibt.
-         * Die Liste wurde hier manuell mit Werten befuellt, soll jedoch spaeter automatisch befuellt werden.
+         *
          * */
-        ArrayList<Entry> entries = new ArrayList<>();
-        entryRecyclerView = findViewById(R.id.entryRecyclerView);
+
+      // entryRecyclerView = findViewById(R.id.entryRecyclerView);
+
+
+       // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
+       if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            EntryFragment entryRecyclerView = new EntryFragment();
+            transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
+            transaction.commit();
+       }
 
 
         // TODO: Funktion schreiben, mit das Entry-Element erweitert wird jeweils um Date, Time, Activity, Feeling, etc.
         // TODO: In Activity OnClickListener -> entries (position itemCount, setActivity "Eating/Drinking"
 
-       /* entries.add(new Entry("05/05/21", "12:00", "Eating/Drinking", "Happy", ":)", "Food is yummy", "no comment"));
-        entries.add(new Entry("05/05/21", "13:00", "Working", "Happy", ":)", "Make much money", "no comment"));
-        entries.add(new Entry("05/05/21", "15:00", "Eating/Drinking", "Happy", ":)", "Love coffee", "no comment"));
-*/
-        EntryRecViewAdapter adapter = new EntryRecViewAdapter();
-        adapter.setEntries(entries);
 
-        entryRecyclerView.setAdapter(adapter);
+       // entryRecyclerView.setAdapter(adapter);
         //Legt die Ansicht fest! (Gibt auch Grid etc.)
-        entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+       // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         // rechts unten der weiter button ist dieser fab, floating action button

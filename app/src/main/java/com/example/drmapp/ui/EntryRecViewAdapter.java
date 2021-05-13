@@ -1,8 +1,8 @@
 package com.example.drmapp.ui;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +26,10 @@ import java.util.ArrayList;
 public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapter.ViewHolder> {
     private ArrayList<Entry> entries = new ArrayList<>();
 
-/*
+
     public EntryRecViewAdapter(ArrayList<Entry> entries) {
         this.entries = entries;
-
-    }*/
+    }
 
     /* RecyclerView calls this method whenever it needs to create a new ViewHolder.
             The method creates and initializes the ViewHolder and its associated View,
@@ -55,10 +54,22 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
     public void onBindViewHolder(final ViewHolder holder, int position) {
         //Verbindet die Elemente aus dem Layout mit den Elementen aus der Entry Klasse!
 
-       holder.ContentDate.setText(entries.get(position).getDate());
-       holder.ContentTime.setText(entries.get(position).getTime());
+        // Get the data model based on position, so to speak index of the list with entries
+        Entry ent = entries.get(position);
+
+        // Set item views based on your views and data model
+        // therefore one has to follow the following pattern of definining views, setting them with the holder instance vars
+        // then set the text/other value by getting the coressponding value from the entry in the list at the specific position
+        TextView textView = holder.contentDate;
+        textView.setText(ent.getDate());
+
+
+      // holder.contentDate.setText(entries.get(position).getDate());
+       //holder.contentTime.setText(entries.get(position).getTime());
+
          // TODO: ContentActivity, ContentFeeling, ContentMood, ContentThoughts, ContentComment
         // muessen aber erst noch in framgent_entry_list_item angelegt werden
+
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,17 +112,18 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         //TODO: Die restlichen Views aus "fragemnt_entry_list_item.xml" einfuegen
 
 
-       private TextView ContentDate;
-       private TextView ContentTime;
-        private RelativeLayout parent;
+       private TextView contentDate;
+       private TextView contentTime;
+       // musste zu CardView geändert werden, verstehe es noch nicht ganz aber als RelativeLayout wirft es einen error
+       private CardView parent;
 
 
         public ViewHolder(View view) {
             super(view);
-            // Dann hier unten ueber find View finden!
+            // Dann hier unten ueber find View finden! Das passt total so
             parent = itemView.findViewById(R.id.parent);
-            ContentDate = itemView.findViewById(R.id.contentDate);
-            ContentTime = itemView.findViewById(R.id.contentTime);
+            contentDate = itemView.findViewById(R.id.contentDate);
+            contentTime = itemView.findViewById(R.id.contentTime);
 
 
         }

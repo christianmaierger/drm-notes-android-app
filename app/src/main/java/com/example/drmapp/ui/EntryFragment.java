@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.drmapp.R;
+import com.example.drmapp.ui.entry.Entry;
 
 /**
  * A fragment representing a list of Items.
@@ -62,7 +63,8 @@ public class EntryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_entry_list, container, false);
         recyclerView=view.findViewById(R.id.entryRecyclerView);
-        EntryRecViewAdapter entryRecViewAdapter=new EntryRecViewAdapter();
+        // for testing static method called to get some data, but it is a good question where to hold entries in the end
+        EntryRecViewAdapter entryRecViewAdapter=new EntryRecViewAdapter(Entry.createEntryList());
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(entryRecViewAdapter);
