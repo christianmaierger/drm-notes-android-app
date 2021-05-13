@@ -1,5 +1,6 @@
 package com.example.drmapp.ui.manageNotifications;
 
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -24,8 +25,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.Calendar;
 
 
 public class ManageNotificationsFragment extends Fragment  {
@@ -131,34 +130,21 @@ public class ManageNotificationsFragment extends Fragment  {
                     minute = picker.getCurrentMinute();
                 }
                 mViewModel.getTimeText().setValue("Selected Date: "+ hour +":"+ minute);
-                Calendar timeOfNotification = buildTimeForNotification(hour, minute);
-                buildAndSetNotification(timeOfNotification);
+                buildNotification();
             }
         });
 
         return root;
     }
 
-    private Calendar buildTimeForNotification(int hour, int min) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, min);
-        calendar.set(Calendar.SECOND, 0);
-        return calendar;
-    }
 
-
-    public void buildAndSetNotification(Calendar time) {
-
-
+    public void buildNotification () {
 
         // Create an explicit intent for an Activity in your app
         // try with hardcoded link to MainActivity
         Intent intent = new Intent(this.getActivity(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this.getActivity(), 0, intent, 0);
-
-        //todo create/use background service to set daily alarm time https://stackoverflow.com/questions/23440251/how-to-repeat-notification-daily-on-specific-time-in-android-through-background
 
         //for test channel id is just 1
     NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getContext(), "1")
