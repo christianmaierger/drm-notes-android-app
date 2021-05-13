@@ -1,6 +1,5 @@
 package com.example.drmapp.ui.manageNotifications;
 
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -25,6 +24,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Calendar;
 
 
 public class ManageNotificationsFragment extends Fragment  {
@@ -113,8 +114,8 @@ public class ManageNotificationsFragment extends Fragment  {
 
 
            // here listener is set to Submit button below time picker and gets the selected time to store it in ViewModel
-        Button btnGet = (Button) root.findViewById(R.id.getTimeButton);
-        btnGet.setOnClickListener(new View.OnClickListener() {
+        Button submitTime = (Button) root.findViewById(R.id.getTimeButton);
+        submitTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int hour;
@@ -130,15 +131,24 @@ public class ManageNotificationsFragment extends Fragment  {
                     minute = picker.getCurrentMinute();
                 }
                 mViewModel.getTimeText().setValue("Selected Date: "+ hour +":"+ minute);
-                buildNotification();
+                Calendar time = buildTimeForNotification(hour, minute);
+                buildAndSetNotification(time);
             }
         });
 
         return root;
     }
 
+    private Calendar buildTimeForNotification(int hour, int min) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, min);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar;
+    }
 
-    public void buildNotification () {
+
+    public void buildAndSetNotification(Calendar time) {
 
         // Create an explicit intent for an Activity in your app
         // try with hardcoded link to MainActivity
@@ -155,6 +165,8 @@ public class ManageNotificationsFragment extends Fragment  {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
              // Set the intent that will fire when the user taps the notification
             .setContentIntent(pendingIntent)
+            // just test to see if this works bg service needed, does not work at all, I guess kind of AlarmManager needed
+            .setWhen(time.getTimeInMillis())
             // when flag is set notification is automatically removed after tap
             .setAutoCancel(true);
 
@@ -163,6 +175,7 @@ public class ManageNotificationsFragment extends Fragment  {
 
 // notificationId is a unique int for each notification that you must define
         //first param notification id for test just 1, needs to be saved to delete notification later on
+        // method seems to post imediatelly not regarding time of notification set with setWhen(long milis)
         notificationManager.notify(1, builder.build());
 }
 
