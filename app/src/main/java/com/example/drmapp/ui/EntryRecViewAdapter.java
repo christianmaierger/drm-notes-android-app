@@ -2,10 +2,12 @@ package com.example.drmapp.ui;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
@@ -24,15 +26,16 @@ import java.util.ArrayList;
 public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapter.ViewHolder> {
     private ArrayList<Entry> entries = new ArrayList<>();
 
+/*
+    public EntryRecViewAdapter(ArrayList<Entry> entries) {
+        this.entries = entries;
 
-
-
-
+    }*/
 
     /* RecyclerView calls this method whenever it needs to create a new ViewHolder.
-    The method creates and initializes the ViewHolder and its associated View,
-    but does not fill in the view's contents—the ViewHolder has not yet been bound
-    to specific data.*/
+            The method creates and initializes the ViewHolder and its associated View,
+            but does not fill in the view's contents—the ViewHolder has not yet been bound
+            to specific data.*/
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -52,8 +55,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
     public void onBindViewHolder(final ViewHolder holder, int position) {
         //Verbindet die Elemente aus dem Layout mit den Elementen aus der Entry Klasse!
 
-       // holder.ContentDate.setText(entries.get(position).getDate());
-       // holder.ContentTime.setText(entries.get(position).getDate());
+       holder.ContentDate.setText(entries.get(position).getDate());
+       holder.ContentTime.setText(entries.get(position).getTime());
          // TODO: ContentActivity, ContentFeeling, ContentMood, ContentThoughts, ContentComment
         // muessen aber erst noch in framgent_entry_list_item angelegt werden
         holder.parent.setOnClickListener(new View.OnClickListener() {
@@ -98,18 +101,17 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         //TODO: Die restlichen Views aus "fragemnt_entry_list_item.xml" einfuegen
 
 
-       // private TextView ContentDate;
-       // private TextView ContentTime;
+       private TextView ContentDate;
+       private TextView ContentTime;
         private RelativeLayout parent;
 
 
         public ViewHolder(View view) {
             super(view);
             // Dann hier unten ueber find View finden!
-
-           // ContentDate = itemView.findViewById(R.id.ContentDate);
-           // ContentTime = itemView.findViewById(R.id.ContentTime);
             parent = itemView.findViewById(R.id.parent);
+            ContentDate = itemView.findViewById(R.id.contentDate);
+            ContentTime = itemView.findViewById(R.id.contentTime);
 
 
         }

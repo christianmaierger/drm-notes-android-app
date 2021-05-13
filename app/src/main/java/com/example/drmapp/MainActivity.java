@@ -36,21 +36,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         /**
-         * entries soll alle Eintraege speichern. (Eventuell sollten wir hier ueberlegen, ob etwas wie eine Hashtabelle etc. sinnvoll waere)
+         * Die ArryListe entries soll alle Eintraege speichern.
          * Ein Entry beinhaltet die Werte fuer alle Antworten, die der Nutzer beim Ausfuellen eines Fragebogens eingibt.
-         *
+         * Die Liste wurde hier manuell mit Werten befuellt, soll jedoch spaeter automatisch befuellt werden.
          * */
-
-        entryRecyclerView = findViewById(R.id.entryRecyclerView);
         ArrayList<Entry> entries = new ArrayList<>();
+        entryRecyclerView = findViewById(R.id.entryRecyclerView);
+
 
         // TODO: Funktion schreiben, mit das Entry-Element erweitert wird jeweils um Date, Time, Activity, Feeling, etc.
         // TODO: In Activity OnClickListener -> entries (position itemCount, setActivity "Eating/Drinking"
 
-        entries.add(new Entry("05/05/21", "12:00", "Eating/Drinking", "Happy", ":)", "Food is yummy", "no comment"));
+       /* entries.add(new Entry("05/05/21", "12:00", "Eating/Drinking", "Happy", ":)", "Food is yummy", "no comment"));
         entries.add(new Entry("05/05/21", "13:00", "Working", "Happy", ":)", "Make much money", "no comment"));
         entries.add(new Entry("05/05/21", "15:00", "Eating/Drinking", "Happy", ":)", "Love coffee", "no comment"));
-
+*/
         EntryRecViewAdapter adapter = new EntryRecViewAdapter();
         adapter.setEntries(entries);
 
