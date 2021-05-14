@@ -92,9 +92,12 @@ public class Entry {
     public static ArrayList<Entry> createEntryList() {
         ArrayList<Entry> entries = new ArrayList<Entry>();
 
-        entries.add(new Entry("05/05/21", "12:00", "Eating/Drinking", "Happy", ":)", "Food is yummy", "no comment"));
+        entries.add(new Entry("05/05/21", "12:00", "Eating/Drinking", "Happy", ":)", "Food is yummy", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."));
         entries.add(new Entry("05/05/21", "13:00", "Working", "Happy", ":)", "Make much money", "no comment"));
-        entries.add(new Entry("05/05/21", "15:00", "Eating/Drinking", "Happy", ":)", "Love coffee", "no comment"));
+        entries.add(new Entry("05/05/21", "15:00", "CareWork", "Happy", ":)", "Love coffee", "no comment"));
+        entries.add(new Entry("05/05/21", "15:00", "Chores", "Happy", ":)", "Love coffee", "no comment"));
+        entries.add(new Entry("05/05/21", "15:00", "Leisure", "Happy", ":)", "Love coffee", "no comment"));
+        entries.add(new Entry("05/05/21", "15:00", "Other", "Happy", ":)", "Love coffee", "no comment"));
 
         //adapter.setEntries(entries);
 

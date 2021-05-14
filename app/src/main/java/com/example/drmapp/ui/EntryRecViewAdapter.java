@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -60,8 +63,59 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         // Set item views based on your views and data model
         // therefore one has to follow the following pattern of definining views, setting them with the holder instance vars
         // then set the text/other value by getting the coressponding value from the entry in the list at the specific position
-        TextView textView = holder.contentDate;
-        textView.setText(ent.getDate());
+        TextView textViewDa = holder.contentDate;
+        textViewDa.setText(ent.getDate());
+        TextView textViewCo = holder.contentComments;
+        textViewCo.setText(ent.getComments());
+        TextView textViewTi = holder.contentTime;
+        textViewTi.setText(ent.getTime());
+        TextView textViewAc = holder.contentActivity;
+        textViewAc.setText(ent.getActivity());
+        TextView textViewFe = holder.contentFeeling;
+        textViewFe.setText(ent.getFeeling());
+        TextView textViewMo = holder.contentMood;
+        textViewMo.setText(ent.getMood());
+        TextView textViewTh = holder.contentThoughts;
+        textViewTh.setText(ent.getThoughts());
+        ImageView imageView = holder.imageView;
+
+        //ent.getActivity().contentEquals("Eating/Drinking"))
+        //imageView.setImageResource(R.drawable.cooking3);
+
+
+        switch(ent.getActivity().toString()){
+            case "Eating/Drinking":
+                imageView.setImageResource(R.drawable.eating);
+                break;
+
+            case "Working":
+                imageView.setImageResource(R.drawable.working);
+                break;
+
+            case "Cooking":
+                imageView.setImageResource(R.drawable.cooking);
+                break;
+            case "Chores":
+                imageView.setImageResource(R.drawable.chores);
+                break;
+            case "Hobby":
+                imageView.setImageResource(R.drawable.hobby);
+                break;
+            case "CareWork":
+                imageView.setImageResource(R.drawable.care);
+                break;
+            case "Leisure":
+                imageView.setImageResource(R.drawable.leisure);
+                break;
+            default:
+                imageView.setImageResource(R.drawable.other);
+                break;
+
+        }
+
+
+
+
 
 
       // holder.contentDate.setText(entries.get(position).getDate());
@@ -112,8 +166,15 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         //TODO: Die restlichen Views aus "fragemnt_entry_list_item.xml" einfuegen
 
 
-       private TextView contentDate;
-       private TextView contentTime;
+        private TextView contentDate;
+        private TextView contentTime;
+        private TextView contentActivity;
+        private TextView contentFeeling;
+        private TextView contentMood;
+        private TextView contentThoughts;
+        private TextView contentComments;
+        private ImageView imageView;
+
        // musste zu CardView geändert werden, verstehe es noch nicht ganz aber als RelativeLayout wirft es einen error
        private CardView parent;
 
@@ -124,6 +185,16 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
             parent = itemView.findViewById(R.id.parent);
             contentDate = itemView.findViewById(R.id.contentDate);
             contentTime = itemView.findViewById(R.id.contentTime);
+
+
+            contentActivity = itemView.findViewById(R.id.ContentActivity);
+            contentFeeling = itemView.findViewById(R.id.ContentFeeling);
+            contentMood = itemView.findViewById(R.id.ContentMood);
+            contentThoughts = itemView.findViewById(R.id.ContentThoughts);
+            contentComments = itemView.findViewById(R.id.ContentComments);
+            imageView = itemView.findViewById(R.id.imageView);
+
+
 
 
         }
