@@ -37,13 +37,7 @@ public class TimeMorningFragment extends Fragment implements View.OnClickListene
         timemorningViewModel =
                 new ViewModelProvider(this).get(TimeMorningViewModel.class);
         View root = inflater.inflate(R.layout.fragment_time_morning, container, false);
-        final TextView textView = root.findViewById(R.id.timemorningmessage);
-        timemorningViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                textView.setText(s);
-            }
-        });
+
 
         Button button_1 = (Button) root.findViewById(R.id.morning_option_1);
         Button button_2 = (Button) root.findViewById(R.id.morning_option_2);
