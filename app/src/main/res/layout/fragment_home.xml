@@ -19,7 +19,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toAddEntry" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/toViewLast"
         style="@style/buttonStyle"
         android:layout_width="106dp"
@@ -31,7 +31,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toAddEntry" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/toAddEntry"
         style="@style/buttonStyle"
         android:layout_width="106dp"

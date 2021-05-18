@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnAddEntry"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSuccess" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnSaveEntry"
         android:layout_width="120dp"
         android:layout_height="50dp"

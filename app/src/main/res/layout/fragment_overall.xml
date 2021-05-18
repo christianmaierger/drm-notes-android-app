@@ -10,12 +10,13 @@
         android:id="@+id/textOverall"
         android:layout_width="255dp"
         android:layout_height="100dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="144dp"
         android:gravity="center"
         android:text="What was your\noverall mood?"
         android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

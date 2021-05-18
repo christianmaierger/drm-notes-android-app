@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnAngry"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnHappy"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -59,7 +59,7 @@
         app:layout_constraintStart_toEndOf="@+id/btnAngry"
         app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnContent"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnEnvious" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnSad"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -93,7 +93,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEnvious" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnFeelingOther"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -109,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSad" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnBored"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -125,7 +125,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnAnnoyed"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnAnnoyed"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -144,7 +144,7 @@
         app:layout_constraintStart_toEndOf="@+id/btnBored"
         app:layout_constraintTop_toBottomOf="@+id/btnHappy" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnEnvious"
         style="@style/buttonStyle"
         android:layout_width="120dp"

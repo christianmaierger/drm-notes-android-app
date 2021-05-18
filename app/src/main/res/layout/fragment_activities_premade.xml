@@ -8,7 +8,7 @@
     tools:context=".ui.activitiesPremade.ActivitiesPremadeFragment">
 
 
-    <android.widget.Button
+    <Button
         android:id="@+id/activity_button_cooking"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toEndOf="@+id/activity_button_workingstudying"
         app:layout_constraintTop_toBottomOf="@+id/activitypremadetext" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/activity_button_eatingdrinking"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -35,12 +35,12 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Eating/Drinking"
+        android:text="Eating\nDrinking"
         app:layout_constraintEnd_toStartOf="@+id/activity_button_hobby"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_button_chores" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/activity_button_workingstudying"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -50,12 +50,12 @@
         android:layout_marginTop="44dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Working/Studying"
+        android:text="Working\nStudying"
         app:layout_constraintEnd_toStartOf="@+id/activity_button_cooking"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activitypremadetext" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/activity_button_carework"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -72,7 +72,7 @@
         app:layout_constraintStart_toEndOf="@+id/activity_button_chores"
         app:layout_constraintTop_toBottomOf="@+id/activity_button_cooking" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/activity_button_chores"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -87,7 +87,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_button_workingstudying" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/activity_button_hobby"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -104,7 +104,7 @@
         app:layout_constraintStart_toEndOf="@+id/activity_button_eatingdrinking"
         app:layout_constraintTop_toBottomOf="@+id/activity_button_carework" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/activity_button_leisuretime"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -119,7 +119,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_button_eatingdrinking" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/activity_button_other"
         style="@style/buttonStyle"
         android:layout_width="120dp"

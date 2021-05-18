@@ -10,43 +10,41 @@
         android:id="@+id/txtActivityManual"
         android:layout_width="255dp"
         android:layout_height="100dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="144dp"
         android:gravity="center"
+        android:text="What were you doing?"
         android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="What were you doing?"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnSubmitActivityM"
         style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button"
         android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addActivityManual_editText"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintTop_toBottomOf="@+id/addActivityManual_editText" />
 
     <EditText
         android:id="@+id/addActivityManual_editText"
         android:layout_width="249dp"
         android:layout_height="155dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="56dp"
         android:background="@null"
         android:ems="10"
         android:hint="Add activity manually"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtActivityManual"
-        android:inputType="textPersonName"/>
-         <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
+        app:layout_constraintTop_toBottomOf="@+id/txtActivityManual" />
+    <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

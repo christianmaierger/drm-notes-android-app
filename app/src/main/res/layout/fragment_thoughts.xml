@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.widget.Button
+    <Button
         android:id="@+id/btnSubmitThoughts"
         style="@style/buttonStyle"
         android:layout_width="120dp"
