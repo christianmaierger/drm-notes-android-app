@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/btnOverall4"
-        app:layout_constraintTop_toBottomOf="@+id/textOverall" />
+        app:layout_constraintTop_toBottomOf="@+id/textOverall"/>
 
     <Button
         android:id="@+id/btnOverall1"

@@ -72,7 +72,8 @@
         android:layout_marginRight="44dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="@+id/simpleTimePicker"
-        app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker" />
+        app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker"
+        android:background="@drawable/button"/>
 
     <TextView
         android:id="@+id/textForAddTimeButton"

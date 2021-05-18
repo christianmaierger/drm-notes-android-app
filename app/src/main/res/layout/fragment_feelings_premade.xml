@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnAngry"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -29,7 +29,7 @@
         android:layout_alignBottom="@id/btnHappy"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="44dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button"
         android:gravity="center"
@@ -40,14 +40,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnHappy"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="19dp"
         android:layout_marginLeft="19dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
         android:background="@drawable/button"
@@ -59,7 +59,7 @@
         app:layout_constraintStart_toEndOf="@+id/btnAngry"
         app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnContent"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnEnvious" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnSad"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -93,7 +93,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEnvious" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnFeelingOther"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -109,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSad" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnBored"
         style="@style/buttonStyle"
         android:layout_width="120dp"
@@ -125,13 +125,14 @@
         app:layout_constraintEnd_toStartOf="@+id/btnAnnoyed"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnAnnoyed"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="19dp"
         android:layout_marginLeft="19dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
         android:layout_marginBottom="16dp"
@@ -140,9 +141,10 @@
         android:text="Annoyed"
         app:layout_constraintBottom_toTopOf="@+id/btnContent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnBored" />
+        app:layout_constraintStart_toEndOf="@+id/btnBored"
+        app:layout_constraintTop_toBottomOf="@+id/btnHappy" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnEnvious"
         style="@style/buttonStyle"
         android:layout_width="120dp"

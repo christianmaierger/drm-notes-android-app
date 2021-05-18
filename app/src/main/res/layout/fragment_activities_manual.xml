@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="What were you doing?"/>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnSubmitActivityM"
         style="@style/buttonStyle"
         android:layout_width="wrap_content"
