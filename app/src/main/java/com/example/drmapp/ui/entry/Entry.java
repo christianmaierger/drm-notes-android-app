@@ -19,6 +19,7 @@ public class Entry {
     private String mood;
     private String thoughts;
     private String comments;
+    private boolean isExpaned;
 
     public Entry(String date, String time, String activity, String feeling, String mood, String thoughts, String comments) {
         this.date = date;
@@ -28,6 +29,15 @@ public class Entry {
         this.mood = mood;
         this.thoughts = thoughts;
         this.comments = comments;
+        isExpaned=false;
+    }
+
+    public boolean isExpaned() {
+        return isExpaned;
+    }
+
+    public void setExpaned(boolean expaned) {
+        isExpaned = expaned;
     }
 
     public String getDate() {

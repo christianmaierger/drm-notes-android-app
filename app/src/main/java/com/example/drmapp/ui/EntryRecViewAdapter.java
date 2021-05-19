@@ -1,6 +1,10 @@
 package com.example.drmapp.ui;
 
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -11,7 +15,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.drmapp.R;
+import com.example.drmapp.ui.addEntry_Time_Morning.TimeMorningFragment;
 import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.ui.viewLast.ViewLastFragment;
 
 import org.w3c.dom.Text;
 
@@ -113,6 +119,15 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
 
         }
 
+        /*if(ent.isExpaned()){
+            holder.expandedLayout.setVisibility(View.VISIBLE);
+            holder.downArrow.setVisibility(View.GONE);
+
+        }else{
+            holder.expandedLayout.setVisibility(View.GONE);
+            holder.downArrow.setVisibility(View.VISIBLE);
+        }*/
+
 
 
 
@@ -124,21 +139,28 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
          // TODO: ContentActivity, ContentFeeling, ContentMood, ContentThoughts, ContentComment
         // muessen aber erst noch in framgent_entry_list_item angelegt werden
 
-        holder.parent.setOnClickListener(new View.OnClickListener() {
+      /* holder.downArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /**
-                 * Ein holder ist das Element, das dann in der Uebersichts Liste angezeigt wird und in
-                 * dem Datum, Aktivitaet, Gefuehl, Gedanken usw. stehen.
-                 *
-                 * Parent ist das gesamte View Element, in dem "nested" mehrere TextViews stehen.
-                 * Den OnClick Listener wuerde ich gern auf parent setzen, damit sich der Eintrag oeffnet wenn man
-                 * auf das View Element drueckt.
-                 * * */
+
+
+                ent.setExpaned(!ent.isExpaned());
+                notifyItemChanged(position);
+
+
                // TODO: Navigation zur Ansicht eines einzelnen Elementes
 
             }
         });
+
+        holder.upArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ent.setExpaned(!ent.isExpaned());
+                notifyItemChanged(position);
+            }
+        });*/
+
 
     }
 
@@ -174,6 +196,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         private TextView contentThoughts;
         private TextView contentComments;
         private ImageView imageView;
+        private ImageView downArrow, upArrow;
+        private ConstraintLayout expandedLayout;
 
        // musste zu CardView geändert werden, verstehe es noch nicht ganz aber als RelativeLayout wirft es einen error
        private CardView parent;
@@ -193,8 +217,9 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
             contentThoughts = itemView.findViewById(R.id.ContentThoughts);
             contentComments = itemView.findViewById(R.id.ContentComments);
             imageView = itemView.findViewById(R.id.imageView);
-
-
+            downArrow = imageView.findViewById(R.id.btnArrowDown);
+            upArrow = imageView.findViewById(R.id.btnArrowUp);
+            expandedLayout = imageView.findViewById(R.id.expandedLayout);
 
 
         }

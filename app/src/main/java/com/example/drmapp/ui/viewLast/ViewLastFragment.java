@@ -16,7 +16,10 @@ import com.example.drmapp.R;
 
 public class ViewLastFragment extends Fragment {
 
+
+
     private ViewLastViewModel viewLastViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +33,10 @@ public class ViewLastFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+
+
+
         return root;
     }
 }
