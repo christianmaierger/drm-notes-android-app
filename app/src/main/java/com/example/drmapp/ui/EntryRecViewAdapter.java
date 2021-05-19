@@ -85,8 +85,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         textViewTh.setText(ent.getThoughts());
         ImageView imageView = holder.imageView;
 
-        //ent.getActivity().contentEquals("Eating/Drinking"))
-        //imageView.setImageResource(R.drawable.cooking3);
+
 
 
         switch(ent.getActivity().toString()){
@@ -136,9 +135,6 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
       // holder.contentDate.setText(entries.get(position).getDate());
        //holder.contentTime.setText(entries.get(position).getTime());
 
-         // TODO: ContentActivity, ContentFeeling, ContentMood, ContentThoughts, ContentComment
-        // muessen aber erst noch in framgent_entry_list_item angelegt werden
-
       /* holder.downArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,9 +142,6 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
 
                 ent.setExpaned(!ent.isExpaned());
                 notifyItemChanged(position);
-
-
-               // TODO: Navigation zur Ansicht eines einzelnen Elementes
 
             }
         });
@@ -220,6 +213,17 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
             downArrow = imageView.findViewById(R.id.btnArrowDown);
             upArrow = imageView.findViewById(R.id.btnArrowUp);
             expandedLayout = imageView.findViewById(R.id.expandedLayout);
+
+           /* downArrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Entry entry = entries.get(getAdapterPosition());
+                    entry.setExpaned(!entry.isExpaned());
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });*/
+
+
 
 
         }

@@ -1,5 +1,6 @@
 package com.example.drmapp.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,10 +22,12 @@ import com.example.drmapp.ui.EntryFragment;
 import com.example.drmapp.ui.addEntry.AddEntryFragment;
 import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    private RecyclerView entryRecyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,16 +59,16 @@ public class HomeFragment extends Fragment {
 
 
         Button button1 = (Button) root.findViewById(R.id.toViewLast);
-        button.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                EntryFragment entryFragment = new EntryFragment();
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, entryFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                EntryFragment entryRecyclerView = new EntryFragment();
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
             }
 
         });

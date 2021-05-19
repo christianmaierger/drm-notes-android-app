@@ -43,25 +43,23 @@ public class MainActivity extends AppCompatActivity {
          *
          * */
 
-      // entryRecyclerView = findViewById(R.id.entryRecyclerView);
-
-
+     entryRecyclerView = findViewById(R.id.entryRecyclerView);
        // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
-       if (savedInstanceState == null) {
+       /*if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             EntryFragment entryRecyclerView = new EntryFragment();
             transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
             transaction.commit();
-       }
+       } */
 
 
         // TODO: Funktion schreiben, mit das Entry-Element erweitert wird jeweils um Date, Time, Activity, Feeling, etc.
         // TODO: In Activity OnClickListener -> entries (position itemCount, setActivity "Eating/Drinking"
 
 
-       // entryRecyclerView.setAdapter(adapter);
+       //entryRecyclerView.setAdapter(adapter);
         //Legt die Ansicht fest! (Gibt auch Grid etc.)
-       // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+      // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         // rechts unten der weiter button ist dieser fab, floating action button
