@@ -96,7 +96,7 @@ public class Entry {
         entries.add(new Entry("05/05/21", "13:00", "Working", "Happy", ":)", "Make much money", "no comment"));
         entries.add(new Entry("05/05/21", "15:00", "Eating/Drinking", "Happy", ":)", "Love coffee", "no comment"));
 
-        //adapter.setEntries(entries);
+
 
         return entries;
     }

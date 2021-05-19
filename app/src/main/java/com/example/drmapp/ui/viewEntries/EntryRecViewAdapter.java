@@ -1,4 +1,4 @@
-package com.example.drmapp.ui;
+package com.example.drmapp.ui.viewEntries;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.drmapp.R;
@@ -32,9 +31,9 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
     }
 
     /* RecyclerView calls this method whenever it needs to create a new ViewHolder.
-            The method creates and initializes the ViewHolder and its associated View,
-            but does not fill in the view's contents—the ViewHolder has not yet been bound
-            to specific data.*/
+                The method creates and initializes the ViewHolder and its associated View,
+                but does not fill in the view's contents—the ViewHolder has not yet been bound
+                to specific data.*/
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -55,14 +54,19 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         //Verbindet die Elemente aus dem Layout mit den Elementen aus der Entry Klasse!
 
         // Get the data model based on position, so to speak index of the list with entries
+        //Also wenn position 0 ist,holen wir das erste entry aus der liste und so weiter
         Entry ent = entries.get(position);
 
         // Set item views based on your views and data model
-        // therefore one has to follow the following pattern of definining views, setting them with the holder instance vars
+        // therefore one has to follow the following pattern of definining views, defining them with the holder instance vars
         // then set the text/other value by getting the coressponding value from the entry in the list at the specific position
+        // hier also das Datum des entries und setzen das als Text in den TextView der an der Stelle des holders angezeigt wird, die contentDate ist
         TextView textView = holder.contentDate;
         textView.setText(ent.getDate());
 
+        // wobei mir gerade auffällt das was du gemacht hast, ist das gleiche in grün, muss genauso gehen!
+        // kann man machen wie es einem lieber ist, ist halt einfach in einer Zeile die Aktion und ohne zwischen Variable ent, die würde ich aber empfehlen,
+        //weils Schreibarbeit spart
 
       // holder.contentDate.setText(entries.get(position).getDate());
        //holder.contentTime.setText(entries.get(position).getTime());
@@ -97,6 +101,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         return entries.size();
     }
 
+
+    // ich vermute die Methode braucht es garnicht direkt?
     public void setEntries(ArrayList<Entry> entries) {
         this.entries = entries;
         // Haelt AdapterView aktuell!

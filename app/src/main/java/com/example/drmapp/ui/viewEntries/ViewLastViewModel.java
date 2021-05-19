@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.viewLast;
+package com.example.drmapp.ui.viewEntries;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

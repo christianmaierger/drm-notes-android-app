@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.viewLast;
+package com.example.drmapp.ui.viewEntries;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

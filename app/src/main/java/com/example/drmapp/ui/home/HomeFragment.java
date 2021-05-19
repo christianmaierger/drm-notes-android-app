@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,10 +16,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.drmapp.R;
-import com.example.drmapp.ui.EntryFragment;
+import com.example.drmapp.ui.viewEntries.EntryFragment;
 import com.example.drmapp.ui.addEntry.AddEntryFragment;
-import com.example.drmapp.ui.entry.Entry;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
 
@@ -56,7 +53,7 @@ public class HomeFragment extends Fragment {
 
 
         Button button1 = (Button) root.findViewById(R.id.toViewLast);
-        button.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
