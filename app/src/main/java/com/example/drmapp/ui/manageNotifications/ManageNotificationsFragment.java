@@ -14,10 +14,13 @@ import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.constraintlayout.widget.Group;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -26,19 +29,27 @@ import com.example.drmapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class ManageNotificationsFragment extends Fragment  {
 
 
     private ManageNotificationsViewModel mViewModel;
+    private View root;
+    // evtl das auch mit ins Model
+    private List<TextView> textViewList;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         mViewModel = new ViewModelProvider(this).get(ManageNotificationsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_manage_notifications, container, false);
+        root = inflater.inflate(R.layout.fragment_manage_notifications, container, false);
         final TextView textView = root.findViewById(R.id.textForAddTimeButton);
         final TextView timeTextView1 = root.findViewById(R.id.time1);
+        textViewList = new LinkedList<>();
+        textViewList.add(timeTextView1);
 
         //set flag to change functionality of button, its "logo" and description, initially false, as button is not pressed and timepicker is hidden
         mViewModel.setAddTimeButtonpressed(false);
@@ -51,20 +62,16 @@ public class ManageNotificationsFragment extends Fragment  {
             }
         });
 
-        // this binding  crashes the app, also in line 58 a manuel setting of the text for this text view did the same
-       /* mViewModel.getTimeText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        // this binding binds the first existing Textview to the model
+       mViewModel.getTimeText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 timeTextView1.setText(s);
             }
         });
-*/
+
 
         FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
-
-       // final TextView time1 = root.findViewById(R.id.time1);
-        // crashes App
-        //time1.setText("Test");
 
 
            button.setOnClickListener(new View.OnClickListener() {
@@ -97,16 +104,7 @@ public class ManageNotificationsFragment extends Fragment  {
 
 
                    } else if(mViewModel.isAddTimeButtonpressed()==true) {
-                       timePickerGroup.setVisibility(View.GONE);
-                       // also change layout of Text and Button, so user understand he can cancle timepicking
-                       // get the drawable we want to insert, in this case a X for cancle
-                       Drawable drawable = getResources().getDrawable(R.drawable.ic_input_add);
-                       //set flag to change functionality
-                       button.setImageDrawable(drawable);
-                       // todo no hardcoding
-                       mViewModel.getButtonText().setValue("Press To Add Notification Time");
-                       //set flag to change functionality of button, its "logo" and description
-                       mViewModel.setAddTimeButtonpressed(false);
+                       returnStateOfViewToTimePickerGoneAndTimeSelectable();
 
                    }
                }
@@ -114,7 +112,7 @@ public class ManageNotificationsFragment extends Fragment  {
 
 
            // here listener is set to Submit button below time picker and gets the selected time to store it in ViewModel
-        Button submitTime = (Button) root.findViewById(R.id.getTimeButton);
+        Button submitTime = (Button) root.findViewById(R.id.getTime);
         submitTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,13 +128,63 @@ public class ManageNotificationsFragment extends Fragment  {
                     hour = picker.getCurrentHour();
                     minute = picker.getCurrentMinute();
                 }
-                mViewModel.getTimeText().setValue("Selected Date: "+ hour +":"+ minute);
+
+                // Wenn nur eine Zeit ausgewählt ist, dann können wir direkt die existierende TextView time1 ändern
+                if (mViewModel.getTimeStringList().size()<1) {
+
+
+                    MutableLiveData<String> newEntry = new MutableLiveData<String>();
+                    newEntry.setValue("Selected Date: " + hour + ":" + minute);
+                    mViewModel.getTimeStringList().add(newEntry);
+                    mViewModel.getTimeText().setValue("Selected Date: " + hour + ":" + minute);
+
+                } else {
+
+                    TextView newTextView = buildTextView();
+                    textViewList.add(newTextView);
+
+                    MutableLiveData<String> newEntry = new MutableLiveData<String>();
+                    newEntry.setValue("Selected Date: " + hour + ":" + minute);
+                    mViewModel.getTimeStringList().add(newEntry);
+
+                    mViewModel.getTimeStringList().get(textViewList.indexOf(newTextView)).observe(getViewLifecycleOwner(), new Observer<String>() {
+                        @Override
+                        public void onChanged(@Nullable String s) {
+                            newTextView.setText(s);
+                        }
+                    });
+
+                    addViewToLayout(newTextView);
+
+
+
+
+                }
+
+                returnStateOfViewToTimePickerGoneAndTimeSelectable();
+
                 Calendar time = buildTimeForNotification(hour, minute);
                 buildAndSetNotification(time);
             }
         });
 
         return root;
+    }
+
+    private void returnStateOfViewToTimePickerGoneAndTimeSelectable() {
+        FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
+        Group timePickerGroup = (Group) root.findViewById(R.id.timePickerGroup);
+
+        timePickerGroup.setVisibility(View.GONE);
+        // also change layout of Text and Button, so user understand he can cancle timepicking
+        // get the drawable we want to insert, in this case a X for cancle
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_input_add);
+        //set flag to change functionality
+        button.setImageDrawable(drawable);
+        // todo no hardcoding
+        mViewModel.getButtonText().setValue("Press To Add Notification Time");
+        //set flag to change functionality of button, its "logo" and description
+        mViewModel.setAddTimeButtonpressed(false);
     }
 
     private Calendar buildTimeForNotification(int hour, int min) {
@@ -166,6 +214,7 @@ public class ManageNotificationsFragment extends Fragment  {
              // Set the intent that will fire when the user taps the notification
             .setContentIntent(pendingIntent)
             // just test to see if this works bg service needed, does not work at all, I guess kind of AlarmManager needed
+            // this method just adds a timestamp to notification
             .setWhen(time.getTimeInMillis())
             // when flag is set notification is automatically removed after tap
             .setAutoCancel(true);
@@ -178,6 +227,34 @@ public class ManageNotificationsFragment extends Fragment  {
         // method seems to post imediatelly not regarding time of notification set with setWhen(long milis)
         notificationManager.notify(1, builder.build());
 }
+
+        public TextView buildTextView() {
+
+
+            TextView childView = new TextView(this.getContext());
+            // set view id, else getId() returns -1
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                childView.setId(View.generateViewId());
+            }
+            return childView;
+        }
+
+
+        public void addViewToLayout(View childView) {
+
+            Group parentLayout =  root.findViewById(R.id.timeTextsGroup);
+            ConstraintSet set = new ConstraintSet();
+
+            parentLayout.addView(childView);
+
+          //  set.clone(parentLayout);
+            // connect start and end point of views, in this case top of child to top of parent.
+            set.connect(childView.getId(), ConstraintSet.TOP, parentLayout.getId(), ConstraintSet.TOP, 60);
+            // ... similarly add other constraints
+          //  set.applyTo(parentLayout);
+
+        }
+
 
 
 

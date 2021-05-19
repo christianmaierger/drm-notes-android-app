@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ManageNotificationsViewModel extends ViewModel {
@@ -15,11 +16,14 @@ public class ManageNotificationsViewModel extends ViewModel {
     private MutableLiveData<String> timeText;
     private MutableLiveData<String> buttonText;
     private MutableLiveData<Time> time;
+    private List<MutableLiveData<String>> timeStringList;
 
     public ManageNotificationsViewModel() {
         timeText = new MutableLiveData<>();
+        timeText.setValue("No Time for Notifications selected so far");
         buttonText = new MutableLiveData<>();
         time = new MutableLiveData<>();
+        timeStringList= new LinkedList<MutableLiveData<String>>();
     }
 
     public boolean isAddTimeButtonpressed() {
@@ -40,6 +44,10 @@ public class ManageNotificationsViewModel extends ViewModel {
 
     public MutableLiveData<String> getButtonText() {
         return buttonText;
+    }
+
+    public List<MutableLiveData<String>> getTimeStringList() {
+        return timeStringList;
     }
 
     public void setAddTimeButtonpressed(boolean addTimeButtonpressed) {

@@ -14,5 +14,6 @@
     <string name="menu_manage_notifications">Manage Notifications</string>
     <string name="notifications_heading">Here you can manage the amount and time of notifications</string>
     <string name="addTimeButtonText">Press To Add Notification Time</string>
+    <string name="noTimePickedText">No Time for Notification picked</string>
 
 </resources>
