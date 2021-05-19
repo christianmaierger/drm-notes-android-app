@@ -65,7 +65,7 @@
         app:constraint_referenced_ids="simpleTimePicker,getTimeButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone" />
+        tools:visibility="invisible" />
 
     <TimePicker
         android:id="@+id/simpleTimePicker"
@@ -80,15 +80,15 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/getTimeButton"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="@+id/simpleTimePicker"
-        app:layout_constraintHorizontal_bias="0.966"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker" />
+        app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker"
+        android:background="@drawable/button"/>
 
     <TextView
         android:id="@+id/textForAddTimeButton"

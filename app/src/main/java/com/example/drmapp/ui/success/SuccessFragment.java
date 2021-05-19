@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.addEntry_Time_LateMorning;
+package com.example.drmapp.ui.success;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,41 +17,44 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.activitiesPremade.ActivitiesPremadeFragment;
+import com.example.drmapp.ui.addEntry.AddEntryFragment;
 
-public class TimeLateMorningFragment extends Fragment implements View.OnClickListener {
+public class SuccessFragment extends Fragment implements View.OnClickListener{
 
-    private TimeLateMorningViewModel mViewModel;
-
-    public static TimeLateMorningFragment newInstance() {
-        return new TimeLateMorningFragment();
-    }
+    private SuccessViewModel mViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        ((MainActivity) getActivity())
-                .setActionBarTitle("Time Selection Late Morning");
+        ((MainActivity) getActivity()).setActionBarTitle("Success");
 
-        mViewModel =
-                new ViewModelProvider(this).get(TimeLateMorningViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_time_latemorning, container, false);
+        mViewModel = new ViewModelProvider(this).get(SuccessViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_success, container, false);
 
-        Button button_1 = (Button) root.findViewById(R.id.latemorning_option_1);
-        Button button_2 = (Button) root.findViewById(R.id.latemorning_option_2);
-        Button button_3 = (Button) root.findViewById(R.id.latemorning_option_3);
+        Button button_1 = (Button) root.findViewById(R.id.btnSaveEntry);
+        Button button_2 = (Button) root.findViewById(R.id.btnAddEntry);
 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
-        button_3.setOnClickListener(this);
 
         return root;
     }
 
-    @Override
     public void onClick(View v) {
-        Fragment fragment = new ActivitiesPremadeFragment();
+        Fragment fragment = new Fragment();
+        switch(v.getId()){
+            case R.id.btnAddEntry:
+                fragment = new AddEntryFragment();
+                break;
+                //TODO: Wo soll der Nutzer hin, wenn Eintrag gespeichert und kein Neuer erzeugt werden so??
+            case R.id.btnSaveEntry:
+                fragment = new AddEntryFragment();
+                break;
+            default:
+                break;
+        }
+
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment, fragment);

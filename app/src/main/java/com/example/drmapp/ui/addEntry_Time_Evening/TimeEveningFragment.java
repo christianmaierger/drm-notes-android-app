@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.activitiespremade.ActivitiesPremade;
+import com.example.drmapp.ui.activitiesPremade.ActivitiesPremadeFragment;
 
 public class TimeEveningFragment extends Fragment implements View.OnClickListener {
 
@@ -54,7 +54,7 @@ public class TimeEveningFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        Fragment fragment = new ActivitiesPremade();
+        Fragment fragment = new ActivitiesPremadeFragment();
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment, fragment);

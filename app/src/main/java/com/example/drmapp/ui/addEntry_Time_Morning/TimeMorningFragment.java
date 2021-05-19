@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.activitiespremade.ActivitiesPremade;
+import com.example.drmapp.ui.activitiesPremade.ActivitiesPremadeFragment;
 
 public class TimeMorningFragment extends Fragment implements View.OnClickListener {
 
@@ -37,13 +37,7 @@ public class TimeMorningFragment extends Fragment implements View.OnClickListene
         timemorningViewModel =
                 new ViewModelProvider(this).get(TimeMorningViewModel.class);
         View root = inflater.inflate(R.layout.fragment_time_morning, container, false);
-        final TextView textView = root.findViewById(R.id.timemorningmessage);
-        timemorningViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                textView.setText(s);
-            }
-        });
+
 
         Button button_1 = (Button) root.findViewById(R.id.morning_option_1);
         Button button_2 = (Button) root.findViewById(R.id.morning_option_2);
@@ -62,7 +56,7 @@ public class TimeMorningFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        Fragment fragment = new ActivitiesPremade();
+        Fragment fragment = new ActivitiesPremadeFragment();
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment, fragment);

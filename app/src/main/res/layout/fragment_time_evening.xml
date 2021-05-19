@@ -1,91 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.addEntry_Time_LateMorning.TimeLateMorningFragment">
 
     <Button
         android:id="@+id/evening_option_1"
+        style="@style/buttonStyle"
         android:layout_width="222dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/timedatetext_evening"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="50dp"
-        android:gravity="center_horizontal"
-        android:text="17:00" />
-
-    <Button
-        android:id="@+id/evening_option_2"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/evening_option_1"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="18:00" />
+        android:layout_marginTop="44dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="17:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timedatetext_evening"
+        android:textAllCaps="true"/>
 
     <Button
         android:id="@+id/evening_option_3"
+        style="@style/buttonStyle"
         android:layout_width="222dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/evening_option_2"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="19:00" />
-
-    <Button
-        android:id="@+id/evening_option_4"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/evening_option_3"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="20:00" />
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="19:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/evening_option_2"
+        android:textAllCaps="true"/>
 
     <Button
         android:id="@+id/evening_option_5"
+        style="@style/buttonStyle"
         android:layout_width="222dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/evening_option_4"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="21:00" />
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="21:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/evening_option_4"
+        android:textAllCaps="true"/>
+
+    <Button
+        android:id="@+id/evening_option_2"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="18:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/evening_option_1"
+        android:textAllCaps="true"/>
+
+    <Button
+        android:id="@+id/evening_option_4"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="20:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/evening_option_3"
+        android:textAllCaps="true"/>
 
     <TextView
         android:id="@+id/timedatetext_evening"
-        android:layout_width="300sp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="95dp"
-        android:gravity="center_horizontal"
+        android:layout_width="255dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="144dp"
+        android:gravity="center"
         android:text="At what time did you perform the activity?"
+        android:textAllCaps="true"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

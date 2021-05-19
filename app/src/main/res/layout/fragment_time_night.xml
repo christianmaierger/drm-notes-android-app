@@ -1,133 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.addEntry_Time_LateMorning.TimeLateMorningFragment">
 
     <Button
         android:id="@+id/night_option_1"
+        style="@style/buttonStyle"
         android:layout_width="222dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/timedatetext_night"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="50dp"
-        android:gravity="center_horizontal"
-        android:text="22:00" />
-
-    <Button
-        android:id="@+id/night_option_2"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/night_option_1"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="23:00" />
-
-    <Button
-        android:id="@+id/night_option_3"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/night_option_2"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="00:00" />
-
-    <Button
-        android:id="@+id/night_option_4"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/night_option_3"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="01:00" />
-
-    <Button
-        android:id="@+id/night_option_5"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/night_option_4"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="02:00" />
-
-    <Button
-        android:id="@+id/night_option_6"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/night_option_5"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="03:00" />
-
-    <Button
-        android:id="@+id/night_option_7"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/night_option_6"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="04:00" />
+        android:layout_marginTop="28dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="22:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timedatetext_night" />
 
     <Button
         android:id="@+id/night_option_8"
+        style="@style/buttonStyle"
         android:layout_width="222dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/night_option_7"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="05:00" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="05:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/night_option_7" />
+
+    <Button
+        android:id="@+id/night_option_7"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="04:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/night_option_6" />
+
+    <Button
+        android:id="@+id/night_option_5"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="02:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/night_option_4" />
+
+    <Button
+        android:id="@+id/night_option_6"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="03:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/night_option_5" />
+
+    <Button
+        android:id="@+id/night_option_4"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="01:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/night_option_3" />
+
+    <Button
+        android:id="@+id/night_option_2"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="23:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/night_option_1" />
+
+    <Button
+        android:id="@+id/night_option_3"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="00:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/night_option_2" />
 
     <TextView
         android:id="@+id/timedatetext_night"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="95dp"
-        android:gravity="center_horizontal"
+        android:layout_marginTop="116dp"
+        android:gravity="center"
         android:text="At what time did you perform the activity?"
+        android:textAllCaps="true"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

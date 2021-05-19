@@ -37,13 +37,6 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
         addEntryViewModel =
                 new ViewModelProvider(this).get(AddEntryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_addentry, container, false);
-        final TextView textView = root.findViewById(R.id.addentry);
-        addEntryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
 
         Button button_1 = (Button) root.findViewById(R.id.timedate_button_morning);
