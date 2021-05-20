@@ -7,4 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="lightPurpel">#C5CAE9</color>
+    <color name="darkPurpel">#9499B7</color>
+
+
+    <!-- Farbe der Nav-Buttons : Nicht löschen -->
+    <color name="navButton">#c5cae9</color>
+
+    <!-- Testfarben allgemein : Nicht löschen -->
+    <color name="lightGreen">#81c784</color>1
+    <color name="darkGreen">#519657</color>
+
+    <!-- Farbe der Buttons : Nicht löschen -->
+    <color name="colorButton">#519657</color>
 </resources>

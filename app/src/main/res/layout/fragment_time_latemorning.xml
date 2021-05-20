@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.addEntry_Time_LateMorning.TimeLateMorningFragment">
+
+    <Button
+        android:id="@+id/latemorning_option_1"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="51dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="09:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timedatetext_latemorning" />
+
+    <Button
+        android:id="@+id/latemorning_option_3"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="11:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/latemorning_option_2" />
+
+    <Button
+        android:id="@+id/latemorning_option_2"
+        style="@style/buttonStyle"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="10:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/latemorning_option_1" />
+
+    <TextView
+        android:id="@+id/timedatetext_latemorning"
+        android:layout_width="255dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="144dp"
+        android:gravity="center"
+        android:text="At what time did you perform the activity?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAllCaps="true"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
