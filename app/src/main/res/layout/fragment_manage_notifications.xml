@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:visibility="visible"
-        app:constraint_referenced_ids="timeText1Group"
+        app:constraint_referenced_ids="timeText1Group,timeText2Group,timeText3Group"
         app:layout_constraintEnd_toEndOf="@id/manageNotifications"
         app:layout_constraintStart_toStartOf="@id/manageNotifications"
         app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />

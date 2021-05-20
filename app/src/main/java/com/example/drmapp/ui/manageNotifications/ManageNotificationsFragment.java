@@ -44,6 +44,12 @@ public class ManageNotificationsFragment extends Fragment  {
     private Group timeGroup3;
     private Group timeContainer;
 
+    // weil das setzen eines containers auf gone auch die views darin auf gone setzt
+    // halte ich hier tmp variablen, die mir helfen den ursprünglichen Zustand zu halten
+    int tmp1;
+    int tmp2;
+    int tmp3;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -65,6 +71,10 @@ public class ManageNotificationsFragment extends Fragment  {
         timeGroup3 =  root.findViewById(R.id.timeText3Group);
 
 
+        System.out.println("con " + timeContainer.getVisibility());
+        System.out.println("group2 " + timeGroup2.getVisibility());
+
+
 
         //set flag to change functionality of button, its "logo" and description, initially false, as button is not pressed and timepicker is hidden
         mViewModel.setAddTimeButtonpressed(false);
@@ -82,10 +92,9 @@ public class ManageNotificationsFragment extends Fragment  {
         FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
 
         setFunctionalityForAddNotifiactionTimeButton(button);
-        System.out.println(timeGroup2.getVisibility());
-        System.out.println(timeGroup1.getVisibility());
 
 
+        System.out.println("2 at start is" + timeGroup2.getVisibility());
 
         // sf suggested this, helped nothing
        // timeGroup2.clearAnimation();
@@ -113,13 +122,19 @@ public class ManageNotificationsFragment extends Fragment  {
                 // und ob noch einer frei ist
 
                 System.out.println(timeGroup2.getVisibility());
-                System.out.println(timeGroup1.getVisibility());
+
+
+                // vor der Abfrage den Zustand der Visibility wieder herstellen, der vom Ändern der
+                // Visibility des "parent" contaniners geändert wird
+               timeGroup1.setVisibility(tmp1);
+               timeGroup2.setVisibility(tmp2);
+               timeGroup3.setVisibility(tmp3);
 
                boolean allTextViewsTaken = timeGroup1.getVisibility()==View.GONE && timeGroup2.getVisibility()==View.GONE && timeGroup3.getVisibility()==View.GONE;
 
                if(mViewModel.isAddTimeButtonpressed() && !allTextViewsTaken) {
-                   System.out.println(timeGroup2.getVisibility());
-                  System.out.println(timeGroup1.getVisibility());
+                  System.out.println(timeGroup2.getVisibility());
+
                    if (timeGroup1.getVisibility() == View.GONE || mViewModel.getTimeText1().getValue().equals(getContext().getString(R.string.noTimePickedText))) {
                        mViewModel.getTimeText1().setValue("Selected Date: " + hour + ":" + minute);
                        timeGroup1.setVisibility(View.VISIBLE);
@@ -156,9 +171,20 @@ public class ManageNotificationsFragment extends Fragment  {
                 // und Group mit den TimeTexts und Buttons da, dass muss getauscht werden
                 if(mViewModel.isAddTimeButtonpressed()==false) {
 
-                timeContainer.setVisibility(View.INVISIBLE);
+                    System.out.println("bevor der Container gone gesetzt wird ist 2" + timeGroup2.getVisibility());
+                    // mit tmp um den seiteneffekt herum?
+                    tmp1 = timeGroup1.getVisibility();
+                    tmp2 = timeGroup2.getVisibility();
+                    tmp3 = timeGroup3.getVisibility();
+
+                    // setzt dass auch die inneren container Gone? muss so sein?
+                timeContainer.setVisibility(View.GONE);
+
+
+                    System.out.println("nachdem der Container gone gesetzt wird ist 2" + timeGroup2.getVisibility());
 
                 timePickerGroup.setVisibility(View.VISIBLE);
+                    System.out.println(timeGroup1.getVisibility());
                     //time picker in 24 h modus setzen, was leider nicht im XML direkt geht
                     TimePicker picker = getView().findViewById(R.id.simpleTimePicker);
                     picker.setIs24HourView(true);
@@ -196,10 +222,15 @@ public class ManageNotificationsFragment extends Fragment  {
     private void returnStateOfViewToTimePickerGoneAndTimeSelectable() {
 
         Group timePickerGroup = (Group) root.findViewById(R.id.timePickerGroup);
-        timePickerGroup.setVisibility(View.INVISIBLE);
+        timePickerGroup.setVisibility(View.GONE);
+        System.out.println(timeGroup1.getVisibility());
+
+        tmp1 = timeGroup1.getVisibility();
+        tmp2 = timeGroup2.getVisibility();
+        tmp3 = timeGroup3.getVisibility();
 
         timeContainer.setVisibility(View.VISIBLE);
-
+        System.out.println(timeGroup2.getVisibility());
 
         FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
         // also change layout of Text and Button, so user understand he can cancle timepicking
