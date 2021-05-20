@@ -14,21 +14,73 @@
         android:id="@+id/timeTextsGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="time1" />
+        android:layout_marginTop="160dp"
+        android:visibility="visible"
+        app:constraint_referenced_ids="timeText1Group"
+        app:layout_constraintEnd_toEndOf="@id/manageNotifications"
+        app:layout_constraintStart_toStartOf="@id/manageNotifications"
+        app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
 
     <TextView
         android:id="@+id/time1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
-        android:layout_marginTop="160dp"
         android:textStyle="bold"
-        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@id/manageNotifications"
         app:layout_constraintStart_toStartOf="@id/manageNotifications"
-        app:layout_constraintTop_toBottomOf="@+id/manageNotifications"
-        tools:text="@string/noTimePickedText"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toBottomOf="@id/timeTextsGroup"
+        tools:text="@string/noTimePickedText" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/timeText1Group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="time1"
+        app:layout_constraintEnd_toEndOf="@id/manageNotifications"
+        app:layout_constraintStart_toStartOf="@id/manageNotifications"
+        app:layout_constraintTop_toBottomOf="@id/timeTextsGroup" />
+
+    <TextView
+        android:id="@+id/time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/manageNotifications"
+        app:layout_constraintStart_toStartOf="@id/manageNotifications"
+        app:layout_constraintTop_toTopOf="@id/timeText2Group" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/timeText2Group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:visibility="gone"
+        app:constraint_referenced_ids="time2"
+        app:layout_constraintTop_toTopOf="@id/timeTextsGroup" />
+
+    <TextView
+        android:id="@+id/time3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/manageNotifications"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@id/manageNotifications"
+
+        app:layout_constraintTop_toTopOf="@id/timeText3Group" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/timeText3Group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:visibility="gone"
+        app:constraint_referenced_ids="time3"
+        app:layout_constraintTop_toTopOf="@id/timeTextsGroup" />
 
     <TextView
         android:id="@+id/manageNotifications"
