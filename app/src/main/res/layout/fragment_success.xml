@@ -57,5 +57,18 @@
         style="@style/buttonStyle"
         android:background="@drawable/button"/>
 
+    <ProgressBar
+        android:id="@+id/pBarSuccess"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="48dp"
+        android:progress="100"
+        android:progressBackgroundTint="@color/lightPurpel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

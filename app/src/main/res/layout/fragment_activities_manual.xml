@@ -10,14 +10,14 @@
         android:id="@+id/txtActivityManual"
         android:layout_width="255dp"
         android:layout_height="100dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="What were you doing?"
         android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/pBarOverall" />
 
     <Button
         android:id="@+id/btnSubmitActivityM"
@@ -46,5 +46,18 @@
         app:layout_constraintTop_toBottomOf="@+id/txtActivityManual" />
     <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
 
+    <ProgressBar
+        android:id="@+id/pBarOverall"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="48dp"
+        android:progress="29"
+        android:progressBackgroundTint="@color/lightPurpel"
+        app:layout_constraintBottom_toTopOf="@+id/txtActivityManual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

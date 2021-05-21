@@ -10,7 +10,7 @@
         android:id="@+id/textOverall"
         android:layout_width="255dp"
         android:layout_height="100dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="What was your\noverall mood?"
         android:textAllCaps="true"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/pBarOverall" />
 
     <Button
         android:id="@+id/btnOverall5"
@@ -81,6 +81,19 @@
         android:background="@drawable/rounded_button"
         app:layout_constraintStart_toEndOf="@+id/btnOverall3"
         app:layout_constraintTop_toBottomOf="@+id/textOverall" />
+
+    <ProgressBar
+        android:id="@+id/pBarOverall"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="48dp"
+        android:progress="72"
+        android:progressBackgroundTint="@color/lightPurpel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
