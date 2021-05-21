@@ -103,6 +103,19 @@
         app:layout_constraintTop_toBottomOf="@+id/addTimePicker"
         tools:ignore="MissingConstraints" />
 
+    <TimePicker
+        android:id="@+id/simpleTimePicker2"
+        android:layout_width="307dp"
+        android:layout_height="375dp"
+        android:layout_marginTop="32dp"
+        android:timePickerMode="clock"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTimePicker"
+        tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/getTime"
         android:layout_width="wrap_content"
@@ -113,6 +126,17 @@
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="@+id/simpleTimePicker"
         app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker" />
+
+    <Button
+        android:id="@+id/getTime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/button"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@id/simpleTimePicker2"
+        app:layout_constraintTop_toBottomOf="@id/simpleTimePicker2" />
 
     <TextView
         android:id="@+id/textForAddTimeButton"
@@ -125,16 +149,17 @@
         app:layout_constraintStart_toEndOf="@+id/addTimePicker"
         app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
 
-    <Button
-        android:id="@+id/button2"
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/timePickerGroup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:text="Button"
+        android:layout_marginEnd="411dp"
+        android:layout_marginRight="411dp"
         android:visibility="gone"
+        app:constraint_referenced_ids="simpleTimePicker2,getTime2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
