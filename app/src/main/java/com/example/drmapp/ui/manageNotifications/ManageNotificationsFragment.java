@@ -27,14 +27,18 @@ import com.example.drmapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 
 
-public class ManageNotificationsFragment extends Fragment  {
+public class ManageNotificationsFragment extends Fragment implements View.OnClickListener  {
     private ManageNotificationsViewModel mViewModel;
     private View root;
     private Button timeTextButton1;
     private Button timeTextButton2;
     private Button timeTextButton3;
+    // for esaier handling especially when stting handlers, so not so much code has to be copied
+    private List<Button> timeTextButtonList = new LinkedList<>();
 
     // weil das setzen eines containers auf gone auch die views darin auf gone setzt
     // halte ich hier tmp variablen, die mir helfen den ursprünglichen Zustand zu halten
@@ -42,9 +46,14 @@ public class ManageNotificationsFragment extends Fragment  {
     int visibilityStateOfTimeButton2;
     int visibilityStateOfTimeButton3;
     private Group timePickerGroup;
+    private Group timePickerGroup2;
     private FloatingActionButton addNotificationTimeButton;
     private TimePicker picker;
-    private Group timePickerGroup2;
+
+
+    public View getRoot() {
+        return root;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +69,14 @@ public class ManageNotificationsFragment extends Fragment  {
         timeTextButton1 = root.findViewById(R.id.time1);
         timeTextButton2 = root.findViewById(R.id.time2);
         timeTextButton3 = root.findViewById(R.id.time3);
+
+        timeTextButton1.setOnClickListener(this);
+        timeTextButton2.setOnClickListener(this);
+        timeTextButton3.setOnClickListener(this);
+
+        timeTextButtonList.add(timeTextButton1);
+        timeTextButtonList.add(timeTextButton2);
+        timeTextButtonList.add(timeTextButton3);
 
 
         timePickerGroup = root.findViewById(R.id.timePickerGroup);
@@ -92,60 +109,39 @@ public class ManageNotificationsFragment extends Fragment  {
 
         System.out.println(" in the beginning 2 is" + timeTextButton2.getVisibility());
 
+        // für den submit button der zu der timepicker group gehört, die erscheint, wenn man
+        // einen neuen EIntrag added per addNotificationTime button
         setFunctionalityOfSubmitNotificationTimeButton();
 
 
-        timeTextButton1.setOnClickListener(new View.OnClickListener() {
+
+        return root;
+    }
+
+    private void setFunctionalityOfSubmitNotificationButton2(MutableLiveData<String> buttonPressed) {
+        Button submitTime2 = root.findViewById(R.id.getTime2);
+        submitTime2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+                int hour;
+                int minute;
+                TimePicker picker2 = getView().findViewById(R.id.simpleTimePicker2);
+                // above API 23 the methods to get the time have changed, both ways are implemented here
+                if (Build.VERSION.SDK_INT >= 23 ){
+                    hour = picker2.getHour();
+                    minute = picker2.getMinute();
+                }
+                else{
+                    hour = picker2.getCurrentHour();
+                    minute = picker2.getCurrentMinute();
+                }
+                buttonPressed.setValue("Selected Date: " + hour + ":" + minute);
 
-                // setzt dass auch die inneren container Gone, allerdings haben wir deren State in tmp gehalten
-                timeTextButton1.setVisibility(View.GONE);
-
-
-                timePickerGroup2.setVisibility(View.VISIBLE);
-
-                Drawable drawable = getResources().getDrawable(R.drawable.ic_menu_close_clear_cancel);
-                // change the src the so to speak graphical element on the button
-                addNotificationTimeButton.setImageDrawable(drawable);
-
-                mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
-
-                //set flag to change functionality of button, its "logo" and description
-                mViewModel.setAddTimeButtonpressed(true);
-
-                Button submitTime2 = root.findViewById(R.id.getTime2);
-                submitTime2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        int hour;
-                        int minute;
-                        TimePicker picker = getView().findViewById(R.id.simpleTimePicker);
-                        // above API 23 the methods to get the time have changed, both ways are implemented here
-                        if (Build.VERSION.SDK_INT >= 23 ){
-                            hour = picker.getHour();
-                            minute = picker.getMinute();
-                        }
-                        else{
-                            hour = picker.getCurrentHour();
-                            minute = picker.getCurrentMinute();
-                        }
-                        mViewModel.getTimeText1().setValue("Selected Date: " + hour + ":" + minute);
-
-                        returnStateOfViewToTimePickerGoneAndTimeSelectable();
-
-                    }
-                });
+                returnStateOfViewToTimePickerGoneAndTimeSelectable();
 
             }
-
         });
-
-
-        return root;
     }
 
 
@@ -338,12 +334,51 @@ public class ManageNotificationsFragment extends Fragment  {
 }
 
 
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.time1) {
+            // Button buttonPressed = getRoot().findViewById(R.id.time1);
+            MutableLiveData<String> buttonPressed = mViewModel.getTimeText1();
+            visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+
+            // Funktionylität für den submit button der time picker grouß die visible wird, wenn
+            // man einen timeTextButton pressed um nur dessen Notification Time zu changen
+            setFunctionalityOfSubmitNotificationButton2(buttonPressed);
+
+        } else if (view.getId() == R.id.time2) {
+            MutableLiveData<String> buttonPressed = mViewModel.getTimeText2();
+            visibilityStateOfTimeButton2 = timeTextButton2.getVisibility();
+
+            // Funktionylität für den submit button der time picker grouß die visible wird, wenn
+            // man einen timeTextButton pressed um nur dessen Notification Time zu changen
+            setFunctionalityOfSubmitNotificationButton2(buttonPressed);
+
+        } else if (view.getId() == R.id.time3) {
+            MutableLiveData<String> buttonPressed = mViewModel.getTimeText3();
+            visibilityStateOfTimeButton1 = timeTextButton3.getVisibility();
+
+            // Funktionylität für den submit button der time picker grouß die visible wird, wenn
+            // man einen timeTextButton pressed um nur dessen Notification Time zu changen
+            setFunctionalityOfSubmitNotificationButton2(buttonPressed);
+
+        }
+
+        // setzt dass auch die inneren container Gone, allerdings haben wir deren State in tmp gehalten
+        timeTextButton1.setVisibility(View.GONE);
+        timeTextButton2.setVisibility(View.GONE);
+        timeTextButton3.setVisibility(View.GONE);
+
+        timePickerGroup2.setVisibility(View.VISIBLE);
+
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_menu_close_clear_cancel);
+        // change the src the so to speak graphical element on the button
+        addNotificationTimeButton.setImageDrawable(drawable);
+
+        mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
+
+        //set flag to change functionality of button, its "logo" and description
+        mViewModel.setAddTimeButtonpressed(true);
 
 
-
-
-
-
-
-
+    }
 }
