@@ -12,7 +12,7 @@
 
     <Button
         android:id="@+id/time1"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
         android:layout_marginTop="120dp"
@@ -24,10 +24,10 @@
 
     <Button
         android:id="@+id/time2"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/manageNotifications"
@@ -36,16 +36,55 @@
 
     <Button
         android:id="@+id/time3"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/manageNotifications"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@id/manageNotifications"
         app:layout_constraintTop_toTopOf="@id/time2" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/deleteTime1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:clickable="true"
+        android:src="@drawable/ic_menu_close_clear_cancel"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/time1"
+        app:layout_constraintStart_toEndOf="@+id/time1"
+        app:layout_constraintTop_toTopOf="@+id/time2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/deleteTime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:clickable="true"
+        android:src="@drawable/ic_menu_close_clear_cancel"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/time2"
+        app:layout_constraintStart_toEndOf="@id/time2"
+        app:layout_constraintTop_toTopOf="@id/time2" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/deleteTime3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:clickable="true"
+        android:src="@drawable/ic_menu_close_clear_cancel"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/time3"
+        app:layout_constraintStart_toEndOf="@id/time3"
+        app:layout_constraintTop_toTopOf="@id/time3"  />
 
     <TextView
         android:id="@+id/manageNotifications"
@@ -161,5 +200,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
