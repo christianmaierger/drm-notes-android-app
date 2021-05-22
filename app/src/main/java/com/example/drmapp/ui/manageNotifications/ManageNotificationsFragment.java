@@ -3,7 +3,6 @@ package com.example.drmapp.ui.manageNotifications;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.opengl.Visibility;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,9 +27,6 @@ import com.example.drmapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
 
 
 public class ManageNotificationsFragment extends Fragment implements View.OnClickListener  {
@@ -59,6 +55,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     private Group timePickerGroup2;
     private FloatingActionButton addNotificationTimeButton;
     private TimePicker picker;
+    private Bundle saveInstanceState;
 
 
     public View getRoot() {
@@ -145,14 +142,26 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     }
 
 
-    // is never called when Navigation is clicked or back button of Android is cklicked
+// Seit Android 3.0 wohl der beste und sicherste "Ort" um persistente Daten zu speichern, mein kleines Zeug vielleicht erstmal per File Api
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        //save the values of fragment if destroy on second to back
-        if (visibilityStateOfTimeButton2!=0)
-            savedInstanceState.putInt("visibilityStateOfTimeButton2", visibilityStateOfDeleteTimeButton2);
+    public void onStop() {
+        super.onStop();
+
     }
+
+
+    // is never called when Navigation is clicked or back button of Android is cklicked
+    // Nachdem ich noch mehr gelesen habe, denke ich das ist der falsche Weg, für nicht persistente Sachen
+    // gibt es eh das view model und hier auf Biegen und Brechen Dinge wie die Zeiten und damit Visibility der Buttons
+    // die ja immer persistent sein müssen zu speichern für Unsinn, in onStop sollten wir mit speichern beginnen per File oder DB
+   // @Override
+    /*public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        //save the values of fragment if destroy on second to back
+        if (visibilityStateOfTimeButton2==0)
+            savedInstanceState.putInt("visibilityStateOfTimeButton2", visibilityStateOfDeleteTimeButton2);
+        super.onSaveInstanceState(savedInstanceState);
+    }*/
 
     /**
      * Die Methode setzt die Funktionalität für den submitButton der in der TimePickerGroup
