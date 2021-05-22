@@ -3,6 +3,7 @@ package com.example.drmapp.ui.manageNotifications;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.opengl.Visibility;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class ManageNotificationsFragment extends Fragment implements View.OnClickListener  {
@@ -37,8 +39,9 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     private Button timeTextButton1;
     private Button timeTextButton2;
     private Button timeTextButton3;
-    // weil das setzen eines containers auf gone auch die views darin auf gone setzt
-    // halte ich hier tmp variablen, die mir helfen den ursprünglichen Zustand zu halten
+    // weil oft temporär buttons die die Zeit anzeigen/changen oder solche, die eine time deleten
+    // temporär gone gesetzt werden müssen, um dem TimePicker platz zu machen, halte ich
+    // deren VisibilityStates
     int visibilityStateOfTimeButton1;
     int visibilityStateOfTimeButton2;
     int visibilityStateOfTimeButton3;
@@ -46,18 +49,29 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     private FloatingActionButton deleteButton1;
     private FloatingActionButton deleteButton2;
     private FloatingActionButton deleteButton3;
-    // weil das setzen eines containers auf gone auch die views darin auf gone setzt
-    // halte ich hier tmp variablen, die mir helfen den ursprünglichen Zustand zu halten
     int visibilityStateOfDeleteTimeButton1;
     int visibilityStateOfDeleteTimeButton2;
     int visibilityStateOfDeleteTimeButton3;
 
-
-
     private Group timePickerGroup;
+    // Zweite TimePicker Group um eine einfache Möglichkeit zu haben einen TimePicker für das neu
+    // Erstellen von times zu haben und einen für das Changen, wegen unterschiedlicher FUnktionalität
     private Group timePickerGroup2;
     private FloatingActionButton addNotificationTimeButton;
     private TimePicker picker;
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        savedInstanceState.putBoolean("MyBoolean", true);
+        savedInstanceState.putDouble("myDouble", 1.9);
+        savedInstanceState.putInt("MyInt", 1);
+        savedInstanceState.putString("MyString", "Welcome back to Android");
+
+    }
 
 
     public View getRoot() {
@@ -74,11 +88,15 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         final TextView textViewBesidesAddNotificationButton = root.findViewById(R.id.textForAddTimeButton);
 
 
-        // Folgend die TextViews die die ausgewählten Zeiten für Notifications zeigen
+        // Folgend die Buttons die die ausgewählten Zeiten für Notifications zeigen
+        // und bei click den TimePicker öffnen um die jeweilige time des buttons zu changen
         timeTextButton1 = root.findViewById(R.id.time1);
         timeTextButton2 = root.findViewById(R.id.time2);
         timeTextButton3 = root.findViewById(R.id.time3);
 
+
+        //Da die Funktionalitäten für diese buttons jweils ähnlich sind wird der "KlassenHandler"
+        // eingesetzt um weniger Code zu kopieren und dies besser in Methode abhandeln zu können
         timeTextButton1.setOnClickListener(this);
         timeTextButton2.setOnClickListener(this);
         timeTextButton3.setOnClickListener(this);
@@ -91,9 +109,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         deleteButton2.setOnClickListener(this);
         deleteButton3.setOnClickListener(this);
 
-
-
-
+        // Die beiden Groups für den TimePicker der erscheint, wenn man times added und der
+        // der erscheint, wenn man times changed
         timePickerGroup = root.findViewById(R.id.timePickerGroup);
         timePickerGroup2 = root.findViewById(R.id.timePickerGroup2);
         addNotificationTimeButton = root.findViewById(R.id.addTimePicker);
@@ -103,7 +120,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         picker.setIs24HourView(true);
         TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2);
         picker2.setIs24HourView(true);
-
 
         //set flag to change functionality of button, its "logo" and description, initially false, as button is not pressed and timepicker is hidden
         mViewModel.setAddTimeButtonpressed(false);
@@ -115,17 +131,14 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         bindTextViewAndTextFromModel(timeTextButton2, mViewModel.getTimeText2());
         bindTextViewAndTextFromModel(timeTextButton3, mViewModel.getTimeText3());
 
-
         mViewModel.getTimeText1().setValue(getContext().getString(R.string.noTimePickedText));
 
         FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
 
         setFunctionalityForAddNotifiactionTimeButton();
 
-        System.out.println(" in the beginning 2 is" + timeTextButton2.getVisibility());
-
         // für den submit button der zu der timepicker group gehört, die erscheint, wenn man
-        // einen neuen EIntrag added per addNotificationTime button
+        // einen neuen Eintrag added per addNotificationTime button
         setFunctionalityOfSubmitNotificationTimeButton();
 
 
@@ -133,6 +146,13 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         return root;
     }
 
+    /**
+     * Die Methode setzt die Funktionalität für den submitButton der in der TimePickerGroup
+     * ist, die erscheint wenn eine Zeit geändert werden soll, indem der jeweilige TimeButton
+     * gepresst wird. Die Methode gettet die ausgewählte Zeit und leitet Sie weiter ins Model
+     *
+     * @param buttonPressed die zugehörigen Daten im Model zu dem TimeButton dessen Zeit geändert werden soll
+     */
     private void setFunctionalityOfSubmitNotificationButton2(MutableLiveData<String> buttonPressed) {
         Button submitTime2 = root.findViewById(R.id.getTime2);
         submitTime2.setOnClickListener(new View.OnClickListener() {
@@ -193,15 +213,13 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
 
 
+               //int tmp Visibility1 = timeTextButton1.getVisibility();
+
                 // vor der Abfrage den Zustand der Visibility wieder herstellen, der vom Ändern der
                 // Visibility des "parent" contaniners geändert wird
                 timeTextButton1.setVisibility(visibilityStateOfTimeButton1);
                 timeTextButton2.setVisibility(visibilityStateOfTimeButton2);
                 timeTextButton3.setVisibility(visibilityStateOfTimeButton3);
-
-                /*deleteButton1.setVisibility(visibilityStateOfDeleteTimeButton1);
-                deleteButton2.setVisibility(visibilityStateOfDeleteTimeButton2);
-                deleteButton3.setVisibility(visibilityStateOfDeleteTimeButton3);*/
 
 
 
@@ -211,20 +229,56 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 System.out.println(" after setting vis to temp 2 is" + timeTextButton2.getVisibility());
                if(mViewModel.isAddTimeButtonpressed() && !allTextViewsTaken) {
 
+                   // dadurch dass getestet wird, dass in den jeweils anderen beiden buttons nicht der String steht
+                   // der angibt, dass Keine Time ausgewählt ist, kann man sicher sein, dass der button
+                   // wieder visible gesetzt werden muss, sonst ändert sich der String in dem noch vorhanden Button
 
-                   if (timeTextButton1.getVisibility() == View.GONE || mViewModel.getTimeText1().getValue().equals(getContext().getString(R.string.noTimePickedText))) {
+                   // da ja im letzten stehengebliebenen das Visible ist auch der Text drinnen steht, muss man das auschließen
+                   // ein view muss also eine Zeit drinnen stehen haben und gone sein, damit er wirklich weg ist, denn
+                   // es wird ja der Text eingesetzt beim deleten
+
+                   // ersetzen will ich es wenn es nicht gone ist und keine time drinnen steht
+                   boolean time1TextisNotTime;
+                   if (mViewModel.getTimeText1().getValue()!=null) {
+                       time1TextisNotTime = (mViewModel.getTimeText1().getValue().equals(getString(R.string.noTimePickedText)) || mViewModel.getTimeText1().getValue().equals(""));
+                   } else {
+                       time1TextisNotTime = true;
+                   }
+                   boolean time2TextisNotTime;
+                   if (mViewModel.getTimeText2().getValue()!=null) {
+                       time2TextisNotTime = ( mViewModel.getTimeText2().getValue().equals(getString(R.string.noTimePickedText)) || mViewModel.getTimeText2().getValue().equals("") );
+                   } else {
+                       time2TextisNotTime = true;
+                   }
+                   boolean time3TextisNotTime;
+                   if (mViewModel.getTimeText3().getValue()!=null) {
+                       time3TextisNotTime = ( mViewModel.getTimeText3().getValue().equals(getString(R.string.noTimePickedText)) || mViewModel.getTimeText3().getValue().equals("") );
+                   } else {
+                       time3TextisNotTime = true;
+                   }
+
+                   boolean time1Visible = timeTextButton1.getVisibility() == View.VISIBLE;
+                   boolean time2Visible = timeTextButton2.getVisibility() == View.VISIBLE;
+                   boolean time3Visible = timeTextButton3.getVisibility() == View.VISIBLE;
+                   boolean time1IsLastVisibleTimeButton =time1Visible && time1TextisNotTime;
+                   boolean time2IsLastVisibleTimeButton =time2Visible && time2TextisNotTime;
+                   boolean time3IsLastVisibleTimeButton =time3Visible && time3TextisNotTime;
+
+
+                   if (  timeTextButton1.getVisibility() == View.GONE || (time1IsLastVisibleTimeButton)  )
+                        {
                        mViewModel.getTimeText1().setValue("Selected Date: " + hour + ":" + minute);
                        timeTextButton1.setVisibility(View.VISIBLE);
                        visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
                        deleteButton1.setVisibility(View.VISIBLE);
                        visibilityStateOfDeleteTimeButton1 = deleteButton1.getVisibility();
-                   } else if (timeTextButton2.getVisibility() == View.GONE) {
+                   } else if  (timeTextButton2.getVisibility() == View.GONE || (time2IsLastVisibleTimeButton)  )  {
                        mViewModel.getTimeText2().setValue("Selected Date: " + hour + ":" + minute);
                        timeTextButton2.setVisibility(View.VISIBLE);
                        visibilityStateOfTimeButton2 = timeTextButton2.getVisibility();
                        deleteButton2.setVisibility(View.VISIBLE);
                        visibilityStateOfDeleteTimeButton2 = deleteButton2.getVisibility();
-                   } else if (timeTextButton3.getVisibility() == View.GONE) {
+                   } else if ( timeTextButton3.getVisibility() == View.GONE  || (time3IsLastVisibleTimeButton) ) {
                        mViewModel.getTimeText3().setValue("Selected Date: " + hour + ":" + minute);
                        timeTextButton3.setVisibility(View.VISIBLE);
                       visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
@@ -392,22 +446,55 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         } else if( (view.getId() == R.id.deleteTime1) || (view.getId() == R.id.deleteTime2) || (view.getId() == R.id.deleteTime3) ) {
 
             if(view.getId() == R.id.deleteTime1) {
-                deleteButton1.setVisibility(View.GONE);
-                visibilityStateOfDeleteTimeButton1 = deleteButton1.getVisibility();
-                timeTextButton1.setVisibility(View.GONE);
-               // visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+               // Abfragen ob time1 der einzig verbleibende Button ist, dann nicht gone setzen,
+                //sondern nur wieder Text tauschen dazu, dass keine Time ausgewählt ist
+               if( (deleteButton2.getVisibility()==View.GONE) && (deleteButton3.getVisibility()==View.GONE) ) {
+                   deleteButton1.setVisibility(View.GONE);
+                   visibilityStateOfDeleteTimeButton1 = deleteButton1.getVisibility();
+                   mViewModel.getTimeText1().setValue(getContext().getString(R.string.noTimePickedText));
+
+                   // wenn noch weitere buttons vorhanden sind, dann verschwindet 1 einfach
+               } else {
+                    deleteButton1.setVisibility(View.GONE);
+                    visibilityStateOfDeleteTimeButton1 = deleteButton1.getVisibility();
+                    timeTextButton1.setVisibility(View.GONE);
+                    visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+                   mViewModel.getTimeText1().setValue(getContext().getString(R.string.noTimePickedText));
+                }
 
             } else if (view.getId() == R.id.deleteTime2) {
-                deleteButton2.setVisibility(View.GONE);
-                visibilityStateOfDeleteTimeButton2 = deleteButton2.getVisibility();
-                timeTextButton2.setVisibility(View.GONE);
-              //  visibilityStateOfTimeButton2 = timeTextButton2.getVisibility();
+                // Abfragen ob time2 der einzig verbleibende Button ist, dann nicht gone setzen,
+                // sondern nur wieder Text tauschen dazu, dass keine Time ausgewählt ist
+                if( (deleteButton1.getVisibility()==View.GONE) && (deleteButton3.getVisibility()==View.GONE) ) {
+                    deleteButton2.setVisibility(View.GONE);
+                    visibilityStateOfDeleteTimeButton2 = deleteButton2.getVisibility();
+                    mViewModel.getTimeText2().setValue(getContext().getString(R.string.noTimePickedText));
+                    // wenn noch weitere buttons vorhanden sind, dann verschwindet 2 einfach
+                } else {
+                    deleteButton2.setVisibility(View.GONE);
+                    visibilityStateOfDeleteTimeButton2 = deleteButton2.getVisibility();
+                    timeTextButton2.setVisibility(View.GONE);
+                    visibilityStateOfTimeButton2 = timeTextButton2.getVisibility();
+                    mViewModel.getTimeText2().setValue(getContext().getString(R.string.noTimePickedText));
+                }
 
             } else if (view.getId() == R.id.deleteTime3) {
-                deleteButton3.setVisibility(View.GONE);
-                visibilityStateOfDeleteTimeButton3 = deleteButton3.getVisibility();
-                timeTextButton3.setVisibility(View.GONE);
-                //visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
+                // Abfragen ob time3 der einzig verbleibende Button ist, dann nicht gone setzen,
+                // sondern nur wieder Text tauschen dazu, dass keine Time ausgewählt ist
+                if( (deleteButton1.getVisibility()==View.GONE) && (deleteButton2.getVisibility()==View.GONE) ) {
+                    deleteButton3.setVisibility(View.GONE);
+                    visibilityStateOfDeleteTimeButton3 = deleteButton3.getVisibility();
+                    mViewModel.getTimeText3().setValue(getContext().getString(R.string.noTimePickedText));
+
+
+                    // wenn noch weitere buttons vorhanden sind, dann verschwindet 2 einfach
+                } else {
+                    deleteButton3.setVisibility(View.GONE);
+                    visibilityStateOfDeleteTimeButton3 = deleteButton3.getVisibility();
+                    timeTextButton3.setVisibility(View.GONE);
+                    visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
+                    mViewModel.getTimeText3().setValue(getContext().getString(R.string.noTimePickedText));
+                }
 
             }
 
@@ -421,6 +508,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
             // Button buttonPressed = getRoot().findViewById(R.id.time1);
             MutableLiveData<String> buttonPressed = mViewModel.getTimeText1();
             visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+            deleteButton1.setVisibility(View.VISIBLE);
             visibilityStateOfDeleteTimeButton1= deleteButton1.getVisibility();
 
             // Funktionylität für den submit button der time picker grouß die visible wird, wenn
@@ -430,15 +518,17 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         } else if (view.getId() == R.id.time2) {
             MutableLiveData<String> buttonPressed = mViewModel.getTimeText2();
             visibilityStateOfTimeButton2 = timeTextButton2.getVisibility();
-            visibilityStateOfDeleteTimeButton2= deleteButton2.getVisibility();
+            deleteButton2.setVisibility(View.VISIBLE);
+            visibilityStateOfDeleteTimeButton2= deleteButton2.getVisibility();;
 
-            // Funktionylität für den submit button der time picker grouß die visible wird, wenn
+            // Funktionylität für den submit button der time picker group die visible wird, wenn
             // man einen timeTextButton pressed um nur dessen Notification Time zu changen
             setFunctionalityOfSubmitNotificationButton2(buttonPressed);
 
         } else if (view.getId() == R.id.time3) {
             MutableLiveData<String> buttonPressed = mViewModel.getTimeText3();
             visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
+            deleteButton3.setVisibility(View.VISIBLE);
             visibilityStateOfDeleteTimeButton3= deleteButton3.getVisibility();
 
             // Funktionylität für den submit button der time picker grouß die visible wird, wenn

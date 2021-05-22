@@ -54,7 +54,7 @@
         android:layout_marginLeft="4dp"
         android:clickable="true"
         android:src="@drawable/ic_menu_close_clear_cancel"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/time1"
         app:layout_constraintStart_toEndOf="@+id/time1"
         app:layout_constraintTop_toTopOf="@+id/time2"
