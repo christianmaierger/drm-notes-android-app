@@ -60,19 +60,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     private FloatingActionButton addNotificationTimeButton;
     private TimePicker picker;
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        // Save UI state changes to the savedInstanceState.
-        // This bundle will be passed to onCreate if the process is
-        // killed and restarted.
-        savedInstanceState.putBoolean("MyBoolean", true);
-        savedInstanceState.putDouble("myDouble", 1.9);
-        savedInstanceState.putInt("MyInt", 1);
-        savedInstanceState.putString("MyString", "Welcome back to Android");
-
-    }
-
 
     public View getRoot() {
         return root;
@@ -80,6 +67,17 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        if (savedInstanceState == null) {
+
+        } else {
+
+
+            visibilityStateOfTimeButton2= savedInstanceState.getInt("visibilityStateOfTimeButton2");
+
+        }
+
+
 
         mViewModel = new ViewModelProvider(this).get(ManageNotificationsViewModel.class);
         root = inflater.inflate(R.layout.fragment_manage_notifications, container, false);
@@ -144,6 +142,16 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
 
         return root;
+    }
+
+
+    // is never called when Navigation is clicked or back button of Android is cklicked
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        //save the values of fragment if destroy on second to back
+        if (visibilityStateOfTimeButton2!=0)
+            savedInstanceState.putInt("visibilityStateOfTimeButton2", visibilityStateOfDeleteTimeButton2);
     }
 
     /**

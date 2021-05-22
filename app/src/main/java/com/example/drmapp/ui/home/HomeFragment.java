@@ -15,6 +15,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.drmapp.R;
 import com.example.drmapp.ui.addEntry.AddEntryFragment;
@@ -44,12 +46,16 @@ public class HomeFragment extends Fragment {
             public void onClick(View v)
             {
 
-               Fragment fragment = new AddEntryFragment();
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.nav_add_Entry);
+
+
+              /*  Fragment fragment = new AddEntryFragment();
                 FragmentManager fragmentManager =  getParentFragmentManager();//getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment , fragment);
                 fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
 
 
             }
