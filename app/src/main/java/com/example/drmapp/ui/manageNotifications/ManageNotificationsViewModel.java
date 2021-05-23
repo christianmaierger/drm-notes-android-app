@@ -20,6 +20,10 @@ public class ManageNotificationsViewModel extends ViewModel {
     private MutableLiveData<String> timeText1;
     private MutableLiveData<String> timeText2;
     private MutableLiveData<String> timeText3;
+    private String timeAsString1;
+    private String timeAsString2;
+    private String timeAsString3;
+
     private MutableLiveData<Time> time;
 
 
@@ -56,6 +60,29 @@ public class ManageNotificationsViewModel extends ViewModel {
         return time;
     }
 
+    public String getTimeAsString1() {
+        return timeAsString1;
+    }
+
+    public void setTimeAsString1(String timeAsString1) {
+        this.timeAsString1 = timeAsString1;
+    }
+
+    public String getTimeAsString2() {
+        return timeAsString2;
+    }
+
+    public void setTimeAsString2(String timeAsString2) {
+        this.timeAsString2 = timeAsString2;
+    }
+
+    public String getTimeAsString3() {
+        return timeAsString3;
+    }
+
+    public void setTimeAsString3(String timeAsString3) {
+        this.timeAsString3 = timeAsString3;
+    }
 
     public void setAddTimeButtonpressed(boolean addTimeButtonpressed) {
         this.addTimeButtonpressed = addTimeButtonpressed;

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -29,7 +30,20 @@ import com.example.drmapp.R;
 import com.example.drmapp.ReceiverForNotifications;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.sql.Array;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class ManageNotificationsFragment extends Fragment implements View.OnClickListener  {
@@ -59,6 +73,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     private FloatingActionButton addNotificationTimeButton;
     private TimePicker picker;
     private Bundle saveInstanceState;
+
+
 
 
     public View getRoot() {
@@ -140,15 +156,77 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         setFunctionalityOfSubmitNotificationTimeButton();
 
 
+        String contents;
+        FileInputStream fis = null;
+        try {
+            fis = getContext().openFileInput("test");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        InputStreamReader inputStreamReader =
+                new InputStreamReader(fis, StandardCharsets.UTF_8);
+        StringBuilder stringBuilder = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
+            String line = reader.readLine();
+            while (line != null) {
+                stringBuilder.append(line).append('\n');
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+            // Error occurred when opening raw file for reading.
+        } finally {
+            contents = stringBuilder.toString();
+        }
+
+            System.out.println("Die Inhalte des Files sind " + contents);
+
+
+        String[] splited = contents.split("\\s+");
+
+        List<String> storedNotifificationTimes = new LinkedList<>(Arrays.asList(splited));
+
+        //todo method that fills the buttonTexts with strings if they are there and restores gui to show
+        // buttons with times
 
         return root;
     }
 
 
+
+
+    public void writeFileOnInternalStorage(Context mcoContext, String filename, List<String> fileContents){
+        String toWrite = "";
+        for (String str : fileContents) {
+            toWrite = toWrite + " " + str;
+        }
+        toWrite= toWrite.trim();
+
+        try (FileOutputStream fos = getContext().openFileOutput(filename, Context.MODE_PRIVATE)) {
+            fos.write(toWrite.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 // Seit Android 3.0 wohl der beste und sicherste "Ort" um persistente Daten zu speichern, mein kleines Zeug vielleicht erstmal per File Api
     @Override
     public void onStop() {
         super.onStop();
+        List<String> notificationTimes = new LinkedList<String>();
+        if (mViewModel.getTimeAsString1()!=null && mViewModel.getTimeAsString1()!="") {
+            notificationTimes.add(mViewModel.getTimeAsString1());
+        }
+        if (mViewModel.getTimeAsString2()!=null && mViewModel.getTimeAsString1()!="") {
+            notificationTimes.add(mViewModel.getTimeAsString2());
+        }
+        if (mViewModel.getTimeAsString3()!=null && mViewModel.getTimeAsString3()!="") {
+            notificationTimes.add(mViewModel.getTimeAsString1());
+        }
+
+
+        writeFileOnInternalStorage(getContext(), "test", notificationTimes);
 
     }
 
@@ -173,7 +251,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
      *
      * @param buttonPressed die zugehörigen Daten im Model zu dem TimeButton dessen Zeit geändert werden soll
      */
-    private void setFunctionalityOfSubmitNotificationButton2(MutableLiveData<String> buttonPressed) {
+    private void setFunctionalityOfSubmitNotificationButton2(MutableLiveData<String> buttonPressed, int timeTextToChangeAndStore) {
         Button submitTime2 = root.findViewById(R.id.getTime2);
         submitTime2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,7 +269,23 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                     hour = picker2.getCurrentHour();
                     minute = picker2.getCurrentMinute();
                 }
+
+                // hier wird der TextWert für die MutableLive Data im Model gesetzt, welche dann
+                // auf den TimeButtons als gewählte Uhrzeit angezeigt wird
                 buttonPressed.setValue("Selected Date: " + hour + ":" + minute);
+
+                switch(timeTextToChangeAndStore) {
+                    case 1:
+                        mViewModel.setTimeAsString1(hour+":"+minute);
+                        break;
+                    case 2:
+                        mViewModel.setTimeAsString2(hour+":"+minute);
+                        break;
+                    case 3:
+                        mViewModel.setTimeAsString1(hour+":"+minute);
+                        break;
+                }
+
 
                 returnStateOfViewToTimePickerGoneAndTimeSelectable();
 
@@ -296,6 +390,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                        deleteButton1.setVisibility(View.VISIBLE);
                        visibilityStateOfDeleteTimeButton1 = deleteButton1.getVisibility();
 
+                            mViewModel.setTimeAsString1(hour+":"+minute);
+
                             buildAndSetNotification(time, 1);
                    } else if  (timeTextButton2.getVisibility() == View.GONE || (time2IsLastVisibleTimeButton)  )  {
                        mViewModel.getTimeText2().setValue("Selected Date: " + hour + ":" + minute);
@@ -304,6 +400,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                        deleteButton2.setVisibility(View.VISIBLE);
                        visibilityStateOfDeleteTimeButton2 = deleteButton2.getVisibility();
 
+                       mViewModel.setTimeAsString2(hour+":"+minute);
+
                        buildAndSetNotification(time, 2);
                    } else if ( timeTextButton3.getVisibility() == View.GONE  || (time3IsLastVisibleTimeButton) ) {
                        mViewModel.getTimeText3().setValue("Selected Date: " + hour + ":" + minute);
@@ -311,6 +409,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                       visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
                        deleteButton3.setVisibility(View.VISIBLE);
                        visibilityStateOfDeleteTimeButton3 = deleteButton3.getVisibility();
+
+                       mViewModel.setTimeAsString3(hour+":"+minute);
 
                        buildAndSetNotification(time, 3);
                    }
@@ -559,7 +659,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
             // Funktionylität für den submit button der time picker grouß die visible wird, wenn
             // man einen timeTextButton pressed um nur dessen Notification Time zu changen
-            setFunctionalityOfSubmitNotificationButton2(buttonPressed);
+            setFunctionalityOfSubmitNotificationButton2(buttonPressed, 1);
 
         } else if (view.getId() == R.id.time2) {
             MutableLiveData<String> buttonPressed = mViewModel.getTimeText2();
@@ -569,7 +669,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
             // Funktionylität für den submit button der time picker group die visible wird, wenn
             // man einen timeTextButton pressed um nur dessen Notification Time zu changen
-            setFunctionalityOfSubmitNotificationButton2(buttonPressed);
+            setFunctionalityOfSubmitNotificationButton2(buttonPressed, 2);
 
         } else if (view.getId() == R.id.time3) {
             MutableLiveData<String> buttonPressed = mViewModel.getTimeText3();
@@ -579,7 +679,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
             // Funktionylität für den submit button der time picker grouß die visible wird, wenn
             // man einen timeTextButton pressed um nur dessen Notification Time zu changen
-            setFunctionalityOfSubmitNotificationButton2(buttonPressed);
+            setFunctionalityOfSubmitNotificationButton2(buttonPressed, 3);
         }
 
         // setzt dass auch die inneren container Gone, allerdings haben wir deren State in tmp gehalten
