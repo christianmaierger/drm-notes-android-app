@@ -1,6 +1,8 @@
 package com.example.drmapp.ui.manageNotifications;
 
+import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -24,6 +26,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.ReceiverForNotifications;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
@@ -38,7 +41,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     // weil oft temporär buttons die die Zeit anzeigen/changen oder solche, die eine time deleten
     // temporär gone gesetzt werden müssen, um dem TimePicker platz zu machen, halte ich
     // deren VisibilityStates
-    int visibilityStateOfTimeButton1;
+    private int visibilityStateOfTimeButton1;
     int visibilityStateOfTimeButton2;
     int visibilityStateOfTimeButton3;
 
@@ -65,7 +68,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        if (savedInstanceState == null) {
+      /*  if (savedInstanceState == null) {
 
         } else {
 
@@ -73,7 +76,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
             visibilityStateOfTimeButton2= savedInstanceState.getInt("visibilityStateOfTimeButton2");
 
         }
-
+*/
 
 
         mViewModel = new ViewModelProvider(this).get(ManageNotificationsViewModel.class);
@@ -199,14 +202,14 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
     private void setFunctionalityOfSubmitNotificationTimeButton() {
 
-        visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+        setVisibilityStateOfTimeButton1(timeTextButton1.getVisibility());
         visibilityStateOfTimeButton2 = timeTextButton2.getVisibility();
         visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
         visibilityStateOfDeleteTimeButton1 = deleteButton1.getVisibility();
         visibilityStateOfDeleteTimeButton2 = deleteButton2.getVisibility();
         visibilityStateOfDeleteTimeButton3 = deleteButton3.getVisibility();
 
-        System.out.println(visibilityStateOfTimeButton1);
+        System.out.println(getVisibilityStateOfTimeButton1());
         System.out.println(visibilityStateOfTimeButton2);
 
         // here listener is set to Submit button below time picker and gets the selected time to store it in ViewModel
@@ -228,7 +231,10 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                     minute = picker.getCurrentMinute();
                 }
 
-
+                // builden eines Kalenderobjekts das die Zeit hält, an welchem eine Notification
+                // passieren soll. Wird dem AlarmManager übergeben, damit er dann die App "weckt" und
+                // den BroadCastreciecer aufruft, damit der eine Notification feuert
+                Calendar time = buildTimeForNotification(hour, minute);
 
                //int tmp Visibility1 = timeTextButton1.getVisibility();
 
@@ -286,28 +292,35 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                         {
                        mViewModel.getTimeText1().setValue("Selected Date: " + hour + ":" + minute);
                        timeTextButton1.setVisibility(View.VISIBLE);
-                       visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+                       setVisibilityStateOfTimeButton1(timeTextButton1.getVisibility());
                        deleteButton1.setVisibility(View.VISIBLE);
                        visibilityStateOfDeleteTimeButton1 = deleteButton1.getVisibility();
+
+                            buildAndSetNotification(time, 1);
                    } else if  (timeTextButton2.getVisibility() == View.GONE || (time2IsLastVisibleTimeButton)  )  {
                        mViewModel.getTimeText2().setValue("Selected Date: " + hour + ":" + minute);
                        timeTextButton2.setVisibility(View.VISIBLE);
                        visibilityStateOfTimeButton2 = timeTextButton2.getVisibility();
                        deleteButton2.setVisibility(View.VISIBLE);
                        visibilityStateOfDeleteTimeButton2 = deleteButton2.getVisibility();
+
+                       buildAndSetNotification(time, 2);
                    } else if ( timeTextButton3.getVisibility() == View.GONE  || (time3IsLastVisibleTimeButton) ) {
                        mViewModel.getTimeText3().setValue("Selected Date: " + hour + ":" + minute);
                        timeTextButton3.setVisibility(View.VISIBLE);
                       visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
                        deleteButton3.setVisibility(View.VISIBLE);
                        visibilityStateOfDeleteTimeButton3 = deleteButton3.getVisibility();
+
+                       buildAndSetNotification(time, 3);
                    }
+                   returnStateOfViewToTimePickerGoneAndTimeSelectable();
+
+
+
                }
 
-                returnStateOfViewToTimePickerGoneAndTimeSelectable();
 
-                Calendar time = buildTimeForNotification(hour, minute);
-                buildAndSetNotification(time);
             }
         });
     }
@@ -324,7 +337,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 if(mViewModel.isAddTimeButtonpressed()==false) {
 
 
-                    visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+                    setVisibilityStateOfTimeButton1(timeTextButton1.getVisibility());
                     visibilityStateOfTimeButton2 = timeTextButton2.getVisibility();
                     visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
                     visibilityStateOfDeleteTimeButton1 = deleteButton1.getVisibility();
@@ -414,15 +427,23 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     }
 
 
-    public void buildAndSetNotification(Calendar time) {
+    public void buildAndSetNotification(Calendar time, int timeButtonNumber) {
 
         // Create an explicit intent for an Activity in your app
         // try with hardcoded link to MainActivity
-        Intent intent = new Intent(this.getActivity(), MainActivity.class);
+        Intent intent = new Intent(this.getContext(), ReceiverForNotifications.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this.getActivity(), 0, intent, 0);
+       // versuche hier im Extra des Intents etwas an den reciever zu übergeben, scheint nicht zu gehen
+        intent.putExtra("ButtonNumber", timeButtonNumber);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, 0);
+        AlarmManager alarmMgr = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
-        //for test channel id is just 1
+
+        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntent);
+
+/*
+        //for test channel id is just 1 das braucht man ab API 26 davor wird es ignored
     NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getContext(), "1")
             .setSmallIcon(R.drawable.ic_input_add)
             .setContentTitle("Test")
@@ -437,13 +458,21 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
             // when flag is set notification is automatically removed after tap
             .setAutoCancel(true);
 
+        AlarmManager alarmMgr = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(getContext(), 0, intent, 0);
+
+        // setRepeating() lets you specify a precise custom interval--in this case,
+// 1 day
+        alarmMgr.setRepeating(AlarmManager.RTC, time.getTimeInMillis()/1000,
+                AlarmManager.INTERVAL_DAY, alarmIntent);
+
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this.getActivity());
 
 // notificationId is a unique int for each notification that you must define
         //first param notification id for test just 1, needs to be saved to delete notification later on
         // method seems to post imediatelly not regarding time of notification set with setWhen(long milis)
-        notificationManager.notify(1, builder.build());
+       // notificationManager.notify(1, builder.build());*/
 }
 
     /**
@@ -475,7 +504,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                     deleteButton1.setVisibility(View.GONE);
                     visibilityStateOfDeleteTimeButton1 = deleteButton1.getVisibility();
                     timeTextButton1.setVisibility(View.GONE);
-                    visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+                    setVisibilityStateOfTimeButton1(timeTextButton1.getVisibility());
                    mViewModel.getTimeText1().setValue(getContext().getString(R.string.noTimePickedText));
                 }
 
@@ -524,7 +553,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         if (view.getId() == R.id.time1) {
             // Button buttonPressed = getRoot().findViewById(R.id.time1);
             MutableLiveData<String> buttonPressed = mViewModel.getTimeText1();
-            visibilityStateOfTimeButton1 = timeTextButton1.getVisibility();
+            setVisibilityStateOfTimeButton1(timeTextButton1.getVisibility());
             deleteButton1.setVisibility(View.VISIBLE);
             visibilityStateOfDeleteTimeButton1= deleteButton1.getVisibility();
 
@@ -572,5 +601,13 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
         //Setzen des flag um die Funktionalität des button, its "logo" and description
         mViewModel.setAddTimeButtonpressed(true);
+    }
+
+    private int getVisibilityStateOfTimeButton1() {
+        return visibilityStateOfTimeButton1;
+    }
+
+    private void setVisibilityStateOfTimeButton1(int visibilityStateOfTimeButton1) {
+        this.visibilityStateOfTimeButton1 = visibilityStateOfTimeButton1;
     }
 }
