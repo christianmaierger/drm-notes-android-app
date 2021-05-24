@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
-import com.example.drmapp.ui.manageNotifications.ManageNotificationsFragment;
+import com.example.drmapp.ui.EntryFragment;
+import com.example.drmapp.ui.EntryRecViewAdapter;
+import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,10 +22,15 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private RecyclerView entryRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +39,33 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       // rechts unten der weiter button ist dieser fab, floating action button
+
+        /**
+         * entries soll alle Eintraege speichern. (Eventuell sollten wir hier ueberlegen, ob etwas wie eine Hashtabelle etc. sinnvoll waere)
+         * Ein Entry beinhaltet die Werte fuer alle Antworten, die der Nutzer beim Ausfuellen eines Fragebogens eingibt.
+         *
+         * */
+
+     entryRecyclerView = findViewById(R.id.entryRecyclerView);
+       // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
+       /*if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            EntryFragment entryRecyclerView = new EntryFragment();
+            transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
+            transaction.commit();
+       } */
+
+
+        // TODO: Funktion schreiben, mit das Entry-Element erweitert wird jeweils um Date, Time, Activity, Feeling, etc.
+        // TODO: In Activity OnClickListener -> entries (position itemCount, setActivity "Eating/Drinking"
+
+
+       //entryRecyclerView.setAdapter(adapter);
+        //Legt die Ansicht fest! (Gibt auch Grid etc.)
+      // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        // rechts unten der weiter button ist dieser fab, floating action button
         FloatingActionButton fab = findViewById(R.id.fwd);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +134,8 @@ public class MainActivity extends AppCompatActivity {
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
+
+
 
 
 }
