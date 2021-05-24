@@ -13,7 +13,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:context=".ui.EntryFragment"
     tools:listitem="@layout/fragment_entry_list_item"
     app:layout_constraintBottom_toBottomOf="parent"
