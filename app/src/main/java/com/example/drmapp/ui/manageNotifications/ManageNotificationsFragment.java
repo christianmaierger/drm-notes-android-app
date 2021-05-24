@@ -156,26 +156,30 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         setFunctionalityOfSubmitNotificationTimeButton();
 
 
-        String contents;
+        String contents = "";
         FileInputStream fis = null;
         try {
             fis = getContext().openFileInput("test");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        InputStreamReader inputStreamReader =
-                new InputStreamReader(fis, StandardCharsets.UTF_8);
-        StringBuilder stringBuilder = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
-            String line = reader.readLine();
-            while (line != null) {
-                stringBuilder.append(line).append('\n');
-                line = reader.readLine();
+        if (fis!=null) {
+
+            InputStreamReader inputStreamReader =
+                    new InputStreamReader(fis, StandardCharsets.UTF_8);
+            StringBuilder stringBuilder = new StringBuilder();
+            try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
+                String line = reader.readLine();
+                while (line != null) {
+                    stringBuilder.append(line).append('\n');
+                    line = reader.readLine();
+                }
+            } catch (IOException e) {
+                // Error occurred when opening raw file for reading.
+            } finally {
+                contents = stringBuilder.toString();
             }
-        } catch (IOException e) {
-            // Error occurred when opening raw file for reading.
-        } finally {
-            contents = stringBuilder.toString();
+
         }
 
             System.out.println("Die Inhalte des Files sind " + contents);
