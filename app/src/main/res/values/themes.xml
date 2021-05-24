@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.DRMAPP" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#C5CAE9</item>
-        <item name="colorPrimaryVariant">#9499B7</item>
+        <item name="colorPrimary">#9DA2BF</item>
+        <item name="colorPrimaryVariant">#74799A</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

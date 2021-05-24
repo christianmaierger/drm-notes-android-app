@@ -18,6 +18,7 @@ import android.widget.Button;
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.addEntry.AddEntryFragment;
+import com.example.drmapp.ui.home.HomeFragment;
 
 public class SuccessFragment extends Fragment implements View.OnClickListener{
 
@@ -49,7 +50,7 @@ public class SuccessFragment extends Fragment implements View.OnClickListener{
                 break;
                 //TODO: Wo soll der Nutzer hin, wenn Eintrag gespeichert und kein Neuer erzeugt werden so??
             case R.id.btnSaveEntry:
-                fragment = new AddEntryFragment();
+                fragment = new HomeFragment();
                 break;
             default:
                 break;
