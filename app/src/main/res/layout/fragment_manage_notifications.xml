@@ -12,15 +12,19 @@
 
     <Button
         android:id="@+id/time1"
+        style="@style/buttonStyle"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="false"
         android:layout_marginTop="120dp"
+        android:background="@drawable/button"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/manageNotifications"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="@id/manageNotifications"
         app:layout_constraintTop_toBottomOf="@+id/manageNotifications"
-        tools:text="@string/noTimePickedText" />
+        tools:text="@string/noTimePickedText"
+        />
 
     <Button
         android:id="@+id/time2"
@@ -32,7 +36,10 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/manageNotifications"
         app:layout_constraintStart_toStartOf="@id/manageNotifications"
-        app:layout_constraintTop_toTopOf="@id/time1" />
+        app:layout_constraintTop_toTopOf="@id/time1"
+        android:background="@drawable/button"
+        style="@style/buttonStyle"
+        app:layout_constraintHorizontal_bias="0.1"/>
 
     <Button
         android:id="@+id/time3"
@@ -44,51 +51,57 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/manageNotifications"
         app:layout_constraintStart_toStartOf="@id/manageNotifications"
-        app:layout_constraintTop_toTopOf="@id/time2" />
+        app:layout_constraintTop_toTopOf="@id/time2"
+        android:background="@drawable/button"
+        style="@style/buttonStyle"
+        app:layout_constraintHorizontal_bias="0.1"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteTime1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:clickable="true"
-        android:src="@drawable/ic_menu_close_clear_cancel"
-        android:visibility="gone"
+        android:src="@drawable/ic_close_sign"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/time1"
         app:layout_constraintStart_toEndOf="@+id/time1"
         app:layout_constraintTop_toTopOf="@+id/time2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        app:fabCustomSize="50dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteTime2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:clickable="true"
-        android:src="@drawable/ic_menu_close_clear_cancel"
+        android:src="@drawable/ic_close_sign"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/time2"
         app:layout_constraintStart_toEndOf="@id/time2"
-        app:layout_constraintTop_toTopOf="@id/time2" />
+        app:layout_constraintTop_toTopOf="@id/time2"
+        app:fabCustomSize="50dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteTime3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:clickable="true"
-        android:src="@drawable/ic_menu_close_clear_cancel"
+        android:src="@drawable/ic_close_sign"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/time3"
         app:layout_constraintStart_toEndOf="@id/time3"
-        app:layout_constraintTop_toTopOf="@id/time3"  />
+        app:layout_constraintTop_toTopOf="@id/time3"
+        app:fabCustomSize="50dp"/>
 
     <TextView
         android:id="@+id/manageNotifications"
-        android:layout_width="wrap_content"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -96,8 +109,8 @@
         android:gravity="center_horizontal"
         android:text="@string/notifications_heading"
         android:textAlignment="center"
+        android:textAllCaps="true"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +125,7 @@
         android:layout_marginLeft="28dp"
         android:layout_marginTop="24dp"
         android:clickable="true"
-        android:src="@drawable/ic_action_name"
+        android:src="@drawable/ic_plus_sign"
         app:backgroundTint="@color/lightPurpel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
