@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="48dp"
         android:gravity="center"
-        android:text="How are you feeling?"
+        android:text="How did you feel?"
         android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -18,7 +18,7 @@ public class ReceiverForNotifications extends BroadcastReceiver {
         int value = intent.getIntExtra("ButtonNumber", 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "1")
-                .setSmallIcon(R.drawable.ic_input_add)
+                .setSmallIcon(R.drawable.ic_plus_sign)
                 .setContentTitle("Time to add Activities!")
                 .setContentText("This Notification was triggered by Button " + value)
                 // this is used for Android 7.1 and lower as there is no channel with own prio

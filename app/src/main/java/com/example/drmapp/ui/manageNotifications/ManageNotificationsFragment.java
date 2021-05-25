@@ -11,35 +11,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.Group;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.ReceiverForNotifications;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.sql.Array;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.LinkedList;
@@ -464,7 +457,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 timePickerGroup.setVisibility(View.VISIBLE);
 
 
-                  Drawable drawable = getResources().getDrawable(R.drawable.ic_menu_close_clear_cancel);
+                  Drawable drawable = getResources().getDrawable(R.drawable.ic_close_sign);
                   // change the src the so to speak graphical element on the button
                   addNotificationTimeButton.setImageDrawable(drawable);
 
@@ -513,7 +506,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
         // also change layout of Text and Button, so user understand he can cancle timepicking
         // get the drawable we want to insert, in this case a X for cancle
-        Drawable drawable = getResources().getDrawable(R.drawable.ic_input_add);
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_plus_sign);
         //set flag to change functionality
         button.setImageDrawable(drawable);
         // todo no hardcoding
@@ -697,7 +690,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
         timePickerGroup2.setVisibility(View.VISIBLE);
 
-        Drawable drawable = getResources().getDrawable(R.drawable.ic_menu_close_clear_cancel);
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_close_sign);
         // change the src the so to speak graphical element on the button
         addNotificationTimeButton.setImageDrawable(drawable);
 

@@ -8,4 +8,9 @@
         <item name="textAllCaps">true</item>
     </style>
 
+    <style name="fab_square" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
 </resources>

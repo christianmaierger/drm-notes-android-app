@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="48dp"
         android:gravity="center"
-        android:text="With whom have you been together?"
+        android:text="With whom have you been togehter?"
         android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

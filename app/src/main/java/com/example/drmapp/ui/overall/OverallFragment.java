@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
@@ -32,11 +33,11 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
         mViewModel = new ViewModelProvider(this).get(OverallViewModel.class);
         View root = inflater.inflate(R.layout.fragment_overall, container, false);
 
-        Button button_1 = (Button) root.findViewById(R.id.btnOverall1);
-        Button button_2 = (Button) root.findViewById(R.id.btnOverall2);
-        Button button_3 = (Button) root.findViewById(R.id.btnOverall3);
-        Button button_4 = (Button) root.findViewById(R.id.btnOverall4);
-        Button button_5 = (Button) root.findViewById(R.id.btnOverall5);
+        ImageButton button_1 = (ImageButton) root.findViewById(R.id.btnOverall1);
+        ImageButton button_2 = (ImageButton) root.findViewById(R.id.btnOverall2);
+        ImageButton button_3 = (ImageButton) root.findViewById(R.id.btnOverall3);
+        ImageButton button_4 = (ImageButton) root.findViewById(R.id.btnOverall4);
+        ImageButton button_5 = (ImageButton) root.findViewById(R.id.btnOverall5);
 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
