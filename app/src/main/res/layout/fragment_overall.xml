@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:layout_marginBottom="48dp"
-        android:progress="72"
+        android:progress="75"
         android:progressBackgroundTint="@color/lightPurpel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

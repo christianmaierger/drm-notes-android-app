@@ -17,6 +17,7 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.ui.locationPremade.LocationPremadeFragment;
 import com.example.drmapp.ui.overall.OverallFragment;
 import com.example.drmapp.ui.personManual.PersonManualFragment;
 
@@ -57,7 +58,7 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
                                 fragment = new PersonManualFragment();
                                 break;
                         default:
-                                fragment = new OverallFragment();
+                                fragment = new LocationPremadeFragment();
                                 break;
                 }
 
