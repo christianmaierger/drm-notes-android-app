@@ -17,6 +17,7 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.ui.locationPremade.LocationPremadeFragment;
 import com.example.drmapp.ui.overall.OverallFragment;
 
 
@@ -41,7 +42,7 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
         }
 
         public void onClick(View v) {
-                Fragment fragment = new OverallFragment();
+                Fragment fragment = new LocationPremadeFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);

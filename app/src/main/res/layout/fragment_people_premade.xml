@@ -74,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNeighbours" />
+        app:layout_constraintTop_toBottomOf="@+id/btnNoOne" />
 
     <Button
         android:id="@+id/btnStrangers"
@@ -86,7 +86,7 @@
         android:gravity="center"
         android:text="Strangers"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnNeighbours"
+        app:layout_constraintBottom_toTopOf="@+id/btnNoOne"
         app:layout_constraintEnd_toStartOf="@+id/btnFamily"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/buttonStyle"
@@ -110,7 +110,7 @@
         app:layout_constraintStart_toEndOf="@+id/btnStrangers" />
 
     <Button
-        android:id="@+id/btnNeighbours"
+        android:id="@+id/btnNoOne"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
@@ -119,9 +119,10 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Neighbours"
+        android:text="No one"
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/btnPeopleOther"
+        app:layout_constraintEnd_toStartOf="@+id/btnPartner"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -140,7 +141,7 @@
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/btnPeopleOther"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnNeighbours" />
+        app:layout_constraintStart_toEndOf="@+id/btnNoOne" />
 
     <ProgressBar
         android:id="@+id/pBarOverall"
