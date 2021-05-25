@@ -7,54 +7,53 @@
 
 
     <TextView
-        android:id="@+id/textPeopleManual"
+        android:id="@+id/txtQuickEntry"
         android:layout_width="255dp"
         android:layout_height="100dp"
         android:layout_marginTop="48dp"
         android:gravity="center"
-        android:text="With whom have you been togehter?"
+        android:text="What would you \n like to note?"
         android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pBarPersonM" />
+        app:layout_constraintTop_toBottomOf="@+id/pBarQuickEntry" />
 
     <Button
-        android:id="@+id/btnSubmitPeopleM"
+        android:id="@+id/btnSubmitQuickEntry"
         style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/button"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPersonManual_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/addQuickEntry_editText" />
 
     <EditText
-        android:id="@+id/addPersonManual_editText"
+        android:id="@+id/addQuickEntry_editText"
         android:layout_width="249dp"
         android:layout_height="155dp"
         android:layout_marginTop="56dp"
         android:background="@null"
         android:ems="10"
-        android:hint="Add person manually"
+        android:hint="Pleas enter your note hear."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPeopleManual" />
-        <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
+        app:layout_constraintTop_toBottomOf="@+id/txtQuickEntry" />
+    <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
 
     <ProgressBar
-        android:id="@+id/pBarPersonM"
+        android:id="@+id/pBarQuickEntry"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:layout_marginBottom="48dp"
-        android:progress="49"
+        android:progress="90"
         android:progressBackgroundTint="@color/lightPurpel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

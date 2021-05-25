@@ -20,67 +20,72 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pBarOverall" />
 
-    <Button
-        android:id="@+id/btnOverall5"
-        style="@style/buttonStyle"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="76dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnOverall4"
-        app:layout_constraintTop_toBottomOf="@+id/textOverall"/>
-
-    <Button
-        android:id="@+id/btnOverall1"
-        style="@style/buttonStyle"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="76dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textOverall" />
-
-    <Button
-        android:id="@+id/btnOverall2"
-        style="@style/buttonStyle"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="84dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btnOverall1"
-        app:layout_constraintTop_toBottomOf="@+id/textOverall" />
-
-    <Button
+    <ImageButton
         android:id="@+id/btnOverall3"
         style="@style/buttonStyle"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btnOverall2"
+        android:backgroundTint="#94998B11"
+        android:src="@drawable/ic_face_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOverall2" />
+
+    <ImageButton
+        android:id="@+id/btnOverall5"
+        style="@style/buttonStyle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#94993111"
+        android:src="@drawable/ic_face_sad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOverall4" />
+
+    <ImageButton
+        android:id="@+id/btnOverall1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#94119966"
+        android:src="@drawable/ic_face_happy3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textOverall" />
 
-    <Button
+    <ImageButton
+        android:id="@+id/btnOverall2"
+        style="@style/buttonStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#94509911"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOverall1" />
+
+    <ImageButton
         android:id="@+id/btnOverall4"
         style="@style/buttonStyle"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toEndOf="@+id/btnOverall3"
-        app:layout_constraintTop_toBottomOf="@+id/textOverall" />
+        android:backgroundTint="#94995C11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOverall3" />
 
     <ProgressBar
         android:id="@+id/pBarOverall"
