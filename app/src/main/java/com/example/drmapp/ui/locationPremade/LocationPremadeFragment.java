@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,21 +57,16 @@ public class LocationPremadeFragment extends Fragment implements View.OnClickLis
     }
 
     public void onClick(View v) {
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         Fragment fragment = new Fragment();
         switch(v.getId()){
             case R.id.btnLocationOther:
-                fragment = new LocationManualFragment();
+                navController.navigate(R.id.action_locationPremadeFragment_to_locationManualFragment);
                 break;
             default:
-                fragment = new OverallFragment();
+                navController.navigate(R.id.action_locationPremadeFragment_to_overallFragment);
                 break;
         }
-
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
 
     }
 }

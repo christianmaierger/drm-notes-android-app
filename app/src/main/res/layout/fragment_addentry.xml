@@ -15,41 +15,14 @@
         android:layout_height="50dp"
         android:layout_marginStart="19dp"
         android:layout_marginLeft="19dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
+        android:layout_marginBottom="326dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Morning"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/timedate_button_latemorning"
-        app:layout_constraintTop_toBottomOf="@+id/timedate_button_noon" />
-
-    <Button
-        android:id="@+id/timedate_button_latemorning"
-        style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:background="@drawable/button"
-        android:text="Late Morning"
-        app:layout_constraintBaseline_toBaselineOf="@+id/timedate_button_morning"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/timedate_button_noon"
-        style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Noon"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/timedate_button_afternoon"
         app:layout_constraintTop_toBottomOf="@+id/timedate_button_evening" />
@@ -61,11 +34,14 @@
         android:layout_height="50dp"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
+        android:layout_marginBottom="324dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Afternoon"
-        app:layout_constraintBaseline_toBaselineOf="@+id/timedate_button_noon"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/timedate_button_morning"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timedate_button_night" />
 
     <Button
         android:id="@+id/timedate_button_evening"
@@ -80,6 +56,7 @@
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Evening"
+        app:layout_constraintBottom_toTopOf="@+id/timedate_button_morning"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/timedate_button_night"
         app:layout_constraintTop_toBottomOf="@+id/timedatetext" />
@@ -91,10 +68,14 @@
         android:layout_height="50dp"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="17dp"
         android:background="@drawable/button"
         android:text="Night"
-        app:layout_constraintBaseline_toBaselineOf="@+id/timedate_button_evening"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/timedate_button_afternoon"
+        app:layout_constraintEnd_toStartOf="@+id/timedate_button_evening"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timedatetext" />
 
     <TextView
         android:id="@+id/timedatetext"

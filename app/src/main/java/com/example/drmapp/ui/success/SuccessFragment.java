@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,23 +45,17 @@ public class SuccessFragment extends Fragment implements View.OnClickListener{
     }
 
     public void onClick(View v) {
-        Fragment fragment = new Fragment();
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
         switch(v.getId()){
             case R.id.btnAddEntry:
-                fragment = new AddEntryFragment();
+                navController.navigate(R.id.action_successFragment_to_nav_add_Entry);
                 break;
-                //TODO: Wo soll der Nutzer hin, wenn Eintrag gespeichert und kein Neuer erzeugt werden so??
             case R.id.btnSaveEntry:
-                fragment = new HomeFragment();
+                navController.navigate(R.id.action_successFragment_to_nav_home);
                 break;
             default:
                 break;
         }
-
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
     }
 }

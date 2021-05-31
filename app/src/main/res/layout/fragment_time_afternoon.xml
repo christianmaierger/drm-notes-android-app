@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addEntry_Time_LateMorning.TimeLateMorningFragment">
+    tools:context=".ui.addEntry_Time_Afternoon.TimeAfternoonFragment">
 
     <Button
         android:id="@+id/afternoon_option_1"

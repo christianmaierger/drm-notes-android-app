@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
@@ -60,11 +62,7 @@ public class TimeNightFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        Fragment fragment = new ActivitiesPremadeFragment();
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController.navigate(R.id.action_timeNightFragment_to_activitiesPremadeFragment);
     }
 }

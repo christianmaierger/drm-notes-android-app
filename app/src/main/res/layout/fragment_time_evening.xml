@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout4"
+    android:id="@+id/relativLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addEntry_Time_LateMorning.TimeLateMorningFragment">
+    tools:context=".ui.addEntry_Time_Evening.TimeEveningFragment">
 
     <Button
         android:id="@+id/evening_option_1"
