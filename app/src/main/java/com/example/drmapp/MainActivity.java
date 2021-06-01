@@ -10,10 +10,15 @@ import android.view.Menu;
 import com.example.drmapp.ui.EntryFragment;
 import com.example.drmapp.ui.EntryRecViewAdapter;
 import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.ui.feelingsManual.FeelingsManualFragment;
+import com.example.drmapp.ui.home.HomeFragment;
+import com.example.drmapp.ui.success.SuccessFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -66,14 +71,27 @@ public class MainActivity extends AppCompatActivity {
 
 
         // rechts unten der weiter button ist dieser fab, floating action button
-        FloatingActionButton fab = findViewById(R.id.fwd);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fwd = findViewById(R.id.fwd);
+        FloatingActionButton home = findViewById(R.id.backHome);
+
+
+        fwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, new SuccessFragment());
+                transaction.commit();
+
+                /*
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                        .setAction("Action", null).show();*/
             }
         });
+
+
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
