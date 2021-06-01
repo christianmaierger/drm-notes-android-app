@@ -33,6 +33,6 @@ public class ReceiverForNotifications extends BroadcastReceiver {
         builder.setContentIntent(contentIntent);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(1, builder.build());
+        notificationManager.notify(value, builder.build());
     }
 }

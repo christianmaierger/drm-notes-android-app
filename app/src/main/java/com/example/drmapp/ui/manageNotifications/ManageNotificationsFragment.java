@@ -56,7 +56,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     private Button timeTextButton1;
     private Button timeTextButton2;
     private Button timeTextButton3;
-    // weil oft temporär buttons die die Zeit anzeigen/changen oder solche, die eine time deleten
+    // weil oft buttons die die Zeit anzeigen/changen oder solche, die eine Time deleten,
     // temporär gone gesetzt werden müssen, um dem TimePicker platz zu machen, halte ich
     // deren VisibilityStates
     private int visibilityStateOfTimeButton1;
@@ -70,15 +70,13 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     int visibilityStateOfDeleteTimeButton2;
     int visibilityStateOfDeleteTimeButton3;
 
-    private Group timePickerGroup;
     // Zweite TimePicker Group um eine einfache Möglichkeit zu haben einen TimePicker für das neu
-    // Erstellen von times zu haben und einen für das Changen, wegen unterschiedlicher FUnktionalität
+    // Erstellen von times zu haben und einen für das Changen, wegen unterschiedlicher Funktionalität
+    private Group timePickerGroup;
     private Group timePickerGroup2;
+
     private FloatingActionButton addNotificationTimeButton;
     private TimePicker picker;
-    private Bundle saveInstanceState;
-
-
 
 
     public View getRoot() {
@@ -87,16 +85,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-      /*  if (savedInstanceState == null) {
-
-        } else {
-
-
-            visibilityStateOfTimeButton2= savedInstanceState.getInt("visibilityStateOfTimeButton2");
-
-        }
-*/
 
 
         mViewModel = new ViewModelProvider(this).get(ManageNotificationsViewModel.class);
@@ -112,8 +100,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         timeTextButton2 = root.findViewById(R.id.time2);
         timeTextButton3 = root.findViewById(R.id.time3);
 
-
-        //Da die Funktionalitäten für diese buttons jweils ähnlich sind wird der "KlassenHandler"
+        //Da die Funktionalitäten für diese buttons jeweils ähnlich sind, wird der "KlassenHandler",
+        // wird von der Klasse implementiert,
         // eingesetzt um weniger Code zu kopieren und dies besser in Methode abhandeln zu können
         timeTextButton1.setOnClickListener(this);
         timeTextButton2.setOnClickListener(this);
@@ -127,13 +115,12 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         deleteButton2.setOnClickListener(this);
         deleteButton3.setOnClickListener(this);
 
-        // Die beiden Groups für den TimePicker der erscheint, wenn man times added und der
-        // der erscheint, wenn man times changed
+        // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
         timePickerGroup = root.findViewById(R.id.timePickerGroup);
         timePickerGroup2 = root.findViewById(R.id.timePickerGroup2);
         addNotificationTimeButton = root.findViewById(R.id.addTimePicker);
 
-        //time picker in 24 h modus setzen, was leider nicht im XML direkt geht
+        // Beide time picker in 24 h Modus setzen, was leider nicht im XML direkt geht
         picker = root.findViewById(R.id.simpleTimePicker);
         picker.setIs24HourView(true);
         TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2);
@@ -149,7 +136,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         bindTextViewAndTextFromModel(timeTextButton2, mViewModel.getTimeText2());
         bindTextViewAndTextFromModel(timeTextButton3, mViewModel.getTimeText3());
 
-        mViewModel.getTimeText1().setValue(getContext().getString(R.string.noTimePickedText));
+       // mViewModel.getTimeText1().setValue(getString(R.string.noTimePickedText));
 
         FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
 
@@ -161,128 +148,132 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
         LinkedList<String> notificationTimes = retrieveNotificationTimesFromFile();
 
-
-            if(notificationTimes.size()>0) {
-                if (notificationTimes.get(0)!=null && notificationTimes.get(0)!="") {
-                    mViewModel.getTimeText1().setValue("Selected Date: " + notificationTimes.get(0));
-                    mViewModel.setTimeAsString1(notificationTimes.get(0));
-                    timeTextButton1.setVisibility(View.VISIBLE);
-                    visibilityStateOfTimeButton1= View.VISIBLE;
-                    deleteButton1.setVisibility(View.VISIBLE);
-                    visibilityStateOfDeleteTimeButton1=View.VISIBLE;
-                    if(notificationTimes.get(0).equals(getString(R.string.noTimePickedText))) {
-                        deleteButton1.setVisibility(View.GONE);
-                        visibilityStateOfDeleteTimeButton1=View.GONE;
-                        mViewModel.getTimeText1().setValue(getString(R.string.noTimePickedText));
-                        mViewModel.setTimeAsString1(getString(R.string.noTimePickedText));
-                    }
-                }
-                if (notificationTimes.size()>1 && notificationTimes.get(1)!=null && notificationTimes.get(1)!="" && notificationTimes.get(1)!=getString(R.string.noTimePickedText)) {
-                    mViewModel.getTimeText2().setValue("Selected Date: " + notificationTimes.get(1));
-                    mViewModel.setTimeAsString2(notificationTimes.get(1));
-                    timeTextButton2.setVisibility(View.VISIBLE);
-                    visibilityStateOfTimeButton2= View.VISIBLE;
-                    deleteButton2.setVisibility(View.VISIBLE);
-                    if(notificationTimes.get(1).equals(getString(R.string.noTimePickedText))) {
-                        deleteButton1.setVisibility(View.GONE);
-                        visibilityStateOfDeleteTimeButton1=View.GONE;
-                        mViewModel.getTimeText2().setValue(getString(R.string.noTimePickedText));
-                        mViewModel.setTimeAsString2(getString(R.string.noTimePickedText));
-                    }
-                }
-                if (notificationTimes.size()>2 && notificationTimes.get(2)!=null && notificationTimes.get(2)!="" && notificationTimes.get(2)!=getString(R.string.noTimePickedText)) {
-                    mViewModel.getTimeText1().setValue("Selected Date: " + notificationTimes.get(2));
-                    mViewModel.setTimeAsString3(notificationTimes.get(2));
-                    timeTextButton3.setVisibility(View.VISIBLE);
-                    visibilityStateOfTimeButton3= View.VISIBLE;
-                    deleteButton3.setVisibility(View.VISIBLE);
-                    if(notificationTimes.get(2).equals(getString(R.string.noTimePickedText))) {
-                        deleteButton2.setVisibility(View.GONE);
-                        visibilityStateOfDeleteTimeButton1=View.GONE;
-                        mViewModel.getTimeText3().setValue(getString(R.string.noTimePickedText));
-                        mViewModel.setTimeAsString3(getString(R.string.noTimePickedText));
-                    }
-                }
-
-            }
-
-        //todo method that fills the buttonTexts with strings if they are there and restores gui to show
-        // buttons with times
+        restoreStateOfViewWithSavedNotificationTimes(notificationTimes);
 
         return root;
     }
 
+    private void restoreStateOfViewWithSavedNotificationTimes(LinkedList<String> notificationTimes) {
+
+               if (notificationTimes.get(0)==null) {
+                    timeTextButton1.setVisibility(View.GONE);
+                    visibilityStateOfTimeButton1= View.GONE;
+                    deleteButton1.setVisibility(View.GONE);
+                    visibilityStateOfDeleteTimeButton1=View.GONE;
+                }
+
+            if (notificationTimes.get(0)!=null && notificationTimes.get(0)!="" && !notificationTimes.get(0).equals(getString(R.string.noTimePickedText))) {
+                mViewModel.getTimeText1().setValue("Selected Date: " + notificationTimes.get(0));
+                mViewModel.setTimeAsString1(notificationTimes.get(0));
+                timeTextButton1.setVisibility(View.VISIBLE);
+                visibilityStateOfTimeButton1= View.VISIBLE;
+                deleteButton1.setVisibility(View.VISIBLE);
+                visibilityStateOfDeleteTimeButton1=View.VISIBLE;
+            } else if(notificationTimes.get(0)!=null && notificationTimes.get(0).equals(getString(R.string.noTimePickedText))) {
+            deleteButton1.setVisibility(View.GONE);
+            visibilityStateOfDeleteTimeButton1=View.GONE;
+            mViewModel.getTimeText1().setValue(getString(R.string.noTimePickedText));
+            mViewModel.setTimeAsString1(getString(R.string.noTimePickedText));
+        }
+            if (notificationTimes.get(1)!=null && !notificationTimes.get(1).equals("") && !notificationTimes.get(1).equals(getString(R.string.noTimePickedText))) {
+                mViewModel.getTimeText2().setValue("Selected Date: " + notificationTimes.get(1));
+                mViewModel.setTimeAsString2(notificationTimes.get(1));
+                timeTextButton2.setVisibility(View.VISIBLE);
+                visibilityStateOfTimeButton2= View.VISIBLE;
+                deleteButton2.setVisibility(View.VISIBLE);
+            } else if(notificationTimes.get(1)!=null && notificationTimes.get(1).equals(getString(R.string.noTimePickedText))) {
+            deleteButton2.setVisibility(View.GONE);
+            visibilityStateOfDeleteTimeButton2=View.GONE;
+            mViewModel.getTimeText2().setValue(getString(R.string.noTimePickedText));
+            mViewModel.setTimeAsString2(getString(R.string.noTimePickedText));
+
+        }
+            if (notificationTimes.get(2)!=null && !notificationTimes.get(2).equals("") && !notificationTimes.get(2).equals(getString(R.string.noTimePickedText))) {
+                mViewModel.getTimeText3().setValue("Selected Date: " + notificationTimes.get(2));
+                mViewModel.setTimeAsString3(notificationTimes.get(2));
+                timeTextButton3.setVisibility(View.VISIBLE);
+                visibilityStateOfTimeButton3= View.VISIBLE;
+                deleteButton3.setVisibility(View.VISIBLE);
+            } else if(notificationTimes.get(2)!=null && notificationTimes.get(2).equals(getString(R.string.noTimePickedText))) {
+            deleteButton3.setVisibility(View.GONE);
+            visibilityStateOfDeleteTimeButton3=View.GONE;
+            mViewModel.getTimeText3().setValue(getString(R.string.noTimePickedText));
+            mViewModel.setTimeAsString3(getString(R.string.noTimePickedText));
+        }
+
+        }
+
+
+
+    /**
+     *
+     * @return die gespeicherten NotificationTimes
+     */
     private LinkedList<String> retrieveNotificationTimesFromFile() {
         LinkedList<String> notificationTimes = new LinkedList<>();
-        String contents = "";
-        FileInputStream fis = null;
-        try {
-            fis = getContext().openFileInput("test");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (fis!=null) {
 
+        try (FileInputStream fis = getContext().openFileInput("notificationTimes");) {
+            if (fis!=null) {
+                try (ObjectInputStream ois = new ObjectInputStream(fis);){
 
-            try {
-                ObjectInputStream  ois = new ObjectInputStream(fis);
                     notificationTimes = (LinkedList<String>) ois.readObject();
-                   ois.close();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+
+                } catch (IOException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-            }
-        return notificationTimes;
-    }
-
-
-    public void writeFileOnInternalStorage(Context mcoContext, String filename, List<String> fileContents) {
-
-
-        try (FileOutputStream fos = getContext().openFileOutput(filename, Context.MODE_PRIVATE)) {
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ObjectOutputStream out = null;
-
-
-            try {
-                out = new ObjectOutputStream(bos);
-                out.writeObject(fileContents);
-                out.flush();
-                byte[] yourBytes = bos.toByteArray();
-
-
-                fos.write(yourBytes);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return notificationTimes;
     }
 
-// Seit Android 3.0 wohl der beste und sicherste "Ort" um persistente Daten zu speichern, mein kleines Zeug vielleicht erstmal per File Api
+    /**
+     *
+     *
+     * @param filename the name of the file to be stred/overwritten
+     * @param fileContents the list with times to be stored
+     */
+    public void writeFileOnInternalStorage(String filename, List<String> fileContents) {
+
+            try (FileOutputStream fos = getContext().openFileOutput(filename, Context.MODE_PRIVATE);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                ObjectOutputStream out = new ObjectOutputStream(bos);) {
+
+                    out.writeObject(fileContents);
+                    out.flush();
+                    byte[] yourBytes = bos.toByteArray();
+                    fos.write(yourBytes);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+// Seit Android 3.0 wohl der beste und sicherste "Ort" um persistente Daten zu speichern
+    // Hier werden die ausgewählten Zeichen in ein persistentes File geschrieben
     @Override
     public void onStop() {
         super.onStop();
         List<String> notificationTimes = new LinkedList<String>();
         if (mViewModel.getTimeAsString1()!=null && mViewModel.getTimeAsString1()!="") {
             notificationTimes.add(mViewModel.getTimeAsString1());
+        } else {
+            notificationTimes.add(null);
         }
-        if (mViewModel.getTimeAsString2()!=null && mViewModel.getTimeAsString1()!="") {
+        if (mViewModel.getTimeAsString2()!=null && mViewModel.getTimeAsString2()!="") {
             notificationTimes.add(mViewModel.getTimeAsString2());
-        }
+        }  else {
+        notificationTimes.add(null);
+    }
         if (mViewModel.getTimeAsString3()!=null && mViewModel.getTimeAsString3()!="") {
             notificationTimes.add(mViewModel.getTimeAsString3());
+        } else {
+            notificationTimes.add(null);
         }
-
-
-        writeFileOnInternalStorage(getContext(), "test", notificationTimes);
+        writeFileOnInternalStorage("notificationTimes", notificationTimes);
 
     }
 
@@ -353,8 +344,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         visibilityStateOfDeleteTimeButton2 = deleteButton2.getVisibility();
         visibilityStateOfDeleteTimeButton3 = deleteButton3.getVisibility();
 
-        System.out.println(getVisibilityStateOfTimeButton1());
-        System.out.println(visibilityStateOfTimeButton2);
 
         // here listener is set to Submit button below time picker and gets the selected time to store it in ViewModel
         Button submitTime = (Button) root.findViewById(R.id.getTime);
@@ -583,15 +572,16 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         // try with hardcoded link to MainActivity
         Intent intent = new Intent(this.getContext(), ReceiverForNotifications.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-       // versuche hier im Extra des Intents etwas an den reciever zu übergeben, scheint nicht zu gehen
+       // versuche hier im Extra des Intents etwas an den reciever zu übergeben, scheint nicht wirklich zu gehen
         intent.putExtra("ButtonNumber", timeButtonNumber);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, 0);
         AlarmManager alarmMgr = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
 
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
-                AlarmManager.INTERVAL_DAY, pendingIntent);
-}
+
+            alarmMgr.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+1000, pendingIntent);
+
+    }
 
     /**
      * For the view tapped by the user, in this case one of the three time buttons to change the time
