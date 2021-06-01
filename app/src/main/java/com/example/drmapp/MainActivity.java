@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
          *
          * */
 
-     entryRecyclerView = findViewById(R.id.entryRecyclerView);
-       // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
+        entryRecyclerView = findViewById(R.id.entryRecyclerView);
+        // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
        /*if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             EntryFragment entryRecyclerView = new EntryFragment();
@@ -65,31 +65,9 @@ public class MainActivity extends AppCompatActivity {
         // TODO: In Activity OnClickListener -> entries (position itemCount, setActivity "Eating/Drinking"
 
 
-       //entryRecyclerView.setAdapter(adapter);
+        //entryRecyclerView.setAdapter(adapter);
         //Legt die Ansicht fest! (Gibt auch Grid etc.)
-      // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-        // rechts unten der weiter button ist dieser fab, floating action button
-        FloatingActionButton fwd = findViewById(R.id.fwd);
-        FloatingActionButton home = findViewById(R.id.backHome);
-
-
-        fwd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_host_fragment, new SuccessFragment());
-                transaction.commit();
-
-                /*
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-            }
-        });
-
-
+        // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -107,8 +85,40 @@ public class MainActivity extends AppCompatActivity {
 
         // channel needs to be created right at app start
         createNotificationChannel();
-    }
 
+
+        // rechts unten der weiter button ist dieser fab, floating action button
+        FloatingActionButton fwd = findViewById(R.id.fwd);
+        FloatingActionButton home = findViewById(R.id.backHome);
+
+
+        fwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                /*FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, new SuccessFragment());
+                transaction.commit();*/
+
+                navController.navigate(R.id.nav_add_Entry);
+
+                /*
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                navController.navigate(R.id.nav_home);
+
+            }
+        });
+
+    }
 
     // create Notification Channel that is needed since Android 8.0 to send notifications
     private void createNotificationChannel() {
