@@ -41,6 +41,7 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
         Button button_4 = (Button) root.findViewById(R.id.btnStrangers);
         Button button_5 = (Button) root.findViewById(R.id.btnFamily);
         Button button_6 = (Button) root.findViewById(R.id.btnNoOne);
+        Button button_7 = (Button) root.findViewById(R.id.btnPartner);
 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
@@ -48,6 +49,7 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
         button_4.setOnClickListener(this);
         button_5.setOnClickListener(this);
         button_6.setOnClickListener(this);
+        button_7.setOnClickListener(this);
 
         return root;
         }

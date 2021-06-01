@@ -38,7 +38,6 @@ public class TimeNightFragment extends Fragment implements View.OnClickListener 
                 new ViewModelProvider(this).get(TimeNightViewModel.class);
         View root = inflater.inflate(R.layout.fragment_time_night, container, false);
 
-        Button button_1 = (Button) root.findViewById(R.id.night_option_1);
         Button button_2 = (Button) root.findViewById(R.id.night_option_2);
         Button button_3 = (Button) root.findViewById(R.id.night_option_3);
         Button button_4 = (Button) root.findViewById(R.id.night_option_4);
@@ -48,7 +47,6 @@ public class TimeNightFragment extends Fragment implements View.OnClickListener 
         Button button_8 = (Button) root.findViewById(R.id.night_option_8);
 
 
-        button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
         button_3.setOnClickListener(this);
         button_4.setOnClickListener(this);
