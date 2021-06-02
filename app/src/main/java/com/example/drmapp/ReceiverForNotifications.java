@@ -16,17 +16,16 @@ import java.util.concurrent.TimeUnit;
 public class ReceiverForNotifications extends BroadcastReceiver {
 
 
-// debugger shows this is not called :(
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        // die ButtonNummern dienen als requestCodes für die PendingIntents, so kann man immer die
+        // zu einem Button gehörigen Alarme ändern/löschen
         int value = intent.getIntExtra("ButtonNumber", 0);
         long time = intent.getLongExtra("time", 0);
-        String firstAlarmInAlarmChain = intent.getStringExtra("first");
 
-        System.out.println("time aus extra ist " + time);
-
-            time = time +60000;
+        // 86,400,000 milis entsprechen genau 24 h
+            time = time +86400000;
 
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "1")
@@ -38,33 +37,28 @@ public class ReceiverForNotifications extends BroadcastReceiver {
                 // when flag is set notification is automatically removed after tap
                 .setAutoCancel(true);
 
+
         String tm = String.format("%d min, %d sec",
                 TimeUnit.MILLISECONDS.toMinutes(time),
                 TimeUnit.MILLISECONDS.toSeconds(time) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time))
         );
-
         System.out.println(tm);
+
 
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
                 new Intent(context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
-
-
         builder.setContentIntent(contentIntent);
 
 
-        // Create an explicit intent for an Activity in your app
-        // try with hardcoded link to MainActivity
         Intent intentNew = new Intent(context, ReceiverForNotifications.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-        // der request code scheint identifier für die intents zu sein, übergebe ich mit an getBroadcast
+        // der request code dient als identifier für die intents, übergebe ich mit an getBroadcast
         intentNew.putExtra("ButtonNumber", value);
-        intentNew.putExtra("first", "further");
-
+        // die neue Zeit wird an den nächsten Receiver übergen, so dass es immer 24 h mehr sind in
+        // einer "Alarm Chain" - durch andere Wertke addieren zu time kann man es auch z.b. stündlich machen
         intentNew.putExtra("time", time);
-
-
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, value, intentNew, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -72,7 +66,7 @@ public class ReceiverForNotifications extends BroadcastReceiver {
 
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                // für den test immer 30 sek später
+
                 alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
                 System.out.println("Alarm gesetzt");
             }

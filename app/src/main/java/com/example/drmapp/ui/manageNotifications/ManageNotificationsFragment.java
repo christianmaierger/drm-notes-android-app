@@ -576,16 +576,29 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
     public void buildAndSetChangeOrDeleteNotification(@Nullable Calendar time, int timeButtonNumber, boolean delete) {
 
-        // Create an explicit intent for an Activity in your app
-        // try with hardcoded link to MainActivity
         Intent intent = new Intent(this.getActivity(), ReceiverForNotifications.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-       // versuche hier im Extra des Intents etwas an den reciever zu übergeben, scheint nicht wirklich zu gehen
+
         // der request code scheint identifier für die intents zu sein, übergebe ich mit an getBroadcast
         intent.putExtra("ButtonNumber", timeButtonNumber);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), timeButtonNumber, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmMgr = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
 
+
+        long currentTime = System.currentTimeMillis();
+
+
+
+        if(delete==false) {
+            if(currentTime>time.getTimeInMillis()) {
+                time.add(Calendar.DATE, 1);
+            }
+            // Bei neuem Alarm oder Änderung Zeit mitgeben, damit darauf aufbauen ein neuer Alarm in 24 h
+            // gesetzt werden kann
+        intent.putExtra("time", time.getTimeInMillis());
+        }
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), timeButtonNumber,
+                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmMgr = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
 
             if(delete==false) {
                 alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
@@ -594,7 +607,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 alarmMgr.cancel(pendingIntent);
                 System.out.println("Alarm gelöscht");
             }
-
     }
 
     /**
