@@ -424,7 +424,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                    boolean time3IsLastVisibleTimeButton =time3Visible && time3TextisNotTime;
 
 
-                   if (  timeTextButton1.getVisibility() == View.GONE || (time1IsLastVisibleTimeButton)  )
+                   if (  (timeTextButton1.getVisibility() == View.GONE || (time1IsLastVisibleTimeButton) ) && !time2IsLastVisibleTimeButton && !time3IsLastVisibleTimeButton)
                         {
                        mViewModel.getTimeText1().setValue("Selected Date: " + hour + ":" + minute);
                        timeTextButton1.setVisibility(View.VISIBLE);
@@ -435,7 +435,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                             mViewModel.setTimeAsString1(hour+":"+minute);
 
                             buildAndSetChangeOrDeleteNotification(time, 1, false);
-                   } else if  (timeTextButton2.getVisibility() == View.GONE || (time2IsLastVisibleTimeButton)  )  {
+                   } else if  ( (timeTextButton2.getVisibility() == View.GONE || (time2IsLastVisibleTimeButton)) && !time1IsLastVisibleTimeButton && !time3IsLastVisibleTimeButton  )  {
                        mViewModel.getTimeText2().setValue("Selected Date: " + hour + ":" + minute);
                        timeTextButton2.setVisibility(View.VISIBLE);
                        visibilityStateOfTimeButton2 = timeTextButton2.getVisibility();
@@ -445,10 +445,10 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                        mViewModel.setTimeAsString2(hour+":"+minute);
 
                        buildAndSetChangeOrDeleteNotification(time, 2, false);
-                   } else if ( timeTextButton3.getVisibility() == View.GONE  || (time3IsLastVisibleTimeButton) ) {
+                   } else if ( (timeTextButton3.getVisibility() == View.GONE  || (time3IsLastVisibleTimeButton) ) && !time1IsLastVisibleTimeButton && !time2IsLastVisibleTimeButton) {
                        mViewModel.getTimeText3().setValue("Selected Date: " + hour + ":" + minute);
                        timeTextButton3.setVisibility(View.VISIBLE);
-                      visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
+                       visibilityStateOfTimeButton3 = timeTextButton3.getVisibility();
                        deleteButton3.setVisibility(View.VISIBLE);
                        visibilityStateOfDeleteTimeButton3 = deleteButton3.getVisibility();
 
