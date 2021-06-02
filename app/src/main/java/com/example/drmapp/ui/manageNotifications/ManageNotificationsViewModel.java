@@ -14,8 +14,7 @@ import java.util.List;
 public class ManageNotificationsViewModel extends ViewModel {
 
     private boolean addTimeButtonpressed;
-    // dieser counter gibt immer an, welcher timeText durch Auswahl gefüllt werden soll,
-    // wenn noch nicht alle Slots befüllt sind, ab dann muss ein ausgefüllter geändert werden
+    private boolean allTimesSelected;
     private MutableLiveData<String> buttonText;
     private MutableLiveData<String> timeText1;
     private MutableLiveData<String> timeText2;
@@ -86,5 +85,13 @@ public class ManageNotificationsViewModel extends ViewModel {
 
     public void setAddTimeButtonpressed(boolean addTimeButtonpressed) {
         this.addTimeButtonpressed = addTimeButtonpressed;
+    }
+
+    public boolean isAllTimesSelected() {
+        return allTimesSelected;
+    }
+
+    public void setAllTimesSelected(boolean allTimesSelected) {
+        this.allTimesSelected = allTimesSelected;
     }
 }
