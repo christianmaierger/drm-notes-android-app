@@ -104,11 +104,11 @@ public class Entry {
         ArrayList<Entry> entries = new ArrayList<Entry>();
 
                entries.add(new Entry("05/05/21", "07:00", "Eating/drinking", "happy", 1, 1, "Pancakes are good"));
-                 entries.add(new Entry("05/05/21", "08:00", "Working/studying", "normal", 1, 1, "Laptop is loud"));
-        entries.add(new Entry("05/05/21", "10:00", "Eating/drinking", "sad", 1, 1, "Coffee tasted horrible"));
-        entries.add(new Entry("05/05/21", "13:00", "Hobby", "happy", 1, 1, "Took a walk"));
-        entries.add(new Entry("05/05/21", "18:00", "Care work", "angry", 1, 1, "Dog did not like the bath"));
-        entries.add(new Entry("05/05/21", "22:00", "Leisure Time", "happy", 1, 1, "Netflix"));
+                 entries.add(new Entry("05/05/21", "08:00", "Working/studying", "normal", 2, 2, "Laptop is loud"));
+        entries.add(new Entry("05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, "Coffee tasted horrible"));
+        entries.add(new Entry("05/05/21", "13:00", "Hobby", "surprised", 4, 4, "Took a walk"));
+        entries.add(new Entry("05/05/21", "18:00", "Care work", "angry", 5, 5, "Dog did not like the bath"));
+        entries.add(new Entry("05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, "Netflix did not work"));
 
         //adapter.setEntries(entries);
 

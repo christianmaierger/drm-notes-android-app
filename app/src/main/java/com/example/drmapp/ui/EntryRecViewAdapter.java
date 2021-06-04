@@ -86,26 +86,70 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         textViewThoughts.setText(ent.getThoughts());
         ImageView imageViewEmoji = holder.emoji;
         ImageView imageViewSam1 = holder.sam1;
-        imageViewSam1.setImageResource(R.drawable.sam11);
         ImageView imageViewSam2 = holder.sam2;
         imageViewSam2.setImageResource(R.drawable.sam21);
 
 
         switch (ent.getEmoji()){
-            case ent.getEmoji().equals("happy"):
+            case "happy":
                 imageViewEmoji.setImageResource(R.drawable.smiling);
+                break;
             case "sad":
                 imageViewEmoji.setImageResource(R.drawable.crying);
+                break;
+            case "angry":
+                imageViewEmoji.setImageResource(R.drawable.angry);
+                break;
+            case "anxious":
+                imageViewEmoji.setImageResource(R.drawable.anxious);
+                break;
+            case "annoyed":
+                imageViewEmoji.setImageResource(R.drawable.annoyed);
+                break;
+            case "surprised":
+                imageViewEmoji.setImageResource(R.drawable.surprised);
                 break;
 
         }
 
 
+        switch (ent.getSam1()){
+            case 1:
+                imageViewSam1.setImageResource(R.drawable.sam21);
+                break;
+            case 2:
+                imageViewSam1.setImageResource(R.drawable.sam22);
+                break;
+            case 3:
+                imageViewSam1.setImageResource(R.drawable.sam23);
+                break;
+            case 4:
+                imageViewSam1.setImageResource(R.drawable.sam24);
+                break;
+            case 5:
+                imageViewSam1.setImageResource(R.drawable.sam25);
+                break;
 
+        }
 
+        switch (ent.getSam2()){
+            case 1:
+                imageViewSam2.setImageResource(R.drawable.sam31);
+                break;
+            case 2:
+                imageViewSam2.setImageResource(R.drawable.sam32);
+                break;
+            case 3:
+                imageViewSam2.setImageResource(R.drawable.sam33);
+                break;
+            case 4:
+                imageViewSam2.setImageResource(R.drawable.sam34);
+                break;
+            case 5:
+                imageViewSam2.setImageResource(R.drawable.sam35);
+                break;
 
-
-
+        }
 
 
 
