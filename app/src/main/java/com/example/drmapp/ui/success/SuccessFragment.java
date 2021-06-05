@@ -21,6 +21,7 @@ import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.addEntry.AddEntryFragment;
 import com.example.drmapp.ui.home.HomeFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class SuccessFragment extends Fragment implements View.OnClickListener{
 
@@ -40,6 +41,10 @@ public class SuccessFragment extends Fragment implements View.OnClickListener{
 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
+
+        //Entfernen des Floating Action Buttons für das Speichern eines Eintrags
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.GONE);
 
         return root;
     }

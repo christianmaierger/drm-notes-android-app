@@ -91,34 +91,24 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fwd = findViewById(R.id.fwd);
         FloatingActionButton home = findViewById(R.id.backHome);
 
-
         fwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                navController.navigate(R.id.nav_success);
 
-                /*FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_host_fragment, new SuccessFragment());
-                transaction.commit();*/
-
-                navController.navigate(R.id.nav_add_Entry);
-
-                /*
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
             }
         });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 navController.navigate(R.id.nav_home);
-
             }
         });
 
     }
+
+
 
     // create Notification Channel that is needed since Android 8.0 to send notifications
     private void createNotificationChannel() {

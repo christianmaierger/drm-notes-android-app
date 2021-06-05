@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class EntryFragment extends Fragment {
@@ -32,6 +33,11 @@ public class EntryFragment extends Fragment {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(entryRecViewAdapter);
+
+        //Entfernen des Floating Action Buttons für das Speichern eines Eintrags
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.GONE);
+
         return view;
 
 
