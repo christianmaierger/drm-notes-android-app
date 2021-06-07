@@ -19,7 +19,6 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.locationPremade.LocationPremadeFragment;
 import com.example.drmapp.ui.overall.OverallFragment;
 
 
@@ -45,7 +44,7 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
 
         public void onClick(View v) {
                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-                navController.navigate(R.id.action_personManualFragment_to_locationPremadeFragment);
+                navController.navigate(R.id.action_personManualFragment_to_emojiPremadeFragment);
 
         }
 }

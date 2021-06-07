@@ -22,17 +22,8 @@
         android:label="@string/menu_add_Entry"
         tools:layout="@layout/fragment_addentry" >
         <action
-            android:id="@+id/action_nav_add_Entry_to_timeMorningFragment"
-            app:destination="@id/timeMorningFragment" />
-        <action
-            android:id="@+id/action_nav_add_Entry_to_timeAfternoonFragment"
-            app:destination="@id/timeAfternoonFragment" />
-        <action
-            android:id="@+id/action_nav_add_Entry_to_timeEveningFragment2"
-            app:destination="@id/timeEveningFragment2" />
-        <action
-            android:id="@+id/action_nav_add_Entry_to_timeNightFragment"
-            app:destination="@id/timeNightFragment" />
+            android:id="@+id/action_nav_add_Entry_to_activitiesPremadeFragment"
+            app:destination="@id/activitiesPremadeFragment" />
     </fragment>
 
     <fragment
@@ -40,42 +31,6 @@
         android:name="com.example.drmapp.ui.manageNotifications.ManageNotificationsFragment"
         android:label="@string/menu_manage_notifications"
         tools:layout="@layout/fragment_manage_notifications" />
-    <fragment
-        android:id="@+id/timeNightFragment"
-        android:name="com.example.drmapp.ui.addEntry_Time_Night.TimeNightFragment"
-        android:label="fragment_time_night"
-        tools:layout="@layout/fragment_time_night" >
-        <action
-            android:id="@+id/action_timeNightFragment_to_activitiesPremadeFragment"
-            app:destination="@id/activitiesPremadeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/timeMorningFragment"
-        android:name="com.example.drmapp.ui.addEntry_Time_Morning.TimeMorningFragment"
-        android:label="fragment_time_morning"
-        tools:layout="@layout/fragment_time_morning" >
-        <action
-            android:id="@+id/action_timeMorningFragment_to_activitiesPremadeFragment"
-            app:destination="@id/activitiesPremadeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/timeEveningFragment2"
-        android:name="com.example.drmapp.ui.addEntry_Time_Evening.TimeEveningFragment"
-        android:label="fragment_time_evening"
-        tools:layout="@layout/fragment_time_evening" >
-        <action
-            android:id="@+id/action_timeEveningFragment2_to_activitiesPremadeFragment"
-            app:destination="@id/activitiesPremadeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/timeAfternoonFragment"
-        android:name="com.example.drmapp.ui.addEntry_Time_Afternoon.TimeAfternoonFragment"
-        android:label="fragment_time_afternoon"
-        tools:layout="@layout/fragment_time_afternoon" >
-        <action
-            android:id="@+id/action_timeAfternoonFragment_to_activitiesPremadeFragment"
-            app:destination="@id/activitiesPremadeFragment" />
-    </fragment>
     <fragment
         android:id="@+id/addEntrySplitFragment"
         android:name="com.example.drmapp.ui.addEntry_Split.AddEntrySplitFragment"
@@ -145,8 +100,8 @@
         android:label="PersonManualFragment"
         tools:layout="@layout/fragment_people_manual" >
         <action
-            android:id="@+id/action_personManualFragment_to_locationPremadeFragment"
-            app:destination="@id/locationPremadeFragment" />
+            android:id="@+id/action_personManualFragment_to_emojiPremadeFragment"
+            app:destination="@id/emojiPremadeFragment" />
     </fragment>
     <fragment
         android:id="@+id/personPremadeFragment"
@@ -157,29 +112,8 @@
             android:id="@+id/action_personPremadeFragment_to_personManualFragment"
             app:destination="@id/personManualFragment" />
         <action
-            android:id="@+id/action_personPremadeFragment_to_locationPremadeFragment"
-            app:destination="@id/locationPremadeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/locationPremadeFragment"
-        android:name="com.example.drmapp.ui.locationPremade.LocationPremadeFragment"
-        android:label="LocationPremadeFragment"
-        tools:layout="@layout/fragment_location_premade" >
-        <action
-            android:id="@+id/action_locationPremadeFragment_to_locationManualFragment"
-            app:destination="@id/locationManualFragment" />
-        <action
-            android:id="@+id/action_locationPremadeFragment_to_overallFragment"
-            app:destination="@id/overallFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/locationManualFragment"
-        android:name="com.example.drmapp.ui.locationManual.LocationManualFragment"
-        android:label="LocationManualFragment"
-        tools:layout="@layout/fragment_location_manual" >
-        <action
-            android:id="@+id/action_locationManualFragment_to_overallFragment"
-            app:destination="@id/overallFragment" />
+            android:id="@+id/action_personPremadeFragment_to_emojiPremadeFragment"
+            app:destination="@id/emojiPremadeFragment" />
     </fragment>
     <fragment
         android:id="@+id/overallFragment"
@@ -211,6 +145,25 @@
         <action
             android:id="@+id/action_successFragment_to_nav_add_Entry"
             app:destination="@id/nav_add_Entry" />
+    </fragment>
+    <fragment
+        android:id="@+id/emojiManualFragment"
+        android:name="com.example.drmapp.ui.emojiManual.EmojiManualFragment"
+        android:label="EmojiManualFragment" >
+        <action
+            android:id="@+id/action_emojiManualFragment_to_overallFragment"
+            app:destination="@id/overallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emojiPremadeFragment"
+        android:name="com.example.drmapp.ui.emojiPremade.EmojiPremadeFragment"
+        android:label="EmojiPremadeFragment" >
+        <action
+            android:id="@+id/action_emojiPremadeFragment_to_overallFragment"
+            app:destination="@id/overallFragment" />
+        <action
+            android:id="@+id/action_emojiPremadeFragment_to_emojiManualFragment"
+            app:destination="@id/emojiManualFragment" />
     </fragment>
 
 

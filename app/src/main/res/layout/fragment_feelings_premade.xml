@@ -158,7 +158,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnBored" />
 
     <ProgressBar
-        android:id="@+id/pBarOverall"
+        android:id="@+id/pBarDominance"
         style="?android:attr/progressBarStyleHorizontal"
         android:progress="37"
         android:layout_width="0dp"

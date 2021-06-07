@@ -19,10 +19,6 @@ import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.addEntry_Time_Afternoon.TimeAfternoonFragment;
-import com.example.drmapp.ui.addEntry_Time_Evening.TimeEveningFragment;
-import com.example.drmapp.ui.addEntry_Time_Morning.TimeMorningFragment;
-import com.example.drmapp.ui.addEntry_Time_Night.TimeNightFragment;
 
 public class AddEntryFragment extends Fragment implements View.OnClickListener {
 
@@ -53,16 +49,16 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         switch (v.getId()) {
             case R.id.timedate_button_morning:
-                navController.navigate(R.id.action_nav_add_Entry_to_timeMorningFragment);
+                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
                 break;
             case R.id.timedate_button_afternoon:
-                navController.navigate(R.id.action_nav_add_Entry_to_timeAfternoonFragment);
+                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
                 break;
             case R.id.timedate_button_evening:
-                navController.navigate(R.id.action_nav_add_Entry_to_timeEveningFragment2);
+                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
                 break;
             case R.id.timedate_button_night:
-                navController.navigate(R.id.action_nav_add_Entry_to_timeNightFragment);
+                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
                 break;
         }
     }

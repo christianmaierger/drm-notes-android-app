@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.locationManual;
+package com.example.drmapp.ui.emojiManual;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -19,23 +19,28 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.overall.OverallFragment;
-import com.example.drmapp.ui.personManual.PersonManualViewModel;
 
-public class LocationManualFragment extends Fragment implements View.OnClickListener{
+public class EmojiManualFragment extends Fragment implements View.OnClickListener{
 
-    private LocationManualViewModel mViewModel;
+    private EmojiManualViewModel mViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        ((MainActivity) getActivity()).setActionBarTitle("Location Selection");
+        ((MainActivity) getActivity()).setActionBarTitle("Feelings Selection");
 
-        mViewModel = new ViewModelProvider(this).get(LocationManualViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_location_manual, container, false);
+        mViewModel = new ViewModelProvider(this).get(EmojiManualViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_emoji_manual, container, false);
 
-        Button button_1 = (Button) root.findViewById(R.id.btnSubmitLocationM);
+        /**
+         * Um zu "personPremade" oder "ActivitiesManual" zu navigieren
+         * -- Button instanziieren
+         * -- setOnClickListener
+         * -- OnClick setzen
+         * -- Zusätzliche Klassen importieren
+         * -- Sprünge neue setzen**/
+        Button button_1 = (Button) root.findViewById(R.id.btnSubmitEmojiM);
 
         button_1.setOnClickListener(this);
 
@@ -44,7 +49,10 @@ public class LocationManualFragment extends Fragment implements View.OnClickList
 
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        navController.navigate(R.id.action_locationManualFragment_to_overallFragment);
-
+        switch(v.getId()){
+            case R.id.btnSubmitEmojiM:
+                navController.navigate(R.id.action_emojiManualFragment_to_overallFragment);
+                break;
+        }
     }
 }

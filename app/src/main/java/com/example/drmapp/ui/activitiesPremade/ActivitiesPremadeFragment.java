@@ -1,7 +1,5 @@
 package com.example.drmapp.ui.activitiesPremade;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -19,10 +17,6 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.activitiesManual.ActivitiesManualFragment;
-import com.example.drmapp.ui.feelingsPremade.FeelingsPremadeFragment;
-import com.example.drmapp.ui.personManual.PersonManualFragment;
-import com.example.drmapp.ui.personPremade.PersonPremadeFragment;
 
 public class ActivitiesPremadeFragment extends Fragment implements View.OnClickListener {
 

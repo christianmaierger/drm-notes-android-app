@@ -19,7 +19,6 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.locationPremade.LocationPremadeFragment;
 import com.example.drmapp.ui.personManual.PersonManualFragment;
 
 public class PersonPremadeFragment extends Fragment implements View.OnClickListener{
@@ -61,7 +60,7 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
                                 navController.navigate(R.id.action_personPremadeFragment_to_personManualFragment);
                                 break;
                         default:
-                                navController.navigate(R.id.action_personPremadeFragment_to_locationPremadeFragment);
+                                navController.navigate(R.id.action_personPremadeFragment_to_emojiPremadeFragment);
                                 break;
                 }
         }

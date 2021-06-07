@@ -20,74 +20,72 @@
         app:layout_constraintTop_toTopOf="@+id/guideline1_v" />
 
     <ImageButton
-        android:id="@+id/btnOverall1"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#94119966"
-        android:src="@drawable/ic_face_happy3"
-        app:layout_constraintBottom_toTopOf="@+id/btnOverall2"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btnDominance1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/overallmood1"
+        app:layout_constraintBottom_toTopOf="@+id/btnDominance2"
+        app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textOverall" />
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/textOverall"
+        android:padding="100dp"/>
 
     <ImageButton
-        android:id="@+id/btnOverall2"
+        android:id="@+id/btnDominance2"
         style="@style/buttonStyle"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#94509911"
-        app:layout_constraintBottom_toTopOf="@+id/btnOverall3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOverall1" />
-
-    <ImageButton
-        android:id="@+id/btnOverall3"
-        style="@style/buttonStyle"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#94998B11"
-        android:src="@drawable/ic_face_normal"
-        app:layout_constraintBottom_toTopOf="@+id/btnOverall4"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/overallmood2"
+        app:layout_constraintBottom_toTopOf="@+id/btnDominance3"
+        app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOverall2" />
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/btnDominance1" />
 
     <ImageButton
-        android:id="@+id/btnOverall4"
+        android:id="@+id/btnDominance3"
         style="@style/buttonStyle"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#94995C11"
-        app:layout_constraintBottom_toTopOf="@+id/btnOverall5"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/overallmood3"
+        app:layout_constraintBottom_toTopOf="@+id/btnDominance4"
+        app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOverall3" />
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/btnDominance2" />
 
     <ImageButton
-        android:id="@+id/btnOverall5"
+        android:id="@+id/btnDominance4"
         style="@style/buttonStyle"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#94993111"
-        android:src="@drawable/ic_face_sad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/overallmood4"
+        app:layout_constraintBottom_toTopOf="@+id/btnDominance5"
+        app:layout_constraintEnd_toStartOf="@id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/btnDominance3" />
+
+    <ImageButton
+        android:id="@+id/btnDominance5"
+        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/overallmood5"
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOverall4" />
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/btnDominance4" />
 
     <ProgressBar
-        android:id="@+id/pBarOverall"
+        android:id="@+id/pBarDominance"
         style="?android:attr/progressBarStyleHorizontal"
         android:progress="75"
 
@@ -121,7 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1_h"
