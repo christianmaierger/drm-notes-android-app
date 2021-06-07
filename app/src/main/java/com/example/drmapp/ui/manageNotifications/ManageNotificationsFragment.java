@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.drmapp.R;
 import com.example.drmapp.ReceiverForNotifications;
+import com.example.drmapp.SharedPreferencesHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -41,6 +42,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class ManageNotificationsFragment extends Fragment implements View.OnClickListener  {
@@ -676,11 +678,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
         // der request code scheint identifier für die intents zu sein, übergebe ich mit an getBroadcast
         intent.putExtra("ButtonNumber", timeButtonNumber);
-
-
         long currentTime = System.currentTimeMillis();
-
-
 
         if(delete==false) {
             if(currentTime>time.getTimeInMillis()) {
@@ -696,10 +694,33 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         AlarmManager alarmMgr = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
 
             if(delete==false) {
-                alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-                System.out.println("Alarm gesetzt");
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                AlarmManager.AlarmClockInfo ac = new AlarmManager.AlarmClockInfo(time.getTimeInMillis(),
+                        pendingIntent);
+                alarmMgr.setAlarmClock(ac, pendingIntent);
+                // App kann durch die Benutzung von setExactAndAllow... ab Api 23 also Android 6.0 verwendet werden
+          /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                // der neue Alarm, der zu der geünschten Notification Zeit in genau 24 h ausgelöst wird
+                // eine Notification triggert und wieder einen Alarm, der wieder 24 h später stattfindet
+                alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+            }*/
+
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                alarmMgr.setExact(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
+            } else {
+                alarmMgr.set(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
+            }
+                SharedPreferencesHelper.saveNotification(getActivity(),timeButtonNumber,time.getTimeInMillis());
+                String tm = String.format("%d min, %d sec",
+                        TimeUnit.MILLISECONDS.toMinutes(time.getTimeInMillis()),
+                        TimeUnit.MILLISECONDS.toSeconds(time.getTimeInMillis()) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time.getTimeInMillis()))
+                );
+                System.out.println("Alarm gesetzt als erster in Kette für " + tm);
             } else {
                 alarmMgr.cancel(pendingIntent);
+                SharedPreferencesHelper.saveNotification(getActivity(),timeButtonNumber,0L);
                 System.out.println("Alarm gelöscht");
             }
     }

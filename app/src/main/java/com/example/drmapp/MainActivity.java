@@ -24,6 +24,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private RecyclerView entryRecyclerView;
+    private boolean alarmsAllReset= false;
+
+    public boolean isAlarmsAllReset() {
+        return alarmsAllReset;
+    }
+
+    public void setAlarmsAllReset(boolean alarmsAllReset) {
+        this.alarmsAllReset = alarmsAllReset;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +51,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //todo testen ob ich auch so die Alarme wieder setzen kann, wenn die App restarted wird
+    if (!alarmsAllReset) {
+        // Work Request erstellen, dass dann async bearbeitet werden kann vom WorkManager als eigener Thread
+        WorkRequest alarmWorkRequest =
+                new OneTimeWorkRequest.Builder(AlarmWorker.class)
+                        .build();
+
+        // Das WorkRequest wird zur Bearbeitung an den WorkManager übergeben
+        WorkManager
+                .getInstance(getApplicationContext())
+                .enqueue(alarmWorkRequest);
+        alarmsAllReset=true;
+    }
 
         /**
          * entries soll alle Eintraege speichern. (Eventuell sollten wir hier ueberlegen, ob etwas wie eine Hashtabelle etc. sinnvoll waere)

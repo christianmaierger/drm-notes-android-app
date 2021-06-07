@@ -21,18 +21,14 @@ public class ReceiverForNotifications extends BroadcastReceiver {
 
         // die ButtonNummern dienen als requestCodes für die PendingIntents, so kann man immer die
         // zu einem Button gehörigen Alarme ändern/löschen
-        int value = intent.getIntExtra("ButtonNumber", 0);
+        int buttonNumber = intent.getIntExtra("ButtonNumber", 0);
         long time = intent.getLongExtra("time", 0);
-
-        // 86,400,000 milis entsprechen genau 24 h, neuer Alarm soll ja um gleiche Uhrzeit stattfinden
-        // am nächsten Tag
-            time = time +86400000;
 
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "1")
                 .setSmallIcon(R.drawable.ic_plus_sign)
                 .setContentTitle("Time to add Activities!")
-                .setContentText("This Notification was triggered by Button " + value)
+                .setContentText("This Notification was triggered by Button " + buttonNumber)
                 // this is used for Android 7.1 and lower as there is no channel with own prio
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 // when flag is set notification is automatically removed after tap
@@ -43,39 +39,50 @@ public class ReceiverForNotifications extends BroadcastReceiver {
                 new Intent(context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(contentIntent);
 
-        /* String tm = String.format("%d min, %d sec",
-                TimeUnit.MILLISECONDS.toMinutes(time),
-                TimeUnit.MILLISECONDS.toSeconds(time) -
-                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time))
-        );
-        System.out.println(tm);*/
 
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.notify(1, builder.build());
 
-        // neuen Intent für den neuen Alarm anlegen und neue Zeit mitgeben, so dass der Receiver
-        // die Zeit des aktuellen Alarms erhält und wieder darauf die gewünschte Zeit addieren kann
-        Intent intentNew = new Intent(context, ReceiverForNotifications.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        // der request code dient als identifier für die intents, übergebe ich mit als Extra
-        intentNew.putExtra("ButtonNumber", value);
-        // die neue Zeit wird an den nächsten Receiver übergen, so dass es immer 24 h mehr sind in
-        // einer "Alarm Chain" - durch andere Werte addieren zu time kann man es auch z.b. stündlich machen
-        intentNew.putExtra("time", time);
-
-        // wichtig ist das Flag, damit der PendingIntent des Alarms geupdatet wird und nicht immer neu erzeugt wird
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, value, intentNew, PendingIntent.FLAG_UPDATE_CURRENT);
 
         AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
+        // neuen Intent für den neuen Alarm anlegen und neue Zeit mitgeben, so dass der Receiver
+        // die Zeit des aktuellen Alarms erhält und wieder darauf die gewünschte Zeit addieren kann
+        // der request code dient als identifier für die intents, übergebe ich mit als Extra
+        // die neue Zeit wird an den nächsten Receiver übergen, so dass es immer 24 h mehr sind in
+        // einer "Alarm Chain" - durch andere Werte addieren zu time kann man es auch z.b. stündlich machen
+        time += TimeUnit.DAYS.toMillis(1);
+        Intent nextIntent = new Intent(context, ReceiverForNotifications.class);
+        nextIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        // der request code scheint identifier für die intents zu sein, übergebe ich mit an getBroadcast
+        // auch die neue Zeit in 24 h wird übergeben
+        nextIntent.putExtra("ButtonNumber", buttonNumber);
+        nextIntent.putExtra("time", time);
+        // wichtig ist das Flag, damit der PendingIntent des Alarms geupdatet wird und nicht immer neu erzeugt wird
+        PendingIntent nextPendingIntent = PendingIntent.getBroadcast(context, buttonNumber,
+                nextIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        // todo verschiedene Methoden testen, zwar nicht empfohlen aber setAlarmClock scheint recht gut zu funktionieren
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AlarmManager.AlarmClockInfo ac = new AlarmManager.AlarmClockInfo(time,
+                    nextPendingIntent);
+            alarmMgr.setAlarmClock(ac, nextPendingIntent);
             // App kann durch die Benutzung von setExactAndAllow... ab Api 23 also Android 6.0 verwendet werden
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+          /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 // der neue Alarm, der zu der geünschten Notification Zeit in genau 24 h ausgelöst wird
                 // eine Notification triggert und wieder einen Alarm, der wieder 24 h später stattfindet
                 alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
-                System.out.println("Alarm gesetzt");
-            }
+            }*/
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            alarmMgr.setExact(AlarmManager.RTC_WAKEUP, time, nextPendingIntent);
+        } else {
+            alarmMgr.set(AlarmManager.RTC_WAKEUP, time, nextPendingIntent);
+        }
 
+        // hier die gesetzten Alarme zwischenspeichern, damit man nach reboot diese wieder setzen kann
+        SharedPreferencesHelper.saveNotification(context,buttonNumber,time);
 
-            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(1, builder.build());
     }
 }
