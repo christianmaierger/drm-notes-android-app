@@ -29,10 +29,9 @@ public class ReceiverForNotifications extends BroadcastReceiver {
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
                 new Intent(context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
-
         builder.setContentIntent(contentIntent);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(1, builder.build());
+        notificationManager.notify(value, builder.build());
     }
 }

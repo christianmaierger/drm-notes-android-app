@@ -13,9 +13,10 @@ import java.util.List;
 
 public class ManageNotificationsViewModel extends ViewModel {
 
+
+    // diese Variable hält, ob der Plus Button gedrückt wurde, also ob die Ansicht des TimePickers oder
+    // die ausgewählten NotificationTimes, gerade angezeigt werden
     private boolean addTimeButtonpressed;
-    // dieser counter gibt immer an, welcher timeText durch Auswahl gefüllt werden soll,
-    // wenn noch nicht alle Slots befüllt sind, ab dann muss ein ausgefüllter geändert werden
     private MutableLiveData<String> buttonText;
     private MutableLiveData<String> timeText1;
     private MutableLiveData<String> timeText2;
@@ -28,8 +29,8 @@ public class ManageNotificationsViewModel extends ViewModel {
 
 
     public ManageNotificationsViewModel() {
-        timeText1 = new MutableLiveData<>();
         buttonText = new MutableLiveData<>();
+        timeText1 = new MutableLiveData<>();
         timeText2 = new MutableLiveData<>();
         timeText3 = new MutableLiveData<>();
         time = new MutableLiveData<>();
