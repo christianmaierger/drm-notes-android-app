@@ -48,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       try {
+
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -91,14 +96,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         // rechts unten der weiter button ist dieser fab, floating action button
-        FloatingActionButton fab = findViewById(R.id.fwd);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+
+        try {
+            FloatingActionButton fab = findViewById(R.id.fwd);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -108,9 +120,13 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_add_Entry, R.id.nav_view_Last, R.id.manageNotifications)
                 .setDrawerLayout(drawer)
                 .build();
+try {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+} catch (Exception e) {
+    e.printStackTrace();
+}
 
         // channel needs to be created right at app start
         createNotificationChannel();
@@ -125,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             // for test just random strigns from res
             CharSequence name = getString(R.string.menu_home);
             String description = getString(R.string.app_name);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_HIGH;
             // Channel id for test just manually 1
             NotificationChannel channel = new NotificationChannel( "1", name, importance);
             channel.setDescription(description);

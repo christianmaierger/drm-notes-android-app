@@ -176,8 +176,14 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         mViewModel.getTimeText1().setValue(getString(R.string.noTimePickedText));
         mViewModel.setTimeAsString1(getString(R.string.noTimePickedText));
 
-        // wenn hier null gepeichert ist, steht weder eine Zeit noch die Botschaft, dass keine Zeit gewählt wurde
-        // in Button1, also muss er invisible sein
+
+
+         // initial sind keine Times gespeichert, wenn App zum ersten mal benutzt wird, dann kann
+        // man auch keine Abfragen, da Liste leer ist, würde ja Null Pointer werfen
+        if(notificationTimes.size()>0) {
+
+            // wenn hier null gepeichert ist, steht weder eine Zeit noch die Botschaft, dass keine Zeit gewählt wurde
+            // in Button1, also muss er invisible sein
             if (notificationTimes.get(0) == null) {
                 timeTextButton1.setVisibility(View.GONE);
                 visibilityStateOfTimeButton1 = View.GONE;
@@ -185,9 +191,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 visibilityStateOfDeleteTimeButton1 = View.GONE;
             }
 
-         // initial sind keine Times gespeichert, wenn App zum ersten mal benutzt wird, dann kann
-        // man auch keine Abfragen, da Liste leer ist, würde ja Null Pointer werfen
-        if(notificationTimes.size()>0) {
             // wenn der Listenplatz 0 weder null ist, ein leerer String oder der NoNotification Text,
             // dann steht eine Zeit darin, die displayed werden muss
             if (notificationTimes.get(0) != null && notificationTimes.get(0) != "" && !notificationTimes.get(0).equals(getString(R.string.noTimePickedText))) {

@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
@@ -30,7 +31,11 @@ public class ReceiverForNotifications extends BroadcastReceiver {
                 .setContentTitle("Time to add Activities!")
                 .setContentText("This Notification was triggered by Button " + buttonNumber)
                 // this is used for Android 7.1 and lower as there is no channel with own prio
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                //Vibration
+                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
+                //LED
+                .setLights(Color.RED, 3000, 3000)
                 // when flag is set notification is automatically removed after tap
                 .setAutoCancel(true);
 
