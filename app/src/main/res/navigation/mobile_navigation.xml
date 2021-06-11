@@ -10,24 +10,161 @@
         android:id="@+id/nav_home"
         android:name="com.example.drmapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_addEntrySplitFragment"
+            app:destination="@id/addEntrySplitFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_add_Entry"
         android:name="com.example.drmapp.ui.addEntry.AddEntryFragment"
         android:label="@string/menu_add_Entry"
-        tools:layout="@layout/fragment_addentry" />
-
-    <fragment
-        android:id="@+id/nav_view_Last"
-        android:name="com.example.drmapp.ui.EntryFragment"
-        android:label="@string/menu_view_Last"
-        tools:layout="@layout/fragment_entry_list" />
+        tools:layout="@layout/fragment_addentry" >
+        <action
+            android:id="@+id/action_nav_add_Entry_to_activitiesPremadeFragment"
+            app:destination="@id/activitiesPremadeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/manageNotifications"
         android:name="com.example.drmapp.ui.manageNotifications.ManageNotificationsFragment"
         android:label="@string/menu_manage_notifications"
         tools:layout="@layout/fragment_manage_notifications" />
+    <fragment
+        android:id="@+id/addEntrySplitFragment"
+        android:name="com.example.drmapp.ui.addEntry_Split.AddEntrySplitFragment"
+        android:label="fragment_addentry_split"
+        tools:layout="@layout/fragment_addentry_split" >
+        <action
+            android:id="@+id/action_addEntrySplitFragment_to_nav_add_Entry"
+            app:destination="@id/nav_add_Entry" />
+        <action
+            android:id="@+id/action_addEntrySplitFragment_to_noteQuickEntryFragment"
+            app:destination="@id/noteQuickEntryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteQuickEntryFragment"
+        android:name="com.example.drmapp.ui.noteQuickEntry.NoteQuickEntryFragment"
+        android:label="NoteQuickEntryFragment"
+        tools:layout="@layout/fragment_quick_entry" >
+        <action
+            android:id="@+id/action_noteQuickEntryFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/activitiesManualFragment"
+        android:name="com.example.drmapp.ui.activitiesManual.ActivitiesManualFragment"
+        android:label="ActivitiesManualFragment"
+        tools:layout="@layout/fragment_activities_manual" >
+        <action
+            android:id="@+id/action_activitiesManualFragment_to_feelingsPremadeFragment"
+            app:destination="@id/feelingsPremadeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/activitiesPremadeFragment"
+        android:name="com.example.drmapp.ui.activitiesPremade.ActivitiesPremadeFragment"
+        android:label="fragment_activities_premade"
+        tools:layout="@layout/fragment_activities_premade" >
+        <action
+            android:id="@+id/action_activitiesPremadeFragment_to_activitiesManualFragment"
+            app:destination="@id/activitiesManualFragment" />
+        <action
+            android:id="@+id/action_activitiesPremadeFragment_to_feelingsPremadeFragment"
+            app:destination="@id/feelingsPremadeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/feelingsManualFragment"
+        android:name="com.example.drmapp.ui.feelingsManual.FeelingsManualFragment"
+        android:label="FeelingsManualFragment"
+        tools:layout="@layout/fragment_feelings_manual" >
+        <action
+            android:id="@+id/action_feelingsManualFragment_to_personPremadeFragment"
+            app:destination="@id/personPremadeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/feelingsPremadeFragment"
+        android:name="com.example.drmapp.ui.feelingsPremade.FeelingsPremadeFragment"
+        android:label="FeelingsPremadeFragment"
+        tools:layout="@layout/fragment_feelings_premade" >
+        <action
+            android:id="@+id/action_feelingsPremadeFragment_to_feelingsManualFragment"
+            app:destination="@id/feelingsManualFragment" />
+        <action
+            android:id="@+id/action_feelingsPremadeFragment_to_personPremadeFragment"
+            app:destination="@id/personPremadeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personManualFragment"
+        android:name="com.example.drmapp.ui.personManual.PersonManualFragment"
+        android:label="PersonManualFragment"
+        tools:layout="@layout/fragment_people_manual" >
+        <action
+            android:id="@+id/action_personManualFragment_to_emojiPremadeFragment"
+            app:destination="@id/emojiPremadeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personPremadeFragment"
+        android:name="com.example.drmapp.ui.personPremade.PersonPremadeFragment"
+        android:label="PersonPremadeFragment"
+        tools:layout="@layout/fragment_people_premade" >
+        <action
+            android:id="@+id/action_personPremadeFragment_to_personManualFragment"
+            app:destination="@id/personManualFragment" />
+        <action
+            android:id="@+id/action_personPremadeFragment_to_emojiPremadeFragment"
+            app:destination="@id/emojiPremadeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/overallFragment"
+        android:name="com.example.drmapp.ui.overall.OverallFragment"
+        android:label="OverallFragment"
+        tools:layout="@layout/fragment_overall" >
+        <action
+            android:id="@+id/action_overallFragment_to_thoughtsFragment"
+            app:destination="@id/thoughtsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thoughtsFragment"
+        android:name="com.example.drmapp.ui.thoughts.ThoughtsFragment"
+        android:label="ThoughtsFragment"
+        tools:layout="@layout/fragment_thoughts">
+        <action
+            android:id="@+id/action_thoughtsFragment_to_successFragment"
+            app:destination="@id/successFragment"
+             />
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.example.drmapp.ui.success.SuccessFragment"
+        android:label="SuccessFragment"
+        tools:layout="@layout/fragment_success" >
+        <action
+            android:id="@+id/action_successFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_successFragment_to_nav_add_Entry"
+            app:destination="@id/nav_add_Entry" />
+    </fragment>
+    <fragment
+        android:id="@+id/emojiManualFragment"
+        android:name="com.example.drmapp.ui.emojiManual.EmojiManualFragment"
+        android:label="EmojiManualFragment" >
+        <action
+            android:id="@+id/action_emojiManualFragment_to_overallFragment"
+            app:destination="@id/overallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emojiPremadeFragment"
+        android:name="com.example.drmapp.ui.emojiPremade.EmojiPremadeFragment"
+        android:label="EmojiPremadeFragment" >
+        <action
+            android:id="@+id/action_emojiPremadeFragment_to_overallFragment"
+            app:destination="@id/overallFragment" />
+        <action
+            android:id="@+id/action_emojiPremadeFragment_to_emojiManualFragment"
+            app:destination="@id/emojiManualFragment" />
+    </fragment>
+
 
 </navigation>

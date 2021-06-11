@@ -2,62 +2,123 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activitiesManualFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="ui.activitiesManual.ActivitiesManualFragment">
 
 
     <TextView
         android:id="@+id/txtActivityManual"
-        android:layout_width="255dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="48dp"
         android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="What were you doing?"
         android:textAllCaps="true"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pBarOverall" />
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2_v"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+        app:layout_constraintTop_toTopOf="@+id/guideline1_v" />
+
+    <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
+
+    <EditText
+        android:id="@+id/addActivityManual_editText"
+        android:background="@null"
+        android:hint="Add activity manually"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+
+        android:inputType="textPersonName"
+
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/txtActivityManual"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmitActivityM"/>
 
     <Button
         android:id="@+id/btnSubmitActivityM"
         style="@style/buttonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@drawable/button"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addActivityManual_editText" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
-    <EditText
-        android:id="@+id/addActivityManual_editText"
-        android:layout_width="249dp"
-        android:layout_height="155dp"
-        android:layout_marginTop="56dp"
-        android:background="@null"
-        android:ems="10"
-        android:hint="Add activity manually"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtActivityManual" />
-    <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
+        android:text="Submit"
+
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@id/guideline3_v"
+        app:layout_constraintDimensionRatio="4.5:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h" />
 
     <ProgressBar
-        android:id="@+id/pBarOverall"
+        android:id="@+id/pBarDominance"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="48dp"
         android:progress="25"
+
         android:progressBackgroundTint="@color/lightPurpel"
-        app:layout_constraintBottom_toTopOf="@+id/txtActivityManual"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline1_v"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.49" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.51" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

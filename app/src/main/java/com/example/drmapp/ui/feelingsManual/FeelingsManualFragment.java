@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,13 +35,6 @@ private FeelingsManualViewModel mViewModel;
                 mViewModel = new ViewModelProvider(this).get(FeelingsManualViewModel.class);
                 View root = inflater.inflate(R.layout.fragment_feelings_manual, container, false);
 
-                /**
-                 * Um zu "personPremade" oder "ActivitiesManual" zu navigieren
-                 * -- Button instanziieren
-                 * -- setOnClickListener
-                 * -- OnClick implementieren
-                 * -- Zusätzliche Klassen importieren
-                 * -- Sprünge neue setzen**/
                 Button button_1 = (Button) root.findViewById(R.id.btnSubmitFeelingsM);
 
                 button_1.setOnClickListener(this);
@@ -49,12 +44,8 @@ private FeelingsManualViewModel mViewModel;
 
         @Override
         public void onClick(View v) {
-                Fragment fragment = new PersonPremadeFragment();
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.action_feelingsManualFragment_to_personPremadeFragment);
         }
 
 

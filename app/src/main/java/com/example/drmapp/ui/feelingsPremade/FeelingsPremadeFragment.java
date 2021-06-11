@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,20 +65,14 @@ private FeelingsPremadeViewModel mViewModel;
         }
 
         public void onClick(View v) {
-                Fragment fragment = new Fragment();
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                 switch(v.getId()){
                         case R.id.btnFeelingOther:
-                                fragment = new FeelingsManualFragment();
+                                navController.navigate(R.id.action_feelingsPremadeFragment_to_feelingsManualFragment);
                                 break;
                         default:
-                                fragment = new PersonPremadeFragment();
+                                navController.navigate(R.id.action_feelingsPremadeFragment_to_personPremadeFragment);
                                 break;
                 }
-
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
         }
 }

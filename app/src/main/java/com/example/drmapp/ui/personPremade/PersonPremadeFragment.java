@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +19,6 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.locationPremade.LocationPremadeFragment;
 import com.example.drmapp.ui.personManual.PersonManualFragment;
 
 public class PersonPremadeFragment extends Fragment implements View.OnClickListener{
@@ -39,6 +40,7 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
         Button button_4 = (Button) root.findViewById(R.id.btnStrangers);
         Button button_5 = (Button) root.findViewById(R.id.btnFamily);
         Button button_6 = (Button) root.findViewById(R.id.btnNoOne);
+        Button button_7 = (Button) root.findViewById(R.id.btnPartner);
 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
@@ -46,26 +48,20 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
         button_4.setOnClickListener(this);
         button_5.setOnClickListener(this);
         button_6.setOnClickListener(this);
+        button_7.setOnClickListener(this);
 
         return root;
         }
 
         public void onClick(View v) {
-                Fragment fragment = new Fragment();
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                 switch(v.getId()){
                         case R.id.btnPeopleOther:
-                                fragment = new PersonManualFragment();
+                                navController.navigate(R.id.action_personPremadeFragment_to_personManualFragment);
                                 break;
                         default:
-                                fragment = new LocationPremadeFragment();
+                                navController.navigate(R.id.action_personPremadeFragment_to_emojiPremadeFragment);
                                 break;
                 }
-
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-
         }
 }

@@ -2,176 +2,224 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/xxx"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="ui.activitiesPremade.ActivitiesPremadeFragment">
 
 
     <TextView
         android:id="@+id/textFeeling"
-        android:layout_width="255dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="29dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center"
         android:text="How did you feel?"
-        android:textAllCaps="true"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnHappy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/pBarOverall" />
+        android:textAllCaps="true"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2_v"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+        app:layout_constraintTop_toTopOf="@+id/guideline1_v" />
 
     <Button
         android:id="@+id/btnAngry"
         style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_alignBottom="@id/btnHappy"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Angry"
         android:textAllCaps="true"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnSad"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
+
+    <Button
+        android:id="@+id/btnSad"
+        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="Sad"
+        android:textAllCaps="true"
+
         app:layout_constraintBottom_toTopOf="@+id/btnBored"
-        app:layout_constraintEnd_toStartOf="@+id/btnHappy"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/btnAngry" />
+
+    <Button
+        android:id="@+id/btnFeelingOther"
+        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="Other"
+
+        app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3_h"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnnoyed" />
+
+    <Button
+        android:id="@+id/btnContent"
+        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="Content"
+        android:textAllCaps="true"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnHappy"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3_h"
         app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
 
     <Button
         android:id="@+id/btnHappy"
         style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Happy"
         android:textAllCaps="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnAngry"
-        app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
 
-    <Button
-        android:id="@+id/btnContent"
-        style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Content"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnFeelingOther"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnEnvious" />
-
-    <Button
-        android:id="@+id/btnSad"
-        style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Sad"
-        android:textAllCaps="true"
-        app:layout_constraintEnd_toStartOf="@+id/btnFeelingOther"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEnvious" />
-
-    <Button
-        android:id="@+id/btnFeelingOther"
-        style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Other"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnSad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSad" />
-
-    <Button
-        android:id="@+id/btnBored"
-        style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Bored"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnEnvious"
-        app:layout_constraintEnd_toStartOf="@+id/btnAnnoyed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnAnnoyed"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3_h"
+        app:layout_constraintTop_toBottomOf="@+id/btnContent" />
 
     <Button
         android:id="@+id/btnAnnoyed"
         style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Annoyed"
-        app:layout_constraintBottom_toTopOf="@+id/btnContent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnBored"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnFeelingOther"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3_h"
         app:layout_constraintTop_toBottomOf="@+id/btnHappy" />
+
+    <Button
+        android:id="@+id/btnBored"
+        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="Bored"
+        android:textAllCaps="true"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnEnvious"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/btnSad" />
 
     <Button
         android:id="@+id/btnEnvious"
         style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/button"
         android:gravity="center"
         android:text="Envious"
         android:textAllCaps="true"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnContent"
-        app:layout_constraintEnd_toStartOf="@+id/btnContent"
-        app:layout_constraintStart_toStartOf="parent" />
+
+        app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/btnBored" />
 
     <ProgressBar
-        android:id="@+id/pBarOverall"
+        android:id="@+id/pBarDominance"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="48dp"
         android:progress="37"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
         android:progressBackgroundTint="@color/lightPurpel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintBottom_toTopOf="@+id/guideline1_v"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.49" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.51" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

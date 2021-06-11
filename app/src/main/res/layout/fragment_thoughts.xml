@@ -3,61 +3,113 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="ui.thoughts.ThoughtsFragment">
 
 
     <TextView
         android:id="@+id/textThoughts"
-        android:layout_width="255dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center"
         android:text="Which thoughts occurred?"
         android:textAllCaps="true"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pBarThought" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline2_v"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+        app:layout_constraintTop_toTopOf="@+id/guideline1_v"/>
 
     <Button
         android:id="@+id/btnSubmitThoughts"
         style="@style/buttonStyle"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/button"
         android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addThoughts_editText"
-        app:layout_constraintVertical_bias="0.308" />
+        app:layout_constraintBottom_toTopOf="@id/guideline3_v"
+        app:layout_constraintDimensionRatio="4.5:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"  />
 
     <EditText
         android:id="@+id/addThoughts_editText"
-        android:layout_width="249dp"
-        android:layout_height="155dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@null"
-        android:ems="10"
         android:hint="Enter thoughts here"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textThoughts" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/textThoughts"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmitThoughts"  />
     <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
 
 
     <ProgressBar
         android:id="@+id/pBarThought"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="48dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:progress="87"
         android:progressBackgroundTint="@color/lightPurpel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline1_v"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"  />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.49" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.51" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
 </androidx.constraintlayout.widget.ConstraintLayout>

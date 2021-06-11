@@ -14,9 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.drmapp.R;
-import com.example.drmapp.ui.addEntry_Time_Morning.TimeMorningFragment;
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.R;import com.example.drmapp.ui.entry.Entry;
 import com.example.drmapp.ui.viewLast.ViewLastFragment;
 
 import org.w3c.dom.Text;

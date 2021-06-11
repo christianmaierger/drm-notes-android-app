@@ -44,17 +44,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-
                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-                navController.navigate(R.id.nav_add_Entry);
-
-
-              /*  Fragment fragment = new AddEntryFragment();
-                FragmentManager fragmentManager =  getParentFragmentManager();//getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment , fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();*/
+                navController.navigate(R.id.action_nav_home_to_addEntrySplitFragment);
             }
 
         });

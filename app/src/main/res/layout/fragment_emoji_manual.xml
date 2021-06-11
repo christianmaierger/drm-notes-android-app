@@ -4,66 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.personManual.PersonManualFragment">
+    tools:context="ui.emojiManual.EmojiManualFragment">
 
 
     <TextView
-        android:id="@+id/textPeopleManual"
+        android:id="@+id/txtEmojiManual"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="With whom have you been togehter?"
+        android:text="How did you feel?"
         android:textAllCaps="true"
         android:textSize="20sp"
-
-
         app:layout_constraintBottom_toTopOf="@+id/guideline2_v"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
         app:layout_constraintTop_toTopOf="@+id/guideline1_v" />
 
     <Button
-        android:id="@+id/btnSubmitPeopleM"
+        android:id="@+id/btnSubmitEmojiM"
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/button"
         android:text="Submit"
+
+        android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@id/guideline3_v"
         app:layout_constraintDimensionRatio="4.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline1_h"  />
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"/>
 
     <EditText
-        android:id="@+id/addPersonManual_editText"
+        android:id="@+id/addEmojiManual_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
+
         android:background="@null"
-        android:hint="Add person manually"
+        android:hint="Add feeling manually"
+
+
+        android:inputType="textPersonName"
 
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/textPeopleManual"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubmitPeopleM"  />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmojiManual"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmitEmojiM" />
     <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
 
     <ProgressBar
-        android:id="@+id/pBarPersonM"
+        android:id="@+id/pBarEmojiM"
         style="?android:attr/progressBarStyleHorizontal"
-        android:progress="49"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:progress="37"
+
         android:progressBackgroundTint="@color/lightPurpel"
         app:layout_constraintBottom_toTopOf="@+id/guideline1_v"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
-
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"  />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1_v"
