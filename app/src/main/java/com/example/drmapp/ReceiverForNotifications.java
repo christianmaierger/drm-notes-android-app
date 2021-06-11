@@ -11,7 +11,6 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 public class ReceiverForNotifications extends BroadcastReceiver {
@@ -35,7 +34,8 @@ public class ReceiverForNotifications extends BroadcastReceiver {
                 //Vibration
                 .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                 //LED
-                .setLights(Color.RED, 3000, 3000)
+                .setLights(Color.GREEN ,3000, 3000)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 // when flag is set notification is automatically removed after tap
                 .setAutoCancel(true);
 
@@ -87,7 +87,7 @@ public class ReceiverForNotifications extends BroadcastReceiver {
         }
 
         // hier die gesetzten Alarme zwischenspeichern, damit man nach reboot diese wieder setzen kann
-        SharedPreferencesHelper.saveNotification(context,buttonNumber,time);
+        StoreSimpleDataHelper.saveNotification(context,buttonNumber,time);
 
     }
 }

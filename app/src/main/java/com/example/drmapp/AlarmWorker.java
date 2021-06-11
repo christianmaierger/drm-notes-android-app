@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import java.util.concurrent.TimeUnit;
-
 public class AlarmWorker extends Worker {
 
     public AlarmWorker(
@@ -25,17 +23,17 @@ public class AlarmWorker extends Worker {
     public Result doWork() {
 
 
-        long time1 =  SharedPreferencesHelper.getNotification(getApplicationContext(),1);
+        long time1 =  StoreSimpleDataHelper.getNotification(getApplicationContext(),1);
         if(time1 != 0)
         {
             settingAlarm(1,time1);
         }
-        long time2 =  SharedPreferencesHelper.getNotification(getApplicationContext(),2);
+        long time2 =  StoreSimpleDataHelper.getNotification(getApplicationContext(),2);
         if(time2 != 0)
         {
             settingAlarm(2,time2);
         }
-        long time3 =  SharedPreferencesHelper.getNotification(getApplicationContext(),3);
+        long time3 =  StoreSimpleDataHelper.getNotification(getApplicationContext(),3);
         if(time3 != 0)
         {
             settingAlarm(3,time3);
@@ -67,6 +65,6 @@ public class AlarmWorker extends Worker {
         // und wenn das Telefon zwischendurch ausgeht, muss es ja den alten Alarm wieder ausführen
        // time += TimeUnit.DAYS.toMillis(1);
 
-        SharedPreferencesHelper.saveNotification(getApplicationContext(),timeButtonNumber, time);
+        StoreSimpleDataHelper.saveNotification(getApplicationContext(),timeButtonNumber, time);
     }
 }

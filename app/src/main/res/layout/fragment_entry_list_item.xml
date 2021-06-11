@@ -31,7 +31,7 @@
             android:id="@+id/btnArrowDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_down"
+            app:srcCompat="@drawable/ic_arrow_down"
             app:layout_constraintBottom_toBottomOf="@id/collapsedLayout"
             app:layout_constraintEnd_toEndOf="@id/collapsedLayout"
             android:visibility="visible"
@@ -118,7 +118,7 @@
             android:id="@+id/btnArrowUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_up"
+            app:srcCompat="@drawable/ic_arrow_up"
             app:layout_constraintBottom_toBottomOf="@id/expandedLayout"
             app:layout_constraintEnd_toEndOf="@id/expandedLayout" />
 
