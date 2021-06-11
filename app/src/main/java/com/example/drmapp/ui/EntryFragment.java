@@ -29,7 +29,8 @@ public class EntryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_entry_list, container, false);
         recyclerView=view.findViewById(R.id.entryRecyclerView);
         // for testing static method called to get some data, but it is a good question where to hold entries in the end
-        EntryRecViewAdapter entryRecViewAdapter=new EntryRecViewAdapter(Entry.createEntryList());
+
+        EntryRecViewAdapter entryRecViewAdapter=new EntryRecViewAdapter(Entry.createEntryList(getContext().getApplicationContext()));
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(entryRecViewAdapter);

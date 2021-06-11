@@ -20,6 +20,8 @@ import com.example.drmapp.ui.viewLast.ViewLastFragment;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -29,13 +31,11 @@ import java.util.ArrayList;
  *
  * */
 
-
-
 public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapter.ViewHolder> {
-    private ArrayList<Entry> entries = new ArrayList<>();
+    private List<Entry> entries = new LinkedList<>();
 
 
-    public EntryRecViewAdapter(ArrayList<Entry> entries) {
+    public EntryRecViewAdapter(List<Entry> entries) {
         this.entries = entries;
     }
 
