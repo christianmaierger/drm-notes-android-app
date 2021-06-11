@@ -19,17 +19,19 @@ public class Entry {
     private String emoji;
     private int sam1;
     private int sam2;
+    private int sam3;
     private String thoughts;
 
     private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
 
-    public Entry(String date, String time, String activity, String emoji, int sam1, int sam2, String thoughts) {
+    public Entry(String date, String time, String activity, String emoji, int sam1, int sam2, int sam3, String thoughts) {
         this.date = date;
         this.time = time;
         this.activity = activity;
         this.emoji = emoji;
         this.sam1 = sam1;
         this.sam2 = sam2;
+        this.sam3 = sam3;
         this.thoughts = thoughts;
 
         isExpaned=false;
@@ -98,17 +100,24 @@ public class Entry {
     public void setSam2(int sam2) {
         this.sam2 = sam2;
     }
+    public int getSam3() {
+        return sam3;
+    }
+
+    public void setSam3(int sam3) {
+        this.sam3 = sam3;
+    }
 
     // method just to create some test data
     public static ArrayList<Entry> createEntryList() {
         ArrayList<Entry> entries = new ArrayList<Entry>();
 
-               entries.add(new Entry("05/05/21", "07:00", "Eating/drinking", "happy", 1, 1, "Pancakes are good"));
-                 entries.add(new Entry("05/05/21", "08:00", "Working/studying", "normal", 2, 2, "Laptop is loud"));
-        entries.add(new Entry("05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, "Coffee tasted horrible"));
-        entries.add(new Entry("05/05/21", "13:00", "Hobby", "surprised", 4, 4, "Took a walk"));
-        entries.add(new Entry("05/05/21", "18:00", "Care work", "angry", 5, 5, "Dog did not like the bath"));
-        entries.add(new Entry("05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, "Netflix did not work"));
+               entries.add(new Entry("05/05/21", "07:00", "Eating/drinking", "happy", 1, 1,1, "Pancakes are good"));
+                 entries.add(new Entry("05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2, "Laptop is loud"));
+        entries.add(new Entry("05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, 3,"Coffee tasted horrible"));
+        entries.add(new Entry("05/05/21", "13:00", "Hobby", "surprised", 4, 4,4, "Took a walk"));
+        entries.add(new Entry("05/05/21", "18:00", "Care work", "angry", 5, 5, 5, "Dog did not like the bath"));
+        entries.add(new Entry("05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, 1,"Netflix did not work"));
 
         //adapter.setEntries(entries);
 
@@ -125,6 +134,7 @@ public class Entry {
                 ", emoji='" + emoji + '\'' +
                 ", sam1=" + sam1 +
                 ", sam2=" + sam2 +
+                ", sam3=" + sam3 +
                 ", thoughts='" + thoughts + '\'' +
                 ", isExpaned=" + isExpaned +
                 '}';

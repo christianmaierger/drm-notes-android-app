@@ -1,12 +1,10 @@
-package com.example.drmapp.ui;
+package com.example.drmapp.ui.ViewLast2;
 
 
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
