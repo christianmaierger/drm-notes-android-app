@@ -41,10 +41,11 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         this.entries = entries;
     }
 
+
     /* RecyclerView calls this method whenever it needs to create a new ViewHolder.
-            The method creates and initializes the ViewHolder and its associated View,
-            but does not fill in the view's contents—the ViewHolder has not yet been bound
-            to specific data.*/
+                The method creates and initializes the ViewHolder and its associated View,
+                but does not fill in the view's contents—the ViewHolder has not yet been bound
+                to specific data.*/
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())

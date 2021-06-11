@@ -17,7 +17,7 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.overall.OverallFragment;
+import com.example.drmapp.ui.locationPremade.LocationPremadeFragment;
 import com.example.drmapp.ui.personManual.PersonManualFragment;
 
 public class PersonPremadeFragment extends Fragment implements View.OnClickListener{
@@ -38,7 +38,7 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
         Button button_3 = (Button) root.findViewById(R.id.btnPeopleOther);
         Button button_4 = (Button) root.findViewById(R.id.btnStrangers);
         Button button_5 = (Button) root.findViewById(R.id.btnFamily);
-        Button button_6 = (Button) root.findViewById(R.id.btnNeighbours);
+        Button button_6 = (Button) root.findViewById(R.id.btnNoOne);
 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
@@ -57,7 +57,7 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
                                 fragment = new PersonManualFragment();
                                 break;
                         default:
-                                fragment = new OverallFragment();
+                                fragment = new LocationPremadeFragment();
                                 break;
                 }
 

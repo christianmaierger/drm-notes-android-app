@@ -7,57 +7,58 @@
 
 
     <TextView
-        android:id="@+id/textThoughts"
+        android:id="@+id/textLocationManual"
         android:layout_width="255dp"
         android:layout_height="100dp"
         android:layout_marginTop="48dp"
         android:gravity="center"
-        android:text="Which thoughts occurred?"
+        android:text="Where were you?"
         android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pBarThought" />
+        app:layout_constraintTop_toBottomOf="@+id/pBarLocationM" />
 
     <Button
-        android:id="@+id/btnSubmitThoughts"
+        android:id="@+id/btnSubmitLocationM"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button"
         android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addThoughts_editText"
-        app:layout_constraintVertical_bias="0.308" />
+        app:layout_constraintTop_toBottomOf="@+id/addLocationManual_editText" />
 
     <EditText
-        android:id="@+id/addThoughts_editText"
+        android:id="@+id/addLocationManual_editText"
         android:layout_width="249dp"
         android:layout_height="155dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="56dp"
         android:background="@null"
         android:ems="10"
-        android:hint="Enter thoughts here"
+        android:hint="Add person manually"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textThoughts" />
+        app:layout_constraintTop_toBottomOf="@+id/textLocationManual" />
     <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
 
-
     <ProgressBar
-        android:id="@+id/pBarThought"
+        android:id="@+id/pBarLocationM"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:layout_marginBottom="48dp"
-        android:progress="87"
+        android:progress="62"
         android:progressBackgroundTint="@color/lightPurpel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,6 @@
     <string name="noTimePickedText">No Time for Notification picked</string>
     <string name="cancleTimePicking">Click to cancle Time Picking</string>
     <string name="noTimeSetForNotifications">No Time for Notifications selected so far</string>
-    <string name="pressToAddNotificationTime">Press Button to Add Notification Time</string>
+    <string name="pressToAddNotificationTime">Press To Add Notification Time</string>
 
 </resources>

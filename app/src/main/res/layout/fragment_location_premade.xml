@@ -7,41 +7,41 @@
 
 
     <TextView
-        android:id="@+id/textFeeling"
+        android:id="@+id/textLocation"
         android:layout_width="255dp"
         android:layout_height="100dp"
         android:layout_marginTop="144dp"
         android:layout_marginBottom="29dp"
         android:gravity="center"
-        android:text="With whom have you been together?"
+        android:text="Where were you?"
         android:textAllCaps="true"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnFriends"
+        app:layout_constraintBottom_toTopOf="@+id/btnWork"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnColleagues"
+        android:id="@+id/btnHome"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_alignBottom="@id/btnFriends"
+        android:layout_alignBottom="@id/btnWork"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
         android:layout_marginTop="73dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Colleagues"
+        android:text="Home"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnStrangers"
-        app:layout_constraintEnd_toStartOf="@+id/btnFriends"
+        app:layout_constraintBottom_toTopOf="@+id/btnOutdoors"
+        app:layout_constraintEnd_toStartOf="@+id/btnWork"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
+        app:layout_constraintTop_toBottomOf="@+id/textLocation" />
 
     <Button
-        android:id="@+id/btnFriends"
+        android:id="@+id/btnWork"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
@@ -53,16 +53,16 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Friends"
+        android:text="Work"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnFamily"
+        app:layout_constraintBottom_toTopOf="@+id/btnSupermarket"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnColleagues"
-        app:layout_constraintTop_toBottomOf="@+id/textFeeling" />
+        app:layout_constraintStart_toEndOf="@+id/btnHome"
+        app:layout_constraintTop_toBottomOf="@+id/textLocation" />
 
     <Button
-        android:id="@+id/btnPeopleOther"
+        android:id="@+id/btnLocationOther"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
@@ -74,26 +74,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNoOne" />
+        app:layout_constraintTop_toBottomOf="@+id/btnGym" />
 
     <Button
-        android:id="@+id/btnStrangers"
+        android:id="@+id/btnOutdoors"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="Strangers"
+        android:text="Outdoors"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnNoOne"
-        app:layout_constraintEnd_toStartOf="@+id/btnFamily"
+        app:layout_constraintBottom_toTopOf="@+id/btnGym"
+        app:layout_constraintEnd_toStartOf="@+id/btnSupermarket"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/buttonStyle"
         android:background="@drawable/button"/>
 
     <Button
-        android:id="@+id/btnFamily"
+        android:id="@+id/btnSupermarket"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
@@ -104,13 +104,13 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Family"
-        app:layout_constraintBottom_toTopOf="@+id/btnPartner"
+        android:text="Supermarket"
+        app:layout_constraintBottom_toTopOf="@+id/btnCommute"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnStrangers" />
+        app:layout_constraintStart_toEndOf="@+id/btnOutdoors" />
 
     <Button
-        android:id="@+id/btnNoOne"
+        android:id="@+id/btnGym"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
@@ -119,14 +119,14 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="No one"
+        android:text="Gym"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnPeopleOther"
-        app:layout_constraintEnd_toStartOf="@+id/btnPartner"
+        app:layout_constraintEnd_toStartOf="@+id/btnCommute"
+        app:layout_constraintBottom_toTopOf="@+id/btnLocationOther"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnPartner"
+        android:id="@+id/btnCommute"
         style="@style/buttonStyle"
         android:layout_width="120dp"
         android:layout_height="50dp"
@@ -137,11 +137,11 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Partner"
+        android:text="Commute"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnPeopleOther"
+        app:layout_constraintBottom_toTopOf="@+id/btnLocationOther"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnNoOne" />
+        app:layout_constraintStart_toEndOf="@+id/btnGym" />
 
     <ProgressBar
         android:id="@+id/pBarOverall"
@@ -149,9 +149,9 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:progress="49"
+        android:progress="62"
         android:progressBackgroundTint="@color/lightPurpel"
-        app:layout_constraintBottom_toTopOf="@+id/textFeeling"
+        app:layout_constraintBottom_toTopOf="@+id/textLocation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

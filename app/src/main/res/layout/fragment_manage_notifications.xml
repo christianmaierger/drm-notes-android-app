@@ -63,13 +63,13 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:clickable="true"
-        app:srcCompat="@drawable/ic_close_sign"
-        android:visibility="visible"
+        android:src="@drawable/ic_close_sign"
+        android:visibility="gone"
+        app:fabCustomSize="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/time1"
         app:layout_constraintStart_toEndOf="@+id/time1"
         app:layout_constraintTop_toTopOf="@+id/time2"
-        app:layout_constraintVertical_bias="1.0"
-        app:fabCustomSize="50dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteTime2"
@@ -172,10 +172,12 @@
 
     <Button
         android:id="@+id/getTime"
+        style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="108dp"
         android:background="@drawable/button"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="@+id/simpleTimePicker"
@@ -185,10 +187,12 @@
         android:id="@+id/getTime2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="108dp"
         android:background="@drawable/button"
         android:text="Submit"
+        style="@style/buttonStyle"
         app:layout_constraintEnd_toEndOf="@id/simpleTimePicker2"
         app:layout_constraintTop_toBottomOf="@id/simpleTimePicker2" />
 
