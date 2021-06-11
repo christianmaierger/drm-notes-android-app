@@ -19,6 +19,11 @@ import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.ui.addEntry_Time_Afternoon.TimeAfternoonFragment;
+import com.example.drmapp.ui.addEntry_Time_Evening.TimeEveningFragment;
+import com.example.drmapp.ui.addEntry_Time_Morning.TimeMorningFragment;
+import com.example.drmapp.ui.addEntry_Time_Night.TimeNightFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AddEntryFragment extends Fragment implements View.OnClickListener {
 
@@ -41,6 +46,10 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
         button_5.setOnClickListener(this);
         button_6.setOnClickListener(this);
 
+        //Sichtbarmachen des Floating Action Buttons für das Speichern eines Eintrags
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.VISIBLE);
+
         return root;
     }
 
@@ -49,16 +58,16 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         switch (v.getId()) {
             case R.id.timedate_button_morning:
-                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
+                navController.navigate(R.id.action_nav_add_Entry_to_timeMorningFragment);
                 break;
             case R.id.timedate_button_afternoon:
-                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
+                navController.navigate(R.id.action_nav_add_Entry_to_timeAfternoonFragment);
                 break;
             case R.id.timedate_button_evening:
-                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
+                navController.navigate(R.id.action_nav_add_Entry_to_timeEveningFragment2);
                 break;
             case R.id.timedate_button_night:
-                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
+                navController.navigate(R.id.action_nav_add_Entry_to_timeNightFragment);
                 break;
         }
     }

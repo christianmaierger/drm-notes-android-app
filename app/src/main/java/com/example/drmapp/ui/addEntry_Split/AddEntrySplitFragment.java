@@ -20,6 +20,7 @@ import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AddEntrySplitFragment extends Fragment implements View.OnClickListener {
 
@@ -37,6 +38,10 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
+
+        //Sichtbarmachen des Floating Action Buttons für das Speichern eines Eintrags
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.GONE);
 
         return root;
     }

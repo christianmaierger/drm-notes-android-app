@@ -48,11 +48,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       try {
-
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -76,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
          *
          * */
 
-     entryRecyclerView = findViewById(R.id.entryRecyclerView);
-       // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
+        entryRecyclerView = findViewById(R.id.entryRecyclerView);
+        // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
        /*if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             EntryFragment entryRecyclerView = new EntryFragment();
@@ -90,26 +85,10 @@ public class MainActivity extends AppCompatActivity {
         // TODO: In Activity OnClickListener -> entries (position itemCount, setActivity "Eating/Drinking"
 
 
-       //entryRecyclerView.setAdapter(adapter);
+        //entryRecyclerView.setAdapter(adapter);
         //Legt die Ansicht fest! (Gibt auch Grid etc.)
-      // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        // rechts unten der weiter button ist dieser fab, floating action button
-
-
-        try {
-            FloatingActionButton fab = findViewById(R.id.fwd);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
-        } catch (Exception e) {
-           e.printStackTrace();
-        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -120,16 +99,33 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_add_Entry, R.id.nav_view_Last, R.id.manageNotifications)
                 .setDrawerLayout(drawer)
                 .build();
-try {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-} catch (Exception e) {
-    e.printStackTrace();
-}
 
         // channel needs to be created right at app start
         createNotificationChannel();
+
+
+        // rechts unten der weiter button ist dieser fab, floating action button
+        FloatingActionButton fwd = findViewById(R.id.fwd);
+        FloatingActionButton home = findViewById(R.id.backHome);
+
+        fwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.nav_success);
+
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.nav_home);
+            }
+        });
+
     }
 
 

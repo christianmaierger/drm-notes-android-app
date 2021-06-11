@@ -61,6 +61,10 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         mViewModel = new ViewModelProvider(this).get(ManageNotificationsViewModel.class);
         root = inflater.inflate(R.layout.fragment_manage_notifications, container, false);
 
+        //Entfernen des Floating Action Buttons für das Speichern eines Eintrags
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.GONE);
+
         // Text neben dem Button der den TimePicker erscheinen lässt
         final TextView textViewBesidesAddNotificationButton = root.findViewById(R.id.textForAddTimeButton);
 

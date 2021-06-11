@@ -38,6 +38,10 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
 
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.GONE);
+
+
         Button button = (Button) root.findViewById(R.id.toAddEntry);
         button.setOnClickListener(new View.OnClickListener()
         {
