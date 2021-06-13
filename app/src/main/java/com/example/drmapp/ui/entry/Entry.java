@@ -16,20 +16,22 @@ public class Entry {
     private String date;
     private String time;
     private String activity;
-    private String feeling;
-    private String mood;
+    private String emoji;
+    private int sam1;
+    private int sam2;
     private String thoughts;
-    private String comments;
+
     private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
 
-    public Entry(String date, String time, String activity, String feeling, String mood, String thoughts, String comments) {
+    public Entry(String date, String time, String activity, String emoji, int sam1, int sam2, String thoughts) {
         this.date = date;
         this.time = time;
         this.activity = activity;
-        this.feeling = feeling;
-        this.mood = mood;
+        this.emoji = emoji;
+        this.sam1 = sam1;
+        this.sam2 = sam2;
         this.thoughts = thoughts;
-        this.comments = comments;
+
         isExpaned=false;
     }
 
@@ -65,22 +67,6 @@ public class Entry {
         this.activity = activity;
     }
 
-    public String getFeeling() {
-        return feeling;
-    }
-
-    public void setFeeling(String feeling) {
-        this.feeling = feeling;
-    }
-
-    public String getMood() {
-        return mood;
-    }
-
-    public void setMood(String mood) {
-        this.mood = mood;
-    }
-
     public String getThoughts() {
         return thoughts;
     }
@@ -89,35 +75,45 @@ public class Entry {
         this.thoughts = thoughts;
     }
 
-    public String getComments() {
-        return comments;
+    public String getEmoji() {
+        return emoji;
     }
 
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setEmoji(String emoji) {
+        this.emoji = emoji;
     }
 
+    public int getSam1() {
+        return sam1;
+    }
 
+    public void setSam1(int sam1) {
+        this.sam1 = sam1;
+    }
+
+    public int getSam2() {
+        return sam2;
+    }
+
+    public void setSam2(int sam2) {
+        this.sam2 = sam2;
+    }
 
     // method just to create some test data
     public static ArrayList<Entry> createEntryList() {
         ArrayList<Entry> entries = new ArrayList<Entry>();
 
-        entries.add(new Entry("05/05/21", "09:00", "Eating/Drinking", "Happy", ":)", "Food is yummy", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."));
-        entries.add(new Entry("05/05/21", "13:00", "Working", "Happy", ":)", "Make much money", "no comment"));
-        entries.add(new Entry("05/05/21", "18:00", "CareWork", "Happy", ":)", "Love coffee", "no comment"));
-        entries.add(new Entry("05/05/21", "01:00", "Chores", "Happy", ":)", "Love coffee", "no comment"));
-        entries.add(new Entry("05/05/21", "01:00", "Leisure", "Happy", ":)", "Love coffee", "no comment"));
-        entries.add(new Entry("05/05/21", "02:00", "Other", "Happy", ":)", "Love coffee", "no comment"));
+               entries.add(new Entry("05/05/21", "07:00", "Eating/drinking", "happy", 1, 1, "Pancakes are good"));
+                 entries.add(new Entry("05/05/21", "08:00", "Working/studying", "normal", 2, 2, "Laptop is loud"));
+        entries.add(new Entry("05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, "Coffee tasted horrible"));
+        entries.add(new Entry("05/05/21", "13:00", "Hobby", "surprised", 4, 4, "Took a walk"));
+        entries.add(new Entry("05/05/21", "18:00", "Care work", "angry", 5, 5, "Dog did not like the bath"));
+        entries.add(new Entry("05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, "Netflix did not work"));
 
         //adapter.setEntries(entries);
 
         return entries;
     }
-
-
-
-
 
 
     @Override
@@ -126,10 +122,11 @@ public class Entry {
                 "date='" + date + '\'' +
                 ", time='" + time + '\'' +
                 ", activity='" + activity + '\'' +
-                ", feeling='" + feeling + '\'' +
-                ", mood='" + mood + '\'' +
+                ", emoji='" + emoji + '\'' +
+                ", sam1=" + sam1 +
+                ", sam2=" + sam2 +
                 ", thoughts='" + thoughts + '\'' +
-                ", comments='" + comments + '\'' +
+                ", isExpaned=" + isExpaned +
                 '}';
     }
 }
