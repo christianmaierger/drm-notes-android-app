@@ -59,7 +59,7 @@ public class ActivitiesPremadeFragment extends Fragment implements View.OnClickL
                 navController.navigate(R.id.action_activitiesPremadeFragment_to_activitiesManualFragment);
                 break;
             default:
-                navController.navigate(R.id.action_activitiesPremadeFragment_to_feelingsPremadeFragment);
+                navController.navigate(R.id.action_activitiesPremadeFragment_to_personPremadeFragment);
                 break;
         }
     }

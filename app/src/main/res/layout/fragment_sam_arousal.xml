@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.overall.OverallFragment">
+    tools:context="ui.sam_arousal.SamArousalFragment">
 
     <TextView
-        android:id="@+id/textDominance"
+        android:id="@+id/textArousal"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -20,72 +20,72 @@
         app:layout_constraintTop_toTopOf="@+id/guideline1_v" />
 
     <ImageButton
-        android:id="@+id/btnDominance1"
+        android:id="@+id/btnArousal1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/arousal1"
-        app:layout_constraintBottom_toTopOf="@+id/btnDominance2"
+        android:background="@drawable/sam25"
+        app:layout_constraintBottom_toTopOf="@+id/btnArousal2"
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/textDominance"
+        app:layout_constraintTop_toBottomOf="@+id/textArousal"
         android:padding="100dp"/>
 
     <ImageButton
-        android:id="@+id/btnDominance2"
+        android:id="@+id/btnArousal2"
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/arousal2"
-        app:layout_constraintBottom_toTopOf="@+id/btnDominance3"
+        android:background="@drawable/sam24"
+        app:layout_constraintBottom_toTopOf="@+id/btnArousal3"
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/btnDominance1" />
+        app:layout_constraintTop_toBottomOf="@+id/btnArousal1" />
 
     <ImageButton
-        android:id="@+id/btnDominance3"
+        android:id="@+id/btnArousal3"
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/arousal3"
-        app:layout_constraintBottom_toTopOf="@+id/btnDominance4"
+        android:background="@drawable/sam23"
+        app:layout_constraintBottom_toTopOf="@+id/btnArousal4"
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/btnDominance2" />
+        app:layout_constraintTop_toBottomOf="@+id/btnArousal2" />
 
     <ImageButton
-        android:id="@+id/btnDominance4"
+        android:id="@+id/btnArousal4"
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/arousal4"
-        app:layout_constraintBottom_toTopOf="@+id/btnDominance5"
+        android:background="@drawable/sam22"
+        app:layout_constraintBottom_toTopOf="@+id/btnArousal5"
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/btnDominance3" />
+        app:layout_constraintTop_toBottomOf="@+id/btnArousal3" />
 
     <ImageButton
-        android:id="@+id/btnDominance5"
+        android:id="@+id/btnArousal5"
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/arousal5"
+        android:background="@drawable/sam21"
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
         app:layout_constraintEnd_toEndOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/btnDominance4" />
+        app:layout_constraintTop_toBottomOf="@+id/btnArousal4" />
 
     <ProgressBar
-        android:id="@+id/pBarDominance"
+        android:id="@+id/pBarArousal"
         style="?android:attr/progressBarStyleHorizontal"
         android:progress="75"
 

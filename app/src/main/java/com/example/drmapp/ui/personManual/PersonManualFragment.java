@@ -19,7 +19,6 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.overall.OverallFragment;
 
 
 public class PersonManualFragment extends Fragment implements View.OnClickListener{

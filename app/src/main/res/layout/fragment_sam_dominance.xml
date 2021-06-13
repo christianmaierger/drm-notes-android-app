@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.overall.OverallFragment">
+    tools:context="ui.sam_dominance.SamDominanceFragment">
 
     <TextView
         android:id="@+id/textDominance"
@@ -23,7 +23,7 @@
         android:id="@+id/btnDominance1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/dominance1"
+        android:background="@drawable/sam35"
         app:layout_constraintBottom_toTopOf="@+id/btnDominance2"
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
@@ -37,7 +37,7 @@
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/dominance2"
+        android:background="@drawable/sam34"
         app:layout_constraintBottom_toTopOf="@+id/btnDominance3"
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
@@ -50,7 +50,7 @@
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/dominance3"
+        android:background="@drawable/sam33"
         app:layout_constraintBottom_toTopOf="@+id/btnDominance4"
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
@@ -63,7 +63,7 @@
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/dominance4"
+        android:background="@drawable/sam32"
         app:layout_constraintBottom_toTopOf="@+id/btnDominance5"
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
@@ -76,7 +76,7 @@
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/dominance5"
+        android:background="@drawable/sam31"
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
         app:layout_constraintEnd_toEndOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"

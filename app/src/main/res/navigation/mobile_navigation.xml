@@ -58,8 +58,8 @@
         android:label="ActivitiesManualFragment"
         tools:layout="@layout/fragment_activities_manual" >
         <action
-            android:id="@+id/action_activitiesManualFragment_to_feelingsPremadeFragment"
-            app:destination="@id/feelingsPremadeFragment" />
+            android:id="@+id/action_activitiesManualFragment_to_personPremadeFragment"
+            app:destination="@id/personPremadeFragment" />
     </fragment>
     <fragment
         android:id="@+id/activitiesPremadeFragment"
@@ -70,28 +70,7 @@
             android:id="@+id/action_activitiesPremadeFragment_to_activitiesManualFragment"
             app:destination="@id/activitiesManualFragment" />
         <action
-            android:id="@+id/action_activitiesPremadeFragment_to_feelingsPremadeFragment"
-            app:destination="@id/feelingsPremadeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/feelingsManualFragment"
-        android:name="com.example.drmapp.ui.feelingsManual.FeelingsManualFragment"
-        android:label="FeelingsManualFragment"
-        tools:layout="@layout/fragment_feelings_manual" >
-        <action
-            android:id="@+id/action_feelingsManualFragment_to_personPremadeFragment"
-            app:destination="@id/personPremadeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/feelingsPremadeFragment"
-        android:name="com.example.drmapp.ui.feelingsPremade.FeelingsPremadeFragment"
-        android:label="FeelingsPremadeFragment"
-        tools:layout="@layout/fragment_feelings_premade" >
-        <action
-            android:id="@+id/action_feelingsPremadeFragment_to_feelingsManualFragment"
-            app:destination="@id/feelingsManualFragment" />
-        <action
-            android:id="@+id/action_feelingsPremadeFragment_to_personPremadeFragment"
+            android:id="@+id/action_activitiesPremadeFragment_to_personPremadeFragment"
             app:destination="@id/personPremadeFragment" />
     </fragment>
     <fragment
@@ -116,15 +95,6 @@
             app:destination="@id/emojiPremadeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/overallFragment"
-        android:name="com.example.drmapp.ui.overall.OverallFragment"
-        android:label="OverallFragment"
-        tools:layout="@layout/fragment_overall" >
-        <action
-            android:id="@+id/action_overallFragment_to_thoughtsFragment"
-            app:destination="@id/thoughtsFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/thoughtsFragment"
         android:name="com.example.drmapp.ui.thoughts.ThoughtsFragment"
         android:label="ThoughtsFragment"
@@ -147,20 +117,44 @@
             app:destination="@id/nav_add_Entry" />
     </fragment>
     <fragment
+        android:id="@+id/samArousalFragment"
+        android:name="com.example.drmapp.ui.sam_arousal.SamArousalFragment"
+        android:label="SamArousalFragment" >
+        <action
+            android:id="@+id/action_samArousalFragment_to_samDominanceFragment"
+            app:destination="@id/samDominanceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/samDominanceFragment"
+        android:name="com.example.drmapp.ui.sam_dominance.SamDominanceFragment"
+        android:label="SamDominanceFragment" >
+        <action
+            android:id="@+id/action_samDominanceFragment_to_thoughtsFragment"
+            app:destination="@id/thoughtsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/samEmotionalFragment"
+        android:name="com.example.drmapp.ui.sam_emotional.SamEmotionalFragment"
+        android:label="SamEmotionalFragment" >
+        <action
+            android:id="@+id/action_samEmotionalFragment_to_samArousalFragment"
+            app:destination="@id/samArousalFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/emojiManualFragment"
         android:name="com.example.drmapp.ui.emojiManual.EmojiManualFragment"
         android:label="EmojiManualFragment" >
         <action
-            android:id="@+id/action_emojiManualFragment_to_overallFragment"
-            app:destination="@id/overallFragment" />
+            android:id="@+id/action_emojiManualFragment_to_samEmotionalFragment"
+            app:destination="@id/samEmotionalFragment" />
     </fragment>
     <fragment
         android:id="@+id/emojiPremadeFragment"
         android:name="com.example.drmapp.ui.emojiPremade.EmojiPremadeFragment"
         android:label="EmojiPremadeFragment" >
         <action
-            android:id="@+id/action_emojiPremadeFragment_to_overallFragment"
-            app:destination="@id/overallFragment" />
+            android:id="@+id/action_emojiPremadeFragment_to_samEmotionalFragment"
+            app:destination="@id/samEmotionalFragment" />
         <action
             android:id="@+id/action_emojiPremadeFragment_to_emojiManualFragment"
             app:destination="@id/emojiManualFragment" />

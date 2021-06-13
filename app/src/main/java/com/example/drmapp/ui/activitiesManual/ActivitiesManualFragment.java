@@ -18,7 +18,7 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.feelingsPremade.FeelingsPremadeFragment;
+
 
 public class ActivitiesManualFragment extends Fragment implements View.OnClickListener{
 
@@ -43,7 +43,7 @@ public class ActivitiesManualFragment extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        navController.navigate(R.id.action_activitiesManualFragment_to_feelingsPremadeFragment);
+        navController.navigate(R.id.action_activitiesManualFragment_to_personPremadeFragment);
     }
 }
 
