@@ -28,7 +28,7 @@
             android:background="@color/lightGreen"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <TextView
                 android:id="@+id/imageViewEmoji"
                 android:layout_width="40dp"
                 android:layout_height="0dp"
@@ -36,7 +36,6 @@
                 android:paddingTop="8dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="8dp"
-                android:src="@drawable/grinning"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 

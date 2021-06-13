@@ -30,20 +30,21 @@ import java.util.ArrayList;
 
 public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Entry> entries = new ArrayList<>();
-    private static final int LAYOUT_ONE=0;
-    private static final int LAYOUT_TWO=1;
+    /*private static final int LAYOUT_ONE=0;
+    private static final int LAYOUT_TWO=1;*/
     private RecyclerView.ViewHolder holder;
     private int position;
 
-    public int getItemViewType(int position){
+    /*public int getItemViewType(int position){
         if(position==0)
             return LAYOUT_ONE;
         else
             return LAYOUT_TWO;
-    }
+    }*/
 
 
     public EntryRecViewAdapter(ArrayList<Entry> entries) {
+
         this.entries = entries;
     }
 
@@ -58,10 +59,11 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
        // View view = LayoutInflater.from(parent.getContext())
          //       .inflate(R.layout.fragment_entry_list_item, parent, false);
        // return new ViewHolder(view);
+       Entry ent = entries.get(position);
 
        View view = null;
        RecyclerView.ViewHolder viewHolder = null;
-       if(viewType==LAYOUT_ONE)
+       if(!ent.isQuick())
        {
            view = LayoutInflater.from(parent.getContext())
                    .inflate(R.layout.fragment_entry_list_item, parent, false);
@@ -88,11 +90,13 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-        if(holder.getItemViewType()==LAYOUT_ONE) {
+        Entry ent = entries.get(position);
+
+        if(!ent.isQuick()) {
 
 
             // Get the data model based on position, so to speak index of the list with entries
-            Entry ent = entries.get(position);
+            //Entry ent = entries.get(position);
 
             // Set item views based on your views and data model
             // therefore one has to follow the following pattern of definining views, setting them with the holder instance vars
@@ -112,31 +116,39 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             textViewActivity.setText(ent.getActivity());
             TextView textViewThoughts = ((ViewHolderOne) holder).contentThoughts;
             textViewThoughts.setText(ent.getThoughts());
-            ImageView imageViewEmoji = ((ViewHolderOne) holder).emoji;
+            TextView imageViewEmoji = ((ViewHolderOne) holder).emoji;
             ImageView imageViewSam1 = ((ViewHolderOne) holder).sam1;
             ImageView imageViewSam2 = ((ViewHolderOne) holder).sam2;
             ImageView imageViewSam3 = ((ViewHolderOne) holder).sam3;
 
 
+             int unicode_angry = 0x1F621; //angry
+             int unicode_sad = 0x1F622; //sad
+             int unicode_anxious = 0x1F630; //anxious
+             int unicode_proud = 0x1F4AA; //proud
+             int unicode_happy= 0xFE0F; //happy
+             int unicode_exhausted = 0x1F613; //exhausted
+
+
 
             switch (ent.getEmoji()) {
                 case "happy":
-                    imageViewEmoji.setImageResource(R.drawable.smiling);
+                    imageViewEmoji.setText(new String(Character.toChars(unicode_happy)));
                     break;
                 case "sad":
-                    imageViewEmoji.setImageResource(R.drawable.crying);
+                    imageViewEmoji.setText(new String(Character.toChars(unicode_sad)));
                     break;
                 case "angry":
-                    imageViewEmoji.setImageResource(R.drawable.angry);
+                    imageViewEmoji.setText(new String(Character.toChars(unicode_angry)));
                     break;
                 case "anxious":
-                    imageViewEmoji.setImageResource(R.drawable.anxious);
+                    imageViewEmoji.setText(new String(Character.toChars(unicode_anxious)));
                     break;
-                case "annoyed":
-                    imageViewEmoji.setImageResource(R.drawable.annoyed);
+                case "exhausted":
+                    imageViewEmoji.setText(new String(Character.toChars(unicode_exhausted)));;
                     break;
-                case "surprised":
-                    imageViewEmoji.setImageResource(R.drawable.surprised);
+                case "proud":
+                    imageViewEmoji.setText(new String(Character.toChars(unicode_proud)));
                     break;
 
             }
@@ -190,22 +202,24 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             switch (ent.getSam3()) {
                 case 1:
-                    imageViewSam2.setImageResource(R.drawable.sam13);
+                    imageViewSam3.setImageResource(R.drawable.sam13);
                     break;
                 case 2:
-                    imageViewSam2.setImageResource(R.drawable.sam11);
+                    imageViewSam3.setImageResource(R.drawable.sam11);
                     break;
                 case 3:
-                    imageViewSam2.setImageResource(R.drawable.sam12);
+                    imageViewSam3.setImageResource(R.drawable.sam12);
                     break;
                 case 4:
-                    imageViewSam2.setImageResource(R.drawable.sam15);
+                    imageViewSam3.setImageResource(R.drawable.sam15);
                     break;
                 case 5:
-                    imageViewSam2.setImageResource(R.drawable.sam16);
+                    imageViewSam3.setImageResource(R.drawable.sam16);
                     break;
 
             }
+
+
 
 
             if (entries.get(position).isExpaned()) {
@@ -252,8 +266,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         private TextView contentDate;
         private TextView contentTime;
         private TextView contentActivity;
-        private TextView contentThoughts;
-        private ImageView downArrow, upArrow, emoji, sam1, sam2, sam3;
+        private TextView contentThoughts, emoji;
+        private ImageView downArrow, upArrow, sam1, sam2, sam3;
         private ConstraintLayout expandedLayout;
         private CardView parent;
 
