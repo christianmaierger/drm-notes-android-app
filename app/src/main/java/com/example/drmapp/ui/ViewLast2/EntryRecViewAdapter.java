@@ -33,20 +33,10 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int LAYOUT_ONE=0;
     private static final int LAYOUT_TWO=1;
     private RecyclerView.ViewHolder holder;
-
-    //TODO: Irgendwas muss hier abgerufen werden wodurch der Adapter weiss welches Layout er verwenden soll
     private int position;
-
-    public int getItemViewType(int position){
-        if(position==0)
-            return LAYOUT_ONE;
-        else
-            return LAYOUT_TWO;
-    }
 
 
     public EntryRecViewAdapter(ArrayList<Entry> entries) {
-
         this.entries = entries;
     }
 
@@ -55,17 +45,32 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 The method creates and initializes the ViewHolder and its associated View,
                 but does not fill in the view's contents—the ViewHolder has not yet been bound
                 to specific data.*/
-   @Override
 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       // View view = LayoutInflater.from(parent.getContext())
-         //       .inflate(R.layout.fragment_entry_list_item, parent, false);
-       // return new ViewHolder(view);
+
+
+        // Unterscheidung zwischen den zwei Layouts jenachdem ob die Variable isQuickEntry im Eintrag auf true/false gesetzt ist.
+
+
+       Entry ent = entries.get(position);
+       if(ent.isQuickEntry())
+           viewType = LAYOUT_TWO;
+       else
+           viewType = LAYOUT_ONE;
 
 
        View view = null;
        RecyclerView.ViewHolder viewHolder = null;
-       if(viewType ==LAYOUT_ONE)
+
+       /*
+
+       Logik fuer die zwei verschiedenen Layouts.
+       Wobei LAYOUT_ONE fuer den regulaeren Eintrag steht und daher auch das layout von fragment_entry_list_item verwendet,
+       wohingegen LAYOUT_TWO fuer den quickEntry steht und das layout fragment_entry_list_item_quick verwendet.
+
+       */
+
+       if(viewType==LAYOUT_ONE)
        {
            view = LayoutInflater.from(parent.getContext())
                    .inflate(R.layout.fragment_entry_list_item, parent, false);
@@ -93,21 +98,15 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         Entry ent = entries.get(position);
 
+        /*
+        * Hier wird ent steht hier fuer einen einzelnen Eintrag, dessen Daten dann den jeweiligen Views zugeordnet werden.
+        * Zudem definiere ich hier die Logik der Views, die sich in Abhaenigkeit von den eingegebenen Daten aendern (Emojis, Self-Assessment Manikins)
+        * */
+
+        // Logik fuer normalen Entry
         if(holder.getItemViewType()==LAYOUT_ONE) {
 
-            // Get the data model based on position, so to speak index of the list with entries
-            //Entry ent = entries.get(position);
-
-            // Set item views based on your views and data model
-            // therefore one has to follow the following pattern of definining views, setting them with the holder instance vars
-            // then set the text/other value by getting the coressponding value from the entry in the list at the specific position
-
-            /*
-             * SwitchCase um die Bilder im RecyclerView zu aendern in Abhaenigkeit von der eingegebenen Actvity
-             * */
-
-            //ViewHolderOne viewHolderOne = (ViewHolderOne)holder;
-
+             // SwitchCase um die Bilder im RecyclerView zu aendern in Abhaenigkeit von der eingegebenen Actvity
             TextView textViewDate = ((ViewHolderOne) holder).contentDate;
             textViewDate.setText(ent.getDate());
             TextView textViewTime = ((ViewHolderOne) holder).contentTime;
@@ -154,8 +153,6 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
 
             //SAMS Valence
-
-
             switch (ent.getSam1()) {
                 case 1:
                     imageViewSam1.setImageResource(R.drawable.sam1);
@@ -176,8 +173,6 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
 
             //SAMS Excitement
-
-
             switch (ent.getSam2()) {
                 case 1:
                     imageViewSam2.setImageResource(R.drawable.sam6);
@@ -198,8 +193,6 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
 
             //SAMS Dominance
-
-
             switch (ent.getSam3()) {
                 case 1:
                     imageViewSam3.setImageResource(R.drawable.sam13);
@@ -220,8 +213,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
 
 
-
-
+            // Das ist fuer den Pfeil, bei dem ausklappbaren Layout
             if (entries.get(position).isExpaned()) {
                 ((ViewHolderOne) holder).expandedLayout.setVisibility(View.VISIBLE);
                 ((ViewHolderOne) holder).downArrow.setVisibility(View.GONE);
@@ -232,6 +224,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
         }
 
+        // Logik fuer QuickEntry
         else {
 
             TextView textViewDate = ((ViewHolderTwo) holder).contentDate_q;
@@ -273,8 +266,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 
     /*
-    * Deklaration der Variablen und Verknuepfung mit den zugehoerigen Elementen in den XML Layout Dateien.
-    *
+    * Die ViewHolder dienen der Deklaration der Variablen und Verknuepfung mit den zugehoerigen Elementen in den XML Layout Dateien.
+    * Auch hier habe ich wieder zwei definiert, einen fuer den QuickEntry (ViewHolderTwo) und einen fuer den normalen Entry (ViewHolderOne)
     * */
 
     public class ViewHolderOne extends RecyclerView.ViewHolder {
@@ -336,6 +329,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     }
 
+
+    // Der ViewHolderTwo ist  nur ein "gekuerzter" ViewHolderOne
     public class ViewHolderTwo extends RecyclerView.ViewHolder {
         private TextView contentDate_q;
         private TextView contentTime_q;

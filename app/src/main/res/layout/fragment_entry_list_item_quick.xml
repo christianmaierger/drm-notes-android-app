@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:background="@color/lightGreen"
-                app:layout_constraintTop_toTopOf="parent_q">
+                app:layout_constraintTop_toTopOf="parent">
 
 
 
@@ -39,8 +39,8 @@
                     android:paddingBottom="16dp"
                     android:src="@drawable/ic_whitearrowdown"
                     android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="@id/collapsedLayout"
-                    app:layout_constraintEnd_toEndOf="@id/collapsedLayout" />
+                    app:layout_constraintBottom_toBottomOf="@id/collapsedLayout_q"
+                    app:layout_constraintEnd_toEndOf="@id/collapsedLayout_q" />
 
 
                 <TextView
@@ -53,8 +53,8 @@
                     android:paddingBottom="16dp"
                     android:text="dd:mm:yy"
                     android:textAppearance="@style/buttonStyle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="@id/collapsedLayout_q"
+                    app:layout_constraintTop_toTopOf="@id/collapsedLayout_q" />
 
 
                 <TextView
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
 
                 android:visibility="visible"
-                app:layout_constraintTop_toBottomOf="@id/collapsedLayout">
+                app:layout_constraintTop_toBottomOf="@id/collapsedLayout_q">
 
                 <ImageView
                     android:id="@+id/btnArrowUp_q"

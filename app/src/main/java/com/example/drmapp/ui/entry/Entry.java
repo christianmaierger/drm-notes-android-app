@@ -22,10 +22,10 @@ public class Entry {
     private int sam3;
     private String thoughts;
 
-
+    private boolean isQuickEntry; // Speichervariable fuer Unterschiedung zwischen den ViewHoldern
     private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
 
-    public Entry(String date, String time, String activity, String emoji, int sam1, int sam2, int sam3, String thoughts) {
+    public Entry(boolean isQuickEntry, String date, String time, String activity, String emoji, int sam1, int sam2, int sam3, String thoughts) {
         this.date = date;
         this.time = time;
         this.activity = activity;
@@ -34,10 +34,26 @@ public class Entry {
         this.sam2 = sam2;
         this.sam3 = sam3;
         this.thoughts = thoughts;
+        this.isQuickEntry = isQuickEntry;
 
 
         isExpaned=false;
+
     }
+    public Entry(boolean isQuickEntry, String date, String time, String activity, String thoughts) {
+        this.date = date;
+        this.time = time;
+        this.activity = activity;
+        this.thoughts = thoughts;
+        this.isQuickEntry = isQuickEntry;
+
+
+        isExpaned=false;
+
+    }
+
+    public boolean isQuickEntry(){ return isQuickEntry;}
+    public void setQuickEntry(boolean quickEntry){ isQuickEntry = quickEntry;}
 
 
 
@@ -116,12 +132,15 @@ public class Entry {
     public static ArrayList<Entry> createEntryList() {
         ArrayList<Entry> entries = new ArrayList<Entry>();
 
-               entries.add(new Entry("05/05/21", "07:00", "Eating/drinking", "happy", 1, 1,1, "Pancakes are good"));
-                 entries.add(new Entry("05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2, "Laptop is loud"));
-        entries.add(new Entry("05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, 3,"Coffee tasted horrible"));
-        entries.add(new Entry("05/05/21", "13:00", "Hobby", "surprised", 4, 4,4, "Took a walk"));
-        entries.add(new Entry("05/05/21", "18:00", "Care work", "angry", 5, 5, 5, "Dog did not like the bath"));
-        entries.add(new Entry("05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, 1,"Netflix did not work"));
+        entries.add(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
+
+               entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", "happy", 1, 1,1, "Pancakes are good"));
+                 entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2, "Laptop is loud"));
+        entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, 3,"Coffee tasted horrible"));
+        entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", "surprised", 4, 4,4, "Took a walk"));
+        entries.add(new Entry(false,"05/05/21", "18:00", "Care work", "angry", 5, 5, 5, "Dog did not like the bath"));
+        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, 1,"Netflix did not work"));
+
 
         //adapter.setEntries(entries);
 
