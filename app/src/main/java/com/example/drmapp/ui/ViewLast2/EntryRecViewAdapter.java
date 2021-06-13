@@ -30,17 +30,19 @@ import java.util.ArrayList;
 
 public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Entry> entries = new ArrayList<>();
-    /*private static final int LAYOUT_ONE=0;
-    private static final int LAYOUT_TWO=1;*/
+    private static final int LAYOUT_ONE=0;
+    private static final int LAYOUT_TWO=1;
     private RecyclerView.ViewHolder holder;
+
+    //TODO: Irgendwas muss hier abgerufen werden wodurch der Adapter weiss welches Layout er verwenden soll
     private int position;
 
-    /*public int getItemViewType(int position){
+    public int getItemViewType(int position){
         if(position==0)
             return LAYOUT_ONE;
         else
             return LAYOUT_TWO;
-    }*/
+    }
 
 
     public EntryRecViewAdapter(ArrayList<Entry> entries) {
@@ -59,11 +61,11 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
        // View view = LayoutInflater.from(parent.getContext())
          //       .inflate(R.layout.fragment_entry_list_item, parent, false);
        // return new ViewHolder(view);
-       Entry ent = entries.get(position);
+
 
        View view = null;
        RecyclerView.ViewHolder viewHolder = null;
-       if(!ent.isQuick())
+       if(viewType ==LAYOUT_ONE)
        {
            view = LayoutInflater.from(parent.getContext())
                    .inflate(R.layout.fragment_entry_list_item, parent, false);
@@ -72,7 +74,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
        else
        {
            view = LayoutInflater.from(parent.getContext())
-                   .inflate(R.layout.fragment_entry_list_item,parent,false);
+                   .inflate(R.layout.fragment_entry_list_item_quick,parent,false);
            viewHolder = new ViewHolderTwo(view);
 
        }
@@ -89,11 +91,9 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     */
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-
         Entry ent = entries.get(position);
 
-        if(!ent.isQuick()) {
-
+        if(holder.getItemViewType()==LAYOUT_ONE) {
 
             // Get the data model based on position, so to speak index of the list with entries
             //Entry ent = entries.get(position);
@@ -233,8 +233,24 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 
         else {
-            //ViewHolderOne vaultItemHolder = (ViewHolderOne) holder;
-            //vaultItemHolder.name.setText(displayText);
+
+            TextView textViewDate = ((ViewHolderTwo) holder).contentDate_q;
+            textViewDate.setText(ent.getDate());
+            TextView textViewTime = ((ViewHolderTwo) holder).contentTime_q;
+            textViewTime.setText(ent.getTime());
+            TextView textViewActivity = ((ViewHolderTwo) holder).contentActivity_q;
+            textViewActivity.setText(ent.getActivity());
+            TextView textViewThoughts = ((ViewHolderTwo) holder).contentThoughts_q;
+            textViewThoughts.setText(ent.getThoughts());
+
+            if (entries.get(position).isExpaned()) {
+                ((ViewHolderTwo) holder).expandedLayout_q.setVisibility(View.VISIBLE);
+                ((ViewHolderTwo) holder).downArrow_q.setVisibility(View.GONE);
+
+            } else {
+                ((ViewHolderTwo) holder).expandedLayout_q.setVisibility(View.GONE);
+                ((ViewHolderTwo) holder).downArrow_q.setVisibility(View.VISIBLE);
+            }
         }
 
 
@@ -321,9 +337,49 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public class ViewHolderTwo extends RecyclerView.ViewHolder {
+        private TextView contentDate_q;
+        private TextView contentTime_q;
+        private TextView contentActivity_q;
+        private TextView contentThoughts_q;
+        private ImageView downArrow_q, upArrow_q;
+        private ConstraintLayout expandedLayout_q;
+        private CardView parent_q;
 
         public ViewHolderTwo(View itemView){
             super(itemView);
+
+            parent_q = itemView.findViewById(R.id.parent_q);
+            contentDate_q = itemView.findViewById(R.id.contentDate_q);
+            contentTime_q = itemView.findViewById(R.id.contentTime_q);
+            contentActivity_q = itemView.findViewById(R.id.ContentActivity_q);
+            contentThoughts_q = itemView.findViewById(R.id.ContentThoughts_q);
+            downArrow_q = itemView.findViewById(R.id.btnArrowDown_q);
+            upArrow_q = itemView.findViewById(R.id.btnArrowUp_q);
+            expandedLayout_q = itemView.findViewById(R.id.expandedLayout_q);
+
+
+
+
+
+            downArrow_q.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Entry entry = entries.get(getAdapterPosition());
+                    entry.setExpaned(!entry.isExpaned());
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
+
+            upArrow_q.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Entry entry = entries.get(getAdapterPosition());
+                    entry.setExpaned(!entry.isExpaned());
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
+
+
         }
 
     }

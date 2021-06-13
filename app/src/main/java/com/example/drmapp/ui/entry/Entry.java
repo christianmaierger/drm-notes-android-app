@@ -21,7 +21,7 @@ public class Entry {
     private int sam2;
     private int sam3;
     private String thoughts;
-    private boolean quick;
+
 
     private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
 
@@ -35,17 +35,11 @@ public class Entry {
         this.sam3 = sam3;
         this.thoughts = thoughts;
 
-        quick=false;
+
         isExpaned=false;
     }
 
-    public boolean isQuick() {
-        return isQuick();
-    }
 
-    public void setQuick(boolean expaned) {
-        quick = true;
-    }
 
     public boolean isExpaned() {
         return isExpaned;
