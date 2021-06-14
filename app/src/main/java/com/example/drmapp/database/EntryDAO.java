@@ -9,8 +9,8 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.drmapp.ui.entry.Entry;
+import com.google.common.util.concurrent.ListenableFuture;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -31,20 +31,22 @@ public interface EntryDAO {
 
         // fügt einen Entry ein und wenn es den schon gibt wird ersetzt
         @Insert(onConflict = OnConflictStrategy.REPLACE)
-        public void insertEntries(Entry... entry);
+        public ListenableFuture<Long> insertEntry(Entry entry);
 
-        @Insert
-        void insertAll(Entry... entries);
-
-        @Update
-        public void updateEntries(Entry... entries);
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
+        public ListenableFuture<Long[]> insertAll(Entry... entries);
 
         @Update
-        public void updateEntry(Entry entry);
+        public ListenableFuture<Integer> updateEntries(Entry... entries);
+
+        @Update
+        public ListenableFuture<Integer> updateEntry(Entry entry);
 
         @Delete
-        void deleteEntry(Entry entry);
+        ListenableFuture<Integer>deleteEntry(Entry entry);
 
         @Delete
-        void deleteEntries(Entry... entries);
+        ListenableFuture<Integer> deleteEntries(Entry... entries);
+
+
 }

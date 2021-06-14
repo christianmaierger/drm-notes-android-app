@@ -143,7 +143,7 @@ public class Entry {
         EntryDAO userDao = db.entryDao();
 
 
-       userDao.insertEntries(new Entry(1 , "05/05/21", "13:00", "Working", "Happy", 10, 20, "no comment"));
+       userDao.insertEntry(new Entry(1 , "05/05/21", "13:00", "Working", "Happy", 10, 20, "no comment"));
 
 
         List<Entry> entries = userDao.getAll();
