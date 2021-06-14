@@ -19,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class AddEntryFragment extends Fragment implements View.OnClickListener {
 
     private AddEntryViewModel addEntryViewModel;
+    private MainActivity m = new MainActivity();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -46,20 +47,12 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        switch (v.getId()) {
-            case R.id.timedate_button_morning:
-                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
-                break;
-            case R.id.timedate_button_afternoon:
-                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
-                break;
-            case R.id.timedate_button_evening:
-                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
-                break;
-            case R.id.timedate_button_night:
-                navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
-                break;
+        if(!m.getIsQuickEntry()) {
+            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
+        }else{
+            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.action_nav_add_Entry_to_noteQuickEntryFragment);
         }
     }
     }

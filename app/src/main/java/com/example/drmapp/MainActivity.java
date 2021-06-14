@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private RecyclerView entryRecyclerView;
     private boolean alarmsAllReset= false;
+    private boolean isQuickEntry = false;
 
     public boolean isAlarmsAllReset() {
         return alarmsAllReset;
@@ -42,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void setAlarmsAllReset(boolean alarmsAllReset) {
         this.alarmsAllReset = alarmsAllReset;
+    }
+
+    public void setQuickEntryTrue(boolean val) {
+        this.isQuickEntry = val;
+    }
+
+    public boolean getIsQuickEntry() {
+        return this.isQuickEntry;
     }
 
     @Override

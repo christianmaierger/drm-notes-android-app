@@ -38,40 +38,19 @@
             />
 
 
-        <ImageView
-            android:id="@+id/imageViewTime"
-            android:layout_width="32dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="105dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
-
         <TextView
             android:id="@+id/contentDate"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
-            android:paddingTop="15dp"
+
             android:paddingEnd="15dp"
             android:text="dd:mm:yy"
 
 
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -80,12 +59,11 @@
             android:layout_height="wrap_content"
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
-            android:paddingTop="15dp"
             android:paddingEnd="15dp"
             android:text="hh_mm"
 
             app:layout_constraintStart_toEndOf="@id/contentDate"
-            app:layout_constraintTop_toBottomOf="@id/imageView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/ContentActivity"
@@ -102,6 +80,8 @@
             app:layout_constraintTop_toBottomOf="@id/contentDate" />
 
 
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -109,10 +89,17 @@
         android:id="@+id/expandedLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/collapsedLayout"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/collapsedLayout">
 
-        >
+        <ImageView
+            android:id="@+id/imageViewEmoji"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:paddingLeft="15dp"
+            android:src="@drawable/grinning"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 
         <ImageView
             android:id="@+id/btnArrowUp"
@@ -120,36 +107,38 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_arrow_up"
             app:layout_constraintBottom_toBottomOf="@id/expandedLayout"
+            android:src="@drawable/ic_arrow_up"
+            app:layout_constraintTop_toBottomOf="@id/imageViewSAM2"
             app:layout_constraintEnd_toEndOf="@id/expandedLayout" />
 
 
-        <TextView
-            android:id="@+id/ContentFeeling"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/imageViewSAM1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="15dp"
+           android:src="@drawable/sam11"
             android:paddingLeft="15dp"
-            android:paddingTop="15dp"
-            android:paddingEnd="15dp"
-            android:text="Feeling"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/expandedLayout" />
+            app:layout_constraintStart_toEndOf="@id/imageViewEmoji"
+            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 
-
-        <TextView
-            android:id="@+id/ContentMood"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/imageViewSAM2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="15dp"
             android:paddingLeft="15dp"
-            android:paddingTop="15dp"
-            android:paddingEnd="15dp"
-            android:text="Mood"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ContentFeeling" />
 
+           android:src="@drawable/sam21"
+            app:layout_constraintStart_toEndOf="@id/imageViewSAM1"
+            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
+
+       <!-- <ImageView
+            android:id="@+id/imageViewSAM3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:src="@drawable/sam31"
+            app:layout_constraintStart_toEndOf="@id/imageViewSAM2"
+            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" /> -->
 
         <TextView
             android:id="@+id/ContentThoughts"
@@ -160,24 +149,11 @@
             android:paddingTop="15dp"
             android:paddingEnd="15dp"
             android:text="Thoughts \nLorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor "
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ContentMood" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/ContentComments"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="15dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="15dp"
-            android:paddingEnd="15dp"
-            android:paddingBottom="15dp"
-            android:text="Comments \nLorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor "
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

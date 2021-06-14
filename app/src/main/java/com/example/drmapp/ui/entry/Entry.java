@@ -21,7 +21,7 @@ import java.util.List;
  * Mittels .get(position) kann auf die einzelnen Objekte der ArrayListe zugegriffen werden.
  * */
 
-@Entity
+
 public class Entry {
 
 
@@ -37,10 +37,11 @@ public class Entry {
     private String date;
     private String time;
     private String activity;
-    private String feeling;
-    private String mood;
+    private String emoji;
+    private int sam1;
+    private int sam2;
     private String thoughts;
-    private String comments;
+
     // verhindert dass ein Feld eine Spalte wird, isExpanded muss man wahrscheinlich nicht dauerhaft speichern?
     @Ignore
     private boolean isExpanded; // notwendig fuer ausklappbare RecyclerView
@@ -49,10 +50,11 @@ public class Entry {
         this.date = date;
         this.time = time;
         this.activity = activity;
-        this.feeling = feeling;
-        this.mood = mood;
+        this.emoji = emoji;
+        this.sam1 = sam1;
+        this.sam2 = sam2;
         this.thoughts = thoughts;
-        this.comments = comments;
+
         isExpanded=false;
     }
 
@@ -96,21 +98,6 @@ public class Entry {
         this.activity = activity;
     }
 
-    public String getFeeling() {
-        return feeling;
-    }
-
-    public void setFeeling(String feeling) {
-        this.feeling = feeling;
-    }
-
-    public String getMood() {
-        return mood;
-    }
-
-    public void setMood(String mood) {
-        this.mood = mood;
-    }
 
     public String getThoughts() {
         return thoughts;
@@ -120,15 +107,29 @@ public class Entry {
         this.thoughts = thoughts;
     }
 
-    public String getComments() {
-        return comments;
+    public String getEmoji() {
+        return emoji;
     }
 
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setEmoji(String emoji) {
+        this.emoji = emoji;
     }
 
+    public int getSam1() {
+        return sam1;
+    }
 
+    public void setSam1(int sam1) {
+        this.sam1 = sam1;
+
+
+    public int getSam2() {
+        return sam2;
+    }
+
+    public void setSam2(int sam2) {
+        this.sam2 = sam2;
+    }
 
     // method just to create some test data
     public static List<Entry> createEntryList(Context context) {
@@ -155,7 +156,6 @@ public class Entry {
 
         return entries;
     }
-
 
 
     @Override

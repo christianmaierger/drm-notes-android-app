@@ -51,7 +51,7 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         switch(v.getId()){
             case R.id.btnSubmitEmojiM:
-                navController.navigate(R.id.action_emojiManualFragment_to_overallFragment);
+                navController.navigate(R.id.action_emojiManualFragment_to_samEmotionalFragment);
                 break;
         }
     }

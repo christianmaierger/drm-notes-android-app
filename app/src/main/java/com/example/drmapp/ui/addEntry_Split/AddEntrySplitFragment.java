@@ -5,15 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -25,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class AddEntrySplitFragment extends Fragment implements View.OnClickListener {
 
     private AddEntrySplitViewModel addEntryViewModel;
+    private MainActivity m = new MainActivity();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -51,11 +46,15 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         switch (v.getId()) {
             case R.id.btnQuickEntry:
-                navController.navigate(R.id.action_addEntrySplitFragment_to_noteQuickEntryFragment);
+                m.setQuickEntryTrue(true);
+                navController.navigate(R.id.action_addEntrySplitFragment_to_nav_add_Entry);
                 break;
             case R.id.btnFullEntry:
+                m.setQuickEntryTrue(false);
                 navController.navigate(R.id.action_addEntrySplitFragment_to_nav_add_Entry);
                 break;
         }
     }
+
+
 }

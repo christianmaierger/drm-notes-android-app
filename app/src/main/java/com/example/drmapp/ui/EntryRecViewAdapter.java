@@ -74,97 +74,81 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         * SwitchCase um die Bilder im RecyclerView zu aendern in Abhaenigkeit von der eingegebenen Actvity
         * */
 
-        TextView textViewDa = holder.contentDate;
-        textViewDa.setText(ent.getDate());
-        TextView textViewCo = holder.contentComments;
-        textViewCo.setText(ent.getComments());
-        TextView textViewTi = holder.contentTime;
-        textViewTi.setText(ent.getTime());
-        TextView textViewAc = holder.contentActivity;
-        textViewAc.setText(ent.getActivity());
-        TextView textViewFe = holder.contentFeeling;
-        textViewFe.setText(ent.getFeeling());
-        TextView textViewMo = holder.contentMood;
-        textViewMo.setText(ent.getMood());
-        TextView textViewTh = holder.contentThoughts;
-        textViewTh.setText(ent.getThoughts());
-        ImageView imageView = holder.imageView;
-        ImageView imageViewTime = holder.imageViewTime;
+        TextView textViewDate = holder.contentDate;
+        textViewDate.setText(ent.getDate());
+        TextView textViewTime = holder.contentTime;
+        textViewTime.setText(ent.getTime());
+        TextView textViewActivity = holder.contentActivity;
+        textViewActivity.setText(ent.getActivity());
+        TextView textViewThoughts = holder.contentThoughts;
+        textViewThoughts.setText(ent.getThoughts());
+        ImageView imageViewEmoji = holder.emoji;
+        ImageView imageViewSam1 = holder.sam1;
+        ImageView imageViewSam2 = holder.sam2;
+        imageViewSam2.setImageResource(R.drawable.sam21);
 
 
-
-
-
-        switch(ent.getActivity()){
-            case "Eating/Drinking":
-                imageView.setImageResource(R.drawable.eating);
+        switch (ent.getEmoji()){
+            case "happy":
+                imageViewEmoji.setImageResource(R.drawable.smiling);
                 break;
-
-            case "Working":
-                imageView.setImageResource(R.drawable.working);
+            case "sad":
+                imageViewEmoji.setImageResource(R.drawable.crying);
                 break;
-
-            case "Cooking":
-                imageView.setImageResource(R.drawable.cooking);
+            case "angry":
+                imageViewEmoji.setImageResource(R.drawable.angry);
                 break;
-            case "Chores":
-                imageView.setImageResource(R.drawable.chores);
+            case "anxious":
+                imageViewEmoji.setImageResource(R.drawable.anxious);
                 break;
-            case "Hobby":
-                imageView.setImageResource(R.drawable.hobby);
+            case "annoyed":
+                imageViewEmoji.setImageResource(R.drawable.annoyed);
                 break;
-            case "CareWork":
-                imageView.setImageResource(R.drawable.care);
-                break;
-            case "Leisure":
-                imageView.setImageResource(R.drawable.leisure);
-                break;
-            default:
-                imageView.setImageResource(R.drawable.other);
+            case "surprised":
+                imageViewEmoji.setImageResource(R.drawable.surprised);
                 break;
 
         }
 
 
-
-
-        switch(ent.getTime()){
-            case "06:00":
-            case "07:00":
-            case "08:00":
-            case "09:00":
-            case "10:00":
-            case "11:00":
-                imageViewTime.setImageResource(R.drawable.morning1);
+        switch (ent.getSam1()){
+            case 1:
+                imageViewSam1.setImageResource(R.drawable.sam21);
                 break;
-
-            case "12:00":
-            case "13:00":
-            case "14:00":
-            case "15:00":
-            case "16:00":
-            case "17:00":
-                imageViewTime.setImageResource(R.drawable.day1);
+            case 2:
+                imageViewSam1.setImageResource(R.drawable.sam22);
                 break;
-
-            case "18:00":
-            case "19:00":
-            case "20:00":
-            case "21:00":
-            case "22:00":
-            case "23:00":
-                imageViewTime.setImageResource(R.drawable.evening1);
+            case 3:
+                imageViewSam1.setImageResource(R.drawable.sam23);
                 break;
-
-            case "00:00":
-            case "01:00":
-            case "02:00":
-            case "03:00":
-            case "04:00":
-                imageViewTime.setImageResource(R.drawable.night1);
+            case 4:
+                imageViewSam1.setImageResource(R.drawable.sam24);
+                break;
+            case 5:
+                imageViewSam1.setImageResource(R.drawable.sam25);
                 break;
 
         }
+
+        switch (ent.getSam2()){
+            case 1:
+                imageViewSam2.setImageResource(R.drawable.sam31);
+                break;
+            case 2:
+                imageViewSam2.setImageResource(R.drawable.sam32);
+                break;
+            case 3:
+                imageViewSam2.setImageResource(R.drawable.sam33);
+                break;
+            case 4:
+                imageViewSam2.setImageResource(R.drawable.sam34);
+                break;
+            case 5:
+                imageViewSam2.setImageResource(R.drawable.sam35);
+                break;
+
+        }
+
 
 
 
@@ -209,12 +193,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
         private TextView contentDate;
         private TextView contentTime;
         private TextView contentActivity;
-        private TextView contentFeeling;
-        private TextView contentMood;
         private TextView contentThoughts;
-        private TextView contentComments;
-        private ImageView imageView;
-        private ImageView downArrow, upArrow, imageViewTime;
+        private ImageView downArrow, upArrow, emoji, sam1, sam2;
         private ConstraintLayout expandedLayout;
         private CardView parent;
 
@@ -226,18 +206,16 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
             parent = itemView.findViewById(R.id.parent);
             contentDate = itemView.findViewById(R.id.contentDate);
             contentTime = itemView.findViewById(R.id.contentTime);
-
-
             contentActivity = itemView.findViewById(R.id.ContentActivity);
-            contentFeeling = itemView.findViewById(R.id.ContentFeeling);
-            contentMood = itemView.findViewById(R.id.ContentMood);
             contentThoughts = itemView.findViewById(R.id.ContentThoughts);
-            contentComments = itemView.findViewById(R.id.ContentComments);
-            imageView = itemView.findViewById(R.id.imageView);
             downArrow = itemView.findViewById(R.id.btnArrowDown);
             upArrow = itemView.findViewById(R.id.btnArrowUp);
             expandedLayout = itemView.findViewById(R.id.expandedLayout);
-            imageViewTime = itemView.findViewById(R.id.imageViewTime);
+            emoji = itemView.findViewById(R.id.imageViewEmoji);
+            sam1 = itemView.findViewById(R.id.imageViewSAM1);
+            sam2 = itemView.findViewById(R.id.imageViewSAM2);
+
+
 
 
             downArrow.setOnClickListener(new View.OnClickListener() {
