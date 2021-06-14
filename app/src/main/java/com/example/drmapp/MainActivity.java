@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private RecyclerView entryRecyclerView;
-    private static boolean isQuickEntry = false;
+    private boolean isQuickEntry = false;
 
 
 
