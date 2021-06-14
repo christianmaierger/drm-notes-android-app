@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_nav_add_Entry_to_activitiesPremadeFragment"
             app:destination="@id/activitiesPremadeFragment" />
+        <action
+            android:id="@+id/action_nav_add_Entry_to_noteQuickEntryFragment"
+            app:destination="@id/noteQuickEntryFragment" />
     </fragment>
 
     <fragment
@@ -39,9 +42,6 @@
         <action
             android:id="@+id/action_addEntrySplitFragment_to_nav_add_Entry"
             app:destination="@id/nav_add_Entry" />
-        <action
-            android:id="@+id/action_addEntrySplitFragment_to_noteQuickEntryFragment"
-            app:destination="@id/noteQuickEntryFragment" />
     </fragment>
     <fragment
         android:id="@+id/noteQuickEntryFragment"

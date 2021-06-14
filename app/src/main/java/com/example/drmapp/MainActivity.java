@@ -31,6 +31,17 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private RecyclerView entryRecyclerView;
+    private static boolean isQuickEntry = false;
+
+
+
+    public void setQuickEntryTrue(boolean val) {
+        this.isQuickEntry = val;
+    }
+
+    public boolean getIsQuickEntry() {
+        return this.isQuickEntry;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
-
 
 
 
