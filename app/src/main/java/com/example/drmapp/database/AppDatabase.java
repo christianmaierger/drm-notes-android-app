@@ -28,12 +28,14 @@ public abstract class AppDatabase extends RoomDatabase {
     protected AppDatabase() {
     }
 
-    // Ich benutze Lazy Initialisation Singleton Pattern um nur eine Instanz zu erzeugen, nicht threadsafe
+    // Ich benutze Lazy Initialisation Singleton Pattern um nur eine Instanz zu erzeugen, basic threadsafe
     public static AppDatabase getInstance(Context context) {
-        if(instance == null) {
-            instance = Room.databaseBuilder(context,
-                    AppDatabase.class, "database-name").allowMainThreadQueries().build();
-            }
+synchronized (AppDatabase.class) {
+    if (instance == null) {
+        instance = Room.databaseBuilder(context,
+                AppDatabase.class, "database").allowMainThreadQueries().build();
+    }
+}
         return instance;
     }
 

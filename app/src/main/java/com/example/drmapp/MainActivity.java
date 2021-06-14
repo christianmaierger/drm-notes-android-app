@@ -7,14 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
-import com.example.drmapp.ui.EntryFragment;
-import com.example.drmapp.ui.EntryRecViewAdapter;
-import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,13 +17,10 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView entryRecyclerView;
     private boolean alarmsAllReset= false;
     private boolean isQuickEntry = false;
+
+
 
     public boolean isAlarmsAllReset() {
         return alarmsAllReset;
@@ -84,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
        /*if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            EntryFragment entryRecyclerView = new EntryFragment();
+            EntryListFragment entryRecyclerView = new EntryListFragment();
             transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
             transaction.commit();
        } */

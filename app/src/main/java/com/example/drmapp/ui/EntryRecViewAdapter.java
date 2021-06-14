@@ -32,11 +32,11 @@ import java.util.List;
  * */
 
 public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapter.ViewHolder> {
-    private List<Entry> entries = new LinkedList<>();
+    private List<Entry> entries = new ArrayList<Entry>();
 
 
-    public EntryRecViewAdapter(List<Entry> entries) {
-        this.entries = entries;
+    public EntryRecViewAdapter() {
+
     }
 
 
@@ -61,6 +61,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
     */
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+
 
 
         // Get the data model based on position, so to speak index of the list with entries
@@ -177,7 +178,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<EntryRecViewAdapte
     }
 
     // Haelt AdapterView aktuell
-    public void setEntries(ArrayList<Entry> entries) {
+    public void setEntries(List<Entry> entries) {
         this.entries = entries;
         notifyDataSetChanged();
     }

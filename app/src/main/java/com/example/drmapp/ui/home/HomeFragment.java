@@ -1,28 +1,20 @@
 package com.example.drmapp.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.drmapp.R;
-import com.example.drmapp.ui.EntryFragment;
-import com.example.drmapp.ui.addEntry.AddEntryFragment;
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.ui.EntryListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,7 +51,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                EntryFragment entryRecyclerView = new EntryFragment();
+                EntryListFragment entryRecyclerView = new EntryListFragment();
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
                 transaction.addToBackStack(null);

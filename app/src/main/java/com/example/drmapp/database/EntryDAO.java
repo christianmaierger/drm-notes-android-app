@@ -1,5 +1,6 @@
 package com.example.drmapp.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -9,6 +10,7 @@ import androidx.room.Update;
 
 import com.example.drmapp.ui.entry.Entry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -16,6 +18,9 @@ public interface EntryDAO {
 
         @Query("SELECT * FROM entry")
         List<Entry> getAll();
+
+        @Query("SELECT * FROM entry")
+        LiveData<List<Entry>> getEntriesAsLiveData();
 
         @Query("SELECT * FROM entry WHERE id IN (:entryIds)")
         List<Entry> loadAllByIds(int[] entryIds);

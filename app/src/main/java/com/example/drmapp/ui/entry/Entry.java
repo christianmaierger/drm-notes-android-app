@@ -21,19 +21,17 @@ import java.util.List;
  * Mittels .get(position) kann auf die einzelnen Objekte der ArrayListe zugegriffen werden.
  * */
 
-
+@Entity
 public class Entry {
-
 
         // id als Primärschlüssel
         @PrimaryKey
         private int ID;
 
-
     // ein Feld wird automatisch zu einer Spalte in der Tabelle mit Namen der Klasse
     // da Room Zugang zu den Feldern braucht bei private immer Getter/Setter bereitstellen
     // column info setzt custom namen für die Felder
-    @ColumnInfo(name = "date")
+   // @ColumnInfo(name = "date")
     private String date;
     private String time;
     private String activity;
@@ -46,7 +44,12 @@ public class Entry {
     @Ignore
     private boolean isExpanded; // notwendig fuer ausklappbare RecyclerView
 
-    public Entry(String date, String time, String activity, String feeling, String mood, String thoughts, String comments) {
+
+    public Entry() {
+    }
+
+    public Entry(int ID, String date, String time, String activity, String emoji, int sam1, int sam2, String thoughts) {
+        this.ID = ID;
         this.date = date;
         this.time = time;
         this.activity = activity;
@@ -54,9 +57,9 @@ public class Entry {
         this.sam1 = sam1;
         this.sam2 = sam2;
         this.thoughts = thoughts;
-
-        isExpanded=false;
+       // this.isExpanded = isExpanded;
     }
+
 
     public int getID() {
         return ID;
@@ -121,7 +124,7 @@ public class Entry {
 
     public void setSam1(int sam1) {
         this.sam1 = sam1;
-
+    }
 
     public int getSam2() {
         return sam2;
@@ -140,7 +143,7 @@ public class Entry {
         EntryDAO userDao = db.entryDao();
 
 
-       userDao.insertEntries(new Entry("05/05/21", "13:00", "Working", "Happy", ":)", "Make much money", "no comment"));
+       userDao.insertEntries(new Entry(1 , "05/05/21", "13:00", "Working", "Happy", 10, 20, "no comment"));
 
 
         List<Entry> entries = userDao.getAll();
@@ -164,10 +167,7 @@ public class Entry {
                 "date='" + date + '\'' +
                 ", time='" + time + '\'' +
                 ", activity='" + activity + '\'' +
-                ", feeling='" + feeling + '\'' +
-                ", mood='" + mood + '\'' +
                 ", thoughts='" + thoughts + '\'' +
-                ", comments='" + comments + '\'' +
                 '}';
     }
 }
