@@ -74,13 +74,13 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
        {
            view = LayoutInflater.from(parent.getContext())
                    .inflate(R.layout.fragment_entry_list_item, parent, false);
-           viewHolder = new ViewHolderOne(view);
+           viewHolder = new ViewHolderOne(view, viewType);
        }
        else
        {
            view = LayoutInflater.from(parent.getContext())
                    .inflate(R.layout.fragment_entry_list_item_quick,parent,false);
-           viewHolder = new ViewHolderTwo(view);
+           viewHolder = new ViewHolderTwo(view, viewType);
 
        }
        return viewHolder;
@@ -104,10 +104,14 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         * */
 
         // Logik fuer normalen Entry
-        if(holder.getItemViewType()==LAYOUT_ONE) {
+        // hier war das Problem, ViewHolder1 und 2 sind ja zwei unterschiedliche Objekte die von zwei unterschiedlichen Klassen erzeugt werden
+        // die methode getItemViewType ist allerdings von deren Oberklasse ViewHolder und kann nicht überschrieben werden
+        // da final, die hat dann nicht so funktioniert wie du es gebraucht hast, hat true ausgegeben
+        // und der Compiler hat auch versucht ViewHolder2 Objekte in ViewHolderOne zu casten, was das Programm zerhauen hat
+        if(holder instanceof ViewHolderOne) {
 
              // SwitchCase um die Bilder im RecyclerView zu aendern in Abhaenigkeit von der eingegebenen Actvity
-            TextView textViewDate = ((ViewHolderOne) holder).contentDate;
+            TextView textViewDate =  ((ViewHolderOne) holder).contentDate;
             textViewDate.setText(ent.getDate());
             TextView textViewTime = ((ViewHolderOne) holder).contentTime;
             textViewTime.setText(ent.getTime());
@@ -279,10 +283,19 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         private ImageView downArrow, upArrow, sam1, sam2, sam3;
         private ConstraintLayout expandedLayout;
         private CardView parent;
+        private int viewType;
 
 
 
-        public ViewHolderOne(View view) {
+        public int getViewType() {
+            return viewType;
+        }
+
+        public void setViewType(int viewType) {
+            this.viewType = viewType;
+        }
+
+        public ViewHolderOne(View view, int viewType) {
             super(view);
 
             parent = itemView.findViewById(R.id.parent);
@@ -297,6 +310,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             sam1 = itemView.findViewById(R.id.imageViewSAM1);
             sam2 = itemView.findViewById(R.id.imageViewSAM2);
             sam3 = itemView.findViewById(R.id.imageViewSAM3);
+            this.viewType = viewType;
+
 
 
 
@@ -319,11 +334,6 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
             });
 
-
-
-
-
-
         }
 
 
@@ -339,8 +349,17 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         private ImageView downArrow_q, upArrow_q;
         private ConstraintLayout expandedLayout_q;
         private CardView parent_q;
+        private int viewType;
 
-        public ViewHolderTwo(View itemView){
+        public int getViewType() {
+            return viewType;
+        }
+
+        public void setViewType(int viewType) {
+            this.viewType = viewType;
+        }
+
+        public ViewHolderTwo(View itemView, int viewType){
             super(itemView);
 
             parent_q = itemView.findViewById(R.id.parent_q);
@@ -351,8 +370,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             downArrow_q = itemView.findViewById(R.id.btnArrowDown_q);
             upArrow_q = itemView.findViewById(R.id.btnArrowUp_q);
             expandedLayout_q = itemView.findViewById(R.id.expandedLayout_q);
-
-
+            this.viewType = viewType;
 
 
 
