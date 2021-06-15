@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
@@ -68,29 +69,7 @@ public class MainActivity extends AppCompatActivity {
         alarmsAllReset=true;
     }
 
-        /**
-         * entries soll alle Eintraege speichern. (Eventuell sollten wir hier ueberlegen, ob etwas wie eine Hashtabelle etc. sinnvoll waere)
-         * Ein Entry beinhaltet die Werte fuer alle Antworten, die der Nutzer beim Ausfuellen eines Fragebogens eingibt.
-         *
-         * */
 
-        entryRecyclerView = findViewById(R.id.entryRecyclerView);
-        // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
-       /*if (savedInstanceState == null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            EntryListFragment entryRecyclerView = new EntryListFragment();
-            transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
-            transaction.commit();
-       } */
-
-
-        // TODO: Funktion schreiben, mit das Entry-Element erweitert wird jeweils um Date, Time, Activity, Feeling, etc.
-        // TODO: In Activity OnClickListener -> entries (position itemCount, setActivity "Eating/Drinking"
-
-
-        //entryRecyclerView.setAdapter(adapter);
-        //Legt die Ansicht fest! (Gibt auch Grid etc.)
-        // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -140,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             // for test just random strigns from res
             CharSequence name = getString(R.string.menu_home);
             String description = getString(R.string.app_name);
-            int importance = NotificationManager.IMPORTANCE_HIGH;
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
             // Channel id for test just manually 1
             NotificationChannel channel = new NotificationChannel( "1", name, importance);
             channel.setDescription(description);
@@ -174,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
-
 
 
 

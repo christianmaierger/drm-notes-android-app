@@ -20,7 +20,6 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
 
     private AddEntrySplitViewModel addEntryViewModel;
     private MainActivity m = new MainActivity();
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         ((MainActivity) getActivity()).setActionBarTitle("Entry");
@@ -46,11 +45,11 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         switch (v.getId()) {
             case R.id.btnQuickEntry:
-                m.setQuickEntryTrue(true);
+                ((MainActivity)getActivity()).setQuickEntryTrue(true);
                 navController.navigate(R.id.action_addEntrySplitFragment_to_nav_add_Entry);
                 break;
             case R.id.btnFullEntry:
-                m.setQuickEntryTrue(false);
+                ((MainActivity)getActivity()).setQuickEntryTrue(false);
                 navController.navigate(R.id.action_addEntrySplitFragment_to_nav_add_Entry);
                 break;
         }
