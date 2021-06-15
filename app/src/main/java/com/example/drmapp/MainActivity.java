@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView entryRecyclerView;
     private boolean alarmsAllReset= false;
     private boolean isQuickEntry = false;
-
+    private Entry entryUnderConstruction = new Entry();
 
 
     public boolean isAlarmsAllReset() {
@@ -69,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
         alarmsAllReset=true;
     }
 
-
-
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -109,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 
     // create Notification Channel that is needed since Android 8.0 to send notifications
     private void createNotificationChannel() {

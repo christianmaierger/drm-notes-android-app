@@ -24,7 +24,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Entity
 public class Entry {
 
-
+    // ein Feld wird automatisch zu einer Spalte in der Tabelle mit Namen der Klasse
+    // da Room Zugang zu den Feldern braucht bei private immer Getter/Setter bereitstellen
+    // column info setzt custom namen für die Felder
+    // @ColumnInfo(name = "date")
+    // @Ignore ignoriert Felder/Konstruktoren
     private static final AtomicInteger count = new AtomicInteger(0);
     @PrimaryKey
     private int id;
@@ -63,6 +67,11 @@ public class Entry {
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
         isExpaned=false;
+    }
+
+    // leerer Konstruktor für das zu bauende Entry Objekt, wenn der Nutzer sich durch AddEntry klickt
+    public Entry() {
+
     }
 
     public boolean isQuickEntry(){ return isQuickEntry;}

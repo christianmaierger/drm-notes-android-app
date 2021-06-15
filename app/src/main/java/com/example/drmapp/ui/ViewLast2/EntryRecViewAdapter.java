@@ -59,13 +59,6 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 
         // Unterscheidung zwischen den zwei Layouts jenachdem ob die Variable isQuickEntry im Eintrag auf true/false gesetzt ist.
-
-
-
-
-
-
-
        View view = null;
        RecyclerView.ViewHolder viewHolder = null;
 

@@ -3,8 +3,10 @@ package com.example.drmapp.database;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
+import androidx.room.Entity;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
+import androidx.room.PrimaryKey;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -12,6 +14,9 @@ import com.example.drmapp.ui.entry.Entry;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.List;
+
+
+
 
 @Dao
 public interface EntryDAO {
@@ -27,7 +32,7 @@ public interface EntryDAO {
 
         @Query("SELECT * FROM entry WHERE date LIKE :date AND " +
                 "time LIKE :time LIMIT 1")
-        Entry findByDate(String date, String time);
+        LiveData<List<Entry>> findByDate(String date, String time);
 
         // fügt einen Entry ein und wenn es den schon gibt wird ersetzt
         @Insert(onConflict = OnConflictStrategy.REPLACE)
