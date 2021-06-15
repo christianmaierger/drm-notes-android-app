@@ -16,6 +16,8 @@ import androidx.navigation.Navigation;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.EntryListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.drmapp.ui.ViewLast2.EntryFragment;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeFragment extends Fragment {
@@ -51,7 +53,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                EntryListFragment entryRecyclerView = new EntryListFragment();
+                EntryFragment entryRecyclerView = new EntryFragment();
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
                 transaction.addToBackStack(null);

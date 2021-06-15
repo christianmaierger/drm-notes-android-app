@@ -18,5 +18,7 @@
     <string name="cancleTimePicking">Click to cancle Time Picking</string>
     <string name="noTimeSetForNotifications">No Time for Notifications selected so far</string>
     <string name="pressToAddNotificationTime">Press To Add Notification Time</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

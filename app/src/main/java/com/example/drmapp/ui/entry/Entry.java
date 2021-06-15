@@ -1,18 +1,7 @@
 package com.example.drmapp.ui.entry;
 
 
-import android.content.Context;
-
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
-
-import com.example.drmapp.database.AppDatabase;
-import com.example.drmapp.database.EntryDAO;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Die Klasse Entry soll die Werte speichern, die der User beim Ausfuellen des Fragebogens eingibt.
@@ -21,60 +10,59 @@ import java.util.List;
  * Mittels .get(position) kann auf die einzelnen Objekte der ArrayListe zugegriffen werden.
  * */
 
-@Entity
+
 public class Entry {
 
-        // id als Primärschlüssel
-        @PrimaryKey
-        private int ID;
-
-    // ein Feld wird automatisch zu einer Spalte in der Tabelle mit Namen der Klasse
-    // da Room Zugang zu den Feldern braucht bei private immer Getter/Setter bereitstellen
-    // column info setzt custom namen für die Felder
-   // @ColumnInfo(name = "date")
     private String date;
     private String time;
     private String activity;
     private String emoji;
     private int sam1;
     private int sam2;
+    private int sam3;
     private String thoughts;
 
-    // verhindert dass ein Feld eine Spalte wird, isExpanded muss man wahrscheinlich nicht dauerhaft speichern?
-    @Ignore
-    private boolean isExpanded; // notwendig fuer ausklappbare RecyclerView
+    private boolean isQuickEntry; // Speichervariable fuer Unterschiedung zwischen den ViewHoldern
+    private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
 
-
-    public Entry() {
-    }
-
-    public Entry(int ID, String date, String time, String activity, String emoji, int sam1, int sam2, String thoughts) {
-        this.ID = ID;
+    public Entry(boolean isQuickEntry, String date, String time, String activity, String emoji, int sam1, int sam2, int sam3, String thoughts) {
         this.date = date;
         this.time = time;
         this.activity = activity;
         this.emoji = emoji;
         this.sam1 = sam1;
         this.sam2 = sam2;
+        this.sam3 = sam3;
         this.thoughts = thoughts;
-       // this.isExpanded = isExpanded;
-    }
+        this.isQuickEntry = isQuickEntry;
 
 
-    public int getID() {
-        return ID;
+        isExpaned=false;
+
+    }
+    public Entry(boolean isQuickEntry, String date, String time, String activity, String thoughts) {
+        this.date = date;
+        this.time = time;
+        this.activity = activity;
+        this.thoughts = thoughts;
+        this.isQuickEntry = isQuickEntry;
+
+
+        isExpaned=false;
+
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+    public boolean isQuickEntry(){ return isQuickEntry;}
+    public void setQuickEntry(boolean quickEntry){ isQuickEntry = quickEntry;}
+
+
 
     public boolean isExpaned() {
-        return isExpanded;
+        return isExpaned;
     }
 
     public void setExpaned(boolean expaned) {
-        isExpanded = expaned;
+        isExpaned = expaned;
     }
 
     public String getDate() {
@@ -100,7 +88,6 @@ public class Entry {
     public void setActivity(String activity) {
         this.activity = activity;
     }
-
 
     public String getThoughts() {
         return thoughts;
@@ -133,27 +120,27 @@ public class Entry {
     public void setSam2(int sam2) {
         this.sam2 = sam2;
     }
+    public int getSam3() {
+        return sam3;
+    }
+
+    public void setSam3(int sam3) {
+        this.sam3 = sam3;
+    }
 
     // method just to create some test data
-    public static List<Entry> createEntryList(Context context) {
-        //ArrayList<Entry> entries = new ArrayList<Entry>();
+    public static ArrayList<Entry> createEntryList() {
+        ArrayList<Entry> entries = new ArrayList<Entry>();
 
+       entries.add(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
 
-        AppDatabase db = AppDatabase.getInstance(context);
-        EntryDAO userDao = db.entryDao();
+      entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", "0x1F613", 1, 1,1, "Pancakes are good"));
+                 entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2, "Laptop is loud"));
+        entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, 3,"Coffee tasted horrible"));
+        entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", "surprised", 4, 4,4, "Took a walk"));
+        entries.add(new Entry(false,"05/05/21", "18:00", "Care work", "angry", 5, 5, 5, "Dog did not like the bath"));
+        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, 1,"Netflix did not work"));
 
-
-       userDao.insertEntry(new Entry(1 , "05/05/21", "13:00", "Working", "Happy", 10, 20, "no comment"));
-
-
-        List<Entry> entries = userDao.getAll();
-
-       /* entries.add(new Entry("05/05/21", "09:00", "Eating/Drinking", "Happy", ":)", "Food is yummy", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."));
-        entries.add(new Entry("05/05/21", "13:00", "Working", "Happy", ":)", "Make much money", "no comment"));
-        entries.add(new Entry("05/05/21", "18:00", "CareWork", "Happy", ":)", "Love coffee", "no comment"));
-        entries.add(new Entry("05/05/21", "01:00", "Chores", "Happy", ":)", "Love coffee", "no comment"));
-        entries.add(new Entry("05/05/21", "01:00", "Leisure", "Happy", ":)", "Love coffee", "no comment"));
-        entries.add(new Entry("05/05/21", "02:00", "Other", "Happy", ":)", "Love coffee", "no comment"));*/
 
         //adapter.setEntries(entries);
 
@@ -167,7 +154,12 @@ public class Entry {
                 "date='" + date + '\'' +
                 ", time='" + time + '\'' +
                 ", activity='" + activity + '\'' +
+                ", emoji='" + emoji + '\'' +
+                ", sam1=" + sam1 +
+                ", sam2=" + sam2 +
+                ", sam3=" + sam3 +
                 ", thoughts='" + thoughts + '\'' +
+                ", isExpaned=" + isExpaned +
                 '}';
     }
 }
