@@ -33,8 +33,16 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int LAYOUT_ONE=0;
     private static final int LAYOUT_TWO=1;
     private RecyclerView.ViewHolder holder;
-    private int position;
+   // private int position;
 
+    @Override
+    public int getItemViewType(int position) {
+        Entry ent = entries.get(position);
+        if(ent.isQuickEntry())
+        return LAYOUT_TWO;
+            else
+        return LAYOUT_ONE;
+    }
 
     public EntryRecViewAdapter(ArrayList<Entry> entries) {
         this.entries = entries;
@@ -52,11 +60,9 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         // Unterscheidung zwischen den zwei Layouts jenachdem ob die Variable isQuickEntry im Eintrag auf true/false gesetzt ist.
 
 
-       Entry ent = entries.get(position);
-       if(ent.isQuickEntry())
-           viewType = LAYOUT_TWO;
-       else
-           viewType = LAYOUT_ONE;
+
+
+
 
 
        View view = null;
@@ -108,7 +114,9 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         // die methode getItemViewType ist allerdings von deren Oberklasse ViewHolder und kann nicht überschrieben werden
         // da final, die hat dann nicht so funktioniert wie du es gebraucht hast, hat true ausgegeben
         // und der Compiler hat auch versucht ViewHolder2 Objekte in ViewHolderOne zu casten, was das Programm zerhauen hat
-        if(holder instanceof ViewHolderOne) {
+      //  if(holder instanceof //ViewHolderOne) {
+
+        if(holder.getItemViewType() == LAYOUT_ONE){
 
              // SwitchCase um die Bilder im RecyclerView zu aendern in Abhaenigkeit von der eingegebenen Actvity
             TextView textViewDate =  ((ViewHolderOne) holder).contentDate;
@@ -123,6 +131,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             ImageView imageViewSam1 = ((ViewHolderOne) holder).sam1;
             ImageView imageViewSam2 = ((ViewHolderOne) holder).sam2;
             ImageView imageViewSam3 = ((ViewHolderOne) holder).sam3;
+
 
 
              int unicode_angry = 0x1F621; //angry

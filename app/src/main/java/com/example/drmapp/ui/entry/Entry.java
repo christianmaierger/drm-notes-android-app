@@ -132,9 +132,9 @@ public class Entry {
     public static ArrayList<Entry> createEntryList() {
         ArrayList<Entry> entries = new ArrayList<Entry>();
 
-        entries.add(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
+       entries.add(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
 
-               entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", "happy", 1, 1,1, "Pancakes are good"));
+      entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", "0x1F613", 1, 1,1, "Pancakes are good"));
                  entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2, "Laptop is loud"));
         entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, 3,"Coffee tasted horrible"));
         entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", "surprised", 4, 4,4, "Took a walk"));
