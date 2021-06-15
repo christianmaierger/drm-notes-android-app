@@ -17,6 +17,7 @@ import com.example.drmapp.ui.entry.Entry;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 
 
 public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<Entry> entries = new ArrayList<>();
+    private List<Entry> entries = new ArrayList<>();
     private static final int LAYOUT_ONE=0;
     private static final int LAYOUT_TWO=1;
     private RecyclerView.ViewHolder holder;
@@ -44,8 +45,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return LAYOUT_ONE;
     }
 
-    public EntryRecViewAdapter(ArrayList<Entry> entries) {
-        this.entries = entries;
+    public EntryRecViewAdapter() {
+
     }
 
 
@@ -272,7 +273,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     // Haelt AdapterView aktuell
-    public void setEntries(ArrayList<Entry> entries) {
+    public void setEntries(List<Entry> entries) {
         this.entries = entries;
         notifyDataSetChanged();
     }

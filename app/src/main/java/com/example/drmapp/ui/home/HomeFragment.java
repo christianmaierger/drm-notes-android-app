@@ -14,7 +14,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.drmapp.R;
-import com.example.drmapp.ui.EntryListFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.example.drmapp.ui.ViewLast2.EntryFragment;
 

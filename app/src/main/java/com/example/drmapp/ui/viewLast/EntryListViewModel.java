@@ -12,7 +12,7 @@ import com.example.drmapp.ui.entry.Entry;
 import java.util.List;
 
 public class EntryListViewModel extends ViewModel {
-   // private String TAG = this.getClass().getSimpleName();
+    // private String TAG = this.getClass().getSimpleName();
     private EntryDAO entryDao;
     private AppDatabase db;
     private LiveData<List<Entry>> entryListAsLiveData;
@@ -29,5 +29,13 @@ public class EntryListViewModel extends ViewModel {
 
     public void setEntryListAsLiveData(LiveData<List<Entry>> entryListAsLiveData) {
         this.entryListAsLiveData = entryListAsLiveData;
+    }
+
+    public EntryDAO getEntryDao() {
+        return entryDao;
+    }
+
+    public void setEntryDao(EntryDAO entryDao) {
+        this.entryDao = entryDao;
     }
 }

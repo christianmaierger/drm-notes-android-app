@@ -37,7 +37,7 @@
         style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/sam14"
+        android:background="@drawable/sam13"
         app:layout_constraintBottom_toTopOf="@+id/btnEmotional3"
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"

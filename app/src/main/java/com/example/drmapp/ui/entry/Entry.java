@@ -1,7 +1,18 @@
 package com.example.drmapp.ui.entry;
 
 
+import android.content.Context;
+
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+import com.example.drmapp.database.AppDatabase;
+import com.example.drmapp.database.EntryDAO;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Die Klasse Entry soll die Werte speichern, die der User beim Ausfuellen des Fragebogens eingibt.
@@ -10,9 +21,13 @@ import java.util.ArrayList;
  * Mittels .get(position) kann auf die einzelnen Objekte der ArrayListe zugegriffen werden.
  * */
 
-
+@Entity
 public class Entry {
 
+
+    private static final AtomicInteger count = new AtomicInteger(0);
+    @PrimaryKey
+    private int id;
     private String date;
     private String time;
     private String activity;
@@ -26,6 +41,7 @@ public class Entry {
     private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
 
     public Entry(boolean isQuickEntry, String date, String time, String activity, String emoji, int sam1, int sam2, int sam3, String thoughts) {
+        this.id= count.incrementAndGet();
         this.date = date;
         this.time = time;
         this.activity = activity;
@@ -35,27 +51,31 @@ public class Entry {
         this.sam3 = sam3;
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
-
-
         isExpaned=false;
-
     }
+
+    @Ignore
     public Entry(boolean isQuickEntry, String date, String time, String activity, String thoughts) {
+        this.id= count.incrementAndGet();
         this.date = date;
         this.time = time;
         this.activity = activity;
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
-
-
         isExpaned=false;
-
     }
 
     public boolean isQuickEntry(){ return isQuickEntry;}
     public void setQuickEntry(boolean quickEntry){ isQuickEntry = quickEntry;}
 
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public boolean isExpaned() {
         return isExpaned;
@@ -129,22 +149,34 @@ public class Entry {
     }
 
     // method just to create some test data
-    public static ArrayList<Entry> createEntryList() {
-        ArrayList<Entry> entries = new ArrayList<Entry>();
+    public static ArrayList<Entry> createEntryList(Context context) {
+       // ArrayList<Entry> entries = new ArrayList<Entry>();
 
-       entries.add(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
 
+
+        AppDatabase db = AppDatabase.getInstance(context);
+        EntryDAO userDao = db.entryDao();
+
+
+       userDao.insertEntry(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
+
+
+        List<Entry> entries = (List<Entry>) userDao.getEntriesAsLiveData();
+
+        // nicht so toll nur behelfsmasnahme
+        ArrayList<Entry> ents = new ArrayList<>(entries);
+
+        /*
       entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", "0x1F613", 1, 1,1, "Pancakes are good"));
                  entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2, "Laptop is loud"));
         entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, 3,"Coffee tasted horrible"));
         entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", "surprised", 4, 4,4, "Took a walk"));
         entries.add(new Entry(false,"05/05/21", "18:00", "Care work", "angry", 5, 5, 5, "Dog did not like the bath"));
         entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, 1,"Netflix did not work"));
-
-
+*/
         //adapter.setEntries(entries);
 
-        return entries;
+        return ents;
     }
 
 
