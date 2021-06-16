@@ -10,51 +10,42 @@
     tools:context=".ui.manageNotifications.ManageNotificationsFragment"
     tools:visibility="visible">
 
+    <!--FERTIG-->
     <Button
         android:id="@+id/time1"
         style="@style/buttonStyle"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="120dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/button"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/manageNotifications"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@id/manageNotifications"
-        app:layout_constraintTop_toBottomOf="@+id/manageNotifications"
-        tools:text="@string/noTimePickedText"
-        />
 
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/time2"
+
+        app:layout_constraintDimensionRatio="5:1"
+        app:layout_constraintEnd_toStartOf="@id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/guideline1_h"
+        app:layout_constraintTop_toTopOf="@+id/guideline2_v"
+        tools:text="@string/noTimePickedText" />
+
+    <!--FERTIG-->
     <Button
         android:id="@+id/time2"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="80dp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@id/manageNotifications"
-        app:layout_constraintStart_toStartOf="@id/manageNotifications"
-        app:layout_constraintTop_toTopOf="@id/time1"
-        android:background="@drawable/button"
         style="@style/buttonStyle"
-        app:layout_constraintHorizontal_bias="0.1"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
-    <Button
-        android:id="@+id/time3"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="80dp"
+        android:background="@drawable/button"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@id/manageNotifications"
-        app:layout_constraintStart_toStartOf="@id/manageNotifications"
-        app:layout_constraintTop_toTopOf="@id/time2"
-        android:background="@drawable/button"
-        style="@style/buttonStyle"
-        app:layout_constraintHorizontal_bias="0.1"/>
+
+        app:layout_constraintBottom_toTopOf="@+id/time3"
+        app:layout_constraintDimensionRatio="5:1"
+
+        app:layout_constraintEnd_toStartOf="@id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/time1" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteTime1"
@@ -78,12 +69,12 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:clickable="true"
-        app:srcCompat="@drawable/ic_close_sign"
         android:visibility="gone"
+        app:fabCustomSize="50dp"
         app:layout_constraintBottom_toBottomOf="@id/time2"
         app:layout_constraintStart_toEndOf="@id/time2"
         app:layout_constraintTop_toTopOf="@id/time2"
-        app:fabCustomSize="50dp"/>
+        app:srcCompat="@drawable/ic_close_sign" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteTime3"
@@ -92,28 +83,27 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:clickable="true"
-        app:srcCompat="@drawable/ic_close_sign"
         android:visibility="gone"
+        app:fabCustomSize="50dp"
         app:layout_constraintBottom_toBottomOf="@id/time3"
         app:layout_constraintStart_toEndOf="@id/time3"
         app:layout_constraintTop_toTopOf="@id/time3"
-        app:fabCustomSize="50dp"/>
+        app:srcCompat="@drawable/ic_close_sign" />
 
+    <!--FERTIG-->
     <TextView
         android:id="@+id/manageNotifications"
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
         android:text="@string/notifications_heading"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintBottom_toBottomOf="@id/guideline1_v"
+        app:layout_constraintEnd_toEndOf="@id/guideline4_h"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.039" />
 
@@ -121,14 +111,11 @@
         android:id="@+id/addTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="24dp"
         android:clickable="true"
-        app:srcCompat="@drawable/ic_plus_sign"
         app:backgroundTint="@color/lightPurpel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline1_v"
+        app:layout_constraintStart_toEndOf="@+id/guideline1_h"
+        app:srcCompat="@drawable/ic_plus_sign" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/timePickerGroup"
@@ -143,48 +130,71 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="invisible" />
 
+    <!--FERTIG-->
     <TimePicker
         android:id="@+id/simpleTimePicker"
-        android:layout_width="307dp"
-        android:layout_height="375dp"
-        android:layout_marginTop="32dp"
-        android:headerBackground="@color/lightPurpel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:headerBackground="@color/colorButton"
         android:timePickerMode="clock"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addTimePicker"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
+        app:layout_constraintEnd_toEndOf="@id/guideline4_h"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/guideline2_v"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
+    <!--FERTIG-->
+    <Button
+        android:id="@+id/time3"
+        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:background="@drawable/button"
+        android:textStyle="bold"
+        android:visibility="gone"
+
+        app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
+        app:layout_constraintDimensionRatio="5:1"
+        app:layout_constraintEnd_toStartOf="@id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/time2" />
+
+    <!--FERTIG-->
     <TimePicker
         android:id="@+id/simpleTimePicker2"
-        android:layout_width="307dp"
-        android:layout_height="375dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:headerBackground="@color/colorButton"
         android:timePickerMode="clock"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addTimePicker"
+        app:layout_constraintEnd_toEndOf="@id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/guideline2_v"
         tools:ignore="MissingConstraints" />
 
+    <!--FERTIG-->
     <Button
         android:id="@+id/getTime"
         style="@style/buttonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginRight="108dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/button"
         android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/simpleTimePicker"
+        app:layout_constraintDimensionRatio="2.5:1"
+        app:layout_constraintTop_toTopOf="@+id/guideline3_v"
+        app:layout_constraintEnd_toEndOf="@+id/guideline4_h"
+        app:layout_constraintStart_toEndOf="@+id/guideline3_h"
         app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker" />
 
     <Button
         android:id="@+id/getTime2"
+        style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -192,7 +202,6 @@
         android:layout_marginRight="108dp"
         android:background="@drawable/button"
         android:text="Submit"
-        style="@style/buttonStyle"
         app:layout_constraintEnd_toEndOf="@id/simpleTimePicker2"
         app:layout_constraintTop_toBottomOf="@id/simpleTimePicker2" />
 
@@ -220,7 +229,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75
+" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.49" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.51" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
