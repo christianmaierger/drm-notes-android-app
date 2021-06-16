@@ -128,12 +128,15 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             TextView textViewThoughts = ((ViewHolderOne) holder).contentThoughts;
             textViewThoughts.setText(ent.getThoughts());
             TextView imageViewEmoji = ((ViewHolderOne) holder).emoji;
+            imageViewEmoji.setText(new String (Character.toChars(ent.getEmoji())));
             ImageView imageViewSam1 = ((ViewHolderOne) holder).sam1;
             ImageView imageViewSam2 = ((ViewHolderOne) holder).sam2;
             ImageView imageViewSam3 = ((ViewHolderOne) holder).sam3;
 
 
 
+
+            /*
              int unicode_angry = 0x1F621; //angry
              int unicode_sad = 0x1F622; //sad
              int unicode_anxious = 0x1F630; //anxious
@@ -163,7 +166,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     imageViewEmoji.setText(new String(Character.toChars(unicode_proud)));
                     break;
 
-            }
+            }*/
 
             //SAMS Valence
             switch (ent.getSam1()) {

@@ -33,13 +33,12 @@
                 android:layout_width="40dp"
                 android:layout_height="0dp"
                 android:paddingLeft="8dp"
-                android:paddingTop="8dp"
+                android:paddingTop="10dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="8dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/btnArrowDown"
@@ -64,6 +63,7 @@
                 android:paddingBottom="16dp"
                 android:text="dd:mm:yy"
                 android:textAppearance="@style/buttonStyle"
+                android:textSize="10sp"
                 app:layout_constraintStart_toEndOf="@id/imageViewEmoji"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,6 +78,7 @@
                 android:paddingBottom="16dp"
                 android:text="hh_mm"
                 android:textAppearance="@style/buttonStyle"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/contentDate"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,7 +93,8 @@
                 android:paddingBottom="16dp"
                 android:text="Activity"
                 android:textAppearance="@style/buttonStyle"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/btnArrowDown"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/contentTime"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -125,36 +127,27 @@
                 android:paddingRight="16dp"
                 android:paddingLeft="16dp"
                 android:src="@drawable/sam1"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/expandedLayout"
                 app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 
-            <!-- <ImageView
-            android:id="@+id/imageViewSAM3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:src="@drawable/sam31"
-            app:layout_constraintStart_toEndOf="@id/imageViewSAM2"
-            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" /> -->
 
             <ImageView
                 android:id="@+id/imageViewSAM2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginLeft="36dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:src="@drawable/sam6"
-                app:layout_constraintStart_toEndOf="@id/imageViewSAM1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageViewSAM1"
                 app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 
             <ImageView
                 android:id="@+id/imageViewSAM3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:paddingRight="16dp"
                 android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:src="@drawable/sam13"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
@@ -170,6 +163,7 @@
                 android:text="Thoughts \nLorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor "
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@android:color/darker_gray"
+                android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

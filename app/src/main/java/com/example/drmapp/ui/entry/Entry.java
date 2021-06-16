@@ -16,7 +16,7 @@ public class Entry {
     private String date;
     private String time;
     private String activity;
-    private String emoji;
+    private int emoji;
     private int sam1;
     private int sam2;
     private int sam3;
@@ -25,7 +25,7 @@ public class Entry {
     private boolean isQuickEntry; // Speichervariable fuer Unterschiedung zwischen den ViewHoldern
     private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
 
-    public Entry(boolean isQuickEntry, String date, String time, String activity, String emoji, int sam1, int sam2, int sam3, String thoughts) {
+    public Entry(boolean isQuickEntry, String date, String time, String activity, int emoji, int sam1, int sam2, int sam3, String thoughts) {
         this.date = date;
         this.time = time;
         this.activity = activity;
@@ -97,11 +97,11 @@ public class Entry {
         this.thoughts = thoughts;
     }
 
-    public String getEmoji() {
+    public int getEmoji() {
         return emoji;
     }
 
-    public void setEmoji(String emoji) {
+    public void setEmoji(int emoji) {
         this.emoji = emoji;
     }
 
@@ -134,15 +134,23 @@ public class Entry {
 
        entries.add(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
 
-      entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", "0x1F613", 1, 1,1, "Pancakes are good"));
-                 entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2, "Laptop is loud"));
-        entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, 3,"Coffee tasted horrible"));
-        entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", "surprised", 4, 4,4, "Took a walk"));
-        entries.add(new Entry(false,"05/05/21", "18:00", "Care work", "angry", 5, 5, 5, "Dog did not like the bath"));
-        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, 1,"Netflix did not work"));
+      entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"));
+      entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
+        entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", 0x1F622, 3, 3, 3,"Coffee tasted horrible"));
+        entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", 0x1F4AA, 4, 4,4, "Took a walk"));
+        entries.add(new Entry(false,"05/05/21", "18:00", "Care work", 0x1F621, 5, 5, 5, "Dog did not like the bath"));
+        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", 0x1F613 , 1, 1, 1,"Netflix did not work"));
 
 
         //adapter.setEntries(entries);
+
+        /*
+             int unicode_angry = 0x1F621; //angry
+             int unicode_sad = 0x1F622; //sad
+             int unicode_anxious = 0x1F630; //anxious
+             int unicode_proud = 0x1F4AA; //proud
+             int unicode_happy= 0xFE0F; //happy
+             int unicode_exhausted = 0x1F613; //exhausted */
 
         return entries;
     }
