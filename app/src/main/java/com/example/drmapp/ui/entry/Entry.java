@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Mittels .get(position) kann auf die einzelnen Objekte der ArrayListe zugegriffen werden.
  * */
 
-
+@Entity
 public class Entry {
 
     // ein Feld wird automatisch zu einer Spalte in der Tabelle mit Namen der Klasse
@@ -56,10 +56,10 @@ public class Entry {
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
 
-
         isExpaned=false;
-
     }
+
+    @Ignore
     public Entry(boolean isQuickEntry, String date, String time, String activity, String thoughts) {
         this.date = date;
         this.time = time;
@@ -72,10 +72,21 @@ public class Entry {
 
     }
 
+    public Entry() {
+
+    }
+
     public boolean isQuickEntry(){ return isQuickEntry;}
     public void setQuickEntry(boolean quickEntry){ isQuickEntry = quickEntry;}
 
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public boolean isExpaned() {
         return isExpaned;
@@ -156,9 +167,19 @@ public class Entry {
 
         AppDatabase db = AppDatabase.getInstance(context);
         EntryDAO userDao = db.entryDao();
+/*
+
+        entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"));
+        entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
+        entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", 0x1F622, 3, 3, 3,"Coffee tasted horrible"));
+        entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", 0x1F4AA, 4, 4,4, "Took a walk"));
+        entries.add(new Entry(false,"05/05/21", "18:00", "Care work", 0x1F621, 5, 5, 5, "Dog did not like the bath"));
+        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", 0x1F613 , 1, 1, 1,"Netflix did not work"));
+*/
 
 
-       userDao.insertEntry(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
+
+       userDao.insertAll(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"), new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
 
 
         List<Entry> entries = (List<Entry>) userDao.getEntriesAsLiveData();
@@ -174,12 +195,6 @@ public class Entry {
         entries.add(new Entry(false,"05/05/21", "18:00", "Care work", "angry", 5, 5, 5, "Dog did not like the bath"));
         entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, 1,"Netflix did not work"));
 */
-      entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"));
-      entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
-        entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", 0x1F622, 3, 3, 3,"Coffee tasted horrible"));
-        entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", 0x1F4AA, 4, 4,4, "Took a walk"));
-        entries.add(new Entry(false,"05/05/21", "18:00", "Care work", 0x1F621, 5, 5, 5, "Dog did not like the bath"));
-        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", 0x1F613 , 1, 1, 1,"Netflix did not work"));
 
 
         //adapter.setEntries(entries);

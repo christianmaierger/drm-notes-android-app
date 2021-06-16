@@ -42,9 +42,11 @@ public class EntryFragment extends Fragment {
         //  entryListViewModel = new ViewModelProvider(this).get(EntryListViewModel.class);
         entryListViewModel = new EntryListViewModel(getActivity().getApplication());
 
-        entryListViewModel.getEntryDao().insertEntry(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
-        entryListViewModel.getEntryDao().insertEntry(new Entry(false, "05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2, "Laptop is loud"));
+      //  entryListViewModel.getEntryDao().insertEntry(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
+      //  entryListViewModel.getEntryDao().insertEntry(new Entry(false, "05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2,*/ "Laptop is loud"));
 
+
+        entryListViewModel.getEntryDao().insertAll(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"), new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
         //Entry.createEntryList(getContext());
 
        // WOuld be also possible to show only entries of today or other date
