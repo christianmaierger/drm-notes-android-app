@@ -1,6 +1,5 @@
 package com.example.drmapp.ui.ViewLast2;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,8 +12,6 @@ import android.widget.TextView;
 
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -127,46 +124,12 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             textViewActivity.setText(ent.getActivity());
             TextView textViewThoughts = ((ViewHolderOne) holder).contentThoughts;
             textViewThoughts.setText(ent.getThoughts());
-            TextView imageViewEmoji = ((ViewHolderOne) holder).emoji;
-            imageViewEmoji.setText(new String (Character.toChars(ent.getEmoji())));
+            TextView textViewEmoji = ((ViewHolderOne) holder).emoji;
+            textViewEmoji.setText(new String (Character.toChars(ent.getEmoji())));
             ImageView imageViewSam1 = ((ViewHolderOne) holder).sam1;
             ImageView imageViewSam2 = ((ViewHolderOne) holder).sam2;
             ImageView imageViewSam3 = ((ViewHolderOne) holder).sam3;
 
-
-
-
-            /*
-             int unicode_angry = 0x1F621; //angry
-             int unicode_sad = 0x1F622; //sad
-             int unicode_anxious = 0x1F630; //anxious
-             int unicode_proud = 0x1F4AA; //proud
-             int unicode_happy= 0xFE0F; //happy
-             int unicode_exhausted = 0x1F613; //exhausted
-
-
-
-            switch (ent.getEmoji()) {
-                case "happy":
-                    imageViewEmoji.setText(new String(Character.toChars(unicode_happy)));
-                    break;
-                case "sad":
-                    imageViewEmoji.setText(new String(Character.toChars(unicode_sad)));
-                    break;
-                case "angry":
-                    imageViewEmoji.setText(new String(Character.toChars(unicode_angry)));
-                    break;
-                case "anxious":
-                    imageViewEmoji.setText(new String(Character.toChars(unicode_anxious)));
-                    break;
-                case "exhausted":
-                    imageViewEmoji.setText(new String(Character.toChars(unicode_exhausted)));;
-                    break;
-                case "proud":
-                    imageViewEmoji.setText(new String(Character.toChars(unicode_proud)));
-                    break;
-
-            }*/
 
             //SAMS Valence
             switch (ent.getSam1()) {
@@ -211,19 +174,19 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             //SAMS Dominance
             switch (ent.getSam3()) {
                 case 1:
-                    imageViewSam3.setImageResource(R.drawable.sam13);
-                    break;
-                case 2:
                     imageViewSam3.setImageResource(R.drawable.sam11);
                     break;
-                case 3:
+                case 2:
                     imageViewSam3.setImageResource(R.drawable.sam12);
                     break;
+                case 3:
+                    imageViewSam3.setImageResource(R.drawable.sam13);
+                    break;
                 case 4:
-                    imageViewSam3.setImageResource(R.drawable.sam15);
+                    imageViewSam3.setImageResource(R.drawable.sam14);
                     break;
                 case 5:
-                    imageViewSam3.setImageResource(R.drawable.sam16);
+                    imageViewSam3.setImageResource(R.drawable.sam15);
                     break;
 
             }
