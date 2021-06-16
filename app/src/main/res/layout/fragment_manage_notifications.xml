@@ -143,10 +143,49 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="invisible" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/timePickerGroupSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        app:constraint_referenced_ids="simpleTimePickerSpinner,getTimeSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/timePickerGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="411dp"
+        android:layout_marginRight="411dp"
+        android:visibility="gone"
+        app:constraint_referenced_ids="simpleTimePicker2,getTime2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/timePickerGroup2Spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="411dp"
+        android:layout_marginRight="411dp"
+        android:visibility="gone"
+        app:constraint_referenced_ids="simpleTimePicker2Spinner,getTime2Spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <TimePicker
         android:id="@+id/simpleTimePicker"
-        android:layout_width="307dp"
-        android:layout_height="375dp"
+        android:layout_width="300dp"
+        android:layout_height="330dp"
         android:layout_marginTop="32dp"
         android:headerBackground="@color/lightPurpel"
         android:timePickerMode="clock"
@@ -159,10 +198,37 @@
 
     <TimePicker
         android:id="@+id/simpleTimePicker2"
-        android:layout_width="307dp"
-        android:layout_height="375dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:timePickerMode="clock"
+        android:timePickerMode= "clock"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTimePicker"
+        tools:ignore="MissingConstraints" />
+
+    <TimePicker
+        android:id="@+id/simpleTimePickerSpinner"
+        android:layout_width="300dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="32dp"
+        android:headerBackground="@color/lightPurpel"
+        android:timePickerMode="spinner"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTimePicker"
+        tools:ignore="MissingConstraints" />
+
+    <TimePicker
+        android:id="@+id/simpleTimePicker2Spinner"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:timePickerMode= "spinner"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -175,9 +241,9 @@
         style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginRight="108dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
         android:background="@drawable/button"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="@+id/simpleTimePicker"
@@ -196,6 +262,32 @@
         app:layout_constraintEnd_toEndOf="@id/simpleTimePicker2"
         app:layout_constraintTop_toBottomOf="@id/simpleTimePicker2" />
 
+    <Button
+        android:id="@+id/getTimeSpinner"
+        style="@style/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:background="@drawable/button"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/simpleTimePickerSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/simpleTimePickerSpinner" />
+
+    <Button
+        android:id="@+id/getTime2Spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="108dp"
+        android:background="@drawable/button"
+        android:text="Submit"
+        style="@style/buttonStyle"
+        app:layout_constraintEnd_toEndOf="@id/simpleTimePicker2Spinner"
+        app:layout_constraintTop_toBottomOf="@id/simpleTimePicker2Spinner" />
+
     <TextView
         android:id="@+id/textForAddTimeButton"
         android:layout_width="wrap_content"
@@ -206,19 +298,6 @@
         android:text="@string/addTimeButtonText"
         app:layout_constraintStart_toEndOf="@+id/addTimePicker"
         app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
-
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/timePickerGroup2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="411dp"
-        android:layout_marginRight="411dp"
-        android:visibility="gone"
-        app:constraint_referenced_ids="simpleTimePicker2,getTime2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 
