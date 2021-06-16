@@ -28,6 +28,21 @@
                 android:background="@color/lightGreen"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <TextView
+                    android:id="@+id/Platzhalter"
+                    android:layout_width="40dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="12dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="8dp"
+                    android:textSize="16sp"
+                    android:paddingBottom="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
 
                 <ImageView
@@ -52,8 +67,9 @@
                     android:paddingRight="16dp"
                     android:paddingBottom="16dp"
                     android:text="dd:mm:yy"
+                    android:textSize="10sp"
                     android:textAppearance="@style/buttonStyle"
-                    app:layout_constraintStart_toStartOf="@id/collapsedLayout_q"
+                    app:layout_constraintStart_toEndOf="@id/Platzhalter"
                     app:layout_constraintTop_toTopOf="@id/collapsedLayout_q" />
 
 
@@ -66,6 +82,7 @@
                     android:paddingRight="16dp"
                     android:paddingBottom="16dp"
                     android:text="hh_mm"
+                    android:textSize="10sp"
                     android:textAppearance="@style/buttonStyle"
                     app:layout_constraintStart_toEndOf="@id/contentDate_q"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -80,8 +97,9 @@
                     android:paddingRight="16dp"
                     android:paddingBottom="16dp"
                     android:text="Activity"
+                    android:textSize="10sp"
                     android:textAppearance="@style/buttonStyle"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnArrowDown_q"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@id/contentTime_q"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -112,6 +130,7 @@
                     android:id="@+id/ContentThoughts_q"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:textSize="10sp"
                     android:paddingStart="15dp"
                     android:paddingLeft="15dp"
                     android:paddingTop="15dp"

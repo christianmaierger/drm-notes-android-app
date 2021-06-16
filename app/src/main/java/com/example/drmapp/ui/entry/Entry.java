@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Mittels .get(position) kann auf die einzelnen Objekte der ArrayListe zugegriffen werden.
  * */
 
-@Entity
+
 public class Entry {
 
     // ein Feld wird automatisch zu einer Spalte in der Tabelle mit Namen der Klasse
@@ -35,7 +35,7 @@ public class Entry {
     private String date;
     private String time;
     private String activity;
-    private String emoji;
+    private int emoji;
     private int sam1;
     private int sam2;
     private int sam3;
@@ -44,7 +44,7 @@ public class Entry {
     private boolean isQuickEntry; // Speichervariable fuer Unterschiedung zwischen den ViewHoldern
     private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
 
-    public Entry(boolean isQuickEntry, String date, String time, String activity, String emoji, int sam1, int sam2, int sam3, String thoughts) {
+    public Entry(boolean isQuickEntry, String date, String time, String activity, int emoji, int sam1, int sam2, int sam3, String thoughts) {
         this.id= count.incrementAndGet();
         this.date = date;
         this.time = time;
@@ -55,22 +55,20 @@ public class Entry {
         this.sam3 = sam3;
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
-        isExpaned=false;
-    }
 
-    @Ignore
+
+        isExpaned=false;
+
+    }
     public Entry(boolean isQuickEntry, String date, String time, String activity, String thoughts) {
-        this.id= count.incrementAndGet();
         this.date = date;
         this.time = time;
         this.activity = activity;
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
-        isExpaned=false;
-    }
 
-    // leerer Konstruktor für das zu bauende Entry Objekt, wenn der Nutzer sich durch AddEntry klickt
-    public Entry() {
+
+        isExpaned=false;
 
     }
 
@@ -78,13 +76,6 @@ public class Entry {
     public void setQuickEntry(boolean quickEntry){ isQuickEntry = quickEntry;}
 
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public boolean isExpaned() {
         return isExpaned;
@@ -126,11 +117,11 @@ public class Entry {
         this.thoughts = thoughts;
     }
 
-    public String getEmoji() {
+    public int getEmoji() {
         return emoji;
     }
 
-    public void setEmoji(String emoji) {
+    public void setEmoji(int emoji) {
         this.emoji = emoji;
     }
 
@@ -183,6 +174,14 @@ public class Entry {
         entries.add(new Entry(false,"05/05/21", "18:00", "Care work", "angry", 5, 5, 5, "Dog did not like the bath"));
         entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, 1,"Netflix did not work"));
 */
+      entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"));
+      entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
+        entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", 0x1F622, 3, 3, 3,"Coffee tasted horrible"));
+        entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", 0x1F4AA, 4, 4,4, "Took a walk"));
+        entries.add(new Entry(false,"05/05/21", "18:00", "Care work", 0x1F621, 5, 5, 5, "Dog did not like the bath"));
+        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", 0x1F613 , 1, 1, 1,"Netflix did not work"));
+
+
         //adapter.setEntries(entries);
 
         return ents;
