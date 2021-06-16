@@ -7,14 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
-import com.example.drmapp.ui.EntryFragment;
-import com.example.drmapp.ui.EntryRecViewAdapter;
 import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,18 +18,28 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private RecyclerView entryRecyclerView;
+    private boolean alarmsAllReset= false;
     private boolean isQuickEntry = false;
+    private Entry entryUnderConstruction = new Entry();
 
 
+    public boolean isAlarmsAllReset() {
+        return alarmsAllReset;
+    }
+
+    public void setAlarmsAllReset(boolean alarmsAllReset) {
+        this.alarmsAllReset = alarmsAllReset;
+    }
 
     public void setQuickEntryTrue(boolean val) {
         this.isQuickEntry = val;
@@ -50,41 +56,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //todo testen ob ich auch so die Alarme wieder setzen kann, wenn die App restarted wird
+    if (!alarmsAllReset) {
+        // Work Request erstellen, dass dann async bearbeitet werden kann vom WorkManager als eigener Thread
+        WorkRequest alarmWorkRequest =
+                new OneTimeWorkRequest.Builder(AlarmWorker.class)
+                        .build();
 
-        /**
-         * entries soll alle Eintraege speichern. (Eventuell sollten wir hier ueberlegen, ob etwas wie eine Hashtabelle etc. sinnvoll waere)
-         * Ein Entry beinhaltet die Werte fuer alle Antworten, die der Nutzer beim Ausfuellen eines Fragebogens eingibt.
-         *
-         * */
+        // Das WorkRequest wird zur Bearbeitung an den WorkManager übergeben
+        WorkManager
+                .getInstance(getApplicationContext())
+                .enqueue(alarmWorkRequest);
+        alarmsAllReset=true;
+    }
 
-     entryRecyclerView = findViewById(R.id.entryRecyclerView);
-       // aus AS Studio bsp mit EInsetzungen, kommt mir sinvoll vor, da wir ja irgendwie ein Fragment brauchen wo der RecyclerView drin gezeigt wird
-       /*if (savedInstanceState == null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            EntryFragment entryRecyclerView = new EntryFragment();
-            transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
-            transaction.commit();
-       } */
-
-
-        // TODO: Funktion schreiben, mit das Entry-Element erweitert wird jeweils um Date, Time, Activity, Feeling, etc.
-        // TODO: In Activity OnClickListener -> entries (position itemCount, setActivity "Eating/Drinking"
-
-
-       //entryRecyclerView.setAdapter(adapter);
-        //Legt die Ansicht fest! (Gibt auch Grid etc.)
-      // entryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-        // rechts unten der weiter button ist dieser fab, floating action button
-        FloatingActionButton fab = findViewById(R.id.fwd);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -100,8 +85,28 @@ public class MainActivity extends AppCompatActivity {
 
         // channel needs to be created right at app start
         createNotificationChannel();
-    }
 
+
+        // rechts unten der weiter button ist dieser fab, floating action button
+        FloatingActionButton fwd = findViewById(R.id.fwd);
+        FloatingActionButton home = findViewById(R.id.backHome);
+
+        fwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.nav_success);
+
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.nav_home);
+            }
+        });
+
+    }
 
     // create Notification Channel that is needed since Android 8.0 to send notifications
     private void createNotificationChannel() {

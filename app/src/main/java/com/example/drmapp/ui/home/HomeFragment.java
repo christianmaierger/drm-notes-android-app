@@ -1,29 +1,22 @@
 package com.example.drmapp.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.drmapp.R;
-import com.example.drmapp.ui.EntryFragment;
-import com.example.drmapp.ui.addEntry.AddEntryFragment;
-import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.drmapp.ui.ViewLast2.EntryFragment;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeFragment extends Fragment {
@@ -36,13 +29,11 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        //final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                //textView.setText(s);
-            }
-        });
+
+
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.GONE);
+
 
         Button button = (Button) root.findViewById(R.id.toAddEntry);
         button.setOnClickListener(new View.OnClickListener()

@@ -21,135 +21,152 @@
         android:layout_height="wrap_content" >
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/collapsedLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/collapsedLayout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/lightGreen"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/btnArrowDown"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/imageViewEmoji"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="10dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btnArrowDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:src="@drawable/ic_whitearrowdown"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/collapsedLayout"
+                app:layout_constraintEnd_toEndOf="@id/collapsedLayout" />
+
+
+            <TextView
+                android:id="@+id/contentDate"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:text="dd:mm:yy"
+                android:textAppearance="@style/buttonStyle"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@id/imageViewEmoji"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/contentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:text="hh_mm"
+                android:textAppearance="@style/buttonStyle"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/contentDate"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/ContentActivity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:text="Activity"
+                android:textAppearance="@style/buttonStyle"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/btnArrowDown"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/contentTime"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/expandedLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_down"
-            app:layout_constraintBottom_toBottomOf="@id/collapsedLayout"
-            app:layout_constraintEnd_toEndOf="@id/collapsedLayout"
+
             android:visibility="visible"
-            />
+            app:layout_constraintTop_toBottomOf="@id/collapsedLayout">
+
+            <ImageView
+                android:id="@+id/btnArrowUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_up"
+                app:layout_constraintEnd_toEndOf="@id/expandedLayout"
+                app:layout_constraintTop_toBottomOf="@id/imageViewSAM2" />
 
 
-        <TextView
-            android:id="@+id/contentDate"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="15dp"
-            android:paddingLeft="15dp"
-
-            android:paddingEnd="15dp"
-            android:text="dd:mm:yy"
-
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/imageViewSAM1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:src="@drawable/sam1"
+                app:layout_constraintStart_toStartOf="@id/expandedLayout"
+                app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 
 
-        <TextView
-            android:id="@+id/contentTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="15dp"
-            android:paddingLeft="15dp"
-            android:paddingEnd="15dp"
-            android:text="hh_mm"
+            <ImageView
+                android:id="@+id/imageViewSAM2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/sam6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageViewSAM1"
+                app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 
-            app:layout_constraintStart_toEndOf="@id/contentDate"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/imageViewSAM3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/sam11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 
-        <TextView
-            android:id="@+id/ContentActivity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="15dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="15dp"
-            android:paddingEnd="15dp"
-            android:text="Activity"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/contentDate" />
-
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/expandedLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@id/collapsedLayout">
-
-        <ImageView
-            android:id="@+id/imageViewEmoji"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:paddingLeft="15dp"
-            android:src="@drawable/grinning"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
-
-        <ImageView
-            android:id="@+id/btnArrowUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_up"
-            app:layout_constraintTop_toBottomOf="@id/imageViewSAM2"
-            app:layout_constraintEnd_toEndOf="@id/expandedLayout" />
-
-
-        <ImageView
-            android:id="@+id/imageViewSAM1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-           android:src="@drawable/sam11"
-            android:paddingLeft="15dp"
-            app:layout_constraintStart_toEndOf="@id/imageViewEmoji"
-            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
-
-        <ImageView
-            android:id="@+id/imageViewSAM2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-
-           android:src="@drawable/sam21"
-            app:layout_constraintStart_toEndOf="@id/imageViewSAM1"
-            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
-
-       <!-- <ImageView
-            android:id="@+id/imageViewSAM3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:src="@drawable/sam31"
-            app:layout_constraintStart_toEndOf="@id/imageViewSAM2"
-            app:layout_constraintTop_toBottomOf="@id/ContentThoughts" /> -->
-
-        <TextView
-            android:id="@+id/ContentThoughts"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="15dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="15dp"
-            android:paddingEnd="15dp"
-            android:text="Thoughts \nLorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/ContentThoughts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="15dp"
+                android:text="Thoughts \nLorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
 

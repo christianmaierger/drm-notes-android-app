@@ -5,20 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AddEntryFragment extends Fragment implements View.OnClickListener {
 
@@ -41,6 +37,10 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
         button_5.setOnClickListener(this);
         button_6.setOnClickListener(this);
 
+        //Sichtbarmachen des Floating Action Buttons für das Speichern eines Eintrags
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.VISIBLE);
+
         return root;
     }
 
@@ -54,4 +54,4 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
             navController.navigate(R.id.action_nav_add_Entry_to_noteQuickEntryFragment);
         }
     }
-}
+    }

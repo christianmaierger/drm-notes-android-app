@@ -28,6 +28,12 @@
             android:id="@+id/action_nav_add_Entry_to_noteQuickEntryFragment"
             app:destination="@id/noteQuickEntryFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_view_Last"
+        android:name="com.example.drmapp.ui.ViewLast2.EntryFragment"
+        android:label="View Last"
+        tools:layout="@layout/fragment_entry_list"
+        />"
 
     <fragment
         android:id="@+id/manageNotifications"
@@ -101,11 +107,11 @@
         tools:layout="@layout/fragment_thoughts">
         <action
             android:id="@+id/action_thoughtsFragment_to_successFragment"
-            app:destination="@id/successFragment"
+            app:destination="@id/nav_success"
              />
     </fragment>
     <fragment
-        android:id="@+id/successFragment"
+        android:id="@+id/nav_success"
         android:name="com.example.drmapp.ui.success.SuccessFragment"
         android:label="SuccessFragment"
         tools:layout="@layout/fragment_success" >
