@@ -219,7 +219,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:headerBackground="@color/colorButton"
-        android:timePickerMode="clock"
+        android:timePickerMode="spinner"
         android:visibility="visible"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
