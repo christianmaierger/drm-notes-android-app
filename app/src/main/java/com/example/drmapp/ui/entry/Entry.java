@@ -179,7 +179,7 @@ public class Entry {
 
 
 
-       userDao.insertAll(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"), new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
+       userDao.insertAll(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0x1F621, 1, 1,1, "Pancakes are good"), new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
 
 
         List<Entry> entries = (List<Entry>) userDao.getEntriesAsLiveData();
