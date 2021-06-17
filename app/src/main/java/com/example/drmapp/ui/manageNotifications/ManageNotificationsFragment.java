@@ -4,9 +4,11 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.annotation.Dimension;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.Group;
@@ -52,6 +55,9 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
     private FloatingActionButton addNotificationTimeButton;
     private TimePicker picker;
+
+    private Button submitTime;
+    private Button submitTime2;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -95,14 +101,38 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         // da sich dann sein Logo ändert und der TimePicker erscheinen muss
         mViewModel.setAddTimeButtonpressed(false);
 
-        // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
-        timePickerGroup = root.findViewById(R.id.timePickerGroup);
-        timePickerGroup2 = root.findViewById(R.id.timePickerGroup2);
-        // Beide time picker in 24 h Modus setzen, was leider nicht im XML direkt geht
-        picker = root.findViewById(R.id.simpleTimePicker);
-        picker.setIs24HourView(true);
-        TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2);
-        picker2.setIs24HourView(true);
+
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+
+        // Wenn der Bildschirm unter eine gewisse Breite hat, dann soll ein Spinner, statt eine Uhr
+        // als TimePicker angezeigt werden, da die Zahlen zu klein werden um komfortabel ausgewählt zu werden
+        if(width<400) {
+            // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
+            timePickerGroup = root.findViewById(R.id.timePickerGroupSpinner);
+            timePickerGroup2 = root.findViewById(R.id.timePickerGroup2Spinner);
+            // Beide time picker in 24 h Modus setzen, was leider nicht im XML direkt geht
+            picker = root.findViewById(R.id.simpleTimePickerSpinner);
+            picker.setIs24HourView(true);
+            TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2Spinner);
+            picker2.setIs24HourView(true);
+            submitTime = root.findViewById(R.id.getTimeSpinner);
+            submitTime2 = root.findViewById(R.id.getTime2Spinner);
+        } else {
+            // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
+            timePickerGroup = root.findViewById(R.id.timePickerGroup);
+            timePickerGroup2 = root.findViewById(R.id.timePickerGroup2);
+            picker = root.findViewById(R.id.simpleTimePicker);
+            picker.setIs24HourView(true);
+            TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2);
+            picker2.setIs24HourView(true);
+            submitTime = root.findViewById(R.id.getTime);
+            submitTime2 = root.findViewById(R.id.getTime2);
+        }
+
 
         // Hier werden der TextView neben dem add button für times und
         // alle drei TextViews für Notifications an ihre Daten/Texte im Model gebunden
@@ -264,7 +294,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
      * @param buttonPressed die zugehörigen Daten im Model zu dem TimeButton dessen Zeit geändert werden soll
      */
     private void setFunctionalityOfSubmitNotificationButton2(MutableLiveData<String> buttonPressed, int timeTextToChangeAndStore) {
-        Button submitTime2 = root.findViewById(R.id.getTime2);
+
         submitTime2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -326,7 +356,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     private void  setFunctionalityOfSubmitNotificationTimeButton() {
 
         // here listener is set to Submit button below time picker and gets the selected time to store it in ViewModel
-        Button submitTime = root.findViewById(R.id.getTime);
+
         submitTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -482,7 +512,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         // change the src the so to speak graphical element on the button
         addNotificationTimeButton.setImageDrawable(drawable);
 
-        mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
+        //mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
 
         //Setzen des flag um die Funktionalität des button, its "logo" and description
         mViewModel.setAddTimeButtonpressed(true);
@@ -538,7 +568,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                     Drawable drawable = getResources().getDrawable(R.drawable.ic_close_sign);
                     // statt einem + ein Kreuz zum Beenden auf den button
                     addNotificationTimeButton.setImageDrawable(drawable);
-                    mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
+                    //mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
                     //set flag to change functionality of button, its "logo" and description
                     mViewModel.setAddTimeButtonpressed(true);
 
@@ -589,7 +619,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         Drawable drawable = getResources().getDrawable(R.drawable.ic_plus_sign);
         button.setImageDrawable(drawable);
 
-        mViewModel.getButtonText().setValue(getString(R.string.pressToAddNotificationTime));
+        //mViewModel.getButtonText().setValue(getString(R.string.pressToAddNotificationTime));
         // flag wieder umsetzen, da button wieder "ungedrückt" ist
         mViewModel.setAddTimeButtonpressed(false);
     }
