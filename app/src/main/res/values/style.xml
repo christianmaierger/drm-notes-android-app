@@ -8,6 +8,16 @@
         <item name="textAllCaps">true</item>
     </style>
 
+    <style name="snackbar_text" parent="@style/Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:textColor">@color/darkPurpel</item>
+    </style>
+
+
+    <style name="snackbar_style" parent="@style/Widget.MaterialComponents.Snackbar">
+        <!-- using backgroundTint the alpha layer is ignored -->
+        <item name="backgroundTint">@color/lightGreen</item>
+    </style>
+
     <style name="fab_square" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">0dp</item>

@@ -247,6 +247,11 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         notifyDataSetChanged();
     }
 
+    public Entry getItem(final int position){
+
+        return entries.get(position);
+    }
+
 
     /*
     * Die ViewHolder dienen der Deklaration der Variablen und Verknuepfung mit den zugehoerigen Elementen in den XML Layout Dateien.
