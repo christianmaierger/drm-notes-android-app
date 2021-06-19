@@ -19,19 +19,26 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.database.AppDatabase;
+import com.example.drmapp.database.EntryDAO;
 import com.example.drmapp.ui.addEntry.AddEntryFragment;
+import com.example.drmapp.ui.entry.Entry;
 import com.example.drmapp.ui.home.HomeFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class SuccessFragment extends Fragment implements View.OnClickListener{
 
     private SuccessViewModel mViewModel;
+    Entry entryUnderConstruction = new Entry();
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
         ((MainActivity) getActivity()).setActionBarTitle("Success");
+
+        Entry entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
         mViewModel = new ViewModelProvider(this).get(SuccessViewModel.class);
         View root = inflater.inflate(R.layout.fragment_success, container, false);
@@ -55,8 +62,10 @@ public class SuccessFragment extends Fragment implements View.OnClickListener{
         switch(v.getId()){
             case R.id.btnAddEntry:
                 navController.navigate(R.id.action_successFragment_to_nav_add_Entry);
+
                 break;
             case R.id.btnSaveEntry:
+                AppDatabase.getInstance(getActivity()).entryDao().insertEntry(entryUnderConstruction);
                 navController.navigate(R.id.action_successFragment_to_nav_home);
                 break;
             default:

@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean isQuickEntry = false;
     private Entry entryUnderConstruction = new Entry();
 
+    public Entry getEntryUnderConstruction() { return entryUnderConstruction; }
+
+    public void setEntryUnderConstruction(Entry entryUnderConstruction) { this.entryUnderConstruction = entryUnderConstruction; }
+
 
     public boolean isAlarmsAllReset() {
         return alarmsAllReset;
