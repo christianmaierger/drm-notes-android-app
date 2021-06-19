@@ -52,15 +52,16 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(!((MainActivity)getActivity()).getIsQuickEntry()) {
-            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-            navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
-        }else{
             switch (v.getId()){
                 case R.id.timedate_button_morning:
                     entryUnderConstruction.setTime("Morning");
                     ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
                     break;
             }
+            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
+        }else{
+
             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
             navController.navigate(R.id.action_nav_add_Entry_to_noteQuickEntryFragment);
         }
