@@ -21,4 +21,25 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="textManualFragmentsSubmissionButton">Submit</string>
+
+    <!--AddEntryFragement:-->
+    <string name="textMorningButton">Morning</string>
+    <string name="textEveningButton">Evening</string>
+    <string name="textAfternoonButton">Afternoon</string>
+    <string name="textNightButton">Night</string>
+    <string name="timeText">At what time did you perform the activity?</string>
+
+    <!--ActivitiesPremadeFragement:-->
+    <string name="textEatingDrinkingButton">Eating/Drinking</string>  <!-- TODO: Add New Line -->
+    <string name="textCookingButton">Cooking</string>
+    <string name="textWorkingStudyingButton">Working/Studying</string> <!-- TODO: Add New Line -->
+    <string name="textCareWorkButton">Care Work</string>
+    <string name="textChoresButton">Chores</string>
+    <string name="textHobbyButton">Hobby</string>
+    <string name="textLeisureTimeButton">Leisure Time</string>
+    <string name="textOtherActivityButton">Other</string>
+    <string name="activityText">What were you doing?</string>
+
+
 </resources>

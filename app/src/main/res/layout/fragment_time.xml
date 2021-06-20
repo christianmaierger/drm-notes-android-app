@@ -18,28 +18,13 @@
         android:background="@drawable/button"
         android:gravity="center"
 
-        android:text="Morning"
-        app:layout_constraintBottom_toTopOf="@+id/timedate_button_evening"
-        app:layout_constraintDimensionRatio="4.5:1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/timedatetext" />
-
-    <Button
-        android:id="@+id/timedate_button_evening"
-        style="@style/buttonStyle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Evening"
+        android:text="@string/textMorningButton"
         app:layout_constraintBottom_toTopOf="@+id/timedate_button_afternoon"
         app:layout_constraintDimensionRatio="4.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/timedate_button_morning" />
+        app:layout_constraintTop_toBottomOf="@+id/timedatetext" />
 
     <Button
         android:id="@+id/timedate_button_afternoon"
@@ -48,13 +33,28 @@
         android:layout_height="0dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Afternoon"
+        android:text="@string/textAfternoonButton"
+        app:layout_constraintBottom_toTopOf="@+id/timedate_button_evening"
+        app:layout_constraintDimensionRatio="4.5:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/guideline1_h"
+        app:layout_constraintTop_toBottomOf="@+id/timedate_button_morning" />
+
+    <Button
+        android:id="@+id/timedate_button_evening"
+        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="@string/textEveningButton"
         app:layout_constraintBottom_toTopOf="@+id/timedate_button_night"
         app:layout_constraintDimensionRatio="4.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/timedate_button_evening" />
+        app:layout_constraintTop_toBottomOf="@+id/timedate_button_afternoon" />
 
     <Button
         android:id="@+id/timedate_button_night"
@@ -62,20 +62,20 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/button"
-        android:text="Night"
+        android:text="@string/textNightButton"
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
         app:layout_constraintDimensionRatio="4.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/timedate_button_afternoon" />
+        app:layout_constraintTop_toBottomOf="@+id/timedate_button_evening" />
 
     <TextView
         android:id="@+id/timedatetext"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="At what time did you perform the activity?"
+        android:text="@string/timeText"
         android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2_v"

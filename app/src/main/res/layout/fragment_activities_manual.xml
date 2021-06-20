@@ -10,10 +10,10 @@
 
     <TextView
         android:id="@+id/txtActivityManual"
-        android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="What were you doing?"
+        android:gravity="center"
+        android:text="@string/activityText"
         android:textAllCaps="true"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2_v"
@@ -43,11 +43,11 @@
     <Button
         android:id="@+id/btnSubmitActivityM"
         style="@style/buttonStyle"
-        android:background="@drawable/button"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/button"
 
-        android:text="Submit"
+        android:text="@string/textManualFragmentsSubmissionButton"
 
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@id/guideline3_v"

@@ -38,7 +38,7 @@ public class SuccessFragment extends Fragment implements View.OnClickListener{
 
         ((MainActivity) getActivity()).setActionBarTitle("Success");
 
-        Entry entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
+        entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
         mViewModel = new ViewModelProvider(this).get(SuccessViewModel.class);
         View root = inflater.inflate(R.layout.fragment_success, container, false);
@@ -59,13 +59,14 @@ public class SuccessFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
+        //Speichern des Eintrages in beiden Fällen --> Annahme, dass beim Erstellen eines neuen Eintrages trotzdem gespeichert werden soll
+        AppDatabase.getInstance(getActivity()).entryDao().insertEntry(entryUnderConstruction);
+
         switch(v.getId()){
             case R.id.btnAddEntry:
                 navController.navigate(R.id.action_successFragment_to_nav_add_Entry);
-
                 break;
             case R.id.btnSaveEntry:
-                AppDatabase.getInstance(getActivity()).entryDao().insertEntry(entryUnderConstruction);
                 navController.navigate(R.id.action_successFragment_to_nav_home);
                 break;
             default:

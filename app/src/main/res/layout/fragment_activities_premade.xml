@@ -15,7 +15,7 @@
         android:layout_height="0dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Cooking"
+        android:text="@string/textCookingButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_carework"
         app:layout_constraintDimensionRatio="2:1"
@@ -31,7 +31,7 @@
         android:layout_height="0dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="Eating\nDrinking"
+        android:text="@string/textEatingDrinkingButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_chores"
         app:layout_constraintDimensionRatio="2:1"
@@ -43,11 +43,11 @@
     <Button
         android:id="@+id/activity_button_workingstudying"
         style="@style/buttonStyle"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Working\nStudying"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="@string/textWorkingStudyingButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_leisuretime"
         app:layout_constraintDimensionRatio="2:1"
@@ -59,11 +59,11 @@
     <Button
         android:id="@+id/activity_button_carework"
         style="@style/buttonStyle"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Care Work"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="@string/textCareWorkButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_hobby"
         app:layout_constraintDimensionRatio="2:1"
@@ -75,11 +75,11 @@
     <Button
         android:id="@+id/activity_button_chores"
         style="@style/buttonStyle"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Chores"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="@string/textChoresButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_workingstudying"
         app:layout_constraintDimensionRatio="2:1"
@@ -91,11 +91,11 @@
     <Button
         android:id="@+id/activity_button_hobby"
         style="@style/buttonStyle"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Hobby"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="@string/textHobbyButton"
 
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_other"
@@ -108,11 +108,11 @@
     <Button
         android:id="@+id/activity_button_leisuretime"
         style="@style/buttonStyle"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Leisure Time"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="@string/textLeisureTimeButton"
 
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
         app:layout_constraintDimensionRatio="2:1"
@@ -124,11 +124,11 @@
     <Button
         android:id="@+id/activity_button_other"
         style="@style/buttonStyle"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="Other"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="@string/textOtherActivityButton"
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
         app:layout_constraintDimensionRatio="2:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
@@ -138,10 +138,10 @@
 
     <TextView
         android:id="@+id/activitypremadetext"
-        android:text="What were you doing?"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
+        android:text="@string/activityText"
 
         android:textAllCaps="true"
         android:textSize="20dp"

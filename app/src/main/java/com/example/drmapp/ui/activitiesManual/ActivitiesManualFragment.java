@@ -15,20 +15,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.ui.entry.Entry;
 
 
 public class ActivitiesManualFragment extends Fragment implements View.OnClickListener{
 
         private ActivitiesManualViewModel mViewModel;
+        Entry entryUnderConstruction = new Entry();
+        EditText inputEditText;
 
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                 @Nullable Bundle savedInstanceState) {
 
             ((MainActivity) getActivity()).setActionBarTitle("Activity Manual Selection");
+            entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
             mViewModel = new ViewModelProvider(this).get(ActivitiesManualViewModel.class);
             View root = inflater.inflate(R.layout.fragment_activities_manual, container, false);
@@ -37,11 +42,16 @@ public class ActivitiesManualFragment extends Fragment implements View.OnClickLi
 
             button_1.setOnClickListener(this);
 
+            inputEditText = root.findViewById(R.id.addActivityManual_editText);
             return root;
         }
 
     @Override
     public void onClick(View v) {
+
+        entryUnderConstruction.setActivity(inputEditText.getText().toString());
+        ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         navController.navigate(R.id.action_activitiesManualFragment_to_personPremadeFragment);
     }

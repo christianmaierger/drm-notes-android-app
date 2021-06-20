@@ -20,7 +20,7 @@
         android:id="@+id/nav_add_Entry"
         android:name="com.example.drmapp.ui.addEntry.AddEntryFragment"
         android:label="@string/menu_add_Entry"
-        tools:layout="@layout/fragment_addentry" >
+        tools:layout="@layout/fragment_time" >
         <action
             android:id="@+id/action_nav_add_Entry_to_activitiesPremadeFragment"
             app:destination="@id/activitiesPremadeFragment" />

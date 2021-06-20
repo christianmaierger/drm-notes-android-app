@@ -16,19 +16,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.ui.entry.Entry;
 
 public class EmojiManualFragment extends Fragment implements View.OnClickListener{
 
     private EmojiManualViewModel mViewModel;
+    Entry entryUnderConstruction = new Entry();
+    EditText inputEditText;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
         ((MainActivity) getActivity()).setActionBarTitle("Feelings Selection");
+        entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
         mViewModel = new ViewModelProvider(this).get(EmojiManualViewModel.class);
         View root = inflater.inflate(R.layout.fragment_emoji_manual, container, false);
@@ -44,15 +49,18 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
 
         button_1.setOnClickListener(this);
 
+        inputEditText = root.findViewById(R.id.addEmojiManual_editText);
         return root;
     }
 
     public void onClick(View v) {
+
+        System.out.println(Integer.parseInt(inputEditText.getText().toString()));
+        //TODO: Manuelle Emojis funktionieren nicht --> Problem liegt in nachfolgender Zeile
+        entryUnderConstruction.setEmoji(Integer.parseInt(inputEditText.getText().toString()));
+        ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        switch(v.getId()){
-            case R.id.btnSubmitEmojiM:
-                navController.navigate(R.id.action_emojiManualFragment_to_samEmotionalFragment);
-                break;
-        }
+        navController.navigate(R.id.action_emojiManualFragment_to_samEmotionalFragment);
     }
 }

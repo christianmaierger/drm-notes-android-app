@@ -26,21 +26,20 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         ((MainActivity) getActivity()).setActionBarTitle("Time Selection");
-
-        Entry entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
+        entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
         addEntryViewModel = new ViewModelProvider(this).get(AddEntryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_addentry, container, false);
+        View root = inflater.inflate(R.layout.fragment_time, container, false);
 
         Button button_1 = (Button) root.findViewById(R.id.timedate_button_morning);
-        Button button_4 = (Button) root.findViewById(R.id.timedate_button_afternoon);
-        Button button_5 = (Button) root.findViewById(R.id.timedate_button_evening);
-        Button button_6 = (Button) root.findViewById(R.id.timedate_button_night);
+        Button button_2 = (Button) root.findViewById(R.id.timedate_button_afternoon);
+        Button button_3 = (Button) root.findViewById(R.id.timedate_button_evening);
+        Button button_4 = (Button) root.findViewById(R.id.timedate_button_night);
 
         button_1.setOnClickListener(this);
+        button_2.setOnClickListener(this);
+        button_3.setOnClickListener(this);
         button_4.setOnClickListener(this);
-        button_5.setOnClickListener(this);
-        button_6.setOnClickListener(this);
 
         //Sichtbarmachen des Floating Action Buttons für das Speichern eines Eintrags
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
@@ -54,10 +53,19 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
         if(!((MainActivity)getActivity()).getIsQuickEntry()) {
             switch (v.getId()){
                 case R.id.timedate_button_morning:
-                    entryUnderConstruction.setTime("Morning");
-                    ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+                    entryUnderConstruction.setTime(getResources().getString(R.string.textMorningButton));
+                    break;
+                case R.id.timedate_button_afternoon:
+                    entryUnderConstruction.setTime(getResources().getString(R.string.textAfternoonButton));
+                    break;
+                case R.id.timedate_button_evening:
+                    entryUnderConstruction.setTime(getResources().getString(R.string.textEveningButton));
+                    break;
+                case R.id.timedate_button_night:
+                    entryUnderConstruction.setTime(getResources().getString(R.string.textNightButton));
                     break;
             }
+            ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
             navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
         }else{
