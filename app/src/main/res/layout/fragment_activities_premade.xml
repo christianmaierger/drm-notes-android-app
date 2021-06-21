@@ -18,7 +18,7 @@
         android:text="@string/textCookingButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_carework"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline3_h"
@@ -34,7 +34,7 @@
         android:text="@string/textEatingDrinkingButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_chores"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
@@ -50,7 +50,7 @@
         android:text="@string/textWorkingStudyingButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_leisuretime"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
@@ -66,7 +66,7 @@
         android:text="@string/textCareWorkButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_hobby"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline3_h"
@@ -82,7 +82,7 @@
         android:text="@string/textChoresButton"
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_workingstudying"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
@@ -99,7 +99,7 @@
 
 
         app:layout_constraintBottom_toTopOf="@+id/activity_button_other"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline3_h"
@@ -115,7 +115,7 @@
         android:text="@string/textLeisureTimeButton"
 
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
@@ -130,7 +130,7 @@
         android:gravity="center"
         android:text="@string/textOtherActivityButton"
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline3_h"
@@ -156,7 +156,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
 
-        android:progress="25"
+        android:progress="12"
 
         android:progressBackgroundTint="@color/lightPurpel"
 

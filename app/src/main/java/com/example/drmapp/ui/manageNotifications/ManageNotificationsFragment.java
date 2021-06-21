@@ -110,7 +110,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
         // Wenn der Bildschirm unter eine gewisse Breite hat, dann soll ein Spinner, statt eine Uhr
         // als TimePicker angezeigt werden, da die Zahlen zu klein werden um komfortabel ausgewählt zu werden
-        if(width<400) {
+        if(width<500) {
             // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
             timePickerGroup = root.findViewById(R.id.timePickerGroupSpinner);
             timePickerGroup2 = root.findViewById(R.id.timePickerGroup2Spinner);
@@ -512,7 +512,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         // change the src the so to speak graphical element on the button
         addNotificationTimeButton.setImageDrawable(drawable);
 
-        mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
+        //mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
 
         //Setzen des flag um die Funktionalität des button, its "logo" and description
         mViewModel.setAddTimeButtonpressed(true);
@@ -568,7 +568,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                     Drawable drawable = getResources().getDrawable(R.drawable.ic_close_sign);
                     // statt einem + ein Kreuz zum Beenden auf den button
                     addNotificationTimeButton.setImageDrawable(drawable);
-                    mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
+                    //mViewModel.getButtonText().setValue(getString(R.string.cancleTimePicking));
                     //set flag to change functionality of button, its "logo" and description
                     mViewModel.setAddTimeButtonpressed(true);
 
@@ -619,7 +619,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         Drawable drawable = getResources().getDrawable(R.drawable.ic_plus_sign);
         button.setImageDrawable(drawable);
 
-        mViewModel.getButtonText().setValue(getString(R.string.pressToAddNotificationTime));
+        //mViewModel.getButtonText().setValue(getString(R.string.pressToAddNotificationTime));
         // flag wieder umsetzen, da button wieder "ungedrückt" ist
         mViewModel.setAddTimeButtonpressed(false);
     }

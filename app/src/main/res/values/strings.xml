@@ -15,9 +15,9 @@
     <string name="notifications_heading">Here you can manage the amount and time of notifications</string>
     <string name="addTimeButtonText"> </string>
     <string name="noTimePickedText">No Time for Notification picked</string>
-    <string name="cancleTimePicking">Click to cancle Time Picking</string>
+    <string name="cancleTimePicking">Cancle Time Picking</string>
     <string name="noTimeSetForNotifications">No Time for Notifications selected so far</string>
-    <string name="pressToAddNotificationTime">Press To Add Notification Time</string>
+    <string name="pressToAddNotificationTime">Add Notification Time</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

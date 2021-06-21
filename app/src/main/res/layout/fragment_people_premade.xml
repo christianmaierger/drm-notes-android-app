@@ -34,7 +34,7 @@
 
 
         app:layout_constraintBottom_toTopOf="@+id/btnPeopleOther"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
@@ -51,7 +51,7 @@
         android:textAllCaps="true"
 
         app:layout_constraintBottom_toTopOf="@+id/btnFamily"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline3_h"
@@ -69,7 +69,7 @@
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintStart_toEndOf="@id/guideline1_h"
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
-        app:layout_constraintDimensionRatio="4.5:1"/>
+        app:layout_constraintDimensionRatio="5:1"/>
 
     <Button
         android:id="@+id/btnStrangers"
@@ -82,7 +82,7 @@
         android:textAllCaps="true"
 
         app:layout_constraintBottom_toTopOf="@+id/btnColleagues"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
@@ -98,7 +98,7 @@
         android:text="Family"
 
         app:layout_constraintBottom_toTopOf="@+id/btnPeopleOther"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline3_h"
@@ -115,7 +115,7 @@
         android:textAllCaps="true"
 
         app:layout_constraintBottom_toTopOf="@+id/btnStrangers"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2_h"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
@@ -132,7 +132,7 @@
         android:textAllCaps="true"
 
         app:layout_constraintBottom_toTopOf="@+id/btnFriends"
-        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintDimensionRatio="2.5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3_h"
@@ -143,15 +143,16 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:progress="49"
+        android:progress="24"
 
         android:progressBackgroundTint="@color/lightPurpel"
 
         app:layout_constraintBottom_toTopOf="@+id/guideline1_v"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1_v"
