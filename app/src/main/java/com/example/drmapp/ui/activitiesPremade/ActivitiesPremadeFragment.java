@@ -58,6 +58,10 @@ public class ActivitiesPremadeFragment extends Fragment implements View.OnClickL
 
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
+        MainActivity act = (MainActivity) getActivity();
+       System.out.println(act.getEntryUnderConstruction());
+
         switch(v.getId()){
             case R.id.activity_button_other:
                 navController.navigate(R.id.action_activitiesPremadeFragment_to_activitiesManualFragment);

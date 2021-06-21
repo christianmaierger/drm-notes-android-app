@@ -61,6 +61,7 @@ public class Entry {
 
     @Ignore
     public Entry(boolean isQuickEntry, String date, String time, String activity, String thoughts) {
+        this.id= count.incrementAndGet();
         this.date = date;
         this.time = time;
         this.activity = activity;
@@ -73,7 +74,7 @@ public class Entry {
     }
 
     public Entry() {
-
+        this.id= count.incrementAndGet();
     }
 
     public boolean isQuickEntry(){ return isQuickEntry;}

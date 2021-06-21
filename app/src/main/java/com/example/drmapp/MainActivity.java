@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView entryRecyclerView;
     private boolean alarmsAllReset= false;
     private boolean isQuickEntry = false;
-    private Entry entryUnderConstruction = new Entry();
+    private Entry entryUnderConstruction;
 
     public Entry getEntryUnderConstruction() { return entryUnderConstruction; }
 
