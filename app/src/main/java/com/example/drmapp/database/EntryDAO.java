@@ -34,6 +34,7 @@ public interface EntryDAO {
                 "time LIKE :time LIMIT 1")
         LiveData<List<Entry>> findByDate(String date, String time);
 
+
         // fügt einen Entry ein und wenn es den schon gibt wird ersetzt
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         public ListenableFuture<Long> insertEntry(Entry entry);

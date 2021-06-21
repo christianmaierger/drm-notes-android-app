@@ -161,28 +161,29 @@ public class Entry {
 
     // method just to create some test data
     public static ArrayList<Entry> createEntryList(Context context) {
-       // ArrayList<Entry> entries = new ArrayList<Entry>();
+       ArrayList<Entry> entries = new ArrayList<Entry>();
 
 
 
-        AppDatabase db = AppDatabase.getInstance(context);
-        EntryDAO userDao = db.entryDao();
+      AppDatabase db = AppDatabase.getInstance(context);
+       EntryDAO userDao = db.entryDao();
+
 /*
-
         entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"));
         entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
         entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", 0x1F622, 3, 3, 3,"Coffee tasted horrible"));
         entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", 0x1F4AA, 4, 4,4, "Took a walk"));
         entries.add(new Entry(false,"05/05/21", "18:00", "Care work", 0x1F621, 5, 5, 5, "Dog did not like the bath"));
-        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", 0x1F613 , 1, 1, 1,"Netflix did not work"));
-*/
+        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", 0x1F613 , 1, 1, 1,"Netflix did not work")); */
 
 
 
-       userDao.insertAll(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"), new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
+
+      //userDao.insertEntry(new Entry(false, "17.06.21", "13:15", "Working/Studying",0x1F622, 1, 1, 1, "Please work. Thanks." ));
+        // userDao.insertAll(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0x1F621, 1, 1,1, "Pancakes are good"), new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
 
 
-        List<Entry> entries = (List<Entry>) userDao.getEntriesAsLiveData();
+      // List<Entry> entries = (List<Entry>) userDao.getEntriesAsLiveData();
 
         // nicht so toll nur behelfsmasnahme
         ArrayList<Entry> ents = new ArrayList<>(entries);
@@ -200,6 +201,8 @@ public class Entry {
         //adapter.setEntries(entries);
 
         return ents;
+        // return entries;
+
     }
 
 

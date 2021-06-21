@@ -1,7 +1,9 @@
 package com.example.drmapp.ui.ViewLast2;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +51,15 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
 
-    /* RecyclerView calls this method whenever it needs to create a new ViewHolder.
-                The method creates and initializes the ViewHolder and its associated View,
-                but does not fill in the view's contents—the ViewHolder has not yet been bound
-                to specific data.*/
+    /* RecyclerView ruft diese Methode immer dann auf, wenn es einen neuen ViewHolder erstellen muss.
+                Die Methode erzeugt und initialisiert den ViewHolder und die zugehörige View,
+                füllt aber nicht den Inhalt der View aus - der ViewHolder ist noch nicht an bestimmte Daten gebunden.
+                an bestimmte Daten gebunden. */
 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+
+
 
 
         // Unterscheidung zwischen den zwei Layouts jenachdem ob die Variable isQuickEntry im Eintrag auf true/false gesetzt ist.
@@ -84,11 +91,14 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     }
 
-    /*RecyclerView calls this method to associate a ViewHolder with data.
-    The method fetches the appropriate data and uses the data to fill in the view
-    holder's layout. For example, if the RecyclerView dislays a list of names,
-    the method might find the appropriate name in the list and fill in the view
-    holder's TextView widget.
+
+
+
+    /* RecyclerView ruft diese Methode auf, um einen ViewHolder mit Daten zu verknuepfen.
+    Die Methode holt die entsprechenden Daten und fuellt mit den Daten das Layout des View
+    holder's Layout. Wenn die RecyclerView zum Beispiel eine Liste von Namen anzeigt,
+    koennte die Methode den entsprechenden Namen in der Liste finden und das TextView-Widget des Ansichtshalters ausfüllen.
+    Halter das TextView-Widget fuellen.
     Position ist die Position innerhalb des RecyclerView Adapters.
     */
     @Override
@@ -222,9 +232,9 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     }
 
-    /*RecyclerView calls this method to get the size of the data set.
-    For example, in an address book app, this might be the total number of addresses.
-    RecyclerView uses this to determine when there are no more items that can be displayed.*/
+    /*RecyclerView ruft diese Methode auf, um die Größe des Datensatzes zu ermitteln.
+    In einer Adressbuch-App könnte dies zum Beispiel die Gesamtzahl der Adressen sein.
+    RecyclerView verwendet dies, um festzustellen, wann es keine Elemente mehr gibt, die angezeigt werden können.*/
     @Override
     public int getItemCount() {
 
@@ -235,6 +245,11 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void setEntries(List<Entry> entries) {
         this.entries = entries;
         notifyDataSetChanged();
+    }
+
+    public Entry getItem(final int position){
+
+        return entries.get(position);
     }
 
 
