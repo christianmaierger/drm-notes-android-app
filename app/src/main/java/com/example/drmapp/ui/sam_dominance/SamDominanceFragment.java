@@ -15,16 +15,19 @@ import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.ui.entry.Entry;
 
-public class SamDominanceFragment extends Fragment implements View.OnClickListener{
+public class SamDominanceFragment extends Fragment implements View.OnClickListener {
 
     private SamDominanceViewModel mViewModel;
+    Entry entryUnderConstruction = new Entry();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
         ((MainActivity) getActivity()).setActionBarTitle("Dominance");
+        entryUnderConstruction = ((MainActivity) getActivity()).getEntryUnderConstruction();
 
         mViewModel = new ViewModelProvider(this).get(SamDominanceViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sam_dominance, container, false);
@@ -46,10 +49,25 @@ public class SamDominanceFragment extends Fragment implements View.OnClickListen
 
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        switch(v.getId()){
-            default:
-                navController.navigate(R.id.action_samDominanceFragment_to_thoughtsFragment);
+
+        switch (v.getId()) {
+            case R.id.btnDominance1:
+                entryUnderConstruction.setSam3(1);
+                break;
+            case R.id.btnDominance2:
+                entryUnderConstruction.setSam3(2);
+                break;
+            case R.id.btnDominance3:
+                entryUnderConstruction.setSam3(3);
+                break;
+            case R.id.btnDominance4:
+                entryUnderConstruction.setSam3(4);
+                break;
+            case R.id.btnDominance5:
+                entryUnderConstruction.setSam3(5);
                 break;
         }
+        ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+        navController.navigate(R.id.action_samDominanceFragment_to_thoughtsFragment);
     }
 }

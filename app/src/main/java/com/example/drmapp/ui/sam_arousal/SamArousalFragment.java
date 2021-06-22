@@ -15,15 +15,19 @@ import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.ui.entry.Entry;
 
 public class SamArousalFragment extends Fragment implements View.OnClickListener{
+
     private SamArousalViewModel mViewModel;
+    Entry entryUnderConstruction = new Entry();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
         ((MainActivity) getActivity()).setActionBarTitle("Arousal");
+        entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
         mViewModel = new ViewModelProvider(this).get(SamArousalViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sam_arousal, container, false);
@@ -45,10 +49,25 @@ public class SamArousalFragment extends Fragment implements View.OnClickListener
 
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        switch(v.getId()){
-            default:
-                navController.navigate(R.id.action_samArousalFragment_to_samDominanceFragment);
+
+        switch (v.getId()){
+            case R.id.btnArousal1:
+                entryUnderConstruction.setSam2(1);
+                break;
+            case R.id.btnArousal2:
+                entryUnderConstruction.setSam2(2);
+                break;
+            case R.id.btnArousal3:
+                entryUnderConstruction.setSam2(3);
+                break;
+            case R.id.btnArousal4:
+                entryUnderConstruction.setSam2(4);
+                break;
+            case R.id.btnArousal5:
+                entryUnderConstruction.setSam2(5);
                 break;
         }
+        ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+        navController.navigate(R.id.action_samArousalFragment_to_samDominanceFragment);
     }
 }

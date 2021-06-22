@@ -18,6 +18,7 @@ import android.widget.Button;
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ActivitiesPremadeFragment extends Fragment implements View.OnClickListener {
 
@@ -53,14 +54,18 @@ public class ActivitiesPremadeFragment extends Fragment implements View.OnClickL
         button_7.setOnClickListener(this);
         button_8.setOnClickListener(this);
 
+        //Verbergen des Floating Action Buttons für das Speichern eines Eintrags
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.GONE);
+
         return root;
     }
 
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-        MainActivity act = (MainActivity) getActivity();
-       System.out.println(act.getEntryUnderConstruction());
+        //MainActivity act = (MainActivity) getActivity();
+         //  System.out.println(act.getEntryUnderConstruction());
 
         switch(v.getId()){
             case R.id.activity_button_other:

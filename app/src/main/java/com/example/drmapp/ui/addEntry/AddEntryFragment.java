@@ -41,9 +41,9 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
         button_3.setOnClickListener(this);
         button_4.setOnClickListener(this);
 
-        //Sichtbarmachen des Floating Action Buttons für das Speichern eines Eintrags
+        //Verbergen des Floating Action Buttons für das Speichern eines Eintrags
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
-        fb.setVisibility(View.VISIBLE);
+        fb.setVisibility(View.GONE);
 
         return root;
     }

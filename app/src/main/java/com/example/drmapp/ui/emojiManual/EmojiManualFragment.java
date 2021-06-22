@@ -55,7 +55,7 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
 
     public void onClick(View v) {
 
-        System.out.println(Integer.parseInt(inputEditText.getText().toString()));
+        System.out.println((inputEditText.getText().toString()));
         //TODO: Manuelle Emojis funktionieren nicht --> Problem liegt in nachfolgender Zeile
         entryUnderConstruction.setEmoji(Integer.parseInt(inputEditText.getText().toString()));
         ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);

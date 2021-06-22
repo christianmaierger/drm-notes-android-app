@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/button"
-        android:text="Entry"
+        android:text="@string/addentry_split_chooseEntry"
 
         app:layout_constraintBottom_toTopOf="@+id/btnQuickEntry"
         app:layout_constraintDimensionRatio="5:1"
@@ -28,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/button"
-        android:text="Quick Entry"
+        android:text="@string/addentry_split_chooseQuickEntry"
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
         app:layout_constraintDimensionRatio="5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
