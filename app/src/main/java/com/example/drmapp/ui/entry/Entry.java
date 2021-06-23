@@ -30,7 +30,7 @@ public class Entry {
     // @ColumnInfo(name = "date")
     // @Ignore ignoriert Felder/Konstruktoren
     private static final AtomicInteger count = new AtomicInteger(0);
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String date;
     private String time;
@@ -55,7 +55,6 @@ public class Entry {
         this.sam3 = sam3;
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
-
         isExpaned=false;
     }
 

@@ -15,7 +15,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.List;
 
-
+import static androidx.room.FtsOptions.Order.DESC;
 
 
 @Dao
@@ -24,7 +24,7 @@ public interface EntryDAO {
         @Query("SELECT * FROM entry")
         List<Entry> getAll();
 
-        @Query("SELECT * FROM entry")
+        @Query("SELECT * FROM entry ORDER BY id ASC")
         LiveData<List<Entry>> getEntriesAsLiveData();
 
         @Query("SELECT * FROM entry WHERE id IN (:entryIds)")

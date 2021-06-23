@@ -39,13 +39,9 @@
         android:id="@+id/addEmojiManual_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
         android:background="@null"
         android:hint="Add feeling manually"
-
-
-        android:inputType="textPersonName"
-
+        android:inputType= "text"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/guideline1_h"

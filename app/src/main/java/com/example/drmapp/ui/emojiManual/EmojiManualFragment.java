@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,9 @@ import android.widget.EditText;
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
+
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
 public class EmojiManualFragment extends Fragment implements View.OnClickListener{
 
@@ -55,9 +59,26 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
 
     public void onClick(View v) {
 
-        System.out.println(Integer.parseInt(inputEditText.getText().toString()));
-        //TODO: Manuelle Emojis funktionieren nicht --> Problem liegt in nachfolgender Zeile
-        entryUnderConstruction.setEmoji(Integer.parseInt(inputEditText.getText().toString()));
+
+        // Dieses Vorgehen geht auch für abseitigere Emojis, aber z.B. nicht für Landesflaggen
+        int result=0;
+        IntStream unicodeStr = null;
+       if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+           try {
+           // Wir brauchen den Text wirklich als UnicodePoints, get Text liefert das Emoji in grafischer Form
+           unicodeStr = inputEditText.getText().codePoints();
+            // Das in dem Stream nur ein Element ist, kann man immer auf das erste zugreifen
+            OptionalInt first = unicodeStr.findFirst();
+            // Hier wird (falls) vorhanden der Wert aus dem Optional geholt
+                result = first.getAsInt();
+            } catch (Exception e) {
+               e.printStackTrace();
+               result=0;
+            }
+        }
+
+
+        entryUnderConstruction.setEmoji(result);
         ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
 
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
