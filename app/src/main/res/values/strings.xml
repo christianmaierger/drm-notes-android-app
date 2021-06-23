@@ -18,10 +18,8 @@
     <string name="cancleTimePicking">Cancle Time Picking</string>
     <string name="noTimeSetForNotifications">No Time for Notifications selected so far</string>
     <string name="pressToAddNotificationTime">Add Notification Time</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="textManualFragmentsSubmissionButton">Submit</string>
+    <string name="textSubmitButton">Submit</string>
 
     <!--AddEntryFragement:-->
     <string name="textMorningButton">Morning</string>
@@ -31,15 +29,41 @@
     <string name="timeText">At what time did you perform the activity?</string>
 
     <!--ActivitiesPremadeFragement:-->
-    <string name="textEatingDrinkingButton">Eating/Drinking</string>  <!-- TODO: Add New Line -->
+    <string name="textEatingDrinkingButton">Eating/Drinking</string>
     <string name="textCookingButton">Cooking</string>
-    <string name="textWorkingStudyingButton">Working/Studying</string> <!-- TODO: Add New Line -->
+    <string name="textWorkingStudyingButton">Working/Studying</string>
     <string name="textCareWorkButton">Care Work</string>
     <string name="textChoresButton">Chores</string>
     <string name="textHobbyButton">Hobby</string>
     <string name="textLeisureTimeButton">Leisure Time</string>
     <string name="textOtherActivityButton">Other</string>
     <string name="activityText">What were you doing?</string>
+
+    <!--AddEntrySplitFragement:-->
+    <string name="addentry_split_chooseEntry">Entry</string>
+    <string name="addentry_split_chooseQuickEntry">Quick Entry</string>
+
+    <!--EmojiFragments-->
+    <string name="emojiText">Which emoji represents your feelings best?</string>
+
+    <!--HomeFragment-->
+    <string name="textAddEntryButton">Add Entry</string>
+    <string name="textViewLastButton">View Last</string>
+
+    <!--ThoughtsFragment-->
+    <string name="thoughtsText">Which thoughts occurred?</string>
+
+    <!--NoteQuickEntryFragment-->
+    <string name="noteText">What would you \n like to note?</string>
+
+    <!--SuccessFragment-->
+    <string name="textEntrySucess">Your entry was successful</string>
+    <string name="saveEntryButton">Save</string>
+    <string name="newEntrySucessButton">New Entry</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

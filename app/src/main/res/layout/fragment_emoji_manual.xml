@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="Which emoji represents your feelings best?"
+        android:text="@string/emojiText"
         android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2_v"
@@ -26,14 +26,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/button"
-        android:text="Submit"
+        android:text="@string/textSubmitButton"
 
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@id/guideline3_v"
         app:layout_constraintDimensionRatio="5:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline1_h"/>
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h" />
 
     <EditText
         android:id="@+id/addEmojiManual_editText"

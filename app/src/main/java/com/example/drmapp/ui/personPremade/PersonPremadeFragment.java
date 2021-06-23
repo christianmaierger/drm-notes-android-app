@@ -21,6 +21,7 @@ import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
 import com.example.drmapp.ui.personManual.PersonManualFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PersonPremadeFragment extends Fragment implements View.OnClickListener{
 
@@ -52,6 +53,10 @@ public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c
         button_5.setOnClickListener(this);
         button_6.setOnClickListener(this);
         button_7.setOnClickListener(this);
+
+        //Anzeigen des Floating Action Buttons für das Speichern eines Eintrags
+        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fb.setVisibility(View.VISIBLE);
 
         return root;
         }

@@ -20,6 +20,7 @@ import android.widget.EditText;
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class ActivitiesManualFragment extends Fragment implements View.OnClickListener{
@@ -43,6 +44,11 @@ public class ActivitiesManualFragment extends Fragment implements View.OnClickLi
             button_1.setOnClickListener(this);
 
             inputEditText = root.findViewById(R.id.addActivityManual_editText);
+
+            //Verbergen des Floating Action Buttons für das Speichern eines Eintrags
+            FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+            fb.setVisibility(View.GONE);
+
             return root;
         }
 
