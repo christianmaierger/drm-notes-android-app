@@ -50,28 +50,28 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(!((MainActivity)getActivity()).getIsQuickEntry()) {
-            switch (v.getId()){
-                case R.id.timedate_button_morning:
-                    entryUnderConstruction.setTime(getResources().getString(R.string.textMorningButton));
-                    break;
-                case R.id.timedate_button_afternoon:
-                    entryUnderConstruction.setTime(getResources().getString(R.string.textAfternoonButton));
-                    break;
-                case R.id.timedate_button_evening:
-                    entryUnderConstruction.setTime(getResources().getString(R.string.textEveningButton));
-                    break;
-                case R.id.timedate_button_night:
-                    entryUnderConstruction.setTime(getResources().getString(R.string.textNightButton));
-                    break;
-            }
-            ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+        switch (v.getId()) {
+            case R.id.timedate_button_morning:
+                entryUnderConstruction.setTime(getResources().getString(R.string.textMorningButton));
+                break;
+            case R.id.timedate_button_afternoon:
+                entryUnderConstruction.setTime(getResources().getString(R.string.textAfternoonButton));
+                break;
+            case R.id.timedate_button_evening:
+                entryUnderConstruction.setTime(getResources().getString(R.string.textEveningButton));
+                break;
+            case R.id.timedate_button_night:
+                entryUnderConstruction.setTime(getResources().getString(R.string.textNightButton));
+                break;
+        }
+        if (!((MainActivity) getActivity()).getIsQuickEntry()) {
+            ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
             navController.navigate(R.id.action_nav_add_Entry_to_activitiesPremadeFragment);
-        }else{
-
+        } else {
+            ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
             navController.navigate(R.id.action_nav_add_Entry_to_noteQuickEntryFragment);
         }
     }
-    }
+}

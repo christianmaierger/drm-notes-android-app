@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.database.AppDatabase;
 import com.example.drmapp.ui.entry.Entry;
 
 public class NoteQuickEntryFragment extends Fragment implements View.OnClickListener {
@@ -43,8 +44,11 @@ public class NoteQuickEntryFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
 
-        //((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
-        //entryUnderConstruction.setThoughts(inputEditText.getText().toString());
+        ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+        entryUnderConstruction.setThoughts(inputEditText.getText().toString());
+        entryUnderConstruction.setQuickEntry(true);
+        AppDatabase.getInstance(getActivity()).entryDao().insertEntry(entryUnderConstruction);
+
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         navController.navigate(R.id.action_noteQuickEntryFragment_to_nav_home);
 

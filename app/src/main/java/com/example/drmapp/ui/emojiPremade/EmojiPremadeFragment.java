@@ -70,13 +70,13 @@ public class EmojiPremadeFragment extends Fragment implements View.OnClickListen
         unicode2 = 0x1F622;
         button_2.setText(new String(Character.toChars(unicode2)));
         unicode3 = 0x1F630;
-        button_4.setText(new String(Character.toChars(unicode3)));
+        button_3.setText(new String(Character.toChars(unicode3)));
         unicode4 = 0x1F4AA;
-        button_5.setText(new String(Character.toChars(unicode4)));
+        button_4.setText(new String(Character.toChars(unicode4)));
         unicode5 = 0x1f60A;
-        button_6.setText(new String(Character.toChars(unicode5)));
+        button_5.setText(new String(Character.toChars(unicode5)));
         unicode6 = 0x1F613;
-        button_3.setText(new String(Character.toChars(unicode6)));
+        button_6.setText(new String(Character.toChars(unicode6)));
 
         int other1 = 0x1F60A;
         int other2 = 0x1F631;
