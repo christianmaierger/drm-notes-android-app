@@ -110,7 +110,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
         // Wenn der Bildschirm unter eine gewisse Breite hat, dann soll ein Spinner, statt eine Uhr
         // als TimePicker angezeigt werden, da die Zahlen zu klein werden um komfortabel ausgewählt zu werden
-        if(width<500) {
+        if(width<770) {
             // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
             timePickerGroup = root.findViewById(R.id.timePickerGroupSpinner);
             timePickerGroup2 = root.findViewById(R.id.timePickerGroup2Spinner);
