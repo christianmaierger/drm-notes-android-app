@@ -14,11 +14,16 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.drmapp.AlarmWorker;
+import com.example.drmapp.ExportToDBWorker;
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
@@ -29,7 +34,10 @@ import com.google.android.material.snackbar.Snackbar;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
@@ -149,13 +157,46 @@ public class EntryFragment extends Fragment {
             public void onChanged(@Nullable List<Entry> entries) {
                 entryRecViewAdapter.setEntries(entries);
             }
-
-
         });
 
         //Entfernen des Floating Action Buttons für das Speichern eines Eintrags
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fb.setVisibility(View.GONE);
+
+        FloatingActionButton delete =  view.findViewById(R.id.deleteEntriesButton);
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
+                Date today = new Date();
+                Calendar calendar = Calendar.getInstance();
+                String text = "";
+                   calendar.setTime(today);
+                    calendar.add(Calendar.DATE, -1);
+                    Date yesterday = calendar.getTime();
+                    text = formatter.format(yesterday);
+                entryListViewModel.getEntryDao().deleteEntriesOlderThanDate(text);
+            }
+        });
+
+        FloatingActionButton export =  view.findViewById(R.id.exportEntriesButton);
+
+        export.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                WorkRequest exportWorkRequest =
+                        new OneTimeWorkRequest.Builder(ExportToDBWorker.class)
+                                .build();
+
+                // Das WorkRequest wird zur Bearbeitung an den WorkManager übergeben
+                WorkManager
+                        .getInstance(getContext())
+                        .enqueue(exportWorkRequest);
+            }
+        });
 
         return view;
 

@@ -1,5 +1,7 @@
 package com.example.drmapp.database;
 
+import android.database.Cursor;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -23,6 +25,9 @@ public interface EntryDAO {
 
         @Query("SELECT * FROM entry")
         List<Entry> getAll();
+
+        @Query("SELECT * FROM entry")
+        Cursor getAllCursor();
 
         @Query("SELECT * FROM entry ORDER BY id ASC")
         LiveData<List<Entry>> getEntriesAsLiveData();
@@ -54,5 +59,7 @@ public interface EntryDAO {
         @Delete
         ListenableFuture<Integer> deleteEntries(Entry... entries);
 
+        @Query("DELETE FROM entry WHERE date <= :date")
+        ListenableFuture<Integer> deleteEntriesOlderThanDate(String date);
 
 }

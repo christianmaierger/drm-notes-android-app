@@ -3,6 +3,7 @@ package com.example.drmapp.ui.addEntry_Split;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,16 +35,13 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
 
     private AddEntrySplitViewModel addEntryViewModel;
     private MainActivity m = new MainActivity();
-    Entry entryUnderConstruction = new Entry();
-    private TextView dateTimeDisplay;
-    private Calendar calendar;
-    private SimpleDateFormat dateFormat;
-    private String date;
+    Entry entryUnderConstruction;
+    boolean switchChecked=false;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         ((MainActivity) getActivity()).setActionBarTitle("Entry");
-        //entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
         entryUnderConstruction = new Entry();
+        ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
 
         addEntryViewModel = new ViewModelProvider(this).get(AddEntrySplitViewModel.class);
         View root = inflater.inflate(R.layout.fragment_addentry_split, container, false);
@@ -55,33 +53,34 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
         switchYesterday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
+
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                Entry entryUnderConstruction = new Entry();
+                switchChecked=true;
                 Context context = getContext();
                 int duration = Toast.LENGTH_SHORT;
-                Instant today = Instant.now();
-                Instant yesterday = today.minus(1, ChronoUnit.DAYS);
 
-
-                if(isChecked){
-                CharSequence text = yesterday.toString().substring(5,10);
-                    Toast toast = Toast.makeText(context, text, duration);
-                    entryUnderConstruction.setDate(yesterday.toString().substring(5,10));
-                    toast.show();}
-                else {
-                    CharSequence text = today.toString().substring(5,10);
-                    entryUnderConstruction.setDate(today.toString().substring(5,10));
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();}
+                  SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
+                    Date today = new Date();
+                    Calendar calendar = Calendar.getInstance();
+                    String text = "";
+                    if (isChecked) {
+                        calendar.setTime(today);
+                        calendar.add(Calendar.DATE, -1);
+                        Date yesterday = calendar.getTime();
+                        text = formatter.format(yesterday);
+                    } else {
+                        text = formatter.format(today);
+                    }
+                entryUnderConstruction.setDate(text);
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
 
                 ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
 
             }
         });
-
         //Sichtbarmachen des Floating Action Buttons für das Speichern eines Eintrags
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fb.setVisibility(View.GONE);
@@ -96,6 +95,17 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
+        // Wenn der Switch nicht einmal gedrückt wurde muss standartmäsig das heutige Datum eingefügt werden
+        if(switchChecked==false) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
+            // das aktuelle Datum
+            Date today = new Date();
+            String text = formatter.format(today);
+            entryUnderConstruction.setDate(text);
+            ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+        }
+
         switch (v.getId()) {
             case R.id.btnQuickEntry:
                 ((MainActivity)getActivity()).setQuickEntryTrue(true);

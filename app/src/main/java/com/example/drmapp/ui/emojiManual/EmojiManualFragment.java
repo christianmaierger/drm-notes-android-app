@@ -66,12 +66,16 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
            try {
            // Wir brauchen den Text wirklich als UnicodePoints, get Text liefert das Emoji in grafischer Form
            unicodeStr = inputEditText.getText().codePoints();
+
+           // todo counten
+
             // Das in dem Stream nur ein Element ist, kann man immer auf das erste zugreifen
             OptionalInt first = unicodeStr.findFirst();
             // Hier wird (falls) vorhanden der Wert aus dem Optional geholt
                 result = first.getAsInt();
             } catch (Exception e) {
                e.printStackTrace();
+               // Hier wird bei Problemen standartmäsig ein leerer Wert gesetzt, also kein Emoji
                result=0;
             }
         }

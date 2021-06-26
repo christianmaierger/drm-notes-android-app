@@ -66,12 +66,10 @@ public class Entry {
         this.activity = activity;
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
-
-
         isExpaned=false;
-
     }
 
+    @Ignore
     public Entry() {
         this.id= count.incrementAndGet();
     }
