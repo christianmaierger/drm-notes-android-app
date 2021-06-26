@@ -58,6 +58,13 @@
         app:layout_constraintGuide_percent="0.60" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.70" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1_h"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,6 +80,7 @@
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3_h"
+        style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -84,4 +92,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.82" />
+
+    <Switch
+        android:id="@+id/switchYesterday"
+
+        style="@style/buttonStyle"
+        android:layout_width="192dp"
+        android:layout_height="40dp"
+        android:background="@color/lightPurpel"
+        android:text="Entry from Yesterday"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
+        app:layout_constraintStart_toStartOf="@+id/guideline1_h"
+        app:layout_constraintTop_toTopOf="@id/guideline4_v" />
 </androidx.constraintlayout.widget.ConstraintLayout>
