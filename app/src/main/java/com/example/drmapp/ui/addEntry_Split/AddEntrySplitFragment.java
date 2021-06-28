@@ -25,6 +25,7 @@ import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -53,7 +54,7 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
         switchYesterday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -81,6 +82,7 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
 
             }
         });
+
         //Sichtbarmachen des Floating Action Buttons für das Speichern eines Eintrags
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fb.setVisibility(View.GONE);

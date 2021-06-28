@@ -34,6 +34,7 @@ public class Entry {
     private int id;
     private String date;
     private String time;
+    private int time_int;
     private String activity;
     private int emoji;
     private int sam1;
@@ -44,7 +45,7 @@ public class Entry {
     private boolean isQuickEntry; // Speichervariable fuer Unterschiedung zwischen den ViewHoldern
     private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
 
-    public Entry(boolean isQuickEntry, String date, String time, String activity, int emoji, int sam1, int sam2, int sam3, String thoughts) {
+    public Entry(boolean isQuickEntry, String date, String time, int time_int, String activity, int emoji, int sam1, int sam2, int sam3, String thoughts) {
         this.id= count.incrementAndGet();
         this.date = date;
         this.time = time;
@@ -55,18 +56,22 @@ public class Entry {
         this.sam3 = sam3;
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
+        this.time_int = time_int;
+
         isExpaned=false;
     }
 
     @Ignore
-    public Entry(boolean isQuickEntry, String date, String time, String activity, String thoughts) {
+    public Entry(boolean isQuickEntry, String date, String time, int time_int, String activity, String thoughts) {
         this.id= count.incrementAndGet();
         this.date = date;
         this.time = time;
         this.activity = activity;
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
+        this.time_int = time_int;
         isExpaned=false;
+
     }
 
     @Ignore
@@ -77,6 +82,13 @@ public class Entry {
     public boolean isQuickEntry(){ return isQuickEntry;}
     public void setQuickEntry(boolean quickEntry){ isQuickEntry = quickEntry;}
 
+    public int getTime_int() {
+        return time_int;
+    }
+
+    public void setTime_int(int time_int) {
+        this.time_int = time_int;
+    }
 
     public int getId() {
         return id;

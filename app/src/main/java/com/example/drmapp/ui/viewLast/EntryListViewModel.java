@@ -39,3 +39,5 @@ public class EntryListViewModel extends ViewModel {
         this.entryDao = entryDao;
     }
 }
+
+

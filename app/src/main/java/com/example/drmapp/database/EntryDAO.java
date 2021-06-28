@@ -17,7 +17,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.List;
 
-import static androidx.room.FtsOptions.Order.DESC;
+
 
 
 @Dao
@@ -26,11 +26,11 @@ public interface EntryDAO {
         @Query("SELECT * FROM entry")
         List<Entry> getAll();
 
+        @Query("SELECT * FROM entry ORDER BY date DESC, time_int ")
+        LiveData<List<Entry>> getEntriesAsLiveData();
+
         @Query("SELECT * FROM entry")
         Cursor getAllCursor();
-
-        @Query("SELECT * FROM entry ORDER BY id ASC")
-        LiveData<List<Entry>> getEntriesAsLiveData();
 
         @Query("SELECT * FROM entry WHERE id IN (:entryIds)")
         List<Entry> loadAllByIds(int[] entryIds);
@@ -59,7 +59,5 @@ public interface EntryDAO {
         @Delete
         ListenableFuture<Integer> deleteEntries(Entry... entries);
 
-        @Query("DELETE FROM entry WHERE date <= :date")
-        ListenableFuture<Integer> deleteEntriesOlderThanDate(String date);
 
 }
