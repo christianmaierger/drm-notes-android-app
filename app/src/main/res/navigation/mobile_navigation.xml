@@ -144,6 +144,11 @@
             android:id="@+id/action_emojiPremadeFragment_to_emojiManualFragment"
             app:destination="@id/emojiManualFragment" />
     </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.drmapp.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 
 
 </navigation>
