@@ -59,7 +59,7 @@ public class ActivitiesManualFragment extends Fragment implements View.OnClickLi
         ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
 
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        navController.navigate(R.id.action_activitiesManualFragment_to_personPremadeFragment);
+        navController.navigate(R.id.action_activitiesManualFragment_to_emojiPremadeFragment);
     }
 }
 

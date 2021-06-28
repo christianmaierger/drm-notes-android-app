@@ -64,7 +64,7 @@ public class SuccessFragment extends Fragment implements View.OnClickListener{
 
         switch(v.getId()){
             case R.id.btnAddEntry:
-                navController.navigate(R.id.action_successFragment_to_nav_add_Entry);
+                navController.navigate(R.id.action_nav_success_to_addEntrySplitFragment);
                 break;
             case R.id.btnSaveEntry:
                 navController.navigate(R.id.action_successFragment_to_nav_home);

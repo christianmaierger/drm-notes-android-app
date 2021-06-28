@@ -72,7 +72,7 @@ public class ActivitiesPremadeFragment extends Fragment implements View.OnClickL
                 navController.navigate(R.id.action_activitiesPremadeFragment_to_activitiesManualFragment);
                 break;
             default:
-                navController.navigate(R.id.action_activitiesPremadeFragment_to_personPremadeFragment);
+                navController.navigate(R.id.action_activitiesPremadeFragment_to_emojiPremadeFragment);
                 switch (v.getId()){
                     case R.id.activity_button_cooking:
                         entryUnderConstruction.setActivity(getResources().getString(R.string.textCookingButton));

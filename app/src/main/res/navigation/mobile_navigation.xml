@@ -64,8 +64,8 @@
         android:label="ActivitiesManualFragment"
         tools:layout="@layout/fragment_activities_manual" >
         <action
-            android:id="@+id/action_activitiesManualFragment_to_personPremadeFragment"
-            app:destination="@id/personPremadeFragment" />
+            android:id="@+id/action_activitiesManualFragment_to_emojiPremadeFragment"
+            app:destination="@id/emojiPremadeFragment" />
     </fragment>
     <fragment
         android:id="@+id/activitiesPremadeFragment"
@@ -76,28 +76,7 @@
             android:id="@+id/action_activitiesPremadeFragment_to_activitiesManualFragment"
             app:destination="@id/activitiesManualFragment" />
         <action
-            android:id="@+id/action_activitiesPremadeFragment_to_personPremadeFragment"
-            app:destination="@id/personPremadeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/personManualFragment"
-        android:name="com.example.drmapp.ui.personManual.PersonManualFragment"
-        android:label="PersonManualFragment"
-        tools:layout="@layout/fragment_people_manual" >
-        <action
-            android:id="@+id/action_personManualFragment_to_emojiPremadeFragment"
-            app:destination="@id/emojiPremadeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/personPremadeFragment"
-        android:name="com.example.drmapp.ui.personPremade.PersonPremadeFragment"
-        android:label="PersonPremadeFragment"
-        tools:layout="@layout/fragment_people_premade" >
-        <action
-            android:id="@+id/action_personPremadeFragment_to_personManualFragment"
-            app:destination="@id/personManualFragment" />
-        <action
-            android:id="@+id/action_personPremadeFragment_to_emojiPremadeFragment"
+            android:id="@+id/action_activitiesPremadeFragment_to_emojiPremadeFragment"
             app:destination="@id/emojiPremadeFragment" />
     </fragment>
     <fragment
@@ -119,8 +98,8 @@
             android:id="@+id/action_successFragment_to_nav_home"
             app:destination="@id/nav_home" />
         <action
-            android:id="@+id/action_successFragment_to_nav_add_Entry"
-            app:destination="@id/nav_add_Entry" />
+            android:id="@+id/action_nav_success_to_addEntrySplitFragment"
+            app:destination="@id/addEntrySplitFragment" />
     </fragment>
     <fragment
         android:id="@+id/samArousalFragment"
