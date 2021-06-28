@@ -28,9 +28,10 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:backgroundTint="@color/lightPurpel"
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        android:src="@drawable/ic_close_sign" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/exportEntriesButton"
@@ -42,6 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:backgroundTint="@color/lightPurpel"
         app:srcCompat="@android:drawable/ic_menu_save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -102,16 +102,20 @@
         app:layout_constraintVertical_bias="0.039" />
 
     <!--FERTIG-->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         app:backgroundTint="@color/lightPurpel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_plus_sign"
-        android:layout_margin="16dp"/>
+        app:srcCompat="@drawable/ic_plus_sign" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/timePickerGroup"
