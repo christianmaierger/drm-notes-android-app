@@ -24,7 +24,7 @@ public interface EntryDAO {
         @Query("SELECT * FROM entry")
         List<Entry> getAll();
 
-        @Query("SELECT * FROM entry")
+        @Query("SELECT * FROM entry ORDER BY date DESC, time_int ")
         LiveData<List<Entry>> getEntriesAsLiveData();
 
         @Query("SELECT * FROM entry WHERE id IN (:entryIds)")
@@ -33,6 +33,12 @@ public interface EntryDAO {
         @Query("SELECT * FROM entry WHERE date LIKE :date AND " +
                 "time LIKE :time LIMIT 1")
         LiveData<List<Entry>> findByDate(String date, String time);
+
+        /*select date
+from tbemp
+order by convert(datetime, date, 103) ASC*/
+
+
 
 
         // fügt einen Entry ein und wenn es den schon gibt wird ersetzt

@@ -24,6 +24,7 @@ import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -34,16 +35,28 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
 
     private AddEntrySplitViewModel addEntryViewModel;
     private MainActivity m = new MainActivity();
-    Entry entryUnderConstruction = new Entry();
-    private TextView dateTimeDisplay;
-    private Calendar calendar;
-    private SimpleDateFormat dateFormat;
-    private String date;
+    Entry entryUnderConstruction= new Entry();;
+
+    // Instant today = Instant.now();
+
+
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        Calendar calendar_today = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        String today = sdf.format(calendar_today.getTime());
+
+
+        Calendar calendar_yesterday = Calendar.getInstance();
+        calendar_yesterday.add(Calendar.DATE, -1);
+        String yesterday = sdf.format(calendar_yesterday.getTime());
 
         ((MainActivity) getActivity()).setActionBarTitle("Entry");
         //entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
-        entryUnderConstruction = new Entry();
+
+
 
         addEntryViewModel = new ViewModelProvider(this).get(AddEntrySplitViewModel.class);
         View root = inflater.inflate(R.layout.fragment_addentry_split, container, false);
@@ -54,26 +67,37 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
+
+
+        // Wenn der Switch nicht umgelegt ist, wird der OnCheckedChangeListener nicht aktiviert
+        // Daher muss der Default Case (Today) davor definiert werden!
+       // CharSequence text = today.toString().substring(5,10);
+        entryUnderConstruction.setDate(today);
+        ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+
         switchYesterday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                Entry entryUnderConstruction = new Entry();
+
                 Context context = getContext();
                 int duration = Toast.LENGTH_SHORT;
-                Instant today = Instant.now();
-                Instant yesterday = today.minus(1, ChronoUnit.DAYS);
+               // Instant yesterday = today.minus(1, ChronoUnit.DAYS);
 
 
-                if(isChecked){
-                CharSequence text = yesterday.toString().substring(5,10);
+               if(isChecked){
+                CharSequence text = yesterday;
                     Toast toast = Toast.makeText(context, text, duration);
-                    entryUnderConstruction.setDate(yesterday.toString().substring(5,10));
+                    entryUnderConstruction.setDate(yesterday);
                     toast.show();}
+
+                // fuer den Fall, dass der Nutzer den Switch umlegt und dann wieder zurueck legt muss hier
+                // noch einmal der Today Case definiert werden
+
                 else {
-                    CharSequence text = today.toString().substring(5,10);
-                    entryUnderConstruction.setDate(today.toString().substring(5,10));
+                    CharSequence text = today;
+                    entryUnderConstruction.setDate(today);
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();}
 

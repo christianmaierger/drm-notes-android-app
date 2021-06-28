@@ -23,11 +23,13 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
     Entry entryUnderConstruction = new Entry();
 
 
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         ((MainActivity) getActivity()).setActionBarTitle("Time Selection");
         //entryUnderConstruction = new Entry();
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
+
 
         addEntryViewModel = new ViewModelProvider(this).get(AddEntryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_time, container, false);
@@ -51,19 +53,24 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
         if(!((MainActivity)getActivity()).getIsQuickEntry()) {
             switch (v.getId()){
                 case R.id.timedate_button_morning:
                     entryUnderConstruction.setTime("Morning");
+                    entryUnderConstruction.setTime_int(1);
                     break;
                 case R.id.timedate_button_afternoon:
                     entryUnderConstruction.setTime("Afternoon");
+                    entryUnderConstruction.setTime_int(2);
                     break;
                 case R.id.timedate_button_evening:
                     entryUnderConstruction.setTime(getResources().getString(R.string.textEveningButton));
+                    entryUnderConstruction.setTime_int(3);
                     break;
                 case R.id.timedate_button_night:
-                    entryUnderConstruction.setTime(getResources().getString(R.string.textNightButton));
+                    entryUnderConstruction.setTime("Night");
+                    entryUnderConstruction.setTime_int(4);
                     break;
             }
             ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
