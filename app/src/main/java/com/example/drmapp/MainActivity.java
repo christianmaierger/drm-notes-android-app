@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         // wichtig damit alle hier eingetragenen fragments/views genau die gleiche bar haben mit nav button
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_add_Entry, R.id.nav_view_Last, R.id.manageNotifications)
+                R.id.nav_home, R.id.action_addEntrySplitFragment_to_nav_add_Entry, R.id.nav_view_Last, R.id.manageNotifications)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

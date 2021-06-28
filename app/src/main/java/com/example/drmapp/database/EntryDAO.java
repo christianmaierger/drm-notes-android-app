@@ -59,5 +59,9 @@ public interface EntryDAO {
         @Delete
         ListenableFuture<Integer> deleteEntries(Entry... entries);
 
+        @Query("DELETE FROM entry WHERE date <= :date")
+        ListenableFuture<Integer> deleteEntriesOlderThanDate(String date);
+
+
 
 }

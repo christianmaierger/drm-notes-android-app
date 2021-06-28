@@ -38,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
@@ -177,7 +178,19 @@ public class EntryFragment extends Fragment {
                     calendar.add(Calendar.DATE, -1);
                     Date yesterday = calendar.getTime();
                     text = formatter.format(yesterday);
-                entryListViewModel.getEntryDao().deleteEntriesOlderThanDate(text);
+
+
+                // Loeschen rueckgaengig machen
+                String finalText = text;
+                Snackbar.make(recyclerView, "All Entries older than Yesterday will be deleted!", Snackbar.LENGTH_LONG)
+                        .setAction("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                // geloeschtes Element wieder in die DB einfuegen
+                                entryListViewModel.getEntryDao().deleteEntriesOlderThanDate(finalText);
+                            }
+                        }).show();
+
             }
         });
 

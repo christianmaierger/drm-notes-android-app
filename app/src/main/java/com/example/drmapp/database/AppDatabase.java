@@ -33,7 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
 synchronized (AppDatabase.class) {
     if (instance == null) {
         instance = Room.databaseBuilder(context,
-                AppDatabase.class, "drm-test1-database").build();
+                AppDatabase.class, "drm-test2-database").build();
     }
 }
         return instance;
