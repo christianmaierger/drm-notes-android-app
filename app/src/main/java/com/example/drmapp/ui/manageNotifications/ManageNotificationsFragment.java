@@ -146,11 +146,23 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
       try {
           WindowMetrics display = requireActivity().getWindowManager().getCurrentWindowMetrics();
           width = display.getBounds().width();
+
       } catch (Exception | NoSuchMethodError e) {
-          Display display = requireActivity().getDisplay();
-          Point size = new Point();
-          display.getSize(size);
-          width = size.x;
+          try {
+              Display display = getActivity().getDisplay();
+              Point size = new Point();
+              if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                  display.getRealSize(size);
+              } else {
+                  display.getSize(size);
+              }
+              width = size.x;
+          } catch (NoSuchMethodError err) {
+              Display display = getActivity().getWindowManager().getDefaultDisplay();
+              Point size = new Point();
+              display.getSize(size);
+              width = size.x;
+          }
       }
 
         // Wenn der Bildschirm unter eine gewisse Breite hat, dann soll ein Spinner, statt eine Uhr
