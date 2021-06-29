@@ -1,4 +1,4 @@
-package com.example.drmapp;
+package com.example.drmapp.NotificationBackEnd;
 
 
 import android.app.AlarmManager;
@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import com.example.drmapp.StoreSimpleDataHelper;
+
 public class AlarmWorker extends Worker {
 
     public AlarmWorker(
@@ -19,10 +21,14 @@ public class AlarmWorker extends Worker {
         super(context, params);
     }
 
+    // Diese Methode wird vom WorkManager in einem BackgroundThread ausgeführt, sobald ein WorkRequest
+    // vom Typ dieser Klasse an ihn übergeben wird, bzw. wird das request enqued und sobald möglich ausgeführt
     @Override
     public Result doWork() {
 
-
+        // Mithilfe der DataHelper Klasse werden gespeicherte Notification Times ausgelesen und falls
+        // nötig erneut gesetzt, dies stellt sicher, dass Notifications auch nach Reboots wieder
+        // gesetzt werden
         long time1 =  StoreSimpleDataHelper.getNotification(getApplicationContext(),1);
         if(time1 != 0)
         {
@@ -41,9 +47,18 @@ public class AlarmWorker extends Worker {
         return Result.success();
     }
 
+
+    /**
+     *
+     * @param timeButtonNumber einer der drei TimeButtons, die zur besseren Zuordnung nummeriert sind
+     * @param time eine eingestellte NotificationTime
+     */
     private void settingAlarm(int timeButtonNumber, long time) {
         Intent intent = new Intent(getApplicationContext(), ReceiverForNotifications.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        // die Intents erhalten die Zeit für die Notification und die Zeit, damit zur NotificationZeit,
+        // wenn der ReceiverForNotifications getriggert wird, dieser die passende AlarmZeit um 24 h
+        // inkrementieren und den Alarm dann mit dieser neuen Zeit wieder einstellen kann
         intent.putExtra("ButtonNumber", timeButtonNumber);
         intent.putExtra("time", time);
 
@@ -51,6 +66,7 @@ public class AlarmWorker extends Worker {
                 intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmMgr1 = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
 
+        // je nach AndroidVersion wird der Alarm passend gestellt
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AlarmManager.AlarmClockInfo ac = new AlarmManager.AlarmClockInfo(time,
                     pendingIntent1);
@@ -60,11 +76,6 @@ public class AlarmWorker extends Worker {
         } else {
             alarmMgr1.set(AlarmManager.RTC_WAKEUP, time, pendingIntent1);
         }
-
-       // Denke eher die Alte Zeit speichern, denn die neue wird ja vom Receiver addiert und gespeichert
-        // und wenn das Telefon zwischendurch ausgeht, muss es ja den alten Alarm wieder ausführen
-       // time += TimeUnit.DAYS.toMillis(1);
-
         StoreSimpleDataHelper.saveNotification(getApplicationContext(),timeButtonNumber, time);
     }
 }

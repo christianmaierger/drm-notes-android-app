@@ -1,4 +1,13 @@
-package com.example.drmapp;
+package com.example.drmapp.database.export;
+
+/**    I, Christian Maier, have imported this class from the following link:
+ *     https://github.com/rogerta/secrets-for-android/blob/master/app/src/main/java/au/com/bytecode/opencsv/CSVWriter.java
+ *
+ *     Please see the following information for a link to the Apache Commons Licence this class has
+ *     been released under and to find the link to its source.
+ */
+
+
 
 /**
         Copyright 2005 Bytecode Pty Ltd.

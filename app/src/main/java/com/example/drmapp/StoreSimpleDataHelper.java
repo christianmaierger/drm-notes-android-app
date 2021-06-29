@@ -3,6 +3,7 @@ package com.example.drmapp;
 import android.content.Context;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,10 +19,15 @@ public class StoreSimpleDataHelper {
     }
 
 
-
+    /**
+     *
+     * @param context Der Application Context
+     * @param timeButtonNumber zur besseren Zuordnung hat jeder TimeButton eine Nummer von 1-3
+     * @return Die Zeit für eine Notification als Long
+     */
     public static Long getNotification(Context context, Integer timeButtonNumber) {
         // Die timeButtonNumber fungiert hier als key zu dem jeweiligen Value einer Alarm Zeit im
-        // SharedPreferencesFile
+        // SharedPreferencesFile, dieses eignet sich gut zur Speicherung nicht komplexer Objekte
         return context.getSharedPreferences("PREF_NAME_NOTIFICATION", Context.MODE_PRIVATE)
                 .getLong(timeButtonNumber.toString(), 0);
     }
@@ -42,20 +48,25 @@ public class StoreSimpleDataHelper {
     public static LinkedList<String> retrieveNotificationTimesFromFile(Context context) {
         LinkedList<String> notificationTimes = new LinkedList<>();
 
-        try (FileInputStream fis =  context.openFileInput("notificationTimes")) {
-            if (fis!=null) {
-                try (ObjectInputStream ois = new ObjectInputStream(fis)){
 
-                    notificationTimes = (LinkedList<String>) ois.readObject();
+        File file = context.getFileStreamPath("notificationTimes");
+        if(file.exists()) {
+            try (FileInputStream fis = context.openFileInput("notificationTimes")) {
+                if (fis != null) {
+                    try (ObjectInputStream ois = new ObjectInputStream(fis)) {
 
-                } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace();
+
+                        notificationTimes = (LinkedList<String>) ois.readObject();
+
+                    } catch (IOException | ClassNotFoundException | ClassCastException e) {
+                        e.printStackTrace();
+                    }
                 }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return notificationTimes;
     }

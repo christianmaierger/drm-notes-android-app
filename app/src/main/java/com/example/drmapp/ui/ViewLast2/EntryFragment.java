@@ -1,10 +1,12 @@
 package com.example.drmapp.ui.ViewLast2;
 
 
-
-import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,16 +20,9 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.drmapp.AlarmWorker;
-import com.example.drmapp.ExportToDBWorker;
-import com.example.drmapp.MainActivity;
+import com.example.drmapp.database.export.ExportToDBWorker;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
-import com.example.drmapp.ui.home.HomeFragment;
 import com.example.drmapp.ui.viewLast.EntryListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -38,7 +33,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
@@ -96,7 +90,8 @@ public class EntryFragment extends Fragment {
                     entryListViewModel.getEntryDao().deleteEntry(entry);
 
                     // Loeschen rueckgaengig machen
-                    Snackbar.make(recyclerView, "Deleted!", Snackbar.LENGTH_LONG)
+                    Snackbar.make(recyclerView, "Deleted!", Snackbar.LENGTH_LONG).
+                            setBackgroundTint(getResources().getColor(R.color.lightPurpel))
                             .setAction("Undo", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -180,13 +175,14 @@ public class EntryFragment extends Fragment {
                     text = formatter.format(yesterday);
 
 
-                // Loeschen rueckgaengig machen
+                // Loeschen älterer Einträge muss vom Nutzer  bestätigt werden
                 String finalText = text;
-                Snackbar.make(recyclerView, "All Entries older than Yesterday will be deleted!", Snackbar.LENGTH_LONG)
+
+                Snackbar.make(recyclerView, "All Entries older than Yesterday will be deleted!",
+                        Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.lightPurpel))
                         .setAction("OK", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                // geloeschtes Element wieder in die DB einfuegen
                                 entryListViewModel.getEntryDao().deleteEntriesOlderThanDate(finalText);
                             }
                         }).show();
@@ -207,7 +203,8 @@ public class EntryFragment extends Fragment {
                 // Das WorkRequest wird zur Bearbeitung an den WorkManager übergeben
                 WorkManager
                         .getInstance(getContext())
-                        .enqueue(exportWorkRequest);
+                        .enqueue(exportWorkRequest).getResult();
+
             }
         });
 

@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <receiver
-            android:name=".ReceiverForNotifications"
+            android:name=".NotificationBackEnd.ReceiverForNotifications"
             android:enabled="true"
             android:exported="false" >
         </receiver>
-        <receiver android:name=".BootCompletedReceiver" android:enabled="true" android:exported="false" android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+        <receiver android:name=".NotificationBackEnd.BootCompletedReceiver" android:enabled="true" android:exported="false" android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />

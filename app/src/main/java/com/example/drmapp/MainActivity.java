@@ -4,30 +4,28 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
+import android.view.View;
 
-import com.example.drmapp.ui.entry.Entry;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
-
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
+import com.example.drmapp.NotificationBackEnd.AlarmWorker;
+import com.example.drmapp.ui.entry.Entry;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private RecyclerView entryRecyclerView;
     private boolean alarmsAllReset= false;
     private boolean isQuickEntry = false;
     private Entry entryUnderConstruction;
@@ -60,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //todo testen ob ich auch so die Alarme wieder setzen kann, wenn die App restarted wird
+        // Testen ob Alarme/Notifications schon erneut gesetzt wurden per Receiver, anonsten hier setzen als
+        // Fallback beim AppStart
     if (!alarmsAllReset) {
         // Work Request erstellen, dass dann async bearbeitet werden kann vom WorkManager als eigener Thread
         WorkRequest alarmWorkRequest =
                 new OneTimeWorkRequest.Builder(AlarmWorker.class)
                         .build();
-
         // Das WorkRequest wird zur Bearbeitung an den WorkManager übergeben
         WorkManager
                 .getInstance(getApplicationContext())
@@ -87,11 +85,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        // channel needs to be created right at app start
+        // Dieser Channel wird bei höheren Apis zum senden ovn Notifications benötigt und soll
+        // möglichst direkt beim Start der App angelegt werden
         createNotificationChannel();
 
-
-        // rechts unten der weiter button ist dieser fab, floating action button
         FloatingActionButton fwd = findViewById(R.id.fwd);
         FloatingActionButton home = findViewById(R.id.backHome);
 
@@ -112,20 +109,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // create Notification Channel that is needed since Android 8.0 to send notifications
+    // Erzeugen eines Notification Channel, der seit Android 8.0/Api 26 benötigt wird
     private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // for test just random strigns from res
             CharSequence name = getString(R.string.menu_home);
             String description = getString(R.string.app_name);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            // Channel id for test just manually 1
+            // High Importance um Senden der Notification sicher zu stellen
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            // Channel id könnte man arbiträr setzen, 1 da es nur einen gibt
             NotificationChannel channel = new NotificationChannel( "1", name, importance);
             channel.setDescription(description);
-            // Register the channel with the system; one can't change the importance
-            // or other notification behaviors after this
+            // Der Channel wird beim System registriert und kann danach nicht mehr geändert werden
+            // Er wird beim senden von NOtifications immer benötigt
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
@@ -134,14 +130,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        // erster param ist quasi das xml template mit den items und zweiter param das menu obj in das befüllt wird
+        // Erster param ist quasi das xml template mit den items und zweiter param das menu obj in das befüllt wird
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-    // verstehe das binding der menu items noch nicht ganz zu den destinations, docu sagt
-    // if your application contains multiple activities and some of them provide the same options menu,
-    // consider creating an activity that implements nothing except the onCreateOptionsMenu() and onOptionsItemSelected() methods.
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -152,7 +144,12 @@ public class MainActivity extends AppCompatActivity {
 
     //Ermöglicht Änderung des Header Titels bei Fragmentwechsel
     public void setActionBarTitle(String title) {
-        getSupportActionBar().setTitle(title);
+      try {
+          getSupportActionBar().setTitle(title);
+      } catch (NullPointerException exception) {
+          exception.printStackTrace();
+      }
+
     }
 
 

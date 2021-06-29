@@ -8,16 +8,13 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drmapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.example.drmapp.ui.ViewLast2.EntryFragment;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeFragment extends Fragment {
 
@@ -52,11 +49,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                EntryFragment entryRecyclerView = new EntryFragment();
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_host_fragment, entryRecyclerView);
-                transaction.addToBackStack(null);
-                transaction.commit();
+
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.nav_view_Last);
 
             }
 

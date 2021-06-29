@@ -1,24 +1,18 @@
 package com.example.drmapp.ui.manageNotifications;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.drmapp.R;
-
 import java.sql.Time;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 public class ManageNotificationsViewModel extends ViewModel {
 
     private boolean addTimeButtonpressed;
     private boolean allTimesSelected;
-    private MutableLiveData<String> buttonText;
-    private MutableLiveData<String> timeText1;
-    private MutableLiveData<String> timeText2;
-    private MutableLiveData<String> timeText3;
+    private final MutableLiveData<String> buttonText;
+    private final MutableLiveData<String> timeText1;
+    private final MutableLiveData<String> timeText2;
+    private final MutableLiveData<String> timeText3;
     private String timeAsString1;
     private String timeAsString2;
     private String timeAsString3;
@@ -35,7 +29,6 @@ public class ManageNotificationsViewModel extends ViewModel {
     private int visibilityStateOfDeleteTimeButton3;
 
     private MutableLiveData<Time> time;
-
 
     public ManageNotificationsViewModel() {
         timeText1 = new MutableLiveData<>();

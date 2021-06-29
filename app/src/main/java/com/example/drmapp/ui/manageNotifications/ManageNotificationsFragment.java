@@ -12,11 +12,12 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowMetrics;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
-import androidx.annotation.Dimension;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.Group;
@@ -25,11 +26,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.drmapp.NotificationBackEnd.ReceiverForNotifications;
 import com.example.drmapp.R;
-import com.example.drmapp.ReceiverForNotifications;
 import com.example.drmapp.StoreSimpleDataHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 import java.util.LinkedList;
@@ -54,7 +54,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     private Group timePickerGroup2;
 
     private FloatingActionButton addNotificationTimeButton;
-    private TimePicker picker;
 
     private Button submitTime;
     private Button submitTime2;
@@ -102,36 +101,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         mViewModel.setAddTimeButtonpressed(false);
 
 
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-
-        // Wenn der Bildschirm unter eine gewisse Breite hat, dann soll ein Spinner, statt eine Uhr
-        // als TimePicker angezeigt werden, da die Zahlen zu klein werden um komfortabel ausgewählt zu werden
-        if(width<770) {
-            // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
-            timePickerGroup = root.findViewById(R.id.timePickerGroupSpinner);
-            timePickerGroup2 = root.findViewById(R.id.timePickerGroup2Spinner);
-            // Beide time picker in 24 h Modus setzen, was leider nicht im XML direkt geht
-            picker = root.findViewById(R.id.simpleTimePickerSpinner);
-            picker.setIs24HourView(true);
-            TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2Spinner);
-            picker2.setIs24HourView(true);
-            submitTime = root.findViewById(R.id.getTimeSpinner);
-            submitTime2 = root.findViewById(R.id.getTime2Spinner);
-        } else {
-            // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
-            timePickerGroup = root.findViewById(R.id.timePickerGroup);
-            timePickerGroup2 = root.findViewById(R.id.timePickerGroup2);
-            picker = root.findViewById(R.id.simpleTimePicker);
-            picker.setIs24HourView(true);
-            TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2);
-            picker2.setIs24HourView(true);
-            submitTime = root.findViewById(R.id.getTime);
-            submitTime2 = root.findViewById(R.id.getTime2);
-        }
+        checkDisplaySizeAndSetTimePicker();
 
 
         // Hier werden der TextView neben dem add button für times und
@@ -163,6 +133,51 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         restoreStateOfViewWithSavedNotificationTimes(notificationTimes);
 
         return root;
+    }
+
+    /**
+     * Diese Methode fragt die Breite des Displays ab und erzeugt bei Displays mit weniger als
+     * 770 breite den TimePicker als Spinner, da dieser angenehmer für den User zu bedienen ist
+     * als eine Uhr, bei der die Elemente dann extrem klein geraten.
+     *
+     */
+    private void checkDisplaySizeAndSetTimePicker() {
+        int width;
+      try {
+          WindowMetrics display = requireActivity().getWindowManager().getCurrentWindowMetrics();
+          width = display.getBounds().width();
+      } catch (Exception | NoSuchMethodError e) {
+          Display display = requireActivity().getDisplay();
+          Point size = new Point();
+          display.getSize(size);
+          width = size.x;
+      }
+
+        // Wenn der Bildschirm unter eine gewisse Breite hat, dann soll ein Spinner, statt eine Uhr
+        // als TimePicker angezeigt werden, da die Zahlen zu klein werden um komfortabel ausgewählt zu werden
+        TimePicker picker;
+        if(width<770) {
+            // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
+            timePickerGroup = root.findViewById(R.id.timePickerGroupSpinner);
+            timePickerGroup2 = root.findViewById(R.id.timePickerGroup2Spinner);
+            // Beide time picker in 24 h Modus setzen, was leider nicht im XML direkt geht
+            picker = root.findViewById(R.id.simpleTimePickerSpinner);
+            picker.setIs24HourView(true);
+            TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2Spinner);
+            picker2.setIs24HourView(true);
+            submitTime = root.findViewById(R.id.getTimeSpinner);
+            submitTime2 = root.findViewById(R.id.getTime2Spinner);
+        } else {
+            // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
+            timePickerGroup = root.findViewById(R.id.timePickerGroup);
+            timePickerGroup2 = root.findViewById(R.id.timePickerGroup2);
+            picker = root.findViewById(R.id.simpleTimePicker);
+            picker.setIs24HourView(true);
+            TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2);
+            picker2.setIs24HourView(true);
+            submitTime = root.findViewById(R.id.getTime);
+            submitTime2 = root.findViewById(R.id.getTime2);
+        }
     }
 
     public View getRoot() {
@@ -231,6 +246,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
             timeTextButton2.setVisibility(View.VISIBLE);
             mViewModel.setVisibilityStateOfTimeButton2(View.VISIBLE);
             deleteButton2.setVisibility(View.VISIBLE);
+            mViewModel.setVisibilityStateOfDeleteTimeButton2(View.VISIBLE);
         } else if(notificationTimes.size()>1 && notificationTimes.get(1)!=null && notificationTimes.get(1).equals(getString(R.string.noTimePickedText))) {
             deleteButton2.setVisibility(View.GONE);
             mViewModel.setVisibilityStateOfDeleteTimeButton2(View.GONE);
@@ -246,6 +262,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
             timeTextButton3.setVisibility(View.VISIBLE);
             mViewModel.setVisibilityStateOfTimeButton3(View.VISIBLE);
             deleteButton3.setVisibility(View.VISIBLE);
+            mViewModel.setVisibilityStateOfDeleteTimeButton3(View.VISIBLE);
         } else if(notificationTimes.size()>2 && notificationTimes.get(2)!=null && notificationTimes.get(2).equals(getString(R.string.noTimePickedText))) {
             deleteButton3.setVisibility(View.GONE);
             mViewModel.setVisibilityStateOfDeleteTimeButton3(View.GONE);
@@ -301,7 +318,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
                 int hour;
                 int minute;
-                TimePicker picker2 = getView().findViewById(R.id.simpleTimePicker2);
+                TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2);
                 // above API 23 the methods to get the time have changed, both ways are implemented here
                 if (Build.VERSION.SDK_INT >= 23 ){
                     hour = picker2.getHour();
@@ -314,28 +331,31 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
                 Calendar time = buildTimeForNotification(hour, minute);
 
+                String hourAndMinute = formatSingleDigitNumbers(String.valueOf(hour)
+                        , String.valueOf(minute));
+
                 // hier wird der TextWert für die MutableLive Data im Model gesetzt, welche dann
                 // auf den TimeButtons als gewählte Uhrzeit angezeigt wird
-                buttonPressed.setValue("Selected Date: " + hour + ":" + minute);
+                buttonPressed.setValue("Selected Date: " + hourAndMinute);
 
                 // durch den switch wird der passende Button mit Text befüllt, dessen Delete Button
                 // sichtbar und der passende Alarm durch übergabe der ButtonNumber zum identifizieren
                 // überschrieben
                 switch(timeTextToChangeAndStore) {
                     case 1:
-                        mViewModel.setTimeAsString1(hour+":"+minute);
+                        mViewModel.setTimeAsString1(hourAndMinute);
                         deleteButton1.setVisibility(View.VISIBLE);
                         mViewModel.setVisibilityStateOfDeleteTimeButton1(deleteButton1.getVisibility());
                         buildAndSetChangeOrDeleteNotification(time, 1, false);
                         break;
                     case 2:
-                        mViewModel.setTimeAsString2(hour+":"+minute);
+                        mViewModel.setTimeAsString2(hourAndMinute);
                         deleteButton2.setVisibility(View.VISIBLE);
                         mViewModel.setVisibilityStateOfDeleteTimeButton2(deleteButton2.getVisibility());
                         buildAndSetChangeOrDeleteNotification(time, 2, false);
                         break;
                     case 3:
-                        mViewModel.setTimeAsString1(hour+":"+minute);
+                        mViewModel.setTimeAsString1(hourAndMinute);
                         deleteButton3.setVisibility(View.VISIBLE);
                         mViewModel.setVisibilityStateOfDeleteTimeButton3(deleteButton3.getVisibility());
                         buildAndSetChangeOrDeleteNotification(time, 3, false);
@@ -346,6 +366,23 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 returnStateOfViewToTimePickerGoneAndTimeSelectable();
             }
         });
+    }
+
+    /**
+     *
+     * @param hour Stunde des TimePickers in String Form
+     * @param minute Minuten des TimePickers in String Form
+     * @return einen neuen formatierten String mit Delimeter :
+     */
+    private String formatSingleDigitNumbers(String hour, String minute) {
+
+            if(hour.length()==1) {
+                hour="0"+hour;
+            }
+        if(minute.length()==1) {
+            minute="0"+minute;
+        }
+        return hour+":"+minute;
     }
 
     /**
@@ -363,7 +400,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
                 int hour;
                 int minute;
-                TimePicker picker = getView().findViewById(R.id.simpleTimePicker);
+                TimePicker picker = root.findViewById(R.id.simpleTimePicker);
                 // above API 23 the methods to get the time have changed, both ways are implemented here
                 if (Build.VERSION.SDK_INT >= 23 ){
                     hour = picker.getHour();
@@ -379,6 +416,9 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 // den BroadcastReceicer aufruft, damit der eine Notification feuert und einen neuen
                 // Alarm für die gleiche Uhrzeit am nächsten Tag setzt
                 Calendar time = buildTimeForNotification(hour, minute);
+
+                String hourAndMinute = formatSingleDigitNumbers(String.valueOf(hour)
+                        , String.valueOf(minute));
 
                 // vor der Abfrage den Zustand der Visibility wieder herstellen, wenn der SubmitButton
                 // gedrückt wird ist ja gerade der TimePicker sichtbar und alle buttons für die Zeit
@@ -429,33 +469,33 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
                     if (  (timeTextButton1.getVisibility() == View.GONE || (time1IsLastVisibleTimeButton) ) && !time2IsLastVisibleTimeButton && !time3IsLastVisibleTimeButton)
                     {
-                        mViewModel.getTimeText1().setValue("Selected Date: " + hour + ":" + minute);
+                        mViewModel.getTimeText1().setValue("Selected Date: " + hourAndMinute);
                         timeTextButton1.setVisibility(View.VISIBLE);
                         mViewModel.setVisibilityStateOfTimeButton1(timeTextButton1.getVisibility());
                         deleteButton1.setVisibility(View.VISIBLE);
                         mViewModel.setVisibilityStateOfDeleteTimeButton1(deleteButton1.getVisibility());
 
-                        mViewModel.setTimeAsString1(hour+":"+minute);
+                        mViewModel.setTimeAsString1(hourAndMinute);
 
                         buildAndSetChangeOrDeleteNotification(time, 1, false);
                     } else if  ( (timeTextButton2.getVisibility() == View.GONE || (time2IsLastVisibleTimeButton)) && !time1IsLastVisibleTimeButton && !time3IsLastVisibleTimeButton  )  {
-                        mViewModel.getTimeText2().setValue("Selected Date: " + hour + ":" + minute);
+                        mViewModel.getTimeText2().setValue("Selected Date: " + hourAndMinute);
                         timeTextButton2.setVisibility(View.VISIBLE);
                         mViewModel.setVisibilityStateOfTimeButton2(timeTextButton2.getVisibility());
                         deleteButton2.setVisibility(View.VISIBLE);
                         mViewModel.setVisibilityStateOfDeleteTimeButton2(deleteButton2.getVisibility());
 
-                        mViewModel.setTimeAsString2(hour+":"+minute);
+                        mViewModel.setTimeAsString2(hourAndMinute);
 
                         buildAndSetChangeOrDeleteNotification(time, 2, false);
                     } else if ( (timeTextButton3.getVisibility() == View.GONE  || (time3IsLastVisibleTimeButton) ) && !time1IsLastVisibleTimeButton && !time2IsLastVisibleTimeButton) {
-                        mViewModel.getTimeText3().setValue("Selected Date: " + hour + ":" + minute);
+                        mViewModel.getTimeText3().setValue("Selected Date: " + hourAndMinute);
                         timeTextButton3.setVisibility(View.VISIBLE);
                         mViewModel.setVisibilityStateOfTimeButton3(timeTextButton3.getVisibility());
                         deleteButton3.setVisibility(View.VISIBLE);
                         mViewModel.setVisibilityStateOfDeleteTimeButton3(deleteButton3.getVisibility());
 
-                        mViewModel.setTimeAsString3(hour+":"+minute);
+                        mViewModel.setTimeAsString3(hourAndMinute);
 
                         buildAndSetChangeOrDeleteNotification(time, 3, false);
                     }
@@ -534,15 +574,14 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
                 // wenn alle Buttons mit Zeiten für Notifications belegt sind, dann wird keine weitere Funktionalität
                 // geboten, sondern nur ein Text displayed, dass keine Zeiten mehr gewählt werden können
-                if (mViewModel.isAllTimesSelected()==true) {
-                    Snackbar.make(addNotificationTimeButton, "Sry, more than 3 NotificationTimes can not be picked", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                if (mViewModel.isAllTimesSelected()) {
+                    Toast.makeText(getContext(), "Sry, more than 3 NotificationTimes can not be picked", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // Wenn das flag false ist, befindet sich View im Ausgangszustand, also TimePicker gone
                 // und Group mit den TimeTexts und Buttons da, dass muss getauscht werden
-                if(mViewModel.isAddTimeButtonpressed()==false) {
+                if(!mViewModel.isAddTimeButtonpressed()) {
 
 
                     // erstmal temporär die eigentlichen visibility states aller button halten,
@@ -572,7 +611,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                     //set flag to change functionality of button, its "logo" and description
                     mViewModel.setAddTimeButtonpressed(true);
 
-                } else if(mViewModel.isAddTimeButtonpressed()==true) {
+                } else if(mViewModel.isAddTimeButtonpressed()) {
                     // wenn der Button erneut betätigt wird, muss der TimePicker wieder verschwinden
                     // und der Ausgangszustand mit den TimeButtons wieder hergestellt werden
                     returnStateOfViewToTimePickerGoneAndTimeSelectable();
@@ -615,7 +654,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
         // Es kommt wieder ein + auf den Button um dem USer zu verdeutlichen, er kann wieder
         // times adden durch drücken
-        FloatingActionButton button = (FloatingActionButton) root.findViewById(R.id.addTimePicker);
+        FloatingActionButton button = root.findViewById(R.id.addTimePicker);
         Drawable drawable = getResources().getDrawable(R.drawable.ic_plus_sign);
         button.setImageDrawable(drawable);
 
@@ -667,13 +706,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 AlarmManager.AlarmClockInfo ac = new AlarmManager.AlarmClockInfo(time.getTimeInMillis(),
                         pendingIntent);
                 alarmMgr.setAlarmClock(ac, pendingIntent);
-                // App kann durch die Benutzung von setExactAndAllow... ab Api 23 also Android 6.0 verwendet werden
-          /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                // der neue Alarm, der zu der geünschten Notification Zeit in genau 24 h ausgelöst wird
-                // eine Notification triggert und wieder einen Alarm, der wieder 24 h später stattfindet
-                alarmMgr.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
-            }*/
-
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 alarmMgr.setExact(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
             } else {
@@ -756,8 +788,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 if ((deleteButton1.getVisibility() == View.GONE) && (deleteButton2.getVisibility() == View.GONE)) {
 
                     mViewModel.getTimeText3().setValue(requireContext().getString(R.string.noTimePickedText));
-                    mViewModel.setTimeAsString3(getContext().getString(R.string.noTimePickedText));
-                    // wenn noch weitere buttons vorhanden sind, dann verschwindet 2 einfach
+                    mViewModel.setTimeAsString3(requireContext().getString(R.string.noTimePickedText));
+                    // wenn noch weitere buttons vorhanden sind, dann verschwindet 3 einfach
                 } else {
                     timeTextButton3.setVisibility(View.GONE);
                     mViewModel.setVisibilityStateOfTimeButton3(timeTextButton3.getVisibility());
