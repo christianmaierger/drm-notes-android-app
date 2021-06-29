@@ -1,28 +1,23 @@
 package com.example.drmapp.ui.emojiManual;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
 
-import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
 public class EmojiManualFragment extends Fragment implements View.OnClickListener{
@@ -64,27 +59,30 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
         IntStream unicodeStr = null;
        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
            try {
-           // Wir brauchen den Text wirklich als UnicodePoints, get Text liefert das Emoji in grafischer Form
-           unicodeStr = inputEditText.getText().codePoints();
+               // Wir brauchen den Text wirklich als UnicodePoints, getText liefert das Emoji in grafischer Form
+               unicodeStr = inputEditText.getText().codePoints();
 
-           // todo counten
-
-            // Das in dem Stream nur ein Element ist, kann man immer auf das erste zugreifen
-            OptionalInt first = unicodeStr.findFirst();
-            // Hier wird (falls) vorhanden der Wert aus dem Optional geholt
-                result = first.getAsInt();
-            } catch (Exception e) {
+             int[] intArr=  unicodeStr.toArray();
+               // Hier wird  der Wert aus dem ersten Index des Array geholt
+             result = intArr[0];
+             if (intArr.length>1) {
+                 // Falls das Emoji mehr als einen CodePoint hat, kann es mit unserer Methode
+                 // nicht umgewandelt werden und es wird das rote Kreuz Error Emoji gesetzt
+                 result = 10060;
+             }
+           } catch (Exception e) {
                e.printStackTrace();
-               // Hier wird bei Problemen standartmäsig ein leerer Wert gesetzt, also kein Emoji
-               result=0;
-            }
-        }
+               // Hier wird bei Problemen standartmäsig ein Wert gesetzt, rotes Kreuz
+               result = 10060;
+           }
 
 
-        entryUnderConstruction.setEmoji(result);
-        ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
 
-        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        navController.navigate(R.id.action_emojiManualFragment_to_samEmotionalFragment);
+           entryUnderConstruction.setEmoji(result);
+           ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+
+           NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+           navController.navigate(R.id.action_emojiManualFragment_to_samEmotionalFragment);
+       }
     }
 }
