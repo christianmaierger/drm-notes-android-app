@@ -44,31 +44,29 @@ import java.util.List;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 
+/*
+* Die Swipe-to-delete Funktionalität und die Möglichkeit alle Einträge des RecyclerViews zu löschen werden in dieser Klasse implementiert.
+* */
+
 public class EntryFragment extends Fragment {
     EntryListViewModel entryListViewModel;
     RecyclerView recyclerView;
     EntryRecViewAdapter entryRecViewAdapter= new EntryRecViewAdapter();
     private List<Entry> entries = new ArrayList<>();
     Entry deletedEntry = null; // Varibale in der das zu loeschende Element erst einmal aufbewahrt wird bis es endgueltig geloscht wird
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT /*| ItemTouchHelper.RIGHT*/) {
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
+        // Die Swipe Gesten die innerhalb des RecyclerViews möglich sind, werden hier implementiert.
         @Override
         public void onChildDraw (Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive){
-
-
             // Hintergrundfarben und Icons fuer die Swipes
             new RecyclerViewSwipeDecorator.Builder(getContext(), c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                    /* Hintergrund und Icon fuer "Eintrag aendern"
-                    .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreen))
-                    .addSwipeRightActionIcon(R.drawable.ic_edit) */
-
-                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightPurpel))
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.red))
                     .addSwipeLeftActionIcon(R.drawable.ic_delete)
                     .create()
                     .decorate();
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
-
 
         // Wird nicht verwendet, ist gedacht um die Items neu anzuordnen
         @Override
@@ -130,7 +128,7 @@ public class EntryFragment extends Fragment {
         recyclerView=view.findViewById(R.id.entryRecyclerView);
         // for testing static method called to get some data, but it is a good question where to hold entries in the end
 
-        //EntryRecViewAdapter entryRecViewAdapter= new EntryRecViewAdapter();
+
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(entryRecViewAdapter);
@@ -140,15 +138,9 @@ public class EntryFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
 
-        //  entryListViewModel = new ViewModelProvider(this).get(EntryListViewModel.class);
         entryListViewModel = new EntryListViewModel(getActivity().getApplication());
 
-      //  entryListViewModel.getEntryDao().insertEntry(new Entry(true, "05/05/21", "07:00", "Eating/drinking","Dinner is very nice"));
-      //  entryListViewModel.getEntryDao().insertEntry(new Entry(false, "05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2,*/ "Laptop is loud"));
 
-
-        //entryListViewModel.getEntryDao().insertAll(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0x1F613, 1, 1,1, "Pancakes are good"), new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
-        //Entry.createEntryList(getContext());
 
        // WOuld be also possible to show only entries of today or other date
         //entryListViewModel.setEntryListAsLiveData(entryListViewModel.getEntryDao().findByDate("05/05/21","07:00"));
