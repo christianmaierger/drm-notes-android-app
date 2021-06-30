@@ -58,6 +58,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     private Button submitTime;
     private Button submitTime2;
 
+    private TimePicker picker;
+    private TimePicker picker2;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -167,7 +169,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
         // Wenn der Bildschirm unter eine gewisse Breite hat, dann soll ein Spinner, statt eine Uhr
         // als TimePicker angezeigt werden, da die Zahlen zu klein werden um komfortabel ausgewählt zu werden
-        TimePicker picker;
         if(width<770) {
             // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
             timePickerGroup = root.findViewById(R.id.timePickerGroupSpinner);
@@ -175,7 +176,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
             // Beide time picker in 24 h Modus setzen, was leider nicht im XML direkt geht
             picker = root.findViewById(R.id.simpleTimePickerSpinner);
             picker.setIs24HourView(true);
-            TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2Spinner);
+            picker2 = root.findViewById(R.id.simpleTimePicker2Spinner);
             picker2.setIs24HourView(true);
             submitTime = root.findViewById(R.id.getTimeSpinner);
             submitTime2 = root.findViewById(R.id.getTime2Spinner);
@@ -185,7 +186,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
             timePickerGroup2 = root.findViewById(R.id.timePickerGroup2);
             picker = root.findViewById(R.id.simpleTimePicker);
             picker.setIs24HourView(true);
-            TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2);
+            picker2 = root.findViewById(R.id.simpleTimePicker2);
             picker2.setIs24HourView(true);
             submitTime = root.findViewById(R.id.getTime);
             submitTime2 = root.findViewById(R.id.getTime2);
@@ -330,7 +331,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
                 int hour;
                 int minute;
-                TimePicker picker2 = root.findViewById(R.id.simpleTimePicker2);
                 // above API 23 the methods to get the time have changed, both ways are implemented here
                 if (Build.VERSION.SDK_INT >= 23 ){
                     hour = picker2.getHour();
@@ -412,7 +412,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
                 int hour;
                 int minute;
-                TimePicker picker = root.findViewById(R.id.simpleTimePicker);
                 // above API 23 the methods to get the time have changed, both ways are implemented here
                 if (Build.VERSION.SDK_INT >= 23 ){
                     hour = picker.getHour();
