@@ -169,7 +169,6 @@ public class EntryFragment extends Fragment {
 
                 // Loeschen älterer Einträge muss vom Nutzer  bestätigt werden
                 String finalText = text;
-
                 Snackbar.make(recyclerView, "All Entries older than Yesterday will be deleted!",
                         Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.lightPurpel))
                         .setAction("OK", new View.OnClickListener() {
