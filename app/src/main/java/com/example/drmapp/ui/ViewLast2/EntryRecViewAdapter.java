@@ -1,21 +1,17 @@
 package com.example.drmapp.ui.ViewLast2;
 
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,8 +123,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 case 5:
                     imageViewSam1.setImageResource(R.drawable.sam5);
                     break;
-
-               // default: imageViewSam1.setImageResource(R.drawable.samdefault);
+                default: imageViewSam1.setImageResource(R.drawable.samdefault);
             }
 
             //Excitement
@@ -148,8 +143,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 case 5:
                     imageViewSam2.setImageResource(R.drawable.sam10);
                     break;
-
-             //  default: imageViewSam1.setImageResource(R.drawable.samdefault);
+               default: imageViewSam2.setImageResource(R.drawable.samdefault);
             }
 
             //Dominance
@@ -169,7 +163,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 case 5:
                     imageViewSam3.setImageResource(R.drawable.sam15);
                     break;
-               //default: imageViewSam1.setImageResource(R.drawable.samdefault);
+               default: imageViewSam3.setImageResource(R.drawable.samdefault);
             }
 
             // Pfeil bei ausklappbaren Layout ein- und ausblenden
@@ -180,7 +174,8 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             } else {
                 ((ViewHolderOne) holder).expandedLayout.setVisibility(View.GONE);
                 ((ViewHolderOne) holder).downArrow.setVisibility(View.VISIBLE);
-            } }
+            }
+        }
 
         // Logik fuer QuickEntry
         else {
@@ -200,7 +195,9 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             } else {
                 ((ViewHolderTwo) holder).expandedLayout_q.setVisibility(View.GONE);
                 ((ViewHolderTwo) holder).downArrow_q.setVisibility(View.VISIBLE);
-            } } }
+            }
+        }
+    }
 
     //Ermittelt Größe des Datensatzes
     @Override
