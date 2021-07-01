@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_entry_list">
         <action
             android:id="@+id/action_nav_view_Last_to_Home"
-            app:destination="@+id/mainActivity"/>
+            app:destination="@+id/nav_home"/>
         <action
             android:id="@+id/action_nav_view_Last_to_nav_home"
             app:destination="@id/nav_home" />
