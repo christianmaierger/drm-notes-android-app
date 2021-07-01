@@ -164,17 +164,17 @@ public class EntryFragment extends Fragment {
                    calendar.setTime(today);
                     calendar.add(Calendar.DATE, -1);
                     Date yesterday = calendar.getTime();
-                    text = formatter.format(yesterday);
+                  //text = formatter.format(yesterday);
+                long tmp = yesterday.getTime();
 
 
                 // Loeschen älterer Einträge muss vom Nutzer  bestätigt werden
-                String finalText = text;
-                Snackbar.make(recyclerView, "All Entries older than Yesterday will be deleted!",
+                Snackbar.make(recyclerView, "All Entries older than Today will be deleted!",
                         Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.lightPurpel))
                         .setAction("OK", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                entryListViewModel.getEntryDao().deleteEntriesOlderThanDate(finalText);
+                                entryListViewModel.getEntryDao().deleteEntriesOlderThanDate(tmp);
                             }
                         }).show();
 

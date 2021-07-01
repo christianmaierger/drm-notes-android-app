@@ -11,7 +11,6 @@ import com.example.drmapp.database.AppDatabase;
 import com.example.drmapp.database.EntryDAO;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -33,6 +32,7 @@ public class Entry {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String date;
+    private long date2;
     private String time;
     private int time_int; // Die Zeit wird zusätzlich in int gespeichert, um eine sinnvolle Sortierung nach der Zeit im RecyclerView zu ermöglichen
     private String activity;
@@ -112,6 +112,14 @@ public class Entry {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public long getDate2() {
+        return date2;
+    }
+
+    public void setDate2(long date2) {
+        this.date2 = date2;
     }
 
     public String getTime() {

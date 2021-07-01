@@ -1,14 +1,16 @@
 package com.example.drmapp.database.export;
 
 
-
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
@@ -21,6 +23,7 @@ import java.io.FileWriter;
 
 
 public class ExportToDBWorker extends Worker {
+    private static final int CREATE_FILE = 1;
     Context context;
 
     public ExportToDBWorker(
@@ -31,18 +34,22 @@ public class ExportToDBWorker extends Worker {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @NotNull
     @Override
     public Result doWork() {
 
-        File exportDir = new File(context.getFilesDir(), "");
+
+
+        File exportDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "");
+        System.out.println(exportDir);
         if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
-        File file = new File(exportDir, "exprotedDB" + ".csv");
+        File file = new File(exportDir, "exportedDB" + ".csv");
         try {
             file.createNewFile();
-
+            System.out.println(exportDir);
             // Mit Hilfe eines externen CSVWriters und eines cursors wird der DB Query Zeilen und
             // Spaltenweise traversiert und dann Line für Line in ein CSV File geschrieben
             CSVWriter csvWriter = new CSVWriter(new FileWriter(file));
