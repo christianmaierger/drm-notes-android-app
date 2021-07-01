@@ -156,7 +156,7 @@ public class EntryFragment extends Fragment {
         FloatingActionButton fb_home = (FloatingActionButton) getActivity().findViewById(R.id.backHome);
         fb_home.setVisibility(View.GONE);
 
-        FloatingActionButton backHomeRecView = view.findViewById(R.id.deleteEntriesButton);
+        FloatingActionButton backHomeRecView = view.findViewById(R.id.backHomeRecView);
 
         backHomeRecView.setOnClickListener(new View.OnClickListener(){
 

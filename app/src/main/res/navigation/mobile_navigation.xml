@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_nav_view_Last_to_Home"
             app:destination="@+id/mainActivity"/>
+        <action
+            android:id="@+id/action_nav_view_Last_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 
 
