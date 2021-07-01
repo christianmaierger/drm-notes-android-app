@@ -58,6 +58,11 @@ public class EntryFragment extends Fragment {
             // Hintergrundfarben und Icons fuer die Swipes
             new RecyclerViewSwipeDecorator.Builder(getContext(), c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
                     .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.red))
+                    /* Hintergrund und Icon fuer "Eintrag aendern"
+                    .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreen))
+                    .addSwipeRightActionIcon(R.drawable.ic_edit) */
+
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.Red))
                     .addSwipeLeftActionIcon(R.drawable.ic_delete)
                     .create()
                     .decorate();

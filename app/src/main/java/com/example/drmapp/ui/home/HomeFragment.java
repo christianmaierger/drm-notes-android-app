@@ -31,6 +31,9 @@ public class HomeFragment extends Fragment {
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fb.setVisibility(View.GONE);
 
+        FloatingActionButton fb1 = (FloatingActionButton) getActivity().findViewById(R.id.backHome);
+        fb1.setVisibility(View.VISIBLE);
+
 
         Button button = (Button) root.findViewById(R.id.toAddEntry);
         button.setOnClickListener(new View.OnClickListener()
