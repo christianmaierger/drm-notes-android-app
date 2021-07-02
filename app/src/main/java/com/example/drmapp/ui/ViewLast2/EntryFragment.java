@@ -57,7 +57,7 @@ public class EntryFragment extends Fragment {
         public void onChildDraw (Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive){
             // Hintergrundfarben und Icons fuer die Swipes
             new RecyclerViewSwipeDecorator.Builder(getContext(), c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.red))
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.Red))
                     /* Hintergrund und Icon fuer "Eintrag aendern"
                     .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreen))
                     .addSwipeRightActionIcon(R.drawable.ic_edit) */
