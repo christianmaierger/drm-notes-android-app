@@ -85,22 +85,6 @@
         app:srcCompat="@drawable/ic_close_sign" />
 
     <!--FERTIG-->
-    <TextView
-        android:id="@+id/manageNotifications"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:text="@string/notifications_heading"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@id/guideline1_v"
-        app:layout_constraintEnd_toEndOf="@id/guideline4_h"
-        app:layout_constraintStart_toStartOf="@id/guideline1_h"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
-
-    <!--FERTIG-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addTimePicker"
@@ -167,22 +151,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--FERTIG-->
-    <TimePicker
-        android:id="@+id/simpleTimePicker"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:headerBackground="@color/colorButton"
-        android:timePickerMode="clock"
-        android:visibility="visible"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/guideline1_h"
-        app:layout_constraintEnd_toEndOf="@+id/guideline4_h"
-        app:layout_constraintTop_toBottomOf="@+id/guideline1_v"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
-        tools:ignore="MissingConstraints" />
-
-    <!--FERTIG-->
     <Button
         android:id="@+id/time3"
         style="@style/buttonStyle"
@@ -200,6 +168,26 @@
         app:layout_constraintStart_toEndOf="@id/guideline1_h"
         app:layout_constraintTop_toBottomOf="@+id/time2" />
 
+
+    <!--FERTIG-->
+
+    <TimePicker
+        android:id="@+id/simpleTimePicker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:headerBackground="@color/colorButton"
+        android:timePickerMode="clock"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintDimensionRatio="1:2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guideline4_h"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
+        app:layout_constraintTop_toTopOf="@id/guideline4_v"
+
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="MissingConstraints" />
+
     <!--FERTIG-->
     <TimePicker
         android:id="@+id/simpleTimePicker2"
@@ -208,11 +196,12 @@
         android:headerBackground="@color/colorButton"
         android:timePickerMode="clock"
         android:visibility="visible"
+        app:layout_constraintDimensionRatio="1:2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
         app:layout_constraintEnd_toEndOf="@+id/guideline4_h"
-        app:layout_constraintTop_toBottomOf="@+id/guideline1_v"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
+        app:layout_constraintTop_toTopOf="@+id/guideline4_v"
+        app:layout_constraintBottom_toBottomOf="parent"
 
         tools:ignore="MissingConstraints" />
 
@@ -224,11 +213,12 @@
         android:headerBackground="@color/colorButton"
         android:timePickerMode="spinner"
         android:visibility="visible"
+
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
         app:layout_constraintEnd_toEndOf="@+id/guideline4_h"
-        app:layout_constraintTop_toBottomOf="@+id/guideline1_v"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
+        app:layout_constraintTop_toBottomOf="@+id/guideline4_v"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints" />
 
     <!--FERTIG-->
@@ -240,7 +230,7 @@
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
         app:layout_constraintEnd_toEndOf="@+id/guideline4_h"
-        app:layout_constraintTop_toBottomOf="@+id/guideline2_v"
+        app:layout_constraintTop_toBottomOf="@id/guideline4_v"
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
         tools:ignore="MissingConstraints" />
 
@@ -309,7 +299,7 @@
         android:layout_marginTop="40dp"
         android:text="@string/addTimeButtonText"
         app:layout_constraintStart_toEndOf="@+id/addTimePicker"
-        app:layout_constraintTop_toBottomOf="@+id/manageNotifications" />
+        app:layout_constraintTop_toBottomOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1_v"
@@ -359,6 +349,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.82" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
