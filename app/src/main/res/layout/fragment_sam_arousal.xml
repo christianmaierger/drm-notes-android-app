@@ -29,12 +29,10 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="@id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/textArousal"
-        android:padding="100dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/textArousal" />
 
     <ImageButton
         android:id="@+id/btnArousal2"
-        style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/sam7"
@@ -47,7 +45,6 @@
 
     <ImageButton
         android:id="@+id/btnArousal3"
-        style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/sam8"
@@ -60,7 +57,6 @@
 
     <ImageButton
         android:id="@+id/btnArousal4"
-        style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/sam9"
@@ -73,7 +69,6 @@
 
     <ImageButton
         android:id="@+id/btnArousal5"
-        style="@style/buttonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/sam10"
