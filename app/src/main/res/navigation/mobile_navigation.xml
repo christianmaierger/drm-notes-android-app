@@ -32,8 +32,15 @@
         android:id="@+id/nav_view_Last"
         android:name="com.example.drmapp.ui.ViewLast2.EntryFragment"
         android:label="View Last"
-        tools:layout="@layout/fragment_entry_list"
-        />"
+        tools:layout="@layout/fragment_entry_list">
+        <action
+            android:id="@+id/action_nav_view_Last_to_Home"
+            app:destination="@+id/nav_home"/>
+        <action
+            android:id="@+id/action_nav_view_Last_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/manageNotifications"

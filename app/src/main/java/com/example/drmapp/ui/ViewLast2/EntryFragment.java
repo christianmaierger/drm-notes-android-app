@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,7 +57,12 @@ public class EntryFragment extends Fragment {
         public void onChildDraw (Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive){
             // Hintergrundfarben und Icons fuer die Swipes
             new RecyclerViewSwipeDecorator.Builder(getContext(), c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.red))
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.Red))
+                    /* Hintergrund und Icon fuer "Eintrag aendern"
+                    .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreen))
+                    .addSwipeRightActionIcon(R.drawable.ic_edit) */
+
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.Red))
                     .addSwipeLeftActionIcon(R.drawable.ic_delete)
                     .create()
                     .decorate();
@@ -151,6 +158,22 @@ public class EntryFragment extends Fragment {
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fb.setVisibility(View.GONE);
 
+        FloatingActionButton fb_home = (FloatingActionButton) getActivity().findViewById(R.id.backHome);
+        fb_home.setVisibility(View.GONE);
+
+        FloatingActionButton backHomeRecView = view.findViewById(R.id.backHomeRecView);
+
+        backHomeRecView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.action_nav_view_Last_to_Home);
+
+            }
+        });
+
         FloatingActionButton delete =  view.findViewById(R.id.deleteEntriesButton);
 
         delete.setOnClickListener(new View.OnClickListener() {
@@ -202,4 +225,8 @@ public class EntryFragment extends Fragment {
         return view;
 
     }
+
+
+
+
 }

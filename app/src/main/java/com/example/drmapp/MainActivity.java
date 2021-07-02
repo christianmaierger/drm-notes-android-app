@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fwd = findViewById(R.id.fwd);
         FloatingActionButton home = findViewById(R.id.backHome);
 
+
         fwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
