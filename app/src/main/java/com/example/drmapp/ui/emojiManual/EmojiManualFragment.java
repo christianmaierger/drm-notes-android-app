@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.database.AppDatabase;
 import com.example.drmapp.ui.entry.Entry;
 
 import java.util.stream.IntStream;
@@ -85,6 +86,7 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
                navController.navigate(R.id.action_emojiManualFragment_to_samEmotionalFragment);
            } else {
                ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+               AppDatabase.getInstance(getActivity()).entryDao().insertEntry(entryUnderConstruction);
                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                navController.navigate(R.id.action_emojiManualFragment_to_nav_home);
            }

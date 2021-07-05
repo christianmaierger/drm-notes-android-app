@@ -103,16 +103,20 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
             String text = formatter.format(today);
             entryUnderConstruction.setDate(text);
             entryUnderConstruction.setDate2(today.getTime());
-            ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+            //((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
         }
 
         switch (v.getId()) {
             case R.id.btnQuickEntry:
                 ((MainActivity)getActivity()).setQuickEntryTrue(true);
+                entryUnderConstruction.setQuickEntry(true);
+                ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
                 navController.navigate(R.id.action_addEntrySplitFragment_to_nav_add_Entry);
                 break;
             case R.id.btnFullEntry:
                 ((MainActivity)getActivity()).setQuickEntryTrue(false);
+                entryUnderConstruction.setQuickEntry(false);
+                ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
                 navController.navigate(R.id.action_addEntrySplitFragment_to_nav_add_Entry);
                 break;
         }

@@ -17,6 +17,7 @@ import android.widget.Button;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
+import com.example.drmapp.database.AppDatabase;
 import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -135,9 +136,9 @@ public class EmojiPremadeFragment extends Fragment implements View.OnClickListen
                 if (!((MainActivity) getActivity()).getIsQuickEntry()) {
                     ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
                     navController.navigate(R.id.action_emojiPremadeFragment_to_samEmotionalFragment);
-                    break;
                 } else {
                     ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+                    AppDatabase.getInstance(getActivity()).entryDao().insertEntry(entryUnderConstruction);
                     navController.navigate(R.id.action_emojiPremadeFragment_to_nav_home2);
                 }
 
