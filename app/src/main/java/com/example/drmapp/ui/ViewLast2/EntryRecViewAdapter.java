@@ -1,126 +1,93 @@
 package com.example.drmapp.ui.ViewLast2;
 
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- *
  * Der Adapter beinhaltet die Logik des RecyclerViews und legt fest welche Elemente angezeigt werden.
- * Auf die Objekte in der Array List entries wird ueber .get(position) zugegriffen.
- *
- * */
-
-
-
+ * Es wird geprüft, ob es sich bei einem Eintrag um einen Quick Entry handelt.
+ * Anschließend wird die Ansicht der Entries wird definiert, in Abhängigkeit davon, ob es ein Quick Entry ist oder ein "Standard" Entry ist.
+ * Zudem wurde hier das Aus- und Einklappen der Einträge implementiert.
+ */
 public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Entry> entries = new ArrayList<>();
-    private static final int LAYOUT_ONE=0;
-    private static final int LAYOUT_TWO=1;
-    private RecyclerView.ViewHolder holder;
-   // private int position;
+    private static final int LAYOUT_ONE = 0;
+    private static final int LAYOUT_TWO = 1;
 
+    /*
+     * Zwei View Types werden hier angelegt, eines für die Quick Entries und einen für die Standard Entries.
+     * Die Unterschiedung basiert darauf, ob die Variable "isQuickEntry" beim Ausfüllen des Fragebogens auf true/false gesetzt wurde.
+     * LAYOUT_ONE beinhaltet das Layout für die Standard Entries,
+     * LAYOUT_TWO beinhaltet das Layout für die Quick Entries.
+     * */
     @Override
     public int getItemViewType(int position) {
         Entry ent = entries.get(position);
-        if(ent.isQuickEntry())
-        return LAYOUT_TWO;
-            else
-        return LAYOUT_ONE;
+        if (ent.isQuickEntry())
+            return LAYOUT_TWO;
+        else
+            return LAYOUT_ONE;
     }
 
-    public EntryRecViewAdapter() {
-
-    }
-
-
-    /* RecyclerView ruft diese Methode immer dann auf, wenn es einen neuen ViewHolder erstellen muss.
-                Die Methode erzeugt und initialisiert den ViewHolder und die zugehörige View,
-                füllt aber nicht den Inhalt der View aus - der ViewHolder ist noch nicht an bestimmte Daten gebunden.
-                an bestimmte Daten gebunden. */
-
+    /* "RecyclerView ruft diese Methode immer dann auf, wenn es einen neuen ViewHolder erstellen muss.
+       Die Methode erzeugt und initialisiert den ViewHolder und die zugehörige View,
+       füllt aber nicht den Inhalt der View aus - der ViewHolder ist noch nicht an bestimmte Daten gebunden.
+       an bestimmte Daten gebunden."
+       - https://developer.android.com/guide/topics/ui/layout/recyclerview?gclid=CjwKCAjwrPCGBhALEiwAUl9X03x2b6DUzt8ZO-JnmA3nva30ly4lWlosBfry-VtzE8xSWLZQxuIOBxoCOLYQAvD_BwE&gclsrc=aw.ds
+       */
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-
-
-
-
-        // Unterscheidung zwischen den zwei Layouts jenachdem ob die Variable isQuickEntry im Eintrag auf true/false gesetzt ist.
-       View view = null;
-       RecyclerView.ViewHolder viewHolder = null;
+        View view = null;
+        RecyclerView.ViewHolder viewHolder = null;
 
        /*
-
        Logik fuer die zwei verschiedenen Layouts.
        Wobei LAYOUT_ONE fuer den regulaeren Eintrag steht und daher auch das layout von fragment_entry_list_item verwendet,
        wohingegen LAYOUT_TWO fuer den quickEntry steht und das layout fragment_entry_list_item_quick verwendet.
-
        */
+        if (viewType == LAYOUT_ONE) {
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.fragment_entry_list_item, parent, false);
+            viewHolder = new ViewHolderOne(view, viewType);
+        } else {
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.fragment_entry_list_item_quick, parent, false);
+            viewHolder = new ViewHolderTwo(view, viewType);
 
-       if(viewType==LAYOUT_ONE)
-       {
-           view = LayoutInflater.from(parent.getContext())
-                   .inflate(R.layout.fragment_entry_list_item, parent, false);
-           viewHolder = new ViewHolderOne(view, viewType);
-       }
-       else
-       {
-           view = LayoutInflater.from(parent.getContext())
-                   .inflate(R.layout.fragment_entry_list_item_quick,parent,false);
-           viewHolder = new ViewHolderTwo(view, viewType);
-
-       }
-       return viewHolder;
-
+        }
+        return viewHolder;
     }
 
-
-
-
-    /* RecyclerView ruft diese Methode auf, um einen ViewHolder mit Daten zu verknuepfen.
+    /* "RecyclerView ruft diese Methode auf, um einen ViewHolder mit Daten zu verknuepfen.
     Die Methode holt die entsprechenden Daten und fuellt mit den Daten das Layout des View
     holder's Layout. Wenn die RecyclerView zum Beispiel eine Liste von Namen anzeigt,
     koennte die Methode den entsprechenden Namen in der Liste finden und das TextView-Widget des Ansichtshalters ausfüllen.
     Halter das TextView-Widget fuellen.
-    Position ist die Position innerhalb des RecyclerView Adapters.
+    Position ist die Position innerhalb des RecyclerView Adapters."
+    - https://developer.android.com/guide/topics/ui/layout/recyclerview?gclid=CjwKCAjwrPCGBhALEiwAUl9X03x2b6DUzt8ZO-JnmA3nva30ly4lWlosBfry-VtzE8xSWLZQxuIOBxoCOLYQAvD_BwE&gclsrc=aw.ds
+
+    Ent steht hier fuer einen einzelnen Eintrag, dessen Daten dann den jeweiligen Views zugeordnet werden.
+    Zudem werden hier die Views definiert, die sich in Abhaenigkeit von den eingegebenen Daten aendern (Emojis, Self-Assessment Manikins, Thoughts)
     */
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         Entry ent = entries.get(position);
 
-        /*
-        * Hier wird ent steht hier fuer einen einzelnen Eintrag, dessen Daten dann den jeweiligen Views zugeordnet werden.
-        * Zudem definiere ich hier die Logik der Views, die sich in Abhaenigkeit von den eingegebenen Daten aendern (Emojis, Self-Assessment Manikins)
-        * */
-
-        // Logik fuer normalen Entry
-        // hier war das Problem, ViewHolder1 und 2 sind ja zwei unterschiedliche Objekte die von zwei unterschiedlichen Klassen erzeugt werden
-        // die methode getItemViewType ist allerdings von deren Oberklasse ViewHolder und kann nicht überschrieben werden
-        // da final, die hat dann nicht so funktioniert wie du es gebraucht hast, hat true ausgegeben
-        // und der Compiler hat auch versucht ViewHolder2 Objekte in ViewHolderOne zu casten, was das Programm zerhauen hat
-      //  if(holder instanceof //ViewHolderOne) {
-
-        if(holder.getItemViewType() == LAYOUT_ONE){
-
-             // SwitchCase um die Bilder im RecyclerView zu aendern in Abhaenigkeit von der eingegebenen Actvity
-            TextView textViewDate =  ((ViewHolderOne) holder).contentDate;
+        if (holder.getItemViewType() == LAYOUT_ONE) {
+            TextView textViewDate = ((ViewHolderOne) holder).contentDate;
             textViewDate.setText(ent.getDate());
             TextView textViewTime = ((ViewHolderOne) holder).contentTime;
             textViewTime.setText(ent.getTime());
@@ -129,13 +96,17 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             TextView textViewThoughts = ((ViewHolderOne) holder).contentThoughts;
             textViewThoughts.setText(ent.getThoughts());
             TextView textViewEmoji = ((ViewHolderOne) holder).emoji;
-            textViewEmoji.setText(new String (Character.toChars(ent.getEmoji())));
+            // Die Emojis werden als int gespeichert, um die Ansicht als Emojis zu bekommen müssen sie jedoch vorher in Strings umgewandelt werden
+            textViewEmoji.setText(new String(Character.toChars(ent.getEmoji())));
             ImageView imageViewSam1 = ((ViewHolderOne) holder).sam1;
             ImageView imageViewSam2 = ((ViewHolderOne) holder).sam2;
             ImageView imageViewSam3 = ((ViewHolderOne) holder).sam3;
 
-
-            //SAMS Valence
+            /* SELF ASSESSMENT MANIKINS
+             * Die Speicherung erfolg in int und die jeweiligen Bilder werden über die Switch Cases wieder eingefügt
+             * Sollte keine Angabe gemacht sein, dann wird ein leeres Bild angezeigt.
+             *  */
+            // Valence
             switch (ent.getSam1()) {
                 case 1:
                     imageViewSam1.setImageResource(R.drawable.sam1);
@@ -152,10 +123,10 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 case 5:
                     imageViewSam1.setImageResource(R.drawable.sam5);
                     break;
-
+                default: imageViewSam1.setImageResource(R.drawable.samdefault);
             }
 
-            //SAMS Excitement
+            //Excitement
             switch (ent.getSam2()) {
                 case 1:
                     imageViewSam2.setImageResource(R.drawable.sam6);
@@ -172,10 +143,10 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 case 5:
                     imageViewSam2.setImageResource(R.drawable.sam10);
                     break;
-
+               default: imageViewSam2.setImageResource(R.drawable.samdefault);
             }
 
-            //SAMS Dominance
+            //Dominance
             switch (ent.getSam3()) {
                 case 1:
                     imageViewSam3.setImageResource(R.drawable.sam11);
@@ -192,11 +163,10 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 case 5:
                     imageViewSam3.setImageResource(R.drawable.sam15);
                     break;
-
+               default: imageViewSam3.setImageResource(R.drawable.samdefault);
             }
 
-
-            // Das ist fuer den Pfeil, bei dem ausklappbaren Layout
+            // Pfeil bei ausklappbaren Layout ein- und ausblenden
             if (entries.get(position).isExpaned()) {
                 ((ViewHolderOne) holder).expandedLayout.setVisibility(View.VISIBLE);
                 ((ViewHolderOne) holder).downArrow.setVisibility(View.GONE);
@@ -209,7 +179,6 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         // Logik fuer QuickEntry
         else {
-
             TextView textViewDate = ((ViewHolderTwo) holder).contentDate_q;
             textViewDate.setText(ent.getDate());
             TextView textViewTime = ((ViewHolderTwo) holder).contentTime_q;
@@ -228,16 +197,11 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 ((ViewHolderTwo) holder).downArrow_q.setVisibility(View.VISIBLE);
             }
         }
-
-
     }
 
-    /*RecyclerView ruft diese Methode auf, um die Größe des Datensatzes zu ermitteln.
-    In einer Adressbuch-App könnte dies zum Beispiel die Gesamtzahl der Adressen sein.
-    RecyclerView verwendet dies, um festzustellen, wann es keine Elemente mehr gibt, die angezeigt werden können.*/
+    //Ermittelt Größe des Datensatzes
     @Override
     public int getItemCount() {
-
         return entries.size();
     }
 
@@ -247,17 +211,15 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         notifyDataSetChanged();
     }
 
-    public Entry getItem(final int position){
-
+    // Wird verwendet um ein Element auszuwählen, das gelöscht werden soll
+    public Entry getItem(final int position) {
         return entries.get(position);
     }
 
-
     /*
-    * Die ViewHolder dienen der Deklaration der Variablen und Verknuepfung mit den zugehoerigen Elementen in den XML Layout Dateien.
-    * Auch hier habe ich wieder zwei definiert, einen fuer den QuickEntry (ViewHolderTwo) und einen fuer den normalen Entry (ViewHolderOne)
-    * */
-
+     * Die ViewHolder dienen der Deklaration der Variablen und Verknuepfung mit den zugehoerigen Elementen in den XML Layout Dateien.
+     * Auch hier wurden wieder zwei definiert, einen fuer den QuickEntry (ViewHolderTwo) und einen fuer den normalen Entry (ViewHolderOne)
+     * */
     public class ViewHolderOne extends RecyclerView.ViewHolder {
 
         private TextView contentDate;
@@ -269,12 +231,9 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         private CardView parent;
         private int viewType;
 
-
-
         public int getViewType() {
             return viewType;
         }
-
         public void setViewType(int viewType) {
             this.viewType = viewType;
         }
@@ -296,10 +255,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             sam3 = itemView.findViewById(R.id.imageViewSAM3);
             this.viewType = viewType;
 
-
-
-
-
+            // On-Click-Listener fuer die Pfeile nach unten, damit die Einträge im RecView sich ein- und ausklappen lassen
             downArrow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -317,11 +273,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     notifyItemChanged(getAdapterPosition());
                 }
             });
-
-        }
-
-
-    }
+        }}
 
 
     // Der ViewHolderTwo ist  nur ein "gekuerzter" ViewHolderOne
@@ -338,12 +290,11 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public int getViewType() {
             return viewType;
         }
-
         public void setViewType(int viewType) {
             this.viewType = viewType;
         }
 
-        public ViewHolderTwo(View itemView, int viewType){
+        public ViewHolderTwo(View itemView, int viewType) {
             super(itemView);
 
             parent_q = itemView.findViewById(R.id.parent_q);
@@ -356,8 +307,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             expandedLayout_q = itemView.findViewById(R.id.expandedLayout_q);
             this.viewType = viewType;
 
-
-
+            // Auch hier die OnClickListeners auf den Pfeilen, um ein Ein- und Ausklappen der Einträge zu ermöglichen
             downArrow_q.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -375,11 +325,4 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     notifyItemChanged(getAdapterPosition());
                 }
             });
-
-
-        }
-
-    }
-
-}
-
+        }}}

@@ -11,7 +11,6 @@ import com.example.drmapp.database.AppDatabase;
 import com.example.drmapp.database.EntryDAO;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -33,8 +32,9 @@ public class Entry {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String date;
+    private long date2;
     private String time;
-    private int time_int;
+    private int time_int; // Die Zeit wird zusätzlich in int gespeichert, um eine sinnvolle Sortierung nach der Zeit im RecyclerView zu ermöglichen
     private String activity;
     private int emoji;
     private int sam1;
@@ -43,7 +43,7 @@ public class Entry {
     private String thoughts;
 
     private boolean isQuickEntry; // Speichervariable fuer Unterschiedung zwischen den ViewHoldern
-    private boolean isExpaned; // notwendig fuer ausklappbare RecyclerView
+    private boolean isExpaned; // Variable notwendig fuer ausklappbaren RecyclerView
 
     public Entry(boolean isQuickEntry, String date, String time, int time_int, String activity, int emoji, int sam1, int sam2, int sam3, String thoughts) {
         this.id= count.incrementAndGet();
@@ -114,6 +114,14 @@ public class Entry {
         this.date = date;
     }
 
+    public long getDate2() {
+        return date2;
+    }
+
+    public void setDate2(long date2) {
+        this.date2 = date2;
+    }
+
     public String getTime() {
         return time;
     }
@@ -178,40 +186,12 @@ public class Entry {
       AppDatabase db = AppDatabase.getInstance(context);
        EntryDAO userDao = db.entryDao();
 
-/*
-        entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0xFE0F, 1, 1,1, "Pancakes are good"));
-        entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
-        entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", 0x1F622, 3, 3, 3,"Coffee tasted horrible"));
-        entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", 0x1F4AA, 4, 4,4, "Took a walk"));
-        entries.add(new Entry(false,"05/05/21", "18:00", "Care work", 0x1F621, 5, 5, 5, "Dog did not like the bath"));
-        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", 0x1F613 , 1, 1, 1,"Netflix did not work")); */
-
-
-
-
-      //userDao.insertEntry(new Entry(false, "17.06.21", "13:15", "Working/Studying",0x1F622, 1, 1, 1, "Please work. Thanks." ));
-        // userDao.insertAll(new Entry(false, "05/05/21", "07:00", "Eating/drinking", 0x1F621, 1, 1,1, "Pancakes are good"), new Entry(false, "05/05/21", "08:00", "Working/studying", 0x1F630, 2, 2, 2, "Laptop is loud"));
-
-
-      // List<Entry> entries = (List<Entry>) userDao.getEntriesAsLiveData();
-
         // nicht so toll nur behelfsmasnahme
         ArrayList<Entry> ents = new ArrayList<>(entries);
 
-        /*
-      entries.add(new Entry(false, "05/05/21", "07:00", "Eating/drinking", "0x1F613", 1, 1,1, "Pancakes are good"));
-                 entries.add(new Entry(false, "05/05/21", "08:00", "Working/studying", "normal", 2, 2, 2, "Laptop is loud"));
-        entries.add(new Entry(false, "05/05/21", "10:00", "Eating/drinking", "sad", 3, 3, 3,"Coffee tasted horrible"));
-        entries.add(new Entry(false,"05/05/21", "13:00", "Hobby", "surprised", 4, 4,4, "Took a walk"));
-        entries.add(new Entry(false,"05/05/21", "18:00", "Care work", "angry", 5, 5, 5, "Dog did not like the bath"));
-        entries.add(new Entry(false,"05/05/21", "22:00", "Leisure Time", "annoyed", 1, 1, 1,"Netflix did not work"));
-*/
-
-
-        //adapter.setEntries(entries);
 
         return ents;
-        // return entries;
+
 
     }
 

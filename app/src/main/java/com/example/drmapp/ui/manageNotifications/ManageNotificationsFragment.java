@@ -72,8 +72,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fb.setVisibility(View.GONE);
 
-        // Text neben dem Button der den TimePicker erscheinen lässt
-        final TextView textViewBesidesAddNotificationButton = root.findViewById(R.id.textForAddTimeButton);
+
+
 
 
         // Folgend die Buttons die die ausgewählten Zeiten für Notifications zeigen
@@ -108,7 +108,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
 
         // Hier werden der TextView neben dem add button für times und
         // alle drei TextViews für Notifications an ihre Daten/Texte im Model gebunden
-        bindTextViewAndTextFromModel(textViewBesidesAddNotificationButton, mViewModel.getButtonText());
         bindTextViewAndTextFromModel(timeTextButton1, mViewModel.getTimeText1());
         bindTextViewAndTextFromModel(timeTextButton2, mViewModel.getTimeText2());
         bindTextViewAndTextFromModel(timeTextButton3, mViewModel.getTimeText3());

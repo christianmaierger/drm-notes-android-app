@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="These menikans show stages of arousal. Which one represents you best?"
+        android:text="These Self-Assessment Manikins show different dimensions of arousal. Which one do you identify with?"
         android:textAllCaps="true"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2_v"

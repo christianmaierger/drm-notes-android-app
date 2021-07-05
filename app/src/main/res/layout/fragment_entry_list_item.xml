@@ -7,6 +7,9 @@
     android:orientation="vertical"
     android:padding="8dp">
 
+    <!-- Ansicht einer Card für einen "Standard"-Entry wird festgelegt.
+    -->
+
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/parent"
@@ -55,7 +58,7 @@
 
                 <TextView
                     android:id="@+id/contentDate"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="16dp"
                     android:paddingTop="16dp"
@@ -107,7 +110,6 @@
                 android:id="@+id/expandedLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@id/collapsedLayout">
 
@@ -130,7 +132,7 @@
                     android:layout_height="100dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:src="@drawable/sam1"
+                    android:src="@drawable/samdefault"
                     app:layout_constraintStart_toStartOf="@id/expandedLayout"
                     app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 
@@ -141,7 +143,7 @@
                     android:layout_height="100dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:src="@drawable/sam6"
+                    android:src="@drawable/samdefault"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/imageViewSAM1"
                     app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
@@ -152,7 +154,7 @@
                     android:layout_height="100dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:src="@drawable/sam11"
+                    android:src="@drawable/samdefault"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ContentThoughts" />
 

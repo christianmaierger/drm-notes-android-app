@@ -3,14 +3,12 @@ package com.example.drmapp.ui.addEntry_Split;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,10 +23,7 @@ import com.example.drmapp.R;
 import com.example.drmapp.ui.entry.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -71,8 +66,10 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
                         calendar.add(Calendar.DATE, -1);
                         Date yesterday = calendar.getTime();
                         text = formatter.format(yesterday);
+                        entryUnderConstruction.setDate2(yesterday.getTime());
                     } else {
                         text = formatter.format(today);
+                        entryUnderConstruction.setDate2(today.getTime());
                     }
                 entryUnderConstruction.setDate(text);
                 Toast toast = Toast.makeText(context, text, duration);
@@ -105,6 +102,7 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
             Date today = new Date();
             String text = formatter.format(today);
             entryUnderConstruction.setDate(text);
+            entryUnderConstruction.setDate2(today.getTime());
             ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
         }
 
