@@ -77,12 +77,20 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
            }
 
 
+           if (!((MainActivity) getActivity()).getIsQuickEntry()) {
+               entryUnderConstruction.setEmoji(result);
+               ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
 
-           entryUnderConstruction.setEmoji(result);
-           ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+               NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+               navController.navigate(R.id.action_emojiManualFragment_to_samEmotionalFragment);
+           } else {
+               ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+               NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+               navController.navigate(R.id.action_emojiManualFragment_to_nav_home);
+           }
 
-           NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-           navController.navigate(R.id.action_emojiManualFragment_to_samEmotionalFragment);
+
+
        }
     }
 }

@@ -25,8 +25,8 @@
             android:id="@+id/action_nav_add_Entry_to_activitiesPremadeFragment"
             app:destination="@id/activitiesPremadeFragment" />
         <action
-            android:id="@+id/action_nav_add_Entry_to_noteQuickEntryFragment"
-            app:destination="@id/noteQuickEntryFragment" />
+            android:id="@+id/action_nav_add_Entry_to_emojiPremadeFragment2"
+            app:destination="@id/emojiPremadeFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_view_Last"
@@ -55,15 +55,6 @@
         <action
             android:id="@+id/action_addEntrySplitFragment_to_nav_add_Entry"
             app:destination="@id/nav_add_Entry" />
-    </fragment>
-    <fragment
-        android:id="@+id/noteQuickEntryFragment"
-        android:name="com.example.drmapp.ui.noteQuickEntry.NoteQuickEntryFragment"
-        android:label="NoteQuickEntryFragment"
-        tools:layout="@layout/fragment_quick_entry" >
-        <action
-            android:id="@+id/action_noteQuickEntryFragment_to_nav_home"
-            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/activitiesManualFragment"
@@ -139,6 +130,9 @@
         <action
             android:id="@+id/action_emojiManualFragment_to_samEmotionalFragment"
             app:destination="@id/samEmotionalFragment" />
+        <action
+            android:id="@+id/action_emojiManualFragment_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/emojiPremadeFragment"
@@ -150,6 +144,9 @@
         <action
             android:id="@+id/action_emojiPremadeFragment_to_emojiManualFragment"
             app:destination="@id/emojiManualFragment" />
+        <action
+            android:id="@+id/action_emojiPremadeFragment_to_nav_home2"
+            app:destination="@id/nav_home" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"

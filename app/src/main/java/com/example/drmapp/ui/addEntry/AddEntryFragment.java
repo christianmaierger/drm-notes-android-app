@@ -78,7 +78,7 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
                 } else {
                     ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
                     NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-                    navController.navigate(R.id.action_nav_add_Entry_to_noteQuickEntryFragment);
+                    navController.navigate(R.id.action_nav_add_Entry_to_emojiPremadeFragment2);
                 }
     }
     }

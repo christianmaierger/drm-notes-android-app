@@ -132,9 +132,16 @@ public class EmojiPremadeFragment extends Fragment implements View.OnClickListen
                         break;
                 }
 
-                ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
-                navController.navigate(R.id.action_emojiPremadeFragment_to_samEmotionalFragment);
-                break;
+                if (!((MainActivity) getActivity()).getIsQuickEntry()) {
+                    ((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+                    navController.navigate(R.id.action_emojiPremadeFragment_to_samEmotionalFragment);
+                    break;
+                } else {
+                    ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+                    navController.navigate(R.id.action_emojiPremadeFragment_to_nav_home2);
+                }
+
+
         }
     }
 }
