@@ -9,7 +9,6 @@
     tools:context=".ui.manageNotifications.ManageNotificationsFragment"
     tools:visibility="visible">
 
-    <!--FERTIG-->
     <Button
         android:id="@+id/time1"
         style="@style/buttonStyle"
@@ -25,7 +24,6 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2_v"
         tools:text="@string/noTimePickedText" />
 
-    <!--FERTIG-->
     <Button
         android:id="@+id/time2"
         style="@style/buttonStyle"
@@ -83,8 +81,6 @@
         app:layout_constraintStart_toEndOf="@id/time3"
         app:layout_constraintTop_toTopOf="@id/time3"
         app:srcCompat="@drawable/ic_close_sign" />
-
-    <!--FERTIG-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addTimePicker"
@@ -169,7 +165,7 @@
         app:layout_constraintTop_toBottomOf="@+id/time2" />
 
 
-    <!--FERTIG-->
+
 
     <TimePicker
         android:id="@+id/simpleTimePicker"
@@ -188,7 +184,6 @@
         app:layout_constraintVertical_bias="0.5"
         tools:ignore="MissingConstraints" />
 
-    <!--FERTIG-->
     <TimePicker
         android:id="@+id/simpleTimePicker2"
         android:layout_width="0dp"
@@ -205,7 +200,6 @@
 
         tools:ignore="MissingConstraints" />
 
-    <!--FERTIG-->
     <TimePicker
         android:id="@+id/simpleTimePickerSpinner"
         android:layout_width="0dp"
@@ -221,7 +215,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <!--FERTIG-->
     <TimePicker
         android:id="@+id/simpleTimePicker2Spinner"
         android:layout_width="0dp"
@@ -234,7 +227,6 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline3_v"
         tools:ignore="MissingConstraints" />
 
-    <!--FERTIG-->
     <Button
         android:id="@+id/getTime"
         style="@style/buttonStyle"
@@ -248,7 +240,6 @@
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintStart_toEndOf="@id/guideline1_h" />
 
-    <!--FERTIG-->
     <Button
         android:id="@+id/getTime2"
         style="@style/buttonStyle"
@@ -262,7 +253,7 @@
         app:layout_constraintEnd_toStartOf="@id/guideline4_h"
         app:layout_constraintStart_toEndOf="@id/guideline1_h" />
 
-    <!--FERTIG-->
+
     <Button
         android:id="@+id/getTimeSpinner"
         style="@style/buttonStyle"
