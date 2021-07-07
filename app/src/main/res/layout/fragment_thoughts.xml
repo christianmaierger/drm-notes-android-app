@@ -37,16 +37,16 @@
         android:id="@+id/addThoughts_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@null"
-        android:hint="Enter thoughts here"
+        android:hint="  Enter thoughts here..."
         android:inputType="textPersonName"
+
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/guideline1_h"
         app:layout_constraintTop_toBottomOf="@+id/textThoughts"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubmitThoughts"  />
-    <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
-
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmitThoughts"
+        app:layout_constraintDimensionRatio="2:1"
+        android:background="@drawable/edit_text_border"/>
 
     <ProgressBar
         android:id="@+id/pBarThought"
