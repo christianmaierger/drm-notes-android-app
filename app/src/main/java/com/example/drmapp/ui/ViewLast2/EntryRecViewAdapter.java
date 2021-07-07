@@ -185,17 +185,10 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             textViewTime.setText(ent.getTime());
             TextView textViewActivity = ((ViewHolderTwo) holder).contentActivity_q;
             textViewActivity.setText(ent.getActivity());
-            TextView textViewThoughts = ((ViewHolderTwo) holder).contentThoughts_q;
-            textViewThoughts.setText(ent.getThoughts());
+            TextView textViewEmoji = ((ViewHolderTwo) holder).emoji_q;
+            // Die Emojis werden als int gespeichert, um die Ansicht als Emojis zu bekommen müssen sie jedoch vorher in Strings umgewandelt werden
+            textViewEmoji.setText(new String(Character.toChars(ent.getEmoji())));
 
-            if (entries.get(position).isExpaned()) {
-                ((ViewHolderTwo) holder).expandedLayout_q.setVisibility(View.VISIBLE);
-                ((ViewHolderTwo) holder).downArrow_q.setVisibility(View.GONE);
-
-            } else {
-                ((ViewHolderTwo) holder).expandedLayout_q.setVisibility(View.GONE);
-                ((ViewHolderTwo) holder).downArrow_q.setVisibility(View.VISIBLE);
-            }
         }
     }
 
@@ -280,10 +273,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public class ViewHolderTwo extends RecyclerView.ViewHolder {
         private TextView contentDate_q;
         private TextView contentTime_q;
-        private TextView contentActivity_q;
-        private TextView contentThoughts_q;
-        private ImageView downArrow_q, upArrow_q;
-        private ConstraintLayout expandedLayout_q;
+        private TextView contentActivity_q, emoji_q;
         private CardView parent_q;
         private int viewType;
 
@@ -301,28 +291,10 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             contentDate_q = itemView.findViewById(R.id.contentDate_q);
             contentTime_q = itemView.findViewById(R.id.contentTime_q);
             contentActivity_q = itemView.findViewById(R.id.ContentActivity_q);
-            contentThoughts_q = itemView.findViewById(R.id.ContentThoughts_q);
-            downArrow_q = itemView.findViewById(R.id.btnArrowDown_q);
-            upArrow_q = itemView.findViewById(R.id.btnArrowUp_q);
-            expandedLayout_q = itemView.findViewById(R.id.expandedLayout_q);
+            emoji_q = itemView.findViewById(R.id.imageViewEmoji_q);
+
             this.viewType = viewType;
 
             // Auch hier die OnClickListeners auf den Pfeilen, um ein Ein- und Ausklappen der Einträge zu ermöglichen
-            downArrow_q.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Entry entry = entries.get(getAdapterPosition());
-                    entry.setExpaned(!entry.isExpaned());
-                    notifyItemChanged(getAdapterPosition());
-                }
-            });
 
-            upArrow_q.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Entry entry = entries.get(getAdapterPosition());
-                    entry.setExpaned(!entry.isExpaned());
-                    notifyItemChanged(getAdapterPosition());
-                }
-            });
         }}}

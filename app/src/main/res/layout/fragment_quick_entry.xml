@@ -39,13 +39,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@null"
-        android:hint="Pleas enter your note hear."
+        android:hint="Please enter your note hear."
 
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmitQuickEntry"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/guideline1_h"
-        app:layout_constraintTop_toBottomOf="@+id/txtQuickEntry"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubmitQuickEntry"  />
+        app:layout_constraintTop_toBottomOf="@+id/txtQuickEntry" />
     />
     <!--inputType muss wahrscheinlich noch geändert werden, um Text weiterzubearbeiten -->
 
