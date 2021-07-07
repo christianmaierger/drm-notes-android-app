@@ -39,8 +39,7 @@ public class ExportToDBWorker extends Worker {
     @Override
     public Result doWork() {
 
-
-
+        // Folder und File "exportedDB.csv" wird auf externem Storage im Folder Documents angelegt, wenn es noch nicht besteht
         File exportDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "");
         System.out.println(exportDir);
         if (!exportDir.exists()) {
@@ -49,7 +48,6 @@ public class ExportToDBWorker extends Worker {
         File file = new File(exportDir, "exportedDB" + ".csv");
         try {
             file.createNewFile();
-            System.out.println(exportDir);
             // Mit Hilfe eines externen CSVWriters und eines cursors wird der DB Query Zeilen und
             // Spaltenweise traversiert und dann Line für Line in ein CSV File geschrieben
             CSVWriter csvWriter = new CSVWriter(new FileWriter(file));
@@ -61,7 +59,6 @@ public class ExportToDBWorker extends Worker {
                 // Die Forschleife durchläuft dann jede Spalte Zeile für Zeile
                 for (int i = 0; i < cursor.getColumnCount() - 1; i++) {
                     arrayOfColumsOfOneLine[i] = cursor.getString(i);
-                    System.out.println(arrayOfColumsOfOneLine[i]);
                     // die Spalten die int codes für Emojis enthalten werden hier ersetzt,
                     // wenn es vordefinierte sind
                    if(arrayOfColumsOfOneLine[i]!=null) {
@@ -97,7 +94,7 @@ public class ExportToDBWorker extends Worker {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(getApplicationContext(), "DB Exported To CSV", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "DB Exported To Folder: " + exportDir, Toast.LENGTH_LONG).show();
                 }
             }, 1000 );
         } catch (Exception sqlEx) {

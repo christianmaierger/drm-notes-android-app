@@ -8,7 +8,6 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.Update;
 
 import com.example.drmapp.ui.entry.Entry;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -37,25 +36,12 @@ public interface EntryDAO {
                 "time LIKE :time LIMIT 1")
         LiveData<List<Entry>> findByDate(String date, String time);
 
-
         // fügt einen Entry ein und wenn es den schon gibt wird ersetzt
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         public ListenableFuture<Long> insertEntry(Entry entry);
 
-        @Insert(onConflict = OnConflictStrategy.REPLACE)
-        public ListenableFuture<Long[]> insertAll(Entry... entries);
-
-        @Update
-        public ListenableFuture<Integer> updateEntries(Entry... entries);
-
-        @Update
-        public ListenableFuture<Integer> updateEntry(Entry entry);
-
         @Delete
         ListenableFuture<Integer>deleteEntry(Entry entry);
-
-        @Delete
-        ListenableFuture<Integer> deleteEntries(Entry... entries);
 
         @Query("DELETE FROM entry WHERE date2 <= :date")
         ListenableFuture<Integer> deleteEntriesOlderThanDate(long date);
