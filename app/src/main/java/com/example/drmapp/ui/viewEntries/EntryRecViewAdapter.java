@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.ViewLast2;
+package com.example.drmapp.ui.viewEntries;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drmapp.R;
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.model.Entry;
 
 import java.util.ArrayList;
 import java.util.List;

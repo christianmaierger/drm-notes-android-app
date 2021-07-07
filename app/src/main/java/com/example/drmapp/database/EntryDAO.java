@@ -9,7 +9,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.model.Entry;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.List;

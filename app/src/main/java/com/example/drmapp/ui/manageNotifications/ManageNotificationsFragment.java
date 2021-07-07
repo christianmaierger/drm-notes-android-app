@@ -26,9 +26,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.drmapp.NotificationBackEnd.ReceiverForNotifications;
+import com.example.drmapp.notificationBackend.ReceiverForNotifications;
 import com.example.drmapp.R;
-import com.example.drmapp.StoreSimpleDataHelper;
+import com.example.drmapp.model.StoreSimpleDataHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;

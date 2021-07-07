@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.model.Entry;
 
 
     /*Note: If your app runs in a single process, you should follow the singleton design pattern when instantiating

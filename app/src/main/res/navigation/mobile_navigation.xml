@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_view_Last"
-        android:name="com.example.drmapp.ui.ViewLast2.EntryFragment"
+        android:name="com.example.drmapp.ui.viewEntries.EntryListFragment"
         android:label="View Last"
         tools:layout="@layout/fragment_entry_list">
         <action

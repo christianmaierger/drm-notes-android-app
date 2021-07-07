@@ -1,4 +1,4 @@
-package com.example.drmapp.NotificationBackEnd;
+package com.example.drmapp.notificationBackend;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -13,7 +13,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.StoreSimpleDataHelper;
+import com.example.drmapp.model.StoreSimpleDataHelper;
 
 import java.util.concurrent.TimeUnit;
 

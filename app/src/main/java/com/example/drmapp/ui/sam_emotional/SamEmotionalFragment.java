@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -16,8 +15,7 @@ import androidx.navigation.Navigation;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.activitiesPremade.ActivitiesPremadeViewModel;
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.model.Entry;
 
 public class SamEmotionalFragment extends Fragment implements View.OnClickListener{
 

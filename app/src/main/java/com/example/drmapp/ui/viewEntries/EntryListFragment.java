@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.ViewLast2;
+package com.example.drmapp.ui.viewEntries;
 
 
 import android.graphics.Canvas;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,8 +23,7 @@ import androidx.work.WorkRequest;
 
 import com.example.drmapp.database.export.ExportToDBWorker;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.entry.Entry;
-import com.example.drmapp.ui.viewLast.EntryListViewModel;
+import com.example.drmapp.model.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -44,7 +42,7 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 * Die Swipe-to-delete Funktionalität und die Möglichkeit alle Einträge des RecyclerViews zu löschen werden in dieser Klasse implementiert.
 * */
 
-public class EntryFragment extends Fragment {
+public class EntryListFragment extends Fragment {
     EntryListViewModel entryListViewModel;
     RecyclerView recyclerView;
     EntryRecViewAdapter entryRecViewAdapter= new EntryRecViewAdapter();

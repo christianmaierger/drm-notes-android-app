@@ -1,7 +1,5 @@
 package com.example.drmapp.ui.success;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -20,10 +18,7 @@ import android.widget.Button;
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.database.AppDatabase;
-import com.example.drmapp.database.EntryDAO;
-import com.example.drmapp.ui.addEntry.AddEntryFragment;
-import com.example.drmapp.ui.entry.Entry;
-import com.example.drmapp.ui.home.HomeFragment;
+import com.example.drmapp.model.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class SuccessFragment extends Fragment implements View.OnClickListener{

@@ -1,7 +1,5 @@
 package com.example.drmapp.ui.thoughts;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -20,8 +18,7 @@ import android.widget.EditText;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.entry.Entry;
-import com.example.drmapp.ui.success.SuccessFragment;
+import com.example.drmapp.model.Entry;
 
 public class ThoughtsFragment extends Fragment implements View.OnClickListener {
 

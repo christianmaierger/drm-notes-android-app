@@ -17,7 +17,7 @@ import androidx.navigation.Navigation;
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
 import com.example.drmapp.database.AppDatabase;
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.model.Entry;
 
 import java.util.stream.IntStream;
 

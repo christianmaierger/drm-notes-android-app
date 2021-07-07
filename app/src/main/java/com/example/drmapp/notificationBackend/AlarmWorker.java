@@ -1,4 +1,4 @@
-package com.example.drmapp.NotificationBackEnd;
+package com.example.drmapp.notificationBackend;
 
 
 import android.app.AlarmManager;
@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import com.example.drmapp.StoreSimpleDataHelper;
+import com.example.drmapp.model.StoreSimpleDataHelper;
 
 public class AlarmWorker extends Worker {
 

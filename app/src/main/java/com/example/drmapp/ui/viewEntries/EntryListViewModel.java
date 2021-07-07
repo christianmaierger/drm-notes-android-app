@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.viewLast;
+package com.example.drmapp.ui.viewEntries;
 
 import android.app.Application;
 
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.drmapp.database.AppDatabase;
 import com.example.drmapp.database.EntryDAO;
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.model.Entry;
 
 import java.util.List;
 

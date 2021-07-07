@@ -1,4 +1,4 @@
-package com.example.drmapp;
+package com.example.drmapp.model;
 
 import android.content.Context;
 
@@ -15,8 +15,6 @@ import java.util.List;
 
 public class StoreSimpleDataHelper {
 
-    private StoreSimpleDataHelper() {
-    }
 
 
     /**
@@ -47,8 +45,7 @@ public class StoreSimpleDataHelper {
      */
     public static LinkedList<String> retrieveNotificationTimesFromFile(Context context) {
         LinkedList<String> notificationTimes = new LinkedList<>();
-
-
+        // Das File wird einfach über den string identifiziert und gefunden
         File file = context.getFileStreamPath("notificationTimes");
         if(file.exists()) {
             try (FileInputStream fis = context.openFileInput("notificationTimes")) {
@@ -72,8 +69,8 @@ public class StoreSimpleDataHelper {
     }
 
     /**
-     *  Mit den Outputstreems wird die Liste zum ByteArry und serialisiert auf den Speicher im
-     *  Smartphone geschrieben.
+     *  Mit den Outputstreems wird die Liste zum ByteArray und serialisiert auf den Speicher im
+     *  Smartphone geschrieben für andere Apps/Benutzer nicht zugänglich.
      *
      * @param filename the name of the file to be stored/overwritten
      * @param fileContents the list with times to be stored

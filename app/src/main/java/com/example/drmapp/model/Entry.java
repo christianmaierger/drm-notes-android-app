@@ -1,4 +1,4 @@
-package com.example.drmapp.ui.entry;
+package com.example.drmapp.model;
 
 
 import android.content.Context;

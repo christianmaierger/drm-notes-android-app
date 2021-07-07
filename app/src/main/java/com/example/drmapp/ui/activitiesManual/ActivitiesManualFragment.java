@@ -1,6 +1,4 @@
 package com.example.drmapp.ui.activitiesManual;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -19,7 +17,7 @@ import android.widget.EditText;
 
 import com.example.drmapp.MainActivity;
 import com.example.drmapp.R;
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.model.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 

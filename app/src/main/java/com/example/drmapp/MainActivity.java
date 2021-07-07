@@ -19,8 +19,8 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
-import com.example.drmapp.NotificationBackEnd.AlarmWorker;
-import com.example.drmapp.ui.entry.Entry;
+import com.example.drmapp.notificationBackend.AlarmWorker;
+import com.example.drmapp.model.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 

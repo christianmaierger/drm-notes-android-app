@@ -1,4 +1,4 @@
-package com.example.drmapp.NotificationBackEnd;
+package com.example.drmapp.notificationBackend;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
