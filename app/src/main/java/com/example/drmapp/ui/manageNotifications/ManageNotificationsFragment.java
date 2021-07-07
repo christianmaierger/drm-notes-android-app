@@ -52,18 +52,17 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     // Erstellen von times zu haben und einen für das Changen, wegen unterschiedlicher Funktionalität
     private Group timePickerGroup;
     private Group timePickerGroup2;
-
-    private FloatingActionButton addNotificationTimeButton;
-
+    // Daher auch zwei Submitbuttons und TimePicker, je einen pro Group
     private Button submitTime;
     private Button submitTime2;
-
     private TimePicker picker;
     private TimePicker picker2;
 
+    private FloatingActionButton addNotificationTimeButton;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
 
         mViewModel = new ViewModelProvider(this).get(ManageNotificationsViewModel.class);
         root = inflater.inflate(R.layout.fragment_manage_notifications, container, false);
@@ -71,10 +70,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         //Entfernen des Floating Action Buttons für das Speichern eines Eintrags
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fb.setVisibility(View.GONE);
-
-
-
-
 
         // Folgend die Buttons die die ausgewählten Zeiten für Notifications zeigen
         // und bei click den TimePicker öffnen um die jeweilige time des buttons zu changen
@@ -144,10 +139,13 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
      */
     private void checkDisplaySizeAndSetTimePicker() {
         int width;
+
+        // Da je nach HandyModel es zu problemen beim Erkennen des Displays und dessen Breite kommen
+        // kann werden hier verschiedene Wege bereitgestellt, die letzte Möglichkeit mit
+        // getDefaultDisplay() ist eigentlich depricated funktiioniert aber sehr gut als FallBack
       try {
           WindowMetrics display = requireActivity().getWindowManager().getCurrentWindowMetrics();
           width = display.getBounds().width();
-
       } catch (Exception | NoSuchMethodError e) {
           try {
               Display display = getActivity().getDisplay();
@@ -170,6 +168,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         // als TimePicker angezeigt werden, da die Zahlen zu klein werden um komfortabel ausgewählt zu werden
         if(width<770) {
             // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
+            // in diesem Fall is der Picker ein Spinner
             timePickerGroup = root.findViewById(R.id.timePickerGroupSpinner);
             timePickerGroup2 = root.findViewById(R.id.timePickerGroup2Spinner);
             // Beide time picker in 24 h Modus setzen, was leider nicht im XML direkt geht
@@ -181,6 +180,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
             submitTime2 = root.findViewById(R.id.getTime2Spinner);
         } else {
             // Die beiden Groups für die TimePicker die erscheinen, wenn man times added oder wenn man times changed
+            // in diesem Fall ist der TimePicker eine Uhr
             timePickerGroup = root.findViewById(R.id.timePickerGroup);
             timePickerGroup2 = root.findViewById(R.id.timePickerGroup2);
             picker = root.findViewById(R.id.simpleTimePicker);
@@ -206,7 +206,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
      */
     private void restoreStateOfViewWithSavedNotificationTimes(LinkedList<String> notificationTimes) {
 
-
        if (notificationTimes.size()==0) {
            // Initial, bevor Werte gespeichert wurden is Button 1 als einziger sichtbar mit folgendem Text:
            mViewModel.getTimeText1().setValue(getString(R.string.noTimePickedText));
@@ -223,7 +222,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         if(notificationTimes.size()>0) {
 
             // wenn hier null gepeichert ist, steht weder eine Zeit noch die Botschaft, dass keine Zeit gewählt wurde
-            // in Button1, also muss er invisible sein, SOndervorgehen bei Button1, da dieser ja standartmäsig
+            // in Button1, also muss er invisible sein, Sondervorgehen bei Button1, da dieser ja standartmäsig
             // mit der Botschaft keine Zeit gepickt, sichtbar ist
             if (notificationTimes.get(0) == null) {
                 timeTextButton1.setVisibility(View.GONE);
@@ -287,8 +286,8 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     }
 
 
-    // Seit Android 3.0 wohl der beste und sicherste "Ort" um persistente Daten zu speichern
-    // Hier werden die ausgewählten Zeichen in ein persistentes File geschrieben
+    // Seit Android 3.0 wohl der beste und sicherste "Ort" um einfache Daten persistent zu speichern
+    // Hier werden die ausgewählten Zeiten als Liste in ein File geschrieben
     @Override
     public void onStop() {
         super.onStop();
@@ -380,6 +379,9 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
     }
 
     /**
+     *
+     * Da Zahlen aus dem TimePicker keine fürhenden Nullen enthalten wird dies hier angefügt,
+     * um dem Nutzer einen vertrauten Anblick zu bieten, so wird aus 5:5 -> 05:05
      *
      * @param hour Stunde des TimePickers in String Form
      * @param minute Minuten des TimePickers in String Form

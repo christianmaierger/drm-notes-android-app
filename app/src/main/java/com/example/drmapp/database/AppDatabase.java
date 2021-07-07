@@ -9,14 +9,12 @@ import androidx.room.RoomDatabase;
 import com.example.drmapp.model.Entry;
 
 
-    /*Note: If your app runs in a single process, you should follow the singleton design pattern when instantiating
-        an AppDatabase object. Each RoomDatabase instance is fairly expensive, and you rarely need access
-        to multiple instances within a single process.
+/**
+ * Da das Erzeugen der Datenbank teuer ist, wir nur mit einem Prozess arbeiten und daher keinen
+ * Weg der Erzeugung und Verifizierung verschiedener Instanzen und daher wird über das Singleton Pattern
+ * nur eine Instanz zugänglich gemacht
+ */
 
-        If your app runs in multiple processes, include enableMultiInstanceInvalidation() in your database
-        builder invocation. That way, when you have an instance of AppDatabase in each process,
-        you can invalidate the shared database file in one process, and this invalidation automatically
-        propagates to the instances of AppDatabase within other processes.*/
 
 @Database(entities = {Entry.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
@@ -30,10 +28,12 @@ public abstract class AppDatabase extends RoomDatabase {
 
     // Ich benutze Lazy Initialisation Singleton Pattern um nur eine Instanz zu erzeugen, basic threadsafe
     public static AppDatabase getInstance(Context context) {
+        // synchronized mit Klasse als Monitor stellt sicher, dass nur 1 Thread zu einem Zeitpunkt den
+        // Code in der folgenden critical Section ausführt
 synchronized (AppDatabase.class) {
     if (instance == null) {
         instance = Room.databaseBuilder(context,
-                AppDatabase.class, "drm-test4-database").build();
+                AppDatabase.class, "drm-test5-database").build();
     }
 }
         return instance;

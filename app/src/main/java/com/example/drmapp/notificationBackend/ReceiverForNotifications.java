@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Diese Klasse ist nötig um eine Kette von Alarmen zu erzeugen, da Android keine Methoden besitzt um zuverlässig
  * wiederkehrende Alarme einzustellen, die in jedem Fall das Gerät "aufwecken" würden. So ist es möglich,
- * das Gerät zu einer exakten ZEit zu wecken, diesen Receiver zu triggern und ihn wieder einen Alarm für in 24
+ * das Gerät zu einer exakten Zeit zu wecken, diesen Receiver zu triggern und ihn wieder einen Alarm für in 24
  * h setzen zu lassen  und eine Notification an den User zu senden. Diese Kette wird solange durchgeführt,
  * bis der User die NotificationTime löscht/ändert.
  */

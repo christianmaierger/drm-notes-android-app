@@ -88,7 +88,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         if (holder.getItemViewType() == LAYOUT_ONE) {
             TextView textViewDate = ((ViewHolderOne) holder).contentDate;
-            textViewDate.setText(ent.getDate());
+            textViewDate.setText(ent.getDateAsString());
             TextView textViewTime = ((ViewHolderOne) holder).contentTime;
             textViewTime.setText(ent.getTime());
             TextView textViewActivity = ((ViewHolderOne) holder).contentActivity;
@@ -180,7 +180,7 @@ public class EntryRecViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         // Logik fuer QuickEntry
         else {
             TextView textViewDate = ((ViewHolderTwo) holder).contentDate_q;
-            textViewDate.setText(ent.getDate());
+            textViewDate.setText(ent.getDateAsString());
             TextView textViewTime = ((ViewHolderTwo) holder).contentTime_q;
             textViewTime.setText(ent.getTime());
             TextView textViewActivity = ((ViewHolderTwo) holder).contentActivity_q;

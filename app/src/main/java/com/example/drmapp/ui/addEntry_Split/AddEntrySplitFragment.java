@@ -66,12 +66,12 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
                         calendar.add(Calendar.DATE, -1);
                         Date yesterday = calendar.getTime();
                         text = formatter.format(yesterday);
-                        entryUnderConstruction.setDate2(yesterday.getTime());
+                        entryUnderConstruction.setDateAsLong(yesterday.getTime());
                     } else {
                         text = formatter.format(today);
-                        entryUnderConstruction.setDate2(today.getTime());
+                        entryUnderConstruction.setDateAsLong(today.getTime());
                     }
-                entryUnderConstruction.setDate(text);
+                entryUnderConstruction.setDateAsString(text);
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
@@ -101,8 +101,8 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
             // das aktuelle Datum
             Date today = new Date();
             String text = formatter.format(today);
-            entryUnderConstruction.setDate(text);
-            entryUnderConstruction.setDate2(today.getTime());
+            entryUnderConstruction.setDateAsString(text);
+            entryUnderConstruction.setDateAsLong(today.getTime());
             //((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
         }
 

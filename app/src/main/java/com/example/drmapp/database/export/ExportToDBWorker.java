@@ -21,7 +21,10 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.io.FileWriter;
 
-
+/**
+ * Dieser Worker dient dazu auf einem Backgroundthread den Export der DB durchzuführen,
+ * was den Mainthread entlasten soll, der die GUI steuert
+ */
 public class ExportToDBWorker extends Worker {
     private static final int CREATE_FILE = 1;
     Context context;

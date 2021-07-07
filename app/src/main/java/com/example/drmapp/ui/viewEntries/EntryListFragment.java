@@ -26,6 +26,7 @@ import com.example.drmapp.R;
 import com.example.drmapp.model.Entry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.common.util.concurrent.ListenableFuture;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -89,8 +90,8 @@ public class EntryListFragment extends Fragment {
                     // Zwischenspeicher, falls Loeschen rueckgaengig gemacht werden soll
                     deletedEntry = entry;
 
-                    // Eintrag aus der Datenbank loeschen
-                    entryListViewModel.getEntryDao().deleteEntry(entry);
+                    // Eintrag aus der Datenbank loeschen, nicht blockierenden mit anderem Thread
+                   ListenableFuture fut = entryListViewModel.getEntryDao().deleteEntry(entry);
 
                     // Loeschen rueckgaengig machen
                     Snackbar.make(recyclerView, "Deleted!", Snackbar.LENGTH_LONG).
@@ -102,7 +103,6 @@ public class EntryListFragment extends Fragment {
                             entryListViewModel.getEntryDao().insertEntry(deletedEntry);
                         }
                     }).show();
-
 
                     break;
 

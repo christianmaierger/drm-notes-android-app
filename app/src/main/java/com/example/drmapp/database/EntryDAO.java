@@ -1,7 +1,5 @@
 package com.example.drmapp.database;
 
-import android.database.Cursor;
-
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -15,37 +13,23 @@ import com.google.common.util.concurrent.ListenableFuture;
 import java.util.List;
 
 
-
-
 @Dao
 public interface EntryDAO {
 
-        @Query("SELECT * FROM entry")
-        List<Entry> getAll();
 
-        @Query("SELECT * FROM entry ORDER BY date2 DESC, time_int ")
+        @Query("SELECT * FROM entry ORDER BY dateAsLong DESC, time_int ")
         LiveData<List<Entry>> getEntriesAsLiveData();
-
-        @Query("SELECT * FROM entry")
-        Cursor getAllCursor();
-
-        @Query("SELECT * FROM entry WHERE id IN (:entryIds)")
-        List<Entry> loadAllByIds(int[] entryIds);
-
-        @Query("SELECT * FROM entry WHERE date LIKE :date AND " +
-                "time LIKE :time LIMIT 1")
-        LiveData<List<Entry>> findByDate(String date, String time);
 
         // fügt einen Entry ein und wenn es den schon gibt wird ersetzt
         @Insert(onConflict = OnConflictStrategy.REPLACE)
-        public ListenableFuture<Long> insertEntry(Entry entry);
+        // ListenableFuture aus der GUVA Lib wird verwendet um einen einfachen Weg zu haben
+        // asynchron auf die Datenbank zugreifen zu können
+        ListenableFuture<Long> insertEntry(Entry entry);
 
         @Delete
         ListenableFuture<Integer>deleteEntry(Entry entry);
 
-        @Query("DELETE FROM entry WHERE date2 <= :date")
+        @Query("DELETE FROM entry WHERE dateAsLong <= :date")
         ListenableFuture<Integer> deleteEntriesOlderThanDate(long date);
-
-
 
 }

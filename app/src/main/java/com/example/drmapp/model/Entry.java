@@ -1,23 +1,15 @@
 package com.example.drmapp.model;
 
 
-import android.content.Context;
-
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.example.drmapp.database.AppDatabase;
-import com.example.drmapp.database.EntryDAO;
-
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  * Die Klasse Entry soll die Werte speichern, die der User beim Ausfuellen des Fragebogens eingibt.
  * Eine Instanz der Klasse stellt dabei einen Eintrag dar.
- * In einer Arrayliste werden alle Entry Objekte gespeichert.
- * Mittels .get(position) kann auf die einzelnen Objekte der ArrayListe zugegriffen werden.
+ * In der Datenbank werden alle Entry Objekte gespeichert und als LiveData auch in einer Liste gehalten.
+ * Mittels get(position) kann dann der Adapter des RecyclerView auf die einzelnen Objekte der Liste zugreifen.
  * */
 
 @Entity
@@ -25,16 +17,15 @@ public class Entry {
 
     // ein Feld wird automatisch zu einer Spalte in der Tabelle mit Namen der Klasse
     // da Room Zugang zu den Feldern braucht bei private immer Getter/Setter bereitstellen
-    // column info setzt custom namen für die Felder
+    // column info setzt custom namen für die Felder, wurde aber nicht benötigt
     // @ColumnInfo(name = "date")
     // @Ignore ignoriert Felder/Konstruktoren
-    private static final AtomicInteger count = new AtomicInteger(0);
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true) // DB verwaltet selbst die ID Vergabe
     private int id;
-    private String date;
-    private long date2;
+    private String dateAsString;
+    private long dateAsLong; // Das Datum wird zusätzlich als long gespeichert, um eine sinnvolle Sortierung nach der Zeit im RecyclerView zu ermöglichen
     private String time;
-    private int time_int; // Die Zeit wird zusätzlich in int gespeichert, um eine sinnvolle Sortierung nach der Zeit im RecyclerView zu ermöglichen
+    private int time_int; // Die Zeit wird zusätzlich als int gespeichert, um eine sinnvolle Sortierung nach der Zeit im RecyclerView zu ermöglichen
     private String activity;
     private int emoji;
     private int sam1;
@@ -45,9 +36,8 @@ public class Entry {
     private boolean isQuickEntry; // Speichervariable fuer Unterschiedung zwischen den ViewHoldern
     private boolean isExpaned; // Variable notwendig fuer ausklappbaren RecyclerView
 
-    public Entry(boolean isQuickEntry, String date, String time, int time_int, String activity, int emoji, int sam1, int sam2, int sam3, String thoughts) {
-        this.id= count.incrementAndGet();
-        this.date = date;
+    public Entry(boolean isQuickEntry, String dateAsString, String time, int time_int, String activity, int emoji, int sam1, int sam2, int sam3, String thoughts) {
+        this.dateAsString = dateAsString;
         this.time = time;
         this.activity = activity;
         this.emoji = emoji;
@@ -57,29 +47,27 @@ public class Entry {
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
         this.time_int = time_int;
-
         isExpaned=false;
     }
 
     @Ignore
-    public Entry(boolean isQuickEntry, String date, String time, int time_int, String activity, String thoughts) {
-        this.id= count.incrementAndGet();
-        this.date = date;
+    public Entry(boolean isQuickEntry, String dateAsString, String time, int time_int, String activity, String thoughts) {
+        this.dateAsString = dateAsString;
         this.time = time;
         this.activity = activity;
         this.thoughts = thoughts;
         this.isQuickEntry = isQuickEntry;
         this.time_int = time_int;
         isExpaned=false;
-
     }
 
     @Ignore
     public Entry() {
-        this.id= count.incrementAndGet();
+
     }
 
     public boolean isQuickEntry(){ return isQuickEntry;}
+
     public void setQuickEntry(boolean quickEntry){ isQuickEntry = quickEntry;}
 
     public int getTime_int() {
@@ -106,20 +94,20 @@ public class Entry {
         isExpaned = expaned;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateAsString() {
+        return dateAsString;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateAsString(String dateAsString) {
+        this.dateAsString = dateAsString;
     }
 
-    public long getDate2() {
-        return date2;
+    public long getDateAsLong() {
+        return dateAsLong;
     }
 
-    public void setDate2(long date2) {
-        this.date2 = date2;
+    public void setDateAsLong(long dateAsLong) {
+        this.dateAsLong = dateAsLong;
     }
 
     public String getTime() {
@@ -177,29 +165,11 @@ public class Entry {
         this.sam3 = sam3;
     }
 
-    // method just to create some test data
-    public static ArrayList<Entry> createEntryList(Context context) {
-       ArrayList<Entry> entries = new ArrayList<Entry>();
-
-
-
-      AppDatabase db = AppDatabase.getInstance(context);
-       EntryDAO userDao = db.entryDao();
-
-        // nicht so toll nur behelfsmasnahme
-        ArrayList<Entry> ents = new ArrayList<>(entries);
-
-
-        return ents;
-
-
-    }
-
 
     @Override
     public String toString() {
         return "Entry{" +
-                "date='" + date + '\'' +
+                "date='" + dateAsString + '\'' +
                 ", time='" + time + '\'' +
                 ", activity='" + activity + '\'' +
                 ", emoji='" + emoji + '\'' +
