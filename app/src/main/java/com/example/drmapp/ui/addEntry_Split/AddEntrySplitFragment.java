@@ -63,6 +63,10 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
                     String text = "";
                     if (isChecked) {
                         calendar.setTime(today);
+                        calendar.set(Calendar.HOUR_OF_DAY, 0);
+                        calendar.set(Calendar.MINUTE, 0);
+                        calendar.set(Calendar.SECOND, 0);
+                        calendar.set(Calendar.MILLISECOND, 0);
                         calendar.add(Calendar.DATE, -1);
                         Date yesterday = calendar.getTime();
                         text = formatter.format(yesterday);
