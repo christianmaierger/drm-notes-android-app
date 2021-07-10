@@ -85,8 +85,12 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
         });
 
         //Sichtbarmachen des Floating Action Buttons für das Speichern eines Eintrags
-        FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
-        fb.setVisibility(View.GONE);
+        FloatingActionButton fbFwd = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
+        fbFwd.setVisibility(View.GONE);
+
+        FloatingActionButton fbHome = (FloatingActionButton) getActivity().findViewById(R.id.backHome);
+        fbHome.setVisibility(View.VISIBLE);
+
 
         return root;
     }

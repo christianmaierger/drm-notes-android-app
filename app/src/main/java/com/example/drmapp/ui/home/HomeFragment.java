@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
         fb.setVisibility(View.GONE);
 
         FloatingActionButton fb1 = (FloatingActionButton) getActivity().findViewById(R.id.backHome);
-        fb1.setVisibility(View.VISIBLE);
+        fb1.setVisibility(View.GONE);
 
 
         Button button = (Button) root.findViewById(R.id.toAddEntry);
