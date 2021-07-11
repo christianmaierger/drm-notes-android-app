@@ -61,7 +61,7 @@ public class EntryListFragment extends Fragment {
                     .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreen))
                     .addSwipeRightActionIcon(R.drawable.ic_edit) */
 
-                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.Red))
+
                     .addSwipeLeftActionIcon(R.drawable.ic_delete)
                     .create()
                     .decorate();
@@ -102,7 +102,9 @@ public class EntryListFragment extends Fragment {
                             // geloeschtes Element wieder in die DB einfuegen
                             entryListViewModel.getEntryDao().insertEntry(deletedEntry);
                         }
-                    }).show();
+                    })
+                            .setDuration(10000)
+                            .show();
 
                     break;
 
