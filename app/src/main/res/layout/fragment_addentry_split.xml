@@ -95,13 +95,38 @@
 
     <Switch
         android:id="@+id/switchYesterday"
-
         style="@style/buttonStyle"
-        android:layout_width="192dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:background="@color/lightPurpel"
-        android:text="Entry from Yesterday"
         app:layout_constraintEnd_toStartOf="@+id/guideline4_h"
         app:layout_constraintStart_toStartOf="@+id/guideline1_h"
         app:layout_constraintTop_toTopOf="@id/guideline4_v" />
+    <TextView
+        android:id="@+id/SwitchTextLeft"
+        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Today"
+        android:background="@color/lightPurpel"
+        app:layout_constraintStart_toStartOf="@id/guideline1_h"
+        app:layout_constraintTop_toTopOf="@id/guideline4_v"
+        app:layout_constraintBottom_toBottomOf="@id/switchYesterday"
+        app:layout_constraintEnd_toStartOf="@id/switchYesterday"
+        />
+
+    <TextView
+        android:id="@+id/SwitchTextRight"
+        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Yesterday"
+        android:background="@color/lightPurpel"
+        app:layout_constraintStart_toEndOf="@id/switchYesterday"
+        app:layout_constraintTop_toTopOf="@id/guideline4_v"
+        app:layout_constraintBottom_toBottomOf="@id/switchYesterday"
+        app:layout_constraintEnd_toStartOf="@id/guideline4_h"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
