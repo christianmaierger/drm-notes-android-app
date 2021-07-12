@@ -21,6 +21,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
+import com.example.drmapp.MainActivity;
 import com.example.drmapp.database.export.ExportToDBWorker;
 import com.example.drmapp.R;
 import com.example.drmapp.model.Entry;
@@ -141,6 +142,9 @@ public class EntryListFragment extends Fragment {
 
 
         entryListViewModel = new EntryListViewModel(getActivity().getApplication());
+
+        //Setzen des Titels für das Fragment
+        ((MainActivity) getActivity()).setActionBarTitle("View All Entries");
 
 
 

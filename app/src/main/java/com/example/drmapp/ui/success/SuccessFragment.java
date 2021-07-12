@@ -31,7 +31,7 @@ public class SuccessFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        ((MainActivity) getActivity()).setActionBarTitle("Success");
+        ((MainActivity) getActivity()).setActionBarTitle("Entry Complete");
 
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
