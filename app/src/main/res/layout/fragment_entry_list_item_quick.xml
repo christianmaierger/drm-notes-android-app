@@ -28,6 +28,27 @@
                 android:background="@color/colorButton"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_v_2_q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.50" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_v_1_q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.30" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_v_3_q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.80" />
+
                 <TextView
                     android:id="@+id/imageViewEmoji_q"
                     android:layout_width="40dp"
@@ -43,48 +64,48 @@
 
                 <TextView
                     android:id="@+id/contentDate_q"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="16dp"
+                    android:paddingLeft="8dp"
                     android:paddingTop="16dp"
-                    android:paddingRight="16dp"
+                    android:paddingRight="8dp"
                     android:paddingBottom="16dp"
                     android:text="dd:mm:yy"
                     android:textSize="10sp"
                     android:textAppearance="@style/buttonStyle"
                     app:layout_constraintStart_toEndOf="@id/imageViewEmoji_q"
+                    app:layout_constraintEnd_toEndOf="@id/guideline_v_1_q"
                     app:layout_constraintTop_toTopOf="@id/collapsedLayout_q" />
 
 
                 <TextView
                     android:id="@+id/contentTime_q"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="16dp"
                     android:paddingTop="16dp"
-                    android:paddingRight="16dp"
                     android:paddingBottom="16dp"
                     android:text="hh_mm"
                     android:textSize="10sp"
                     android:textAppearance="@style/buttonStyle"
-                    app:layout_constraintStart_toEndOf="@id/contentDate_q"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="@id/guideline_v_1_q"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/guideline_v_2_q"/>
 
                 <TextView
                     android:id="@+id/ContentActivity_q"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
 
-                    android:paddingLeft="16dp"
+                    android:paddingLeft="8dp"
                     android:paddingTop="16dp"
-                    android:paddingRight="16dp"
+                    android:paddingRight="8dp"
                     android:paddingBottom="16dp"
                     android:text="Activity"
                     android:textSize="10sp"
                     android:textAppearance="@style/buttonStyle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@id/contentTime_q"
+                    app:layout_constraintStart_toEndOf="@id/guideline_v_2_q"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
