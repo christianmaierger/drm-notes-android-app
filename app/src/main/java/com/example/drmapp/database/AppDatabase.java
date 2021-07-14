@@ -10,7 +10,7 @@ import com.example.drmapp.model.Entry;
 
 
 /**
- * Da das Erzeugen der Datenbank teuer ist, wir nur mit einem Prozess arbeiten und daher keinen
+ * Da das Erzeugen der Datenbank teuer ist (man hätte dann ja mehrere Instanzen im Speicher ), wir nur mit einem Prozess arbeiten und daher keinen
  * Weg der Erzeugung und Verifizierung verschiedener Instanzen und daher wird über das Singleton Pattern
  * nur eine Instanz zugänglich gemacht
  */

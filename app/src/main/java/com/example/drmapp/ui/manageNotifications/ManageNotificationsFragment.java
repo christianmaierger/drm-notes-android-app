@@ -26,15 +26,14 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.drmapp.notificationBackend.ReceiverForNotifications;
 import com.example.drmapp.R;
 import com.example.drmapp.model.StoreSimpleDataHelper;
+import com.example.drmapp.notificationBackend.ReceiverForNotifications;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class ManageNotificationsFragment extends Fragment implements View.OnClickListener  {
@@ -98,7 +97,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         mViewModel.setAddTimeButtonpressed(false);
 
 
-        checkDisplaySizeAndSetTimePicker();
+        checkDisplaySizeAndSetTimePickerToSpinnerORClock();
 
 
         // Hier werden der TextView neben dem add button für times und
@@ -137,7 +136,7 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
      * als eine Uhr, bei der die Elemente dann extrem klein geraten.
      *
      */
-    private void checkDisplaySizeAndSetTimePicker() {
+    private void checkDisplaySizeAndSetTimePickerToSpinnerORClock() {
         int width;
 
         // Da je nach HandyModel es zu problemen beim Erkennen des Displays und dessen Breite kommen
@@ -220,7 +219,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         // initial sind keine Times gespeichert, wenn App zum ersten mal benutzt wird, dann kann
         // man auch keine Abfragen, da Liste leer ist, würde ja Null Pointer werfen
         if(notificationTimes.size()>0) {
-
             // wenn hier null gepeichert ist, steht weder eine Zeit noch die Botschaft, dass keine Zeit gewählt wurde
             // in Button1, also muss er invisible sein, Sondervorgehen bei Button1, da dieser ja standartmäsig
             // mit der Botschaft keine Zeit gepickt, sichtbar ist
@@ -713,7 +711,6 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         AlarmManager alarmMgr = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
 
         if(delete==false) {
-
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 AlarmManager.AlarmClockInfo ac = new AlarmManager.AlarmClockInfo(time.getTimeInMillis(),
                         pendingIntent);
@@ -724,16 +721,10 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
                 alarmMgr.set(AlarmManager.RTC_WAKEUP, time.getTimeInMillis(), pendingIntent);
             }
             StoreSimpleDataHelper.saveNotification(getActivity(),timeButtonNumber,time.getTimeInMillis());
-            String tm = String.format("%d min, %d sec",
-                    TimeUnit.MILLISECONDS.toMinutes(time.getTimeInMillis()),
-                    TimeUnit.MILLISECONDS.toSeconds(time.getTimeInMillis()) -
-                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time.getTimeInMillis()))
-            );
-            System.out.println("Alarm gesetzt als erster in Kette für " + tm);
         } else {
             alarmMgr.cancel(pendingIntent);
+            // Gespeicherte Zeit wird daruch gelöscht, dass statt time als long 0L übergeben wird
             StoreSimpleDataHelper.saveNotification(getActivity(),timeButtonNumber,0L);
-            System.out.println("Alarm gelöscht");
         }
     }
 

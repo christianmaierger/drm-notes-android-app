@@ -52,7 +52,6 @@ public class StoreSimpleDataHelper {
                 if (fis != null) {
                     try (ObjectInputStream ois = new ObjectInputStream(fis)) {
 
-
                         notificationTimes = (LinkedList<String>) ois.readObject();
 
                     } catch (IOException | ClassNotFoundException | ClassCastException e) {

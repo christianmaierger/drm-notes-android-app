@@ -19,7 +19,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             WorkRequest alarmWorkRequest =
                     new OneTimeWorkRequest.Builder(AlarmWorker.class)
                             .build();
-
             // Das WorkRequest wird zur Bearbeitung an den WorkManager übergeben
             WorkManager
                     .getInstance(context)

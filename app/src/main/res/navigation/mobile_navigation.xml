@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/nav_view_Last"
         android:name="com.example.drmapp.ui.viewEntries.EntryListFragment"
-        android:label="View Last"
+        android:label="View All Entries"
         tools:layout="@layout/fragment_entry_list">
         <action
             android:id="@+id/action_nav_view_Last_to_Home"

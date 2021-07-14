@@ -124,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
             NotificationChannel channel = new NotificationChannel( "1", name, importance);
             channel.setDescription(description);
             // Der Channel wird beim System registriert und kann danach nicht mehr geändert werden
-            // Er wird beim senden von NOtifications immer benötigt
+            // außer name und descritpion
+            // Er wird beim senden von Notifications immer benötigt ab Android 8, sonst Error
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
