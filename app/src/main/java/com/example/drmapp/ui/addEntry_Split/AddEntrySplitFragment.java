@@ -61,19 +61,20 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
                     Date today = new Date();
                     Calendar calendar = Calendar.getInstance();
                     String text = "";
+                calendar.setTime(today);
+                calendar.set(Calendar.HOUR_OF_DAY, 0);
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
                     if (isChecked) {
-                        calendar.setTime(today);
-                        calendar.set(Calendar.HOUR_OF_DAY, 0);
-                        calendar.set(Calendar.MINUTE, 0);
-                        calendar.set(Calendar.SECOND, 0);
-                        calendar.set(Calendar.MILLISECOND, 0);
                         calendar.add(Calendar.DATE, -1);
                         Date yesterday = calendar.getTime();
                         text = formatter.format(yesterday);
                         entryUnderConstruction.setDateAsLong(yesterday.getTime());
                     } else {
-                        text = formatter.format(today);
-                        entryUnderConstruction.setDateAsLong(today.getTime());
+                        Date tmp = calendar.getTime();
+                        text = formatter.format(tmp);
+                        entryUnderConstruction.setDateAsLong(tmp.getTime());
                     }
                 entryUnderConstruction.setDateAsString(text);
                 Toast toast = Toast.makeText(context, text, duration);
@@ -108,10 +109,16 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
             // das aktuelle Datum
             Date today = new Date();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(today);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
+            Date tmp = calendar.getTime();
             String text = formatter.format(today);
             entryUnderConstruction.setDateAsString(text);
-            entryUnderConstruction.setDateAsLong(today.getTime());
-            //((MainActivity)getActivity()).setEntryUnderConstruction(entryUnderConstruction);
+            entryUnderConstruction.setDateAsLong(tmp.getTime());
         }
 
         switch (v.getId()) {
