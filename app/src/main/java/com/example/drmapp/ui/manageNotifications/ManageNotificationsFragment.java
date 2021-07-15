@@ -292,17 +292,17 @@ public class ManageNotificationsFragment extends Fragment implements View.OnClic
         List<String> notificationTimes = new LinkedList<>();
         // Hier werden die gespeicherten Zeiten an die ListenPlätze geschrieben
         // zb Button1 an Platz 0, wenn keine Zeit gepeichert ist, wird an die Stelle null geschrieben
-        if (mViewModel.getTimeAsString1()!=null && !mViewModel.getTimeAsString1().equals("")) {
+        if (mViewModel.getTimeAsString1()!=null && !mViewModel.getTimeAsString1().equals("") && !mViewModel.getTimeAsString1().equals(R.string.noTimePickedText)) {
             notificationTimes.add(mViewModel.getTimeAsString1());
         } else {
             notificationTimes.add(null);
         }
-        if (mViewModel.getTimeAsString2()!=null && !mViewModel.getTimeAsString2().equals("")) {
+        if (mViewModel.getTimeAsString2()!=null && !mViewModel.getTimeAsString2().equals("") && !mViewModel.getTimeAsString2().equals(R.string.noTimePickedText)) {
             notificationTimes.add(mViewModel.getTimeAsString2());
         }  else {
             notificationTimes.add(null);
         }
-        if (mViewModel.getTimeAsString3()!=null && !mViewModel.getTimeAsString3().equals("")) {
+        if (mViewModel.getTimeAsString3()!=null && !mViewModel.getTimeAsString3().equals("") && !mViewModel.getTimeAsString3().equals(R.string.noTimePickedText)) {
             notificationTimes.add(mViewModel.getTimeAsString3());
         } else {
             notificationTimes.add(null);
