@@ -44,7 +44,7 @@
     <string name="addentry_split_chooseQuickEntry">Quick Entry</string>
 
     <!--EmojiFragments-->
-    <string name="emojiText">Which emoji represents your feelings best?</string>
+    <string name="emojiText">Which emoji best represents your occurred feelings?</string>
 
     <!--HomeFragment-->
     <string name="textAddEntryButton">Add Entry</string>
