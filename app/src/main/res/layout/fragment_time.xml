@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.addEntry.AddEntryFragment">
 
-
-    <!--TODO: Logischer Zeitzuordnunge notwendig-->
-
     <Button
         android:id="@+id/timedate_button_morning"
         style="@style/buttonStyle"
