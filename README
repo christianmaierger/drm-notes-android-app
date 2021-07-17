@@ -1,0 +1,19 @@
+# DRM App - Emotion in Day Reconstruction
+
+The programme is an Android Application supporting users in structuring their the into episodes and helps them noting down their feelings at the given times 
+
+## Installation
+
+Please just import the project into an IDE that is able to make APKs, our recommendation is AndroidStudio there click the tab: "Build" > "Build Bundle(s) / APK(s)" > "Build APK(s)". You can then just use USB-Connection, Messenger or Mail to get the file to your Smartphone.  Then just tap on the APK to install it, you will be prompted for permission, which is safe to give. 
+
+## Compatible Android Versions
+
+The app runs from Android 6.0 and above, for an optimal user experience with all features working Android 7.0 is recommended.
+
+## Usage
+
+To ensure an optimal user experience with the app especially for manufacturers like SAMSUNG or HUAWEI it is important to grant the app a collection of rights in the operating system settings. This means allowing the manual management of starting the app in the battery menu and activating permissions for notifications for the DRM APP in the notifications settings. For further assistance and tips categorised for every manufacturer please see the following website: https://dontkillmyapp.com/.
+
+## License
+
+The App in general runs under no license but was developed for Human-Computer Interaction Group at the University of Bamberg, rights lie with this institution. Please also note, that the class CSVWriter was imported. It runs under Apache License Version 2, please see https://github.com/rogerta/secrets-for-android/blob/master/app/src/main/java/au/com/bytecode/opencsv/CSVWriter.java.
