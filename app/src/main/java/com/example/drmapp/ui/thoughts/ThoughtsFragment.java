@@ -22,7 +22,6 @@ import com.example.drmapp.model.Entry;
 
 public class ThoughtsFragment extends Fragment implements View.OnClickListener {
 
-    private ThoughtsViewModel mViewModel;
     Entry entryUnderConstruction = new Entry();
     EditText inputEditText;
 
@@ -36,7 +35,6 @@ public class ThoughtsFragment extends Fragment implements View.OnClickListener {
         //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity) getActivity()).getEntryUnderConstruction();
 
-        mViewModel = new ViewModelProvider(this).get(ThoughtsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_thoughts, container, false);
 
         Button button_1 = (Button) root.findViewById(R.id.btnSubmitThoughts);

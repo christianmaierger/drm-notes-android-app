@@ -23,7 +23,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class EmojiPremadeFragment extends Fragment implements View.OnClickListener{
 
-    private EmojiPremadeViewModel mViewModel;
     Entry entryUnderConstruction = new Entry();
     int unicode1, unicode2, unicode3, unicode4, unicode5, unicode6;
 
@@ -37,7 +36,6 @@ public class EmojiPremadeFragment extends Fragment implements View.OnClickListen
         //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
-        mViewModel = new ViewModelProvider(this).get(EmojiPremadeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_emoji_premade, container, false);
 
         /**

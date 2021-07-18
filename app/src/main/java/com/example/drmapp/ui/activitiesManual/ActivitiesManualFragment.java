@@ -23,7 +23,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ActivitiesManualFragment extends Fragment implements View.OnClickListener{
 
-        private ActivitiesManualViewModel mViewModel;
         Entry entryUnderConstruction = new Entry();
         EditText inputEditText;
 
@@ -37,7 +36,6 @@ public class ActivitiesManualFragment extends Fragment implements View.OnClickLi
             //Abrufen des aktuellen Eintrages
             entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
-            mViewModel = new ViewModelProvider(this).get(ActivitiesManualViewModel.class);
             View root = inflater.inflate(R.layout.fragment_activities_manual, container, false);
 
             Button button_1 = (Button) root.findViewById(R.id.btnSubmitActivityM);

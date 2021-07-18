@@ -19,7 +19,6 @@ import com.example.drmapp.model.Entry;
 
 public class SamDominanceFragment extends Fragment implements View.OnClickListener {
 
-    private SamDominanceViewModel mViewModel;
     Entry entryUnderConstruction = new Entry();
 
     @Override
@@ -32,7 +31,6 @@ public class SamDominanceFragment extends Fragment implements View.OnClickListen
         //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity) getActivity()).getEntryUnderConstruction();
 
-        mViewModel = new ViewModelProvider(this).get(SamDominanceViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sam_dominance, container, false);
 
         ImageButton button_1 = (ImageButton) root.findViewById(R.id.btnDominance1);

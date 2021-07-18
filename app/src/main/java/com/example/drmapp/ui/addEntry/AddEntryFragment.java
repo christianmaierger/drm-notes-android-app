@@ -19,7 +19,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AddEntryFragment extends Fragment implements View.OnClickListener {
 
-    private AddEntryViewModel addEntryViewModel;
     Entry entryUnderConstruction;
 
 
@@ -31,7 +30,6 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
         //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity) getActivity()).getEntryUnderConstruction();
 
-        addEntryViewModel = new ViewModelProvider(this).get(AddEntryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_time, container, false);
 
         Button button_1 = (Button) root.findViewById(R.id.timedate_button_morning);

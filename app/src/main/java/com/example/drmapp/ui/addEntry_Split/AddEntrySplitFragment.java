@@ -29,7 +29,6 @@ import java.util.Date;
 
 public class AddEntrySplitFragment extends Fragment implements View.OnClickListener {
 
-    private AddEntrySplitViewModel addEntryViewModel;
     private MainActivity m = new MainActivity();
     Entry entryUnderConstruction;
     boolean switchChecked=false;
@@ -42,7 +41,6 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
         entryUnderConstruction = new Entry();
         ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
 
-        addEntryViewModel = new ViewModelProvider(this).get(AddEntrySplitViewModel.class);
         View root = inflater.inflate(R.layout.fragment_addentry_split, container, false);
 
         Button button_1 = (Button) root.findViewById(R.id.btnFullEntry);

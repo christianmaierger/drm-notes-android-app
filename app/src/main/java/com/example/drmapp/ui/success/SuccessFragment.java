@@ -23,7 +23,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class SuccessFragment extends Fragment implements View.OnClickListener{
 
-    private SuccessViewModel mViewModel;
     Entry entryUnderConstruction = new Entry();
 
 
@@ -37,7 +36,6 @@ public class SuccessFragment extends Fragment implements View.OnClickListener{
         //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
-        mViewModel = new ViewModelProvider(this).get(SuccessViewModel.class);
         View root = inflater.inflate(R.layout.fragment_success, container, false);
 
         Button button_1 = (Button) root.findViewById(R.id.btnSaveEntry);

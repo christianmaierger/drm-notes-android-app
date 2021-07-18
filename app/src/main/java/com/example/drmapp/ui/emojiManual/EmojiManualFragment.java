@@ -23,7 +23,6 @@ import java.util.stream.IntStream;
 
 public class EmojiManualFragment extends Fragment implements View.OnClickListener{
 
-    private EmojiManualViewModel mViewModel;
     Entry entryUnderConstruction = new Entry();
     EditText inputEditText;
 
@@ -37,7 +36,6 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
         //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
-        mViewModel = new ViewModelProvider(this).get(EmojiManualViewModel.class);
         View root = inflater.inflate(R.layout.fragment_emoji_manual, container, false);
 
         /**

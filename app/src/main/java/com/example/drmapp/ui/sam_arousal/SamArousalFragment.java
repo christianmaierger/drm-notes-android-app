@@ -19,7 +19,6 @@ import com.example.drmapp.model.Entry;
 
 public class SamArousalFragment extends Fragment implements View.OnClickListener{
 
-    private SamArousalViewModel mViewModel;
     Entry entryUnderConstruction = new Entry();
 
     @Override
@@ -33,7 +32,6 @@ public class SamArousalFragment extends Fragment implements View.OnClickListener
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
 
-        mViewModel = new ViewModelProvider(this).get(SamArousalViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sam_arousal, container, false);
 
         ImageButton button_1 = (ImageButton) root.findViewById(R.id.btnArousal1);
