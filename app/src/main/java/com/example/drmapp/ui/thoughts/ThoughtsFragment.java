@@ -1,7 +1,5 @@
 package com.example.drmapp.ui.thoughts;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;

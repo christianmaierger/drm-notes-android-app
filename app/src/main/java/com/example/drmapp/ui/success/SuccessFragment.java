@@ -1,6 +1,5 @@
 package com.example.drmapp.ui.success;
 
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 

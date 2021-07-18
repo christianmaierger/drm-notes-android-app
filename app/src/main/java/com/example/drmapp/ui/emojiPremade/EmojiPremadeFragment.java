@@ -1,6 +1,5 @@
 package com.example.drmapp.ui.emojiPremade;
 
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 

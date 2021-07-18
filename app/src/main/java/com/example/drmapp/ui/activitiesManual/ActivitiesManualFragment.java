@@ -1,5 +1,4 @@
 package com.example.drmapp.ui.activitiesManual;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
