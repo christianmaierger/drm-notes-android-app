@@ -31,7 +31,10 @@ public class EmojiPremadeFragment extends Fragment implements View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+        //Setzen des Titels des Fragments
         ((MainActivity) getActivity()).setActionBarTitle("Feelings Selection");
+
+        //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
         mViewModel = new ViewModelProvider(this).get(EmojiPremadeViewModel.class);
@@ -65,7 +68,7 @@ public class EmojiPremadeFragment extends Fragment implements View.OnClickListen
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fb.setVisibility(View.VISIBLE);
 
-
+        //Setzen der Emojis für alle Buttons
         unicode1 = 0x1F621;
         button_1.setText(new String(Character.toChars(unicode1)));
         unicode2 = 0x1F622;
@@ -79,6 +82,7 @@ public class EmojiPremadeFragment extends Fragment implements View.OnClickListen
         unicode6 = 0x1F613;
         button_6.setText(new String(Character.toChars(unicode6)));
 
+        //Setzen der Emojis für "Other"-Button
         int other1 = 0x1F60A;
         int other2 = 0x1F631;
         int other3 = 0x1F605;
@@ -89,7 +93,6 @@ public class EmojiPremadeFragment extends Fragment implements View.OnClickListen
         int other8 = 0x1f928;
         int other9 = 0x1F634;
         int other10 = 0x2764;
-
 
         button_7.setText(new String(Character.toChars(other1))
                 + new String(Character.toChars(other2))

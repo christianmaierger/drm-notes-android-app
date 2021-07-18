@@ -31,7 +31,10 @@ public class EmojiManualFragment extends Fragment implements View.OnClickListene
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+        //Setzen des Titels des Fragments
         ((MainActivity) getActivity()).setActionBarTitle("Feelings Selection");
+
+        //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
         mViewModel = new ViewModelProvider(this).get(EmojiManualViewModel.class);

@@ -26,7 +26,10 @@ public class SamDominanceFragment extends Fragment implements View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+        //Setzen des Titels des Fragments
         ((MainActivity) getActivity()).setActionBarTitle("Dominance");
+
+        //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity) getActivity()).getEntryUnderConstruction();
 
         mViewModel = new ViewModelProvider(this).get(SamDominanceViewModel.class);

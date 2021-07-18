@@ -25,7 +25,10 @@ public class AddEntryFragment extends Fragment implements View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        //Setzen des Titels des Fragments
         ((MainActivity) getActivity()).setActionBarTitle("Time Selection");
+
+        //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity) getActivity()).getEntryUnderConstruction();
 
         addEntryViewModel = new ViewModelProvider(this).get(AddEntryViewModel.class);

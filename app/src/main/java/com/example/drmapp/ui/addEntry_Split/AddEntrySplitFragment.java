@@ -35,7 +35,10 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
     boolean switchChecked=false;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        //Setzen des Titels des Fragments
         ((MainActivity) getActivity()).setActionBarTitle("Entry");
+
+        //Abrufen des aktuellen Eintrages
         entryUnderConstruction = new Entry();
         ((MainActivity) getActivity()).setEntryUnderConstruction(entryUnderConstruction);
 
@@ -48,6 +51,8 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
+
+        //Speichern der Daten die aus dem Today/Yesterday-Switch gewonnen werden
         switchYesterday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -85,10 +90,11 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
             }
         });
 
-        //Sichtbarmachen des Floating Action Buttons für das Speichern eines Eintrags
+        //Verbergen des Floating Action Buttons für den Sprung zum Ende
         FloatingActionButton fbFwd = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fbFwd.setVisibility(View.GONE);
 
+        //Sichtbarmachen des Floating Action Buttons für die Rückkehr zum Home-View
         FloatingActionButton fbHome = (FloatingActionButton) getActivity().findViewById(R.id.backHome);
         fbHome.setVisibility(View.VISIBLE);
 
@@ -98,13 +104,11 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
 
 
 
-
-
     @Override
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-        // Wenn der Switch nicht einmal gedrückt wurde muss standartmäsig das heutige Datum eingefügt werden
+        // Wenn der Switch nicht einmal gedrückt wurde muss standardmässig das heutige Datum eingefügt werden
         if(switchChecked==false) {
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
             // das aktuelle Datum
@@ -121,6 +125,7 @@ public class AddEntrySplitFragment extends Fragment implements View.OnClickListe
             entryUnderConstruction.setDateAsLong(tmp.getTime());
         }
 
+        //Navigation zum normalen oder Quick Entry
         switch (v.getId()) {
             case R.id.btnQuickEntry:
                 ((MainActivity)getActivity()).setQuickEntryTrue(true);

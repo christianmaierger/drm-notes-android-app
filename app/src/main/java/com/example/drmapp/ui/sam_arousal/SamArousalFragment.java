@@ -26,8 +26,12 @@ public class SamArousalFragment extends Fragment implements View.OnClickListener
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+        //Setzen des Titels des Fragments
         ((MainActivity) getActivity()).setActionBarTitle("Arousal");
+
+        //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
+
 
         mViewModel = new ViewModelProvider(this).get(SamArousalViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sam_arousal, container, false);

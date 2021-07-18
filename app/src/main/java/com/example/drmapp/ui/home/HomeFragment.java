@@ -28,9 +28,9 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
 
+        //Verstecken der Floating Action Buttons
         FloatingActionButton fb = (FloatingActionButton) getActivity().findViewById(R.id.fwd);
         fb.setVisibility(View.GONE);
-
         FloatingActionButton fb1 = (FloatingActionButton) getActivity().findViewById(R.id.backHome);
         fb1.setVisibility(View.GONE);
 
@@ -51,8 +51,6 @@ public class HomeFragment extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                 navController.navigate(R.id.nav_view_Last);
 

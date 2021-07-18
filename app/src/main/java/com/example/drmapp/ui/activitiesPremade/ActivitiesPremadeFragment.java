@@ -29,7 +29,10 @@ public class ActivitiesPremadeFragment extends Fragment implements View.OnClickL
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+        //Setzen des Titels des Fragments
         ((MainActivity) getActivity()).setActionBarTitle("Activity Selection");
+
+        //Abrufen des aktuellen Eintrages
         entryUnderConstruction = ((MainActivity)getActivity()).getEntryUnderConstruction();
 
         mViewModel = new ViewModelProvider(this).get(ActivitiesPremadeViewModel.class);
